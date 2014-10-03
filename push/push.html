@@ -1,0 +1,20 @@
+
+
+<html>
+    
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<!--<script src="jquery.gritter.min.js"></script>
+<link href="jquery.gritter.css"rel="stylesheet" type="text/css" />-->
+<script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+<script src="PusherNotifier.js"></script>
+  
+  <script type="text/javascript">
+    
+  $(function() {
+  var pusher = new Pusher('ff3fbe3a49687ae0a46d');
+  var channel = pusher.subscribe('my_notifications');
+  var notifier = new PusherNotifier(channel);
+});  
+    </script>
+    
+    </html>

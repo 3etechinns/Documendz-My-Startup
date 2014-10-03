@@ -1,0 +1,3060 @@
+UniFromEnc(original ret) enc:0 initial result:0
+UniFromEnc(ret1) 0
+UniFromEnc(ret2) enc:0 final result:0
+UniFromEnc(final ret) 0
+UniFromEnc(original ret) enc:1 initial result:1
+UniFromEnc(ret1) 1
+UniFromEnc(ret2) enc:1 final result:65536
+UniFromEnc(final ret) 65536
+UniFromEnc(original ret) enc:2 initial result:2
+UniFromEnc(ret1) 2
+UniFromEnc(ret2) enc:2 final result:131072
+UniFromEnc(final ret) 131072
+UniFromEnc(original ret) enc:3 initial result:3
+UniFromEnc(ret1) 3
+UniFromEnc(ret2) enc:3 final result:196608
+UniFromEnc(final ret) 196608
+UniFromEnc(original ret) enc:4 initial result:4
+UniFromEnc(ret1) 4
+UniFromEnc(ret2) enc:4 final result:262144
+UniFromEnc(final ret) 262144
+UniFromEnc(original ret) enc:5 initial result:5
+UniFromEnc(ret1) 5
+UniFromEnc(ret2) enc:5 final result:327680
+UniFromEnc(final ret) 327680
+UniFromEnc(original ret) enc:6 initial result:6
+UniFromEnc(ret1) 6
+UniFromEnc(ret2) enc:6 final result:393216
+UniFromEnc(final ret) 393216
+UniFromEnc(original ret) enc:7 initial result:7
+UniFromEnc(ret1) 7
+UniFromEnc(ret2) enc:7 final result:458752
+UniFromEnc(final ret) 458752
+UniFromEnc(original ret) enc:8 initial result:8
+UniFromEnc(ret1) 8
+UniFromEnc(ret2) enc:8 final result:524288
+UniFromEnc(final ret) 524288
+UniFromEnc(original ret) enc:9 initial result:9
+UniFromEnc(ret1) 9
+UniFromEnc(ret2) enc:9 final result:589824
+UniFromEnc(final ret) 589824
+UniFromEnc(original ret) enc:10 initial result:10
+UniFromEnc(ret1) 10
+UniFromEnc(ret2) enc:10 final result:655360
+UniFromEnc(final ret) 655360
+UniFromEnc(original ret) enc:11 initial result:11
+UniFromEnc(ret1) 11
+UniFromEnc(ret2) enc:11 final result:720896
+UniFromEnc(final ret) 720896
+UniFromEnc(original ret) enc:12 initial result:12
+UniFromEnc(ret1) 12
+UniFromEnc(ret2) enc:12 final result:786432
+UniFromEnc(final ret) 786432
+UniFromEnc(original ret) enc:13 initial result:13
+UniFromEnc(ret1) 13
+UniFromEnc(ret2) enc:13 final result:851968
+UniFromEnc(final ret) 851968
+UniFromEnc(original ret) enc:14 initial result:14
+UniFromEnc(ret1) 14
+UniFromEnc(ret2) enc:14 final result:917504
+UniFromEnc(final ret) 917504
+UniFromEnc(original ret) enc:15 initial result:15
+UniFromEnc(ret1) 15
+UniFromEnc(ret2) enc:15 final result:983040
+UniFromEnc(final ret) 983040
+UniFromEnc(original ret) enc:16 initial result:16
+UniFromEnc(ret1) 16
+UniFromEnc(ret2) enc:16 final result:1048576
+UniFromEnc(final ret) 1048576
+UniFromEnc(original ret) enc:17 initial result:17
+UniFromEnc(ret1) 17
+UniFromEnc(ret2) enc:17 final result:1114112
+UniFromEnc(final ret) 1114112
+UniFromEnc(original ret) enc:18 initial result:18
+UniFromEnc(ret1) 18
+UniFromEnc(ret2) enc:18 final result:1179648
+UniFromEnc(final ret) 1179648
+UniFromEnc(original ret) enc:19 initial result:19
+UniFromEnc(ret1) 19
+UniFromEnc(ret2) enc:19 final result:1245184
+UniFromEnc(final ret) 1245184
+UniFromEnc(original ret) enc:20 initial result:20
+UniFromEnc(ret1) 20
+UniFromEnc(ret2) enc:20 final result:1310720
+UniFromEnc(final ret) 1310720
+UniFromEnc(original ret) enc:21 initial result:21
+UniFromEnc(ret1) 21
+UniFromEnc(ret2) enc:21 final result:1376256
+UniFromEnc(final ret) 1376256
+UniFromEnc(original ret) enc:22 initial result:22
+UniFromEnc(ret1) 22
+UniFromEnc(ret2) enc:22 final result:1441792
+UniFromEnc(final ret) 1441792
+UniFromEnc(original ret) enc:23 initial result:23
+UniFromEnc(ret1) 23
+UniFromEnc(ret2) enc:23 final result:1507328
+UniFromEnc(final ret) 1507328
+UniFromEnc(original ret) enc:24 initial result:24
+UniFromEnc(ret1) 24
+UniFromEnc(ret2) enc:24 final result:1572864
+UniFromEnc(final ret) 1572864
+UniFromEnc(original ret) enc:25 initial result:25
+UniFromEnc(ret1) 25
+UniFromEnc(ret2) enc:25 final result:1638400
+UniFromEnc(final ret) 1638400
+UniFromEnc(original ret) enc:26 initial result:26
+UniFromEnc(ret1) 26
+UniFromEnc(ret2) enc:26 final result:1703936
+UniFromEnc(final ret) 1703936
+UniFromEnc(original ret) enc:27 initial result:27
+UniFromEnc(ret1) 27
+UniFromEnc(ret2) enc:27 final result:1769472
+UniFromEnc(final ret) 1769472
+UniFromEnc(original ret) enc:28 initial result:28
+UniFromEnc(ret1) 28
+UniFromEnc(ret2) enc:28 final result:1835008
+UniFromEnc(final ret) 1835008
+UniFromEnc(original ret) enc:29 initial result:29
+UniFromEnc(ret1) 29
+UniFromEnc(ret2) enc:29 final result:1900544
+UniFromEnc(final ret) 1900544
+UniFromEnc(original ret) enc:30 initial result:30
+UniFromEnc(ret1) 30
+UniFromEnc(ret2) enc:30 final result:1966080
+UniFromEnc(final ret) 1966080
+UniFromEnc(original ret) enc:31 initial result:31
+UniFromEnc(ret1) 31
+UniFromEnc(ret2) enc:31 final result:2031616
+UniFromEnc(final ret) 2031616
+UniFromEnc(original ret) enc:32 initial result:32
+UniFromEnc(ret1) 32
+UniFromEnc(ret2) enc:32 final result:2097152
+UniFromEnc(final ret) 2097152
+UniFromEnc(original ret) enc:33 initial result:33
+UniFromEnc(ret1) 33
+UniFromEnc(ret2) enc:33 final result:2162688
+UniFromEnc(final ret) 2162688
+UniFromEnc(original ret) enc:34 initial result:34
+UniFromEnc(ret1) 34
+UniFromEnc(ret2) enc:34 final result:2228224
+UniFromEnc(final ret) 2228224
+UniFromEnc(original ret) enc:35 initial result:35
+UniFromEnc(ret1) 35
+UniFromEnc(ret2) enc:35 final result:2293760
+UniFromEnc(final ret) 2293760
+UniFromEnc(original ret) enc:36 initial result:36
+UniFromEnc(ret1) 36
+UniFromEnc(ret2) enc:36 final result:2359296
+UniFromEnc(final ret) 2359296
+UniFromEnc(original ret) enc:37 initial result:37
+UniFromEnc(ret1) 37
+UniFromEnc(ret2) enc:37 final result:2424832
+UniFromEnc(final ret) 2424832
+UniFromEnc(original ret) enc:38 initial result:38
+UniFromEnc(ret1) 38
+UniFromEnc(ret2) enc:38 final result:2490368
+UniFromEnc(final ret) 2490368
+UniFromEnc(original ret) enc:39 initial result:39
+UniFromEnc(ret1) 39
+UniFromEnc(ret2) enc:39 final result:2555904
+UniFromEnc(final ret) 2555904
+UniFromEnc(original ret) enc:40 initial result:40
+UniFromEnc(ret1) 40
+UniFromEnc(ret2) enc:40 final result:2621440
+UniFromEnc(final ret) 2621440
+UniFromEnc(original ret) enc:41 initial result:41
+UniFromEnc(ret1) 41
+UniFromEnc(ret2) enc:41 final result:2686976
+UniFromEnc(final ret) 2686976
+UniFromEnc(original ret) enc:42 initial result:42
+UniFromEnc(ret1) 42
+UniFromEnc(ret2) enc:42 final result:2752512
+UniFromEnc(final ret) 2752512
+UniFromEnc(original ret) enc:43 initial result:43
+UniFromEnc(ret1) 43
+UniFromEnc(ret2) enc:43 final result:2818048
+UniFromEnc(final ret) 2818048
+UniFromEnc(original ret) enc:44 initial result:44
+UniFromEnc(ret1) 44
+UniFromEnc(ret2) enc:44 final result:2883584
+UniFromEnc(final ret) 2883584
+UniFromEnc(original ret) enc:45 initial result:45
+UniFromEnc(ret1) 45
+UniFromEnc(ret2) enc:45 final result:2949120
+UniFromEnc(final ret) 2949120
+UniFromEnc(original ret) enc:46 initial result:46
+UniFromEnc(ret1) 46
+UniFromEnc(ret2) enc:46 final result:3014656
+UniFromEnc(final ret) 3014656
+UniFromEnc(original ret) enc:47 initial result:47
+UniFromEnc(ret1) 47
+UniFromEnc(ret2) enc:47 final result:3080192
+UniFromEnc(final ret) 3080192
+UniFromEnc(original ret) enc:48 initial result:48
+UniFromEnc(ret1) 48
+UniFromEnc(ret2) enc:48 final result:3145728
+UniFromEnc(final ret) 3145728
+UniFromEnc(original ret) enc:49 initial result:49
+UniFromEnc(ret1) 49
+UniFromEnc(ret2) enc:49 final result:3211264
+UniFromEnc(final ret) 3211264
+UniFromEnc(original ret) enc:50 initial result:50
+UniFromEnc(ret1) 50
+UniFromEnc(ret2) enc:50 final result:3276800
+UniFromEnc(final ret) 3276800
+UniFromEnc(original ret) enc:51 initial result:51
+UniFromEnc(ret1) 51
+UniFromEnc(ret2) enc:51 final result:3342336
+UniFromEnc(final ret) 3342336
+UniFromEnc(original ret) enc:52 initial result:52
+UniFromEnc(ret1) 52
+UniFromEnc(ret2) enc:52 final result:3407872
+UniFromEnc(final ret) 3407872
+UniFromEnc(original ret) enc:53 initial result:53
+UniFromEnc(ret1) 53
+UniFromEnc(ret2) enc:53 final result:3473408
+UniFromEnc(final ret) 3473408
+UniFromEnc(original ret) enc:54 initial result:54
+UniFromEnc(ret1) 54
+UniFromEnc(ret2) enc:54 final result:3538944
+UniFromEnc(final ret) 3538944
+UniFromEnc(original ret) enc:55 initial result:55
+UniFromEnc(ret1) 55
+UniFromEnc(ret2) enc:55 final result:3604480
+UniFromEnc(final ret) 3604480
+UniFromEnc(original ret) enc:56 initial result:56
+UniFromEnc(ret1) 56
+UniFromEnc(ret2) enc:56 final result:3670016
+UniFromEnc(final ret) 3670016
+UniFromEnc(original ret) enc:57 initial result:57
+UniFromEnc(ret1) 57
+UniFromEnc(ret2) enc:57 final result:3735552
+UniFromEnc(final ret) 3735552
+UniFromEnc(original ret) enc:58 initial result:58
+UniFromEnc(ret1) 58
+UniFromEnc(ret2) enc:58 final result:3801088
+UniFromEnc(final ret) 3801088
+UniFromEnc(original ret) enc:59 initial result:59
+UniFromEnc(ret1) 59
+UniFromEnc(ret2) enc:59 final result:3866624
+UniFromEnc(final ret) 3866624
+UniFromEnc(original ret) enc:60 initial result:60
+UniFromEnc(ret1) 60
+UniFromEnc(ret2) enc:60 final result:3932160
+UniFromEnc(final ret) 3932160
+UniFromEnc(original ret) enc:61 initial result:61
+UniFromEnc(ret1) 61
+UniFromEnc(ret2) enc:61 final result:3997696
+UniFromEnc(final ret) 3997696
+UniFromEnc(original ret) enc:62 initial result:62
+UniFromEnc(ret1) 62
+UniFromEnc(ret2) enc:62 final result:4063232
+UniFromEnc(final ret) 4063232
+UniFromEnc(original ret) enc:63 initial result:63
+UniFromEnc(ret1) 63
+UniFromEnc(ret2) enc:63 final result:4128768
+UniFromEnc(final ret) 4128768
+UniFromEnc(original ret) enc:64 initial result:64
+UniFromEnc(ret1) 64
+UniFromEnc(ret2) enc:64 final result:4194304
+UniFromEnc(final ret) 4194304
+UniFromEnc(original ret) enc:65 initial result:65
+UniFromEnc(ret1) 65
+UniFromEnc(ret2) enc:65 final result:4259840
+UniFromEnc(final ret) 4259840
+UniFromEnc(original ret) enc:66 initial result:66
+UniFromEnc(ret1) 66
+UniFromEnc(ret2) enc:66 final result:4325376
+UniFromEnc(final ret) 4325376
+UniFromEnc(original ret) enc:67 initial result:67
+UniFromEnc(ret1) 67
+UniFromEnc(ret2) enc:67 final result:4390912
+UniFromEnc(final ret) 4390912
+UniFromEnc(original ret) enc:68 initial result:68
+UniFromEnc(ret1) 68
+UniFromEnc(ret2) enc:68 final result:4456448
+UniFromEnc(final ret) 4456448
+UniFromEnc(original ret) enc:69 initial result:69
+UniFromEnc(ret1) 69
+UniFromEnc(ret2) enc:69 final result:4521984
+UniFromEnc(final ret) 4521984
+UniFromEnc(original ret) enc:70 initial result:70
+UniFromEnc(ret1) 70
+UniFromEnc(ret2) enc:70 final result:4587520
+UniFromEnc(final ret) 4587520
+UniFromEnc(original ret) enc:71 initial result:71
+UniFromEnc(ret1) 71
+UniFromEnc(ret2) enc:71 final result:4653056
+UniFromEnc(final ret) 4653056
+UniFromEnc(original ret) enc:72 initial result:72
+UniFromEnc(ret1) 72
+UniFromEnc(ret2) enc:72 final result:4718592
+UniFromEnc(final ret) 4718592
+UniFromEnc(original ret) enc:73 initial result:73
+UniFromEnc(ret1) 73
+UniFromEnc(ret2) enc:73 final result:4784128
+UniFromEnc(final ret) 4784128
+UniFromEnc(original ret) enc:74 initial result:74
+UniFromEnc(ret1) 74
+UniFromEnc(ret2) enc:74 final result:4849664
+UniFromEnc(final ret) 4849664
+UniFromEnc(original ret) enc:75 initial result:75
+UniFromEnc(ret1) 75
+UniFromEnc(ret2) enc:75 final result:4915200
+UniFromEnc(final ret) 4915200
+UniFromEnc(original ret) enc:76 initial result:76
+UniFromEnc(ret1) 76
+UniFromEnc(ret2) enc:76 final result:4980736
+UniFromEnc(final ret) 4980736
+UniFromEnc(original ret) enc:77 initial result:77
+UniFromEnc(ret1) 77
+UniFromEnc(ret2) enc:77 final result:5046272
+UniFromEnc(final ret) 5046272
+UniFromEnc(original ret) enc:78 initial result:78
+UniFromEnc(ret1) 78
+UniFromEnc(ret2) enc:78 final result:5111808
+UniFromEnc(final ret) 5111808
+UniFromEnc(original ret) enc:79 initial result:79
+UniFromEnc(ret1) 79
+UniFromEnc(ret2) enc:79 final result:5177344
+UniFromEnc(final ret) 5177344
+UniFromEnc(original ret) enc:80 initial result:80
+UniFromEnc(ret1) 80
+UniFromEnc(ret2) enc:80 final result:5242880
+UniFromEnc(final ret) 5242880
+UniFromEnc(original ret) enc:81 initial result:81
+UniFromEnc(ret1) 81
+UniFromEnc(ret2) enc:81 final result:5308416
+UniFromEnc(final ret) 5308416
+UniFromEnc(original ret) enc:82 initial result:82
+UniFromEnc(ret1) 82
+UniFromEnc(ret2) enc:82 final result:5373952
+UniFromEnc(final ret) 5373952
+UniFromEnc(original ret) enc:83 initial result:83
+UniFromEnc(ret1) 83
+UniFromEnc(ret2) enc:83 final result:5439488
+UniFromEnc(final ret) 5439488
+UniFromEnc(original ret) enc:84 initial result:84
+UniFromEnc(ret1) 84
+UniFromEnc(ret2) enc:84 final result:5505024
+UniFromEnc(final ret) 5505024
+UniFromEnc(original ret) enc:85 initial result:85
+UniFromEnc(ret1) 85
+UniFromEnc(ret2) enc:85 final result:5570560
+UniFromEnc(final ret) 5570560
+UniFromEnc(original ret) enc:86 initial result:86
+UniFromEnc(ret1) 86
+UniFromEnc(ret2) enc:86 final result:5636096
+UniFromEnc(final ret) 5636096
+UniFromEnc(original ret) enc:87 initial result:87
+UniFromEnc(ret1) 87
+UniFromEnc(ret2) enc:87 final result:5701632
+UniFromEnc(final ret) 5701632
+UniFromEnc(original ret) enc:88 initial result:88
+UniFromEnc(ret1) 88
+UniFromEnc(ret2) enc:88 final result:5767168
+UniFromEnc(final ret) 5767168
+UniFromEnc(original ret) enc:89 initial result:89
+UniFromEnc(ret1) 89
+UniFromEnc(ret2) enc:89 final result:5832704
+UniFromEnc(final ret) 5832704
+UniFromEnc(original ret) enc:90 initial result:90
+UniFromEnc(ret1) 90
+UniFromEnc(ret2) enc:90 final result:5898240
+UniFromEnc(final ret) 5898240
+UniFromEnc(original ret) enc:91 initial result:91
+UniFromEnc(ret1) 91
+UniFromEnc(ret2) enc:91 final result:5963776
+UniFromEnc(final ret) 5963776
+UniFromEnc(original ret) enc:92 initial result:92
+UniFromEnc(ret1) 92
+UniFromEnc(ret2) enc:92 final result:6029312
+UniFromEnc(final ret) 6029312
+UniFromEnc(original ret) enc:93 initial result:93
+UniFromEnc(ret1) 93
+UniFromEnc(ret2) enc:93 final result:6094848
+UniFromEnc(final ret) 6094848
+UniFromEnc(original ret) enc:94 initial result:94
+UniFromEnc(ret1) 94
+UniFromEnc(ret2) enc:94 final result:6160384
+UniFromEnc(final ret) 6160384
+UniFromEnc(original ret) enc:95 initial result:95
+UniFromEnc(ret1) 95
+UniFromEnc(ret2) enc:95 final result:6225920
+UniFromEnc(final ret) 6225920
+UniFromEnc(original ret) enc:96 initial result:96
+UniFromEnc(ret1) 96
+UniFromEnc(ret2) enc:96 final result:6291456
+UniFromEnc(final ret) 6291456
+UniFromEnc(original ret) enc:97 initial result:97
+UniFromEnc(ret1) 97
+UniFromEnc(ret2) enc:97 final result:6356992
+UniFromEnc(final ret) 6356992
+UniFromEnc(original ret) enc:98 initial result:98
+UniFromEnc(ret1) 98
+UniFromEnc(ret2) enc:98 final result:6422528
+UniFromEnc(final ret) 6422528
+UniFromEnc(original ret) enc:99 initial result:99
+UniFromEnc(ret1) 99
+UniFromEnc(ret2) enc:99 final result:6488064
+UniFromEnc(final ret) 6488064
+UniFromEnc(original ret) enc:100 initial result:100
+UniFromEnc(ret1) 100
+UniFromEnc(ret2) enc:100 final result:6553600
+UniFromEnc(final ret) 6553600
+UniFromEnc(original ret) enc:101 initial result:101
+UniFromEnc(ret1) 101
+UniFromEnc(ret2) enc:101 final result:6619136
+UniFromEnc(final ret) 6619136
+UniFromEnc(original ret) enc:102 initial result:102
+UniFromEnc(ret1) 102
+UniFromEnc(ret2) enc:102 final result:6684672
+UniFromEnc(final ret) 6684672
+UniFromEnc(original ret) enc:103 initial result:103
+UniFromEnc(ret1) 103
+UniFromEnc(ret2) enc:103 final result:6750208
+UniFromEnc(final ret) 6750208
+UniFromEnc(original ret) enc:104 initial result:104
+UniFromEnc(ret1) 104
+UniFromEnc(ret2) enc:104 final result:6815744
+UniFromEnc(final ret) 6815744
+UniFromEnc(original ret) enc:105 initial result:105
+UniFromEnc(ret1) 105
+UniFromEnc(ret2) enc:105 final result:6881280
+UniFromEnc(final ret) 6881280
+UniFromEnc(original ret) enc:106 initial result:106
+UniFromEnc(ret1) 106
+UniFromEnc(ret2) enc:106 final result:6946816
+UniFromEnc(final ret) 6946816
+UniFromEnc(original ret) enc:107 initial result:107
+UniFromEnc(ret1) 107
+UniFromEnc(ret2) enc:107 final result:7012352
+UniFromEnc(final ret) 7012352
+UniFromEnc(original ret) enc:108 initial result:108
+UniFromEnc(ret1) 108
+UniFromEnc(ret2) enc:108 final result:7077888
+UniFromEnc(final ret) 7077888
+UniFromEnc(original ret) enc:109 initial result:109
+UniFromEnc(ret1) 109
+UniFromEnc(ret2) enc:109 final result:7143424
+UniFromEnc(final ret) 7143424
+UniFromEnc(original ret) enc:110 initial result:110
+UniFromEnc(ret1) 110
+UniFromEnc(ret2) enc:110 final result:7208960
+UniFromEnc(final ret) 7208960
+UniFromEnc(original ret) enc:111 initial result:111
+UniFromEnc(ret1) 111
+UniFromEnc(ret2) enc:111 final result:7274496
+UniFromEnc(final ret) 7274496
+UniFromEnc(original ret) enc:112 initial result:112
+UniFromEnc(ret1) 112
+UniFromEnc(ret2) enc:112 final result:7340032
+UniFromEnc(final ret) 7340032
+UniFromEnc(original ret) enc:113 initial result:113
+UniFromEnc(ret1) 113
+UniFromEnc(ret2) enc:113 final result:7405568
+UniFromEnc(final ret) 7405568
+UniFromEnc(original ret) enc:114 initial result:114
+UniFromEnc(ret1) 114
+UniFromEnc(ret2) enc:114 final result:7471104
+UniFromEnc(final ret) 7471104
+UniFromEnc(original ret) enc:115 initial result:115
+UniFromEnc(ret1) 115
+UniFromEnc(ret2) enc:115 final result:7536640
+UniFromEnc(final ret) 7536640
+UniFromEnc(original ret) enc:116 initial result:116
+UniFromEnc(ret1) 116
+UniFromEnc(ret2) enc:116 final result:7602176
+UniFromEnc(final ret) 7602176
+UniFromEnc(original ret) enc:117 initial result:117
+UniFromEnc(ret1) 117
+UniFromEnc(ret2) enc:117 final result:7667712
+UniFromEnc(final ret) 7667712
+UniFromEnc(original ret) enc:118 initial result:118
+UniFromEnc(ret1) 118
+UniFromEnc(ret2) enc:118 final result:7733248
+UniFromEnc(final ret) 7733248
+UniFromEnc(original ret) enc:119 initial result:119
+UniFromEnc(ret1) 119
+UniFromEnc(ret2) enc:119 final result:7798784
+UniFromEnc(final ret) 7798784
+UniFromEnc(original ret) enc:120 initial result:120
+UniFromEnc(ret1) 120
+UniFromEnc(ret2) enc:120 final result:7864320
+UniFromEnc(final ret) 7864320
+UniFromEnc(original ret) enc:121 initial result:121
+UniFromEnc(ret1) 121
+UniFromEnc(ret2) enc:121 final result:7929856
+UniFromEnc(final ret) 7929856
+UniFromEnc(original ret) enc:122 initial result:122
+UniFromEnc(ret1) 122
+UniFromEnc(ret2) enc:122 final result:7995392
+UniFromEnc(final ret) 7995392
+UniFromEnc(original ret) enc:123 initial result:123
+UniFromEnc(ret1) 123
+UniFromEnc(ret2) enc:123 final result:8060928
+UniFromEnc(final ret) 8060928
+UniFromEnc(original ret) enc:124 initial result:124
+UniFromEnc(ret1) 124
+UniFromEnc(ret2) enc:124 final result:8126464
+UniFromEnc(final ret) 8126464
+UniFromEnc(original ret) enc:125 initial result:125
+UniFromEnc(ret1) 125
+UniFromEnc(ret2) enc:125 final result:8192000
+UniFromEnc(final ret) 8192000
+UniFromEnc(original ret) enc:126 initial result:126
+UniFromEnc(ret1) 126
+UniFromEnc(ret2) enc:126 final result:8257536
+UniFromEnc(final ret) 8257536
+UniFromEnc(original ret) enc:127 initial result:127
+UniFromEnc(ret1) 127
+UniFromEnc(ret2) enc:127 final result:8323072
+UniFromEnc(final ret) 8323072
+UniFromEnc(original ret) enc:128 initial result:196
+UniFromEnc(ret1) 196
+UniFromEnc(ret2) enc:128 final result:12845056
+UniFromEnc(final ret) 12845056
+UniFromEnc(original ret) enc:129 initial result:197
+UniFromEnc(ret1) 197
+UniFromEnc(ret2) enc:129 final result:12910592
+UniFromEnc(final ret) 12910592
+UniFromEnc(original ret) enc:130 initial result:199
+UniFromEnc(ret1) 199
+UniFromEnc(ret2) enc:130 final result:13041664
+UniFromEnc(final ret) 13041664
+UniFromEnc(original ret) enc:131 initial result:201
+UniFromEnc(ret1) 201
+UniFromEnc(ret2) enc:131 final result:13172736
+UniFromEnc(final ret) 13172736
+UniFromEnc(original ret) enc:132 initial result:209
+UniFromEnc(ret1) 209
+UniFromEnc(ret2) enc:132 final result:13697024
+UniFromEnc(final ret) 13697024
+UniFromEnc(original ret) enc:133 initial result:214
+UniFromEnc(ret1) 214
+UniFromEnc(ret2) enc:133 final result:14024704
+UniFromEnc(final ret) 14024704
+UniFromEnc(original ret) enc:134 initial result:220
+UniFromEnc(ret1) 220
+UniFromEnc(ret2) enc:134 final result:14417920
+UniFromEnc(final ret) 14417920
+UniFromEnc(original ret) enc:135 initial result:225
+UniFromEnc(ret1) 225
+UniFromEnc(ret2) enc:135 final result:14745600
+UniFromEnc(final ret) 14745600
+UniFromEnc(original ret) enc:136 initial result:224
+UniFromEnc(ret1) 224
+UniFromEnc(ret2) enc:136 final result:14680064
+UniFromEnc(final ret) 14680064
+UniFromEnc(original ret) enc:137 initial result:226
+UniFromEnc(ret1) 226
+UniFromEnc(ret2) enc:137 final result:14811136
+UniFromEnc(final ret) 14811136
+UniFromEnc(original ret) enc:138 initial result:228
+UniFromEnc(ret1) 228
+UniFromEnc(ret2) enc:138 final result:14942208
+UniFromEnc(final ret) 14942208
+UniFromEnc(original ret) enc:139 initial result:227
+UniFromEnc(ret1) 227
+UniFromEnc(ret2) enc:139 final result:14876672
+UniFromEnc(final ret) 14876672
+UniFromEnc(original ret) enc:140 initial result:229
+UniFromEnc(ret1) 229
+UniFromEnc(ret2) enc:140 final result:15007744
+UniFromEnc(final ret) 15007744
+UniFromEnc(original ret) enc:141 initial result:231
+UniFromEnc(ret1) 231
+UniFromEnc(ret2) enc:141 final result:15138816
+UniFromEnc(final ret) 15138816
+UniFromEnc(original ret) enc:142 initial result:233
+UniFromEnc(ret1) 233
+UniFromEnc(ret2) enc:142 final result:15269888
+UniFromEnc(final ret) 15269888
+UniFromEnc(original ret) enc:143 initial result:232
+UniFromEnc(ret1) 232
+UniFromEnc(ret2) enc:143 final result:15204352
+UniFromEnc(final ret) 15204352
+UniFromEnc(original ret) enc:144 initial result:234
+UniFromEnc(ret1) 234
+UniFromEnc(ret2) enc:144 final result:15335424
+UniFromEnc(final ret) 15335424
+UniFromEnc(original ret) enc:145 initial result:235
+UniFromEnc(ret1) 235
+UniFromEnc(ret2) enc:145 final result:15400960
+UniFromEnc(final ret) 15400960
+UniFromEnc(original ret) enc:146 initial result:237
+UniFromEnc(ret1) 237
+UniFromEnc(ret2) enc:146 final result:15532032
+UniFromEnc(final ret) 15532032
+UniFromEnc(original ret) enc:147 initial result:236
+UniFromEnc(ret1) 236
+UniFromEnc(ret2) enc:147 final result:15466496
+UniFromEnc(final ret) 15466496
+UniFromEnc(original ret) enc:148 initial result:238
+UniFromEnc(ret1) 238
+UniFromEnc(ret2) enc:148 final result:15597568
+UniFromEnc(final ret) 15597568
+UniFromEnc(original ret) enc:149 initial result:239
+UniFromEnc(ret1) 239
+UniFromEnc(ret2) enc:149 final result:15663104
+UniFromEnc(final ret) 15663104
+UniFromEnc(original ret) enc:150 initial result:241
+UniFromEnc(ret1) 241
+UniFromEnc(ret2) enc:150 final result:15794176
+UniFromEnc(final ret) 15794176
+UniFromEnc(original ret) enc:151 initial result:243
+UniFromEnc(ret1) 243
+UniFromEnc(ret2) enc:151 final result:15925248
+UniFromEnc(final ret) 15925248
+UniFromEnc(original ret) enc:152 initial result:242
+UniFromEnc(ret1) 242
+UniFromEnc(ret2) enc:152 final result:15859712
+UniFromEnc(final ret) 15859712
+UniFromEnc(original ret) enc:153 initial result:244
+UniFromEnc(ret1) 244
+UniFromEnc(ret2) enc:153 final result:15990784
+UniFromEnc(final ret) 15990784
+UniFromEnc(original ret) enc:154 initial result:246
+UniFromEnc(ret1) 246
+UniFromEnc(ret2) enc:154 final result:16121856
+UniFromEnc(final ret) 16121856
+UniFromEnc(original ret) enc:155 initial result:245
+UniFromEnc(ret1) 245
+UniFromEnc(ret2) enc:155 final result:16056320
+UniFromEnc(final ret) 16056320
+UniFromEnc(original ret) enc:156 initial result:250
+UniFromEnc(ret1) 250
+UniFromEnc(ret2) enc:156 final result:16384000
+UniFromEnc(final ret) 16384000
+UniFromEnc(original ret) enc:157 initial result:249
+UniFromEnc(ret1) 249
+UniFromEnc(ret2) enc:157 final result:16318464
+UniFromEnc(final ret) 16318464
+UniFromEnc(original ret) enc:158 initial result:251
+UniFromEnc(ret1) 251
+UniFromEnc(ret2) enc:158 final result:16449536
+UniFromEnc(final ret) 16449536
+UniFromEnc(original ret) enc:159 initial result:252
+UniFromEnc(ret1) 252
+UniFromEnc(ret2) enc:159 final result:16515072
+UniFromEnc(final ret) 16515072
+UniFromEnc(original ret) enc:160 initial result:8224
+UniFromEnc(ret1) 8224
+UniFromEnc(ret2) enc:160 final result:538968064
+UniFromEnc(final ret) 538968064
+UniFromEnc(original ret) enc:161 initial result:176
+UniFromEnc(ret1) 176
+UniFromEnc(ret2) enc:161 final result:11534336
+UniFromEnc(final ret) 11534336
+UniFromEnc(original ret) enc:162 initial result:162
+UniFromEnc(ret1) 162
+UniFromEnc(ret2) enc:162 final result:10616832
+UniFromEnc(final ret) 10616832
+UniFromEnc(original ret) enc:163 initial result:163
+UniFromEnc(ret1) 163
+UniFromEnc(ret2) enc:163 final result:10682368
+UniFromEnc(final ret) 10682368
+UniFromEnc(original ret) enc:164 initial result:167
+UniFromEnc(ret1) 167
+UniFromEnc(ret2) enc:164 final result:10944512
+UniFromEnc(final ret) 10944512
+UniFromEnc(original ret) enc:165 initial result:8226
+UniFromEnc(ret1) 8226
+UniFromEnc(ret2) enc:165 final result:539099136
+UniFromEnc(final ret) 539099136
+UniFromEnc(original ret) enc:166 initial result:182
+UniFromEnc(ret1) 182
+UniFromEnc(ret2) enc:166 final result:11927552
+UniFromEnc(final ret) 11927552
+UniFromEnc(original ret) enc:167 initial result:223
+UniFromEnc(ret1) 223
+UniFromEnc(ret2) enc:167 final result:14614528
+UniFromEnc(final ret) 14614528
+UniFromEnc(original ret) enc:168 initial result:174
+UniFromEnc(ret1) 174
+UniFromEnc(ret2) enc:168 final result:11403264
+UniFromEnc(final ret) 11403264
+UniFromEnc(original ret) enc:169 initial result:169
+UniFromEnc(ret1) 169
+UniFromEnc(ret2) enc:169 final result:11075584
+UniFromEnc(final ret) 11075584
+UniFromEnc(original ret) enc:170 initial result:8482
+UniFromEnc(ret1) 8482
+UniFromEnc(ret2) enc:170 final result:555876352
+UniFromEnc(final ret) 555876352
+UniFromEnc(original ret) enc:171 initial result:180
+UniFromEnc(ret1) 180
+UniFromEnc(ret2) enc:171 final result:11796480
+UniFromEnc(final ret) 11796480
+UniFromEnc(original ret) enc:172 initial result:168
+UniFromEnc(ret1) 168
+UniFromEnc(ret2) enc:172 final result:11010048
+UniFromEnc(final ret) 11010048
+UniFromEnc(original ret) enc:173 initial result:8800
+UniFromEnc(ret1) 8800
+UniFromEnc(ret2) enc:173 final result:576716800
+UniFromEnc(final ret) 576716800
+UniFromEnc(original ret) enc:174 initial result:198
+UniFromEnc(ret1) 198
+UniFromEnc(ret2) enc:174 final result:12976128
+UniFromEnc(final ret) 12976128
+UniFromEnc(original ret) enc:175 initial result:216
+UniFromEnc(ret1) 216
+UniFromEnc(ret2) enc:175 final result:14155776
+UniFromEnc(final ret) 14155776
+UniFromEnc(original ret) enc:176 initial result:8734
+UniFromEnc(ret1) 8734
+UniFromEnc(ret2) enc:176 final result:572391424
+UniFromEnc(final ret) 572391424
+UniFromEnc(original ret) enc:177 initial result:177
+UniFromEnc(ret1) 177
+UniFromEnc(ret2) enc:177 final result:11599872
+UniFromEnc(final ret) 11599872
+UniFromEnc(original ret) enc:178 initial result:8804
+UniFromEnc(ret1) 8804
+UniFromEnc(ret2) enc:178 final result:576978944
+UniFromEnc(final ret) 576978944
+UniFromEnc(original ret) enc:179 initial result:8805
+UniFromEnc(ret1) 8805
+UniFromEnc(ret2) enc:179 final result:577044480
+UniFromEnc(final ret) 577044480
+UniFromEnc(original ret) enc:180 initial result:165
+UniFromEnc(ret1) 165
+UniFromEnc(ret2) enc:180 final result:10813440
+UniFromEnc(final ret) 10813440
+UniFromEnc(original ret) enc:181 initial result:181
+UniFromEnc(ret1) 181
+UniFromEnc(ret2) enc:181 final result:11862016
+UniFromEnc(final ret) 11862016
+UniFromEnc(original ret) enc:182 initial result:8706
+UniFromEnc(ret1) 8706
+UniFromEnc(ret2) enc:182 final result:570556416
+UniFromEnc(final ret) 570556416
+UniFromEnc(original ret) enc:183 initial result:8721
+UniFromEnc(ret1) 8721
+UniFromEnc(ret2) enc:183 final result:571539456
+UniFromEnc(final ret) 571539456
+UniFromEnc(original ret) enc:184 initial result:8719
+UniFromEnc(ret1) 8719
+UniFromEnc(ret2) enc:184 final result:571408384
+UniFromEnc(final ret) 571408384
+UniFromEnc(original ret) enc:185 initial result:960
+UniFromEnc(ret1) 960
+UniFromEnc(ret2) enc:185 final result:62914560
+UniFromEnc(final ret) 62914560
+UniFromEnc(original ret) enc:186 initial result:8747
+UniFromEnc(ret1) 8747
+UniFromEnc(ret2) enc:186 final result:573243392
+UniFromEnc(final ret) 573243392
+UniFromEnc(original ret) enc:187 initial result:170
+UniFromEnc(ret1) 170
+UniFromEnc(ret2) enc:187 final result:11141120
+UniFromEnc(final ret) 11141120
+UniFromEnc(original ret) enc:188 initial result:186
+UniFromEnc(ret1) 186
+UniFromEnc(ret2) enc:188 final result:12189696
+UniFromEnc(final ret) 12189696
+UniFromEnc(original ret) enc:189 initial result:8486
+UniFromEnc(ret1) 8486
+UniFromEnc(ret2) enc:189 final result:556138496
+UniFromEnc(final ret) 556138496
+UniFromEnc(original ret) enc:190 initial result:230
+UniFromEnc(ret1) 230
+UniFromEnc(ret2) enc:190 final result:15073280
+UniFromEnc(final ret) 15073280
+UniFromEnc(original ret) enc:191 initial result:248
+UniFromEnc(ret1) 248
+UniFromEnc(ret2) enc:191 final result:16252928
+UniFromEnc(final ret) 16252928
+UniFromEnc(original ret) enc:192 initial result:191
+UniFromEnc(ret1) 191
+UniFromEnc(ret2) enc:192 final result:12517376
+UniFromEnc(final ret) 12517376
+UniFromEnc(original ret) enc:193 initial result:161
+UniFromEnc(ret1) 161
+UniFromEnc(ret2) enc:193 final result:10551296
+UniFromEnc(final ret) 10551296
+UniFromEnc(original ret) enc:194 initial result:172
+UniFromEnc(ret1) 172
+UniFromEnc(ret2) enc:194 final result:11272192
+UniFromEnc(final ret) 11272192
+UniFromEnc(original ret) enc:195 initial result:8730
+UniFromEnc(ret1) 8730
+UniFromEnc(ret2) enc:195 final result:572129280
+UniFromEnc(final ret) 572129280
+UniFromEnc(original ret) enc:196 initial result:402
+UniFromEnc(ret1) 402
+UniFromEnc(ret2) enc:196 final result:26345472
+UniFromEnc(final ret) 26345472
+UniFromEnc(original ret) enc:197 initial result:8776
+UniFromEnc(ret1) 8776
+UniFromEnc(ret2) enc:197 final result:575143936
+UniFromEnc(final ret) 575143936
+UniFromEnc(original ret) enc:198 initial result:8710
+UniFromEnc(ret1) 8710
+UniFromEnc(ret2) enc:198 final result:570818560
+UniFromEnc(final ret) 570818560
+UniFromEnc(original ret) enc:199 initial result:171
+UniFromEnc(ret1) 171
+UniFromEnc(ret2) enc:199 final result:11206656
+UniFromEnc(final ret) 11206656
+UniFromEnc(original ret) enc:200 initial result:187
+UniFromEnc(ret1) 187
+UniFromEnc(ret2) enc:200 final result:12255232
+UniFromEnc(final ret) 12255232
+UniFromEnc(original ret) enc:201 initial result:8230
+UniFromEnc(ret1) 8230
+UniFromEnc(ret2) enc:201 final result:539361280
+UniFromEnc(final ret) 539361280
+UniFromEnc(original ret) enc:202 initial result:160
+UniFromEnc(ret1) 160
+UniFromEnc(ret2) enc:202 final result:10485760
+UniFromEnc(final ret) 10485760
+UniFromEnc(original ret) enc:203 initial result:192
+UniFromEnc(ret1) 192
+UniFromEnc(ret2) enc:203 final result:12582912
+UniFromEnc(final ret) 12582912
+UniFromEnc(original ret) enc:204 initial result:195
+UniFromEnc(ret1) 195
+UniFromEnc(ret2) enc:204 final result:12779520
+UniFromEnc(final ret) 12779520
+UniFromEnc(original ret) enc:205 initial result:213
+UniFromEnc(ret1) 213
+UniFromEnc(ret2) enc:205 final result:13959168
+UniFromEnc(final ret) 13959168
+UniFromEnc(original ret) enc:206 initial result:338
+UniFromEnc(ret1) 338
+UniFromEnc(ret2) enc:206 final result:22151168
+UniFromEnc(final ret) 22151168
+UniFromEnc(original ret) enc:207 initial result:339
+UniFromEnc(ret1) 339
+UniFromEnc(ret2) enc:207 final result:22216704
+UniFromEnc(final ret) 22216704
+UniFromEnc(original ret) enc:208 initial result:8211
+UniFromEnc(ret1) 8211
+UniFromEnc(ret2) enc:208 final result:538116096
+UniFromEnc(final ret) 538116096
+UniFromEnc(original ret) enc:209 initial result:8212
+UniFromEnc(ret1) 8212
+UniFromEnc(ret2) enc:209 final result:538181632
+UniFromEnc(final ret) 538181632
+UniFromEnc(original ret) enc:210 initial result:8220
+UniFromEnc(ret1) 8220
+UniFromEnc(ret2) enc:210 final result:538705920
+UniFromEnc(final ret) 538705920
+UniFromEnc(original ret) enc:211 initial result:8221
+UniFromEnc(ret1) 8221
+UniFromEnc(ret2) enc:211 final result:538771456
+UniFromEnc(final ret) 538771456
+UniFromEnc(original ret) enc:212 initial result:8216
+UniFromEnc(ret1) 8216
+UniFromEnc(ret2) enc:212 final result:538443776
+UniFromEnc(final ret) 538443776
+UniFromEnc(original ret) enc:213 initial result:8217
+UniFromEnc(ret1) 8217
+UniFromEnc(ret2) enc:213 final result:538509312
+UniFromEnc(final ret) 538509312
+UniFromEnc(original ret) enc:214 initial result:247
+UniFromEnc(ret1) 247
+UniFromEnc(ret2) enc:214 final result:16187392
+UniFromEnc(final ret) 16187392
+UniFromEnc(original ret) enc:215 initial result:9674
+UniFromEnc(ret1) 9674
+UniFromEnc(ret2) enc:215 final result:633995264
+UniFromEnc(final ret) 633995264
+UniFromEnc(original ret) enc:216 initial result:255
+UniFromEnc(ret1) 255
+UniFromEnc(ret2) enc:216 final result:16711680
+UniFromEnc(final ret) 16711680
+UniFromEnc(original ret) enc:217 initial result:376
+UniFromEnc(ret1) 376
+UniFromEnc(ret2) enc:217 final result:24641536
+UniFromEnc(final ret) 24641536
+UniFromEnc(original ret) enc:218 initial result:8260
+UniFromEnc(ret1) 8260
+UniFromEnc(ret2) enc:218 final result:541327360
+UniFromEnc(final ret) 541327360
+UniFromEnc(original ret) enc:219 initial result:164
+UniFromEnc(ret1) 164
+UniFromEnc(ret2) enc:219 final result:10747904
+UniFromEnc(final ret) 10747904
+UniFromEnc(original ret) enc:220 initial result:8249
+UniFromEnc(ret1) 8249
+UniFromEnc(ret2) enc:220 final result:540606464
+UniFromEnc(final ret) 540606464
+UniFromEnc(original ret) enc:221 initial result:8250
+UniFromEnc(ret1) 8250
+UniFromEnc(ret2) enc:221 final result:540672000
+UniFromEnc(final ret) 540672000
+UniFromEnc(original ret) enc:222 initial result:64257
+UniFromEnc(ret1) 64257
+UniFromEnc(ret2) enc:222 final result:-83820544
+UniFromEnc(final ret) -83820544
+UniFromEnc(original ret) enc:223 initial result:64258
+UniFromEnc(ret1) 64258
+UniFromEnc(ret2) enc:223 final result:-83755008
+UniFromEnc(final ret) -83755008
+UniFromEnc(original ret) enc:224 initial result:8225
+UniFromEnc(ret1) 8225
+UniFromEnc(ret2) enc:224 final result:539033600
+UniFromEnc(final ret) 539033600
+UniFromEnc(original ret) enc:225 initial result:183
+UniFromEnc(ret1) 183
+UniFromEnc(ret2) enc:225 final result:11993088
+UniFromEnc(final ret) 11993088
+UniFromEnc(original ret) enc:226 initial result:8218
+UniFromEnc(ret1) 8218
+UniFromEnc(ret2) enc:226 final result:538574848
+UniFromEnc(final ret) 538574848
+UniFromEnc(original ret) enc:227 initial result:8222
+UniFromEnc(ret1) 8222
+UniFromEnc(ret2) enc:227 final result:538836992
+UniFromEnc(final ret) 538836992
+UniFromEnc(original ret) enc:228 initial result:8240
+UniFromEnc(ret1) 8240
+UniFromEnc(ret2) enc:228 final result:540016640
+UniFromEnc(final ret) 540016640
+UniFromEnc(original ret) enc:229 initial result:194
+UniFromEnc(ret1) 194
+UniFromEnc(ret2) enc:229 final result:12713984
+UniFromEnc(final ret) 12713984
+UniFromEnc(original ret) enc:230 initial result:202
+UniFromEnc(ret1) 202
+UniFromEnc(ret2) enc:230 final result:13238272
+UniFromEnc(final ret) 13238272
+UniFromEnc(original ret) enc:231 initial result:193
+UniFromEnc(ret1) 193
+UniFromEnc(ret2) enc:231 final result:12648448
+UniFromEnc(final ret) 12648448
+UniFromEnc(original ret) enc:232 initial result:203
+UniFromEnc(ret1) 203
+UniFromEnc(ret2) enc:232 final result:13303808
+UniFromEnc(final ret) 13303808
+UniFromEnc(original ret) enc:233 initial result:200
+UniFromEnc(ret1) 200
+UniFromEnc(ret2) enc:233 final result:13107200
+UniFromEnc(final ret) 13107200
+UniFromEnc(original ret) enc:234 initial result:205
+UniFromEnc(ret1) 205
+UniFromEnc(ret2) enc:234 final result:13434880
+UniFromEnc(final ret) 13434880
+UniFromEnc(original ret) enc:235 initial result:206
+UniFromEnc(ret1) 206
+UniFromEnc(ret2) enc:235 final result:13500416
+UniFromEnc(final ret) 13500416
+UniFromEnc(original ret) enc:236 initial result:207
+UniFromEnc(ret1) 207
+UniFromEnc(ret2) enc:236 final result:13565952
+UniFromEnc(final ret) 13565952
+UniFromEnc(original ret) enc:237 initial result:204
+UniFromEnc(ret1) 204
+UniFromEnc(ret2) enc:237 final result:13369344
+UniFromEnc(final ret) 13369344
+UniFromEnc(original ret) enc:238 initial result:211
+UniFromEnc(ret1) 211
+UniFromEnc(ret2) enc:238 final result:13828096
+UniFromEnc(final ret) 13828096
+UniFromEnc(original ret) enc:239 initial result:212
+UniFromEnc(ret1) 212
+UniFromEnc(ret2) enc:239 final result:13893632
+UniFromEnc(final ret) 13893632
+UniFromEnc(original ret) enc:241 initial result:210
+UniFromEnc(ret1) 210
+UniFromEnc(ret2) enc:241 final result:13762560
+UniFromEnc(final ret) 13762560
+UniFromEnc(original ret) enc:242 initial result:218
+UniFromEnc(ret1) 218
+UniFromEnc(ret2) enc:242 final result:14286848
+UniFromEnc(final ret) 14286848
+UniFromEnc(original ret) enc:243 initial result:219
+UniFromEnc(ret1) 219
+UniFromEnc(ret2) enc:243 final result:14352384
+UniFromEnc(final ret) 14352384
+UniFromEnc(original ret) enc:244 initial result:217
+UniFromEnc(ret1) 217
+UniFromEnc(ret2) enc:244 final result:14221312
+UniFromEnc(final ret) 14221312
+UniFromEnc(original ret) enc:245 initial result:305
+UniFromEnc(ret1) 305
+UniFromEnc(ret2) enc:245 final result:19988480
+UniFromEnc(final ret) 19988480
+UniFromEnc(original ret) enc:246 initial result:710
+UniFromEnc(ret1) 710
+UniFromEnc(ret2) enc:246 final result:46530560
+UniFromEnc(final ret) 46530560
+UniFromEnc(original ret) enc:247 initial result:732
+UniFromEnc(ret1) 732
+UniFromEnc(ret2) enc:247 final result:47972352
+UniFromEnc(final ret) 47972352
+UniFromEnc(original ret) enc:248 initial result:175
+UniFromEnc(ret1) 175
+UniFromEnc(ret2) enc:248 final result:11468800
+UniFromEnc(final ret) 11468800
+UniFromEnc(original ret) enc:249 initial result:728
+UniFromEnc(ret1) 728
+UniFromEnc(ret2) enc:249 final result:47710208
+UniFromEnc(final ret) 47710208
+UniFromEnc(original ret) enc:250 initial result:729
+UniFromEnc(ret1) 729
+UniFromEnc(ret2) enc:250 final result:47775744
+UniFromEnc(final ret) 47775744
+UniFromEnc(original ret) enc:251 initial result:730
+UniFromEnc(ret1) 730
+UniFromEnc(ret2) enc:251 final result:47841280
+UniFromEnc(final ret) 47841280
+UniFromEnc(original ret) enc:252 initial result:184
+UniFromEnc(ret1) 184
+UniFromEnc(ret2) enc:252 final result:12058624
+UniFromEnc(final ret) 12058624
+UniFromEnc(original ret) enc:253 initial result:733
+UniFromEnc(ret1) 733
+UniFromEnc(ret2) enc:253 final result:48037888
+UniFromEnc(final ret) 48037888
+UniFromEnc(original ret) enc:254 initial result:731
+UniFromEnc(ret1) 731
+UniFromEnc(ret2) enc:254 final result:47906816
+UniFromEnc(final ret) 47906816
+UniFromEnc(original ret) enc:255 initial result:711
+UniFromEnc(ret1) 711
+UniFromEnc(ret2) enc:255 final result:46596096
+UniFromEnc(final ret) 46596096
+UniFromEnc(original ret) enc:0 initial result:0
+UniFromEnc(ret1) 0
+UniFromEnc(ret2) enc:0 final result:0
+UniFromEnc(final ret) 0
+UniFromEnc(original ret) enc:1 initial result:1
+UniFromEnc(ret1) 1
+UniFromEnc(ret2) enc:1 final result:65536
+UniFromEnc(final ret) 65536
+UniFromEnc(original ret) enc:2 initial result:2
+UniFromEnc(ret1) 2
+UniFromEnc(ret2) enc:2 final result:131072
+UniFromEnc(final ret) 131072
+UniFromEnc(original ret) enc:3 initial result:3
+UniFromEnc(ret1) 3
+UniFromEnc(ret2) enc:3 final result:196608
+UniFromEnc(final ret) 196608
+UniFromEnc(original ret) enc:4 initial result:4
+UniFromEnc(ret1) 4
+UniFromEnc(ret2) enc:4 final result:262144
+UniFromEnc(final ret) 262144
+UniFromEnc(original ret) enc:5 initial result:5
+UniFromEnc(ret1) 5
+UniFromEnc(ret2) enc:5 final result:327680
+UniFromEnc(final ret) 327680
+UniFromEnc(original ret) enc:6 initial result:6
+UniFromEnc(ret1) 6
+UniFromEnc(ret2) enc:6 final result:393216
+UniFromEnc(final ret) 393216
+UniFromEnc(original ret) enc:7 initial result:7
+UniFromEnc(ret1) 7
+UniFromEnc(ret2) enc:7 final result:458752
+UniFromEnc(final ret) 458752
+UniFromEnc(original ret) enc:8 initial result:8
+UniFromEnc(ret1) 8
+UniFromEnc(ret2) enc:8 final result:524288
+UniFromEnc(final ret) 524288
+UniFromEnc(original ret) enc:9 initial result:9
+UniFromEnc(ret1) 9
+UniFromEnc(ret2) enc:9 final result:589824
+UniFromEnc(final ret) 589824
+UniFromEnc(original ret) enc:10 initial result:10
+UniFromEnc(ret1) 10
+UniFromEnc(ret2) enc:10 final result:655360
+UniFromEnc(final ret) 655360
+UniFromEnc(original ret) enc:11 initial result:11
+UniFromEnc(ret1) 11
+UniFromEnc(ret2) enc:11 final result:720896
+UniFromEnc(final ret) 720896
+UniFromEnc(original ret) enc:12 initial result:12
+UniFromEnc(ret1) 12
+UniFromEnc(ret2) enc:12 final result:786432
+UniFromEnc(final ret) 786432
+UniFromEnc(original ret) enc:13 initial result:13
+UniFromEnc(ret1) 13
+UniFromEnc(ret2) enc:13 final result:851968
+UniFromEnc(final ret) 851968
+UniFromEnc(original ret) enc:14 initial result:14
+UniFromEnc(ret1) 14
+UniFromEnc(ret2) enc:14 final result:917504
+UniFromEnc(final ret) 917504
+UniFromEnc(original ret) enc:15 initial result:15
+UniFromEnc(ret1) 15
+UniFromEnc(ret2) enc:15 final result:983040
+UniFromEnc(final ret) 983040
+UniFromEnc(original ret) enc:16 initial result:16
+UniFromEnc(ret1) 16
+UniFromEnc(ret2) enc:16 final result:1048576
+UniFromEnc(final ret) 1048576
+UniFromEnc(original ret) enc:17 initial result:17
+UniFromEnc(ret1) 17
+UniFromEnc(ret2) enc:17 final result:1114112
+UniFromEnc(final ret) 1114112
+UniFromEnc(original ret) enc:18 initial result:18
+UniFromEnc(ret1) 18
+UniFromEnc(ret2) enc:18 final result:1179648
+UniFromEnc(final ret) 1179648
+UniFromEnc(original ret) enc:19 initial result:19
+UniFromEnc(ret1) 19
+UniFromEnc(ret2) enc:19 final result:1245184
+UniFromEnc(final ret) 1245184
+UniFromEnc(original ret) enc:20 initial result:20
+UniFromEnc(ret1) 20
+UniFromEnc(ret2) enc:20 final result:1310720
+UniFromEnc(final ret) 1310720
+UniFromEnc(original ret) enc:21 initial result:21
+UniFromEnc(ret1) 21
+UniFromEnc(ret2) enc:21 final result:1376256
+UniFromEnc(final ret) 1376256
+UniFromEnc(original ret) enc:22 initial result:22
+UniFromEnc(ret1) 22
+UniFromEnc(ret2) enc:22 final result:1441792
+UniFromEnc(final ret) 1441792
+UniFromEnc(original ret) enc:23 initial result:23
+UniFromEnc(ret1) 23
+UniFromEnc(ret2) enc:23 final result:1507328
+UniFromEnc(final ret) 1507328
+UniFromEnc(original ret) enc:24 initial result:24
+UniFromEnc(ret1) 24
+UniFromEnc(ret2) enc:24 final result:1572864
+UniFromEnc(final ret) 1572864
+UniFromEnc(original ret) enc:25 initial result:25
+UniFromEnc(ret1) 25
+UniFromEnc(ret2) enc:25 final result:1638400
+UniFromEnc(final ret) 1638400
+UniFromEnc(original ret) enc:26 initial result:26
+UniFromEnc(ret1) 26
+UniFromEnc(ret2) enc:26 final result:1703936
+UniFromEnc(final ret) 1703936
+UniFromEnc(original ret) enc:27 initial result:27
+UniFromEnc(ret1) 27
+UniFromEnc(ret2) enc:27 final result:1769472
+UniFromEnc(final ret) 1769472
+UniFromEnc(original ret) enc:28 initial result:28
+UniFromEnc(ret1) 28
+UniFromEnc(ret2) enc:28 final result:1835008
+UniFromEnc(final ret) 1835008
+UniFromEnc(original ret) enc:29 initial result:29
+UniFromEnc(ret1) 29
+UniFromEnc(ret2) enc:29 final result:1900544
+UniFromEnc(final ret) 1900544
+UniFromEnc(original ret) enc:30 initial result:30
+UniFromEnc(ret1) 30
+UniFromEnc(ret2) enc:30 final result:1966080
+UniFromEnc(final ret) 1966080
+UniFromEnc(original ret) enc:31 initial result:31
+UniFromEnc(ret1) 31
+UniFromEnc(ret2) enc:31 final result:2031616
+UniFromEnc(final ret) 2031616
+UniFromEnc(original ret) enc:32 initial result:32
+UniFromEnc(ret1) 32
+UniFromEnc(ret2) enc:32 final result:2097152
+UniFromEnc(final ret) 2097152
+UniFromEnc(original ret) enc:33 initial result:33
+UniFromEnc(ret1) 33
+UniFromEnc(ret2) enc:33 final result:2162688
+UniFromEnc(final ret) 2162688
+UniFromEnc(original ret) enc:34 initial result:34
+UniFromEnc(ret1) 34
+UniFromEnc(ret2) enc:34 final result:2228224
+UniFromEnc(final ret) 2228224
+UniFromEnc(original ret) enc:35 initial result:35
+UniFromEnc(ret1) 35
+UniFromEnc(ret2) enc:35 final result:2293760
+UniFromEnc(final ret) 2293760
+UniFromEnc(original ret) enc:36 initial result:36
+UniFromEnc(ret1) 36
+UniFromEnc(ret2) enc:36 final result:2359296
+UniFromEnc(final ret) 2359296
+UniFromEnc(original ret) enc:37 initial result:37
+UniFromEnc(ret1) 37
+UniFromEnc(ret2) enc:37 final result:2424832
+UniFromEnc(final ret) 2424832
+UniFromEnc(original ret) enc:38 initial result:38
+UniFromEnc(ret1) 38
+UniFromEnc(ret2) enc:38 final result:2490368
+UniFromEnc(final ret) 2490368
+UniFromEnc(original ret) enc:39 initial result:39
+UniFromEnc(ret1) 39
+UniFromEnc(ret2) enc:39 final result:2555904
+UniFromEnc(final ret) 2555904
+UniFromEnc(original ret) enc:40 initial result:40
+UniFromEnc(ret1) 40
+UniFromEnc(ret2) enc:40 final result:2621440
+UniFromEnc(final ret) 2621440
+UniFromEnc(original ret) enc:41 initial result:41
+UniFromEnc(ret1) 41
+UniFromEnc(ret2) enc:41 final result:2686976
+UniFromEnc(final ret) 2686976
+UniFromEnc(original ret) enc:42 initial result:42
+UniFromEnc(ret1) 42
+UniFromEnc(ret2) enc:42 final result:2752512
+UniFromEnc(final ret) 2752512
+UniFromEnc(original ret) enc:43 initial result:43
+UniFromEnc(ret1) 43
+UniFromEnc(ret2) enc:43 final result:2818048
+UniFromEnc(final ret) 2818048
+UniFromEnc(original ret) enc:44 initial result:44
+UniFromEnc(ret1) 44
+UniFromEnc(ret2) enc:44 final result:2883584
+UniFromEnc(final ret) 2883584
+UniFromEnc(original ret) enc:45 initial result:45
+UniFromEnc(ret1) 45
+UniFromEnc(ret2) enc:45 final result:2949120
+UniFromEnc(final ret) 2949120
+UniFromEnc(original ret) enc:46 initial result:46
+UniFromEnc(ret1) 46
+UniFromEnc(ret2) enc:46 final result:3014656
+UniFromEnc(final ret) 3014656
+UniFromEnc(original ret) enc:47 initial result:47
+UniFromEnc(ret1) 47
+UniFromEnc(ret2) enc:47 final result:3080192
+UniFromEnc(final ret) 3080192
+UniFromEnc(original ret) enc:48 initial result:48
+UniFromEnc(ret1) 48
+UniFromEnc(ret2) enc:48 final result:3145728
+UniFromEnc(final ret) 3145728
+UniFromEnc(original ret) enc:49 initial result:49
+UniFromEnc(ret1) 49
+UniFromEnc(ret2) enc:49 final result:3211264
+UniFromEnc(final ret) 3211264
+UniFromEnc(original ret) enc:50 initial result:50
+UniFromEnc(ret1) 50
+UniFromEnc(ret2) enc:50 final result:3276800
+UniFromEnc(final ret) 3276800
+UniFromEnc(original ret) enc:51 initial result:51
+UniFromEnc(ret1) 51
+UniFromEnc(ret2) enc:51 final result:3342336
+UniFromEnc(final ret) 3342336
+UniFromEnc(original ret) enc:52 initial result:52
+UniFromEnc(ret1) 52
+UniFromEnc(ret2) enc:52 final result:3407872
+UniFromEnc(final ret) 3407872
+UniFromEnc(original ret) enc:53 initial result:53
+UniFromEnc(ret1) 53
+UniFromEnc(ret2) enc:53 final result:3473408
+UniFromEnc(final ret) 3473408
+UniFromEnc(original ret) enc:54 initial result:54
+UniFromEnc(ret1) 54
+UniFromEnc(ret2) enc:54 final result:3538944
+UniFromEnc(final ret) 3538944
+UniFromEnc(original ret) enc:55 initial result:55
+UniFromEnc(ret1) 55
+UniFromEnc(ret2) enc:55 final result:3604480
+UniFromEnc(final ret) 3604480
+UniFromEnc(original ret) enc:56 initial result:56
+UniFromEnc(ret1) 56
+UniFromEnc(ret2) enc:56 final result:3670016
+UniFromEnc(final ret) 3670016
+UniFromEnc(original ret) enc:57 initial result:57
+UniFromEnc(ret1) 57
+UniFromEnc(ret2) enc:57 final result:3735552
+UniFromEnc(final ret) 3735552
+UniFromEnc(original ret) enc:58 initial result:58
+UniFromEnc(ret1) 58
+UniFromEnc(ret2) enc:58 final result:3801088
+UniFromEnc(final ret) 3801088
+UniFromEnc(original ret) enc:59 initial result:59
+UniFromEnc(ret1) 59
+UniFromEnc(ret2) enc:59 final result:3866624
+UniFromEnc(final ret) 3866624
+UniFromEnc(original ret) enc:60 initial result:60
+UniFromEnc(ret1) 60
+UniFromEnc(ret2) enc:60 final result:3932160
+UniFromEnc(final ret) 3932160
+UniFromEnc(original ret) enc:61 initial result:61
+UniFromEnc(ret1) 61
+UniFromEnc(ret2) enc:61 final result:3997696
+UniFromEnc(final ret) 3997696
+UniFromEnc(original ret) enc:62 initial result:62
+UniFromEnc(ret1) 62
+UniFromEnc(ret2) enc:62 final result:4063232
+UniFromEnc(final ret) 4063232
+UniFromEnc(original ret) enc:63 initial result:63
+UniFromEnc(ret1) 63
+UniFromEnc(ret2) enc:63 final result:4128768
+UniFromEnc(final ret) 4128768
+UniFromEnc(original ret) enc:64 initial result:64
+UniFromEnc(ret1) 64
+UniFromEnc(ret2) enc:64 final result:4194304
+UniFromEnc(final ret) 4194304
+UniFromEnc(original ret) enc:65 initial result:65
+UniFromEnc(ret1) 65
+UniFromEnc(ret2) enc:65 final result:4259840
+UniFromEnc(final ret) 4259840
+UniFromEnc(original ret) enc:66 initial result:66
+UniFromEnc(ret1) 66
+UniFromEnc(ret2) enc:66 final result:4325376
+UniFromEnc(final ret) 4325376
+UniFromEnc(original ret) enc:67 initial result:67
+UniFromEnc(ret1) 67
+UniFromEnc(ret2) enc:67 final result:4390912
+UniFromEnc(final ret) 4390912
+UniFromEnc(original ret) enc:68 initial result:68
+UniFromEnc(ret1) 68
+UniFromEnc(ret2) enc:68 final result:4456448
+UniFromEnc(final ret) 4456448
+UniFromEnc(original ret) enc:69 initial result:69
+UniFromEnc(ret1) 69
+UniFromEnc(ret2) enc:69 final result:4521984
+UniFromEnc(final ret) 4521984
+UniFromEnc(original ret) enc:70 initial result:70
+UniFromEnc(ret1) 70
+UniFromEnc(ret2) enc:70 final result:4587520
+UniFromEnc(final ret) 4587520
+UniFromEnc(original ret) enc:71 initial result:71
+UniFromEnc(ret1) 71
+UniFromEnc(ret2) enc:71 final result:4653056
+UniFromEnc(final ret) 4653056
+UniFromEnc(original ret) enc:72 initial result:72
+UniFromEnc(ret1) 72
+UniFromEnc(ret2) enc:72 final result:4718592
+UniFromEnc(final ret) 4718592
+UniFromEnc(original ret) enc:73 initial result:73
+UniFromEnc(ret1) 73
+UniFromEnc(ret2) enc:73 final result:4784128
+UniFromEnc(final ret) 4784128
+UniFromEnc(original ret) enc:74 initial result:74
+UniFromEnc(ret1) 74
+UniFromEnc(ret2) enc:74 final result:4849664
+UniFromEnc(final ret) 4849664
+UniFromEnc(original ret) enc:75 initial result:75
+UniFromEnc(ret1) 75
+UniFromEnc(ret2) enc:75 final result:4915200
+UniFromEnc(final ret) 4915200
+UniFromEnc(original ret) enc:76 initial result:76
+UniFromEnc(ret1) 76
+UniFromEnc(ret2) enc:76 final result:4980736
+UniFromEnc(final ret) 4980736
+UniFromEnc(original ret) enc:77 initial result:77
+UniFromEnc(ret1) 77
+UniFromEnc(ret2) enc:77 final result:5046272
+UniFromEnc(final ret) 5046272
+UniFromEnc(original ret) enc:78 initial result:78
+UniFromEnc(ret1) 78
+UniFromEnc(ret2) enc:78 final result:5111808
+UniFromEnc(final ret) 5111808
+UniFromEnc(original ret) enc:79 initial result:79
+UniFromEnc(ret1) 79
+UniFromEnc(ret2) enc:79 final result:5177344
+UniFromEnc(final ret) 5177344
+UniFromEnc(original ret) enc:80 initial result:80
+UniFromEnc(ret1) 80
+UniFromEnc(ret2) enc:80 final result:5242880
+UniFromEnc(final ret) 5242880
+UniFromEnc(original ret) enc:81 initial result:81
+UniFromEnc(ret1) 81
+UniFromEnc(ret2) enc:81 final result:5308416
+UniFromEnc(final ret) 5308416
+UniFromEnc(original ret) enc:82 initial result:82
+UniFromEnc(ret1) 82
+UniFromEnc(ret2) enc:82 final result:5373952
+UniFromEnc(final ret) 5373952
+UniFromEnc(original ret) enc:83 initial result:83
+UniFromEnc(ret1) 83
+UniFromEnc(ret2) enc:83 final result:5439488
+UniFromEnc(final ret) 5439488
+UniFromEnc(original ret) enc:84 initial result:84
+UniFromEnc(ret1) 84
+UniFromEnc(ret2) enc:84 final result:5505024
+UniFromEnc(final ret) 5505024
+UniFromEnc(original ret) enc:85 initial result:85
+UniFromEnc(ret1) 85
+UniFromEnc(ret2) enc:85 final result:5570560
+UniFromEnc(final ret) 5570560
+UniFromEnc(original ret) enc:86 initial result:86
+UniFromEnc(ret1) 86
+UniFromEnc(ret2) enc:86 final result:5636096
+UniFromEnc(final ret) 5636096
+UniFromEnc(original ret) enc:87 initial result:87
+UniFromEnc(ret1) 87
+UniFromEnc(ret2) enc:87 final result:5701632
+UniFromEnc(final ret) 5701632
+UniFromEnc(original ret) enc:88 initial result:88
+UniFromEnc(ret1) 88
+UniFromEnc(ret2) enc:88 final result:5767168
+UniFromEnc(final ret) 5767168
+UniFromEnc(original ret) enc:89 initial result:89
+UniFromEnc(ret1) 89
+UniFromEnc(ret2) enc:89 final result:5832704
+UniFromEnc(final ret) 5832704
+UniFromEnc(original ret) enc:90 initial result:90
+UniFromEnc(ret1) 90
+UniFromEnc(ret2) enc:90 final result:5898240
+UniFromEnc(final ret) 5898240
+UniFromEnc(original ret) enc:91 initial result:91
+UniFromEnc(ret1) 91
+UniFromEnc(ret2) enc:91 final result:5963776
+UniFromEnc(final ret) 5963776
+UniFromEnc(original ret) enc:92 initial result:92
+UniFromEnc(ret1) 92
+UniFromEnc(ret2) enc:92 final result:6029312
+UniFromEnc(final ret) 6029312
+UniFromEnc(original ret) enc:93 initial result:93
+UniFromEnc(ret1) 93
+UniFromEnc(ret2) enc:93 final result:6094848
+UniFromEnc(final ret) 6094848
+UniFromEnc(original ret) enc:94 initial result:94
+UniFromEnc(ret1) 94
+UniFromEnc(ret2) enc:94 final result:6160384
+UniFromEnc(final ret) 6160384
+UniFromEnc(original ret) enc:95 initial result:95
+UniFromEnc(ret1) 95
+UniFromEnc(ret2) enc:95 final result:6225920
+UniFromEnc(final ret) 6225920
+UniFromEnc(original ret) enc:96 initial result:96
+UniFromEnc(ret1) 96
+UniFromEnc(ret2) enc:96 final result:6291456
+UniFromEnc(final ret) 6291456
+UniFromEnc(original ret) enc:97 initial result:97
+UniFromEnc(ret1) 97
+UniFromEnc(ret2) enc:97 final result:6356992
+UniFromEnc(final ret) 6356992
+UniFromEnc(original ret) enc:98 initial result:98
+UniFromEnc(ret1) 98
+UniFromEnc(ret2) enc:98 final result:6422528
+UniFromEnc(final ret) 6422528
+UniFromEnc(original ret) enc:99 initial result:99
+UniFromEnc(ret1) 99
+UniFromEnc(ret2) enc:99 final result:6488064
+UniFromEnc(final ret) 6488064
+UniFromEnc(original ret) enc:100 initial result:100
+UniFromEnc(ret1) 100
+UniFromEnc(ret2) enc:100 final result:6553600
+UniFromEnc(final ret) 6553600
+UniFromEnc(original ret) enc:101 initial result:101
+UniFromEnc(ret1) 101
+UniFromEnc(ret2) enc:101 final result:6619136
+UniFromEnc(final ret) 6619136
+UniFromEnc(original ret) enc:102 initial result:102
+UniFromEnc(ret1) 102
+UniFromEnc(ret2) enc:102 final result:6684672
+UniFromEnc(final ret) 6684672
+UniFromEnc(original ret) enc:103 initial result:103
+UniFromEnc(ret1) 103
+UniFromEnc(ret2) enc:103 final result:6750208
+UniFromEnc(final ret) 6750208
+UniFromEnc(original ret) enc:104 initial result:104
+UniFromEnc(ret1) 104
+UniFromEnc(ret2) enc:104 final result:6815744
+UniFromEnc(final ret) 6815744
+UniFromEnc(original ret) enc:105 initial result:105
+UniFromEnc(ret1) 105
+UniFromEnc(ret2) enc:105 final result:6881280
+UniFromEnc(final ret) 6881280
+UniFromEnc(original ret) enc:106 initial result:106
+UniFromEnc(ret1) 106
+UniFromEnc(ret2) enc:106 final result:6946816
+UniFromEnc(final ret) 6946816
+UniFromEnc(original ret) enc:107 initial result:107
+UniFromEnc(ret1) 107
+UniFromEnc(ret2) enc:107 final result:7012352
+UniFromEnc(final ret) 7012352
+UniFromEnc(original ret) enc:108 initial result:108
+UniFromEnc(ret1) 108
+UniFromEnc(ret2) enc:108 final result:7077888
+UniFromEnc(final ret) 7077888
+UniFromEnc(original ret) enc:109 initial result:109
+UniFromEnc(ret1) 109
+UniFromEnc(ret2) enc:109 final result:7143424
+UniFromEnc(final ret) 7143424
+UniFromEnc(original ret) enc:110 initial result:110
+UniFromEnc(ret1) 110
+UniFromEnc(ret2) enc:110 final result:7208960
+UniFromEnc(final ret) 7208960
+UniFromEnc(original ret) enc:111 initial result:111
+UniFromEnc(ret1) 111
+UniFromEnc(ret2) enc:111 final result:7274496
+UniFromEnc(final ret) 7274496
+UniFromEnc(original ret) enc:112 initial result:112
+UniFromEnc(ret1) 112
+UniFromEnc(ret2) enc:112 final result:7340032
+UniFromEnc(final ret) 7340032
+UniFromEnc(original ret) enc:113 initial result:113
+UniFromEnc(ret1) 113
+UniFromEnc(ret2) enc:113 final result:7405568
+UniFromEnc(final ret) 7405568
+UniFromEnc(original ret) enc:114 initial result:114
+UniFromEnc(ret1) 114
+UniFromEnc(ret2) enc:114 final result:7471104
+UniFromEnc(final ret) 7471104
+UniFromEnc(original ret) enc:115 initial result:115
+UniFromEnc(ret1) 115
+UniFromEnc(ret2) enc:115 final result:7536640
+UniFromEnc(final ret) 7536640
+UniFromEnc(original ret) enc:116 initial result:116
+UniFromEnc(ret1) 116
+UniFromEnc(ret2) enc:116 final result:7602176
+UniFromEnc(final ret) 7602176
+UniFromEnc(original ret) enc:117 initial result:117
+UniFromEnc(ret1) 117
+UniFromEnc(ret2) enc:117 final result:7667712
+UniFromEnc(final ret) 7667712
+UniFromEnc(original ret) enc:118 initial result:118
+UniFromEnc(ret1) 118
+UniFromEnc(ret2) enc:118 final result:7733248
+UniFromEnc(final ret) 7733248
+UniFromEnc(original ret) enc:119 initial result:119
+UniFromEnc(ret1) 119
+UniFromEnc(ret2) enc:119 final result:7798784
+UniFromEnc(final ret) 7798784
+UniFromEnc(original ret) enc:120 initial result:120
+UniFromEnc(ret1) 120
+UniFromEnc(ret2) enc:120 final result:7864320
+UniFromEnc(final ret) 7864320
+UniFromEnc(original ret) enc:121 initial result:121
+UniFromEnc(ret1) 121
+UniFromEnc(ret2) enc:121 final result:7929856
+UniFromEnc(final ret) 7929856
+UniFromEnc(original ret) enc:122 initial result:122
+UniFromEnc(ret1) 122
+UniFromEnc(ret2) enc:122 final result:7995392
+UniFromEnc(final ret) 7995392
+UniFromEnc(original ret) enc:123 initial result:123
+UniFromEnc(ret1) 123
+UniFromEnc(ret2) enc:123 final result:8060928
+UniFromEnc(final ret) 8060928
+UniFromEnc(original ret) enc:124 initial result:124
+UniFromEnc(ret1) 124
+UniFromEnc(ret2) enc:124 final result:8126464
+UniFromEnc(final ret) 8126464
+UniFromEnc(original ret) enc:125 initial result:125
+UniFromEnc(ret1) 125
+UniFromEnc(ret2) enc:125 final result:8192000
+UniFromEnc(final ret) 8192000
+UniFromEnc(original ret) enc:126 initial result:126
+UniFromEnc(ret1) 126
+UniFromEnc(ret2) enc:126 final result:8257536
+UniFromEnc(final ret) 8257536
+UniFromEnc(original ret) enc:127 initial result:127
+UniFromEnc(ret1) 127
+UniFromEnc(ret2) enc:127 final result:8323072
+UniFromEnc(final ret) 8323072
+UniFromEnc(original ret) enc:128 initial result:196
+UniFromEnc(ret1) 196
+UniFromEnc(ret2) enc:128 final result:12845056
+UniFromEnc(final ret) 12845056
+UniFromEnc(original ret) enc:129 initial result:197
+UniFromEnc(ret1) 197
+UniFromEnc(ret2) enc:129 final result:12910592
+UniFromEnc(final ret) 12910592
+UniFromEnc(original ret) enc:130 initial result:199
+UniFromEnc(ret1) 199
+UniFromEnc(ret2) enc:130 final result:13041664
+UniFromEnc(final ret) 13041664
+UniFromEnc(original ret) enc:131 initial result:201
+UniFromEnc(ret1) 201
+UniFromEnc(ret2) enc:131 final result:13172736
+UniFromEnc(final ret) 13172736
+UniFromEnc(original ret) enc:132 initial result:209
+UniFromEnc(ret1) 209
+UniFromEnc(ret2) enc:132 final result:13697024
+UniFromEnc(final ret) 13697024
+UniFromEnc(original ret) enc:133 initial result:214
+UniFromEnc(ret1) 214
+UniFromEnc(ret2) enc:133 final result:14024704
+UniFromEnc(final ret) 14024704
+UniFromEnc(original ret) enc:134 initial result:220
+UniFromEnc(ret1) 220
+UniFromEnc(ret2) enc:134 final result:14417920
+UniFromEnc(final ret) 14417920
+UniFromEnc(original ret) enc:135 initial result:225
+UniFromEnc(ret1) 225
+UniFromEnc(ret2) enc:135 final result:14745600
+UniFromEnc(final ret) 14745600
+UniFromEnc(original ret) enc:136 initial result:224
+UniFromEnc(ret1) 224
+UniFromEnc(ret2) enc:136 final result:14680064
+UniFromEnc(final ret) 14680064
+UniFromEnc(original ret) enc:137 initial result:226
+UniFromEnc(ret1) 226
+UniFromEnc(ret2) enc:137 final result:14811136
+UniFromEnc(final ret) 14811136
+UniFromEnc(original ret) enc:138 initial result:228
+UniFromEnc(ret1) 228
+UniFromEnc(ret2) enc:138 final result:14942208
+UniFromEnc(final ret) 14942208
+UniFromEnc(original ret) enc:139 initial result:227
+UniFromEnc(ret1) 227
+UniFromEnc(ret2) enc:139 final result:14876672
+UniFromEnc(final ret) 14876672
+UniFromEnc(original ret) enc:140 initial result:229
+UniFromEnc(ret1) 229
+UniFromEnc(ret2) enc:140 final result:15007744
+UniFromEnc(final ret) 15007744
+UniFromEnc(original ret) enc:141 initial result:231
+UniFromEnc(ret1) 231
+UniFromEnc(ret2) enc:141 final result:15138816
+UniFromEnc(final ret) 15138816
+UniFromEnc(original ret) enc:142 initial result:233
+UniFromEnc(ret1) 233
+UniFromEnc(ret2) enc:142 final result:15269888
+UniFromEnc(final ret) 15269888
+UniFromEnc(original ret) enc:143 initial result:232
+UniFromEnc(ret1) 232
+UniFromEnc(ret2) enc:143 final result:15204352
+UniFromEnc(final ret) 15204352
+UniFromEnc(original ret) enc:144 initial result:234
+UniFromEnc(ret1) 234
+UniFromEnc(ret2) enc:144 final result:15335424
+UniFromEnc(final ret) 15335424
+UniFromEnc(original ret) enc:145 initial result:235
+UniFromEnc(ret1) 235
+UniFromEnc(ret2) enc:145 final result:15400960
+UniFromEnc(final ret) 15400960
+UniFromEnc(original ret) enc:146 initial result:237
+UniFromEnc(ret1) 237
+UniFromEnc(ret2) enc:146 final result:15532032
+UniFromEnc(final ret) 15532032
+UniFromEnc(original ret) enc:147 initial result:236
+UniFromEnc(ret1) 236
+UniFromEnc(ret2) enc:147 final result:15466496
+UniFromEnc(final ret) 15466496
+UniFromEnc(original ret) enc:148 initial result:238
+UniFromEnc(ret1) 238
+UniFromEnc(ret2) enc:148 final result:15597568
+UniFromEnc(final ret) 15597568
+UniFromEnc(original ret) enc:149 initial result:239
+UniFromEnc(ret1) 239
+UniFromEnc(ret2) enc:149 final result:15663104
+UniFromEnc(final ret) 15663104
+UniFromEnc(original ret) enc:150 initial result:241
+UniFromEnc(ret1) 241
+UniFromEnc(ret2) enc:150 final result:15794176
+UniFromEnc(final ret) 15794176
+UniFromEnc(original ret) enc:151 initial result:243
+UniFromEnc(ret1) 243
+UniFromEnc(ret2) enc:151 final result:15925248
+UniFromEnc(final ret) 15925248
+UniFromEnc(original ret) enc:152 initial result:242
+UniFromEnc(ret1) 242
+UniFromEnc(ret2) enc:152 final result:15859712
+UniFromEnc(final ret) 15859712
+UniFromEnc(original ret) enc:153 initial result:244
+UniFromEnc(ret1) 244
+UniFromEnc(ret2) enc:153 final result:15990784
+UniFromEnc(final ret) 15990784
+UniFromEnc(original ret) enc:154 initial result:246
+UniFromEnc(ret1) 246
+UniFromEnc(ret2) enc:154 final result:16121856
+UniFromEnc(final ret) 16121856
+UniFromEnc(original ret) enc:155 initial result:245
+UniFromEnc(ret1) 245
+UniFromEnc(ret2) enc:155 final result:16056320
+UniFromEnc(final ret) 16056320
+UniFromEnc(original ret) enc:156 initial result:250
+UniFromEnc(ret1) 250
+UniFromEnc(ret2) enc:156 final result:16384000
+UniFromEnc(final ret) 16384000
+UniFromEnc(original ret) enc:157 initial result:249
+UniFromEnc(ret1) 249
+UniFromEnc(ret2) enc:157 final result:16318464
+UniFromEnc(final ret) 16318464
+UniFromEnc(original ret) enc:158 initial result:251
+UniFromEnc(ret1) 251
+UniFromEnc(ret2) enc:158 final result:16449536
+UniFromEnc(final ret) 16449536
+UniFromEnc(original ret) enc:159 initial result:252
+UniFromEnc(ret1) 252
+UniFromEnc(ret2) enc:159 final result:16515072
+UniFromEnc(final ret) 16515072
+UniFromEnc(original ret) enc:160 initial result:8224
+UniFromEnc(ret1) 8224
+UniFromEnc(ret2) enc:160 final result:538968064
+UniFromEnc(final ret) 538968064
+UniFromEnc(original ret) enc:161 initial result:176
+UniFromEnc(ret1) 176
+UniFromEnc(ret2) enc:161 final result:11534336
+UniFromEnc(final ret) 11534336
+UniFromEnc(original ret) enc:162 initial result:162
+UniFromEnc(ret1) 162
+UniFromEnc(ret2) enc:162 final result:10616832
+UniFromEnc(final ret) 10616832
+UniFromEnc(original ret) enc:163 initial result:163
+UniFromEnc(ret1) 163
+UniFromEnc(ret2) enc:163 final result:10682368
+UniFromEnc(final ret) 10682368
+UniFromEnc(original ret) enc:164 initial result:167
+UniFromEnc(ret1) 167
+UniFromEnc(ret2) enc:164 final result:10944512
+UniFromEnc(final ret) 10944512
+UniFromEnc(original ret) enc:165 initial result:8226
+UniFromEnc(ret1) 8226
+UniFromEnc(ret2) enc:165 final result:539099136
+UniFromEnc(final ret) 539099136
+UniFromEnc(original ret) enc:166 initial result:182
+UniFromEnc(ret1) 182
+UniFromEnc(ret2) enc:166 final result:11927552
+UniFromEnc(final ret) 11927552
+UniFromEnc(original ret) enc:167 initial result:223
+UniFromEnc(ret1) 223
+UniFromEnc(ret2) enc:167 final result:14614528
+UniFromEnc(final ret) 14614528
+UniFromEnc(original ret) enc:168 initial result:174
+UniFromEnc(ret1) 174
+UniFromEnc(ret2) enc:168 final result:11403264
+UniFromEnc(final ret) 11403264
+UniFromEnc(original ret) enc:169 initial result:169
+UniFromEnc(ret1) 169
+UniFromEnc(ret2) enc:169 final result:11075584
+UniFromEnc(final ret) 11075584
+UniFromEnc(original ret) enc:170 initial result:8482
+UniFromEnc(ret1) 8482
+UniFromEnc(ret2) enc:170 final result:555876352
+UniFromEnc(final ret) 555876352
+UniFromEnc(original ret) enc:171 initial result:180
+UniFromEnc(ret1) 180
+UniFromEnc(ret2) enc:171 final result:11796480
+UniFromEnc(final ret) 11796480
+UniFromEnc(original ret) enc:172 initial result:168
+UniFromEnc(ret1) 168
+UniFromEnc(ret2) enc:172 final result:11010048
+UniFromEnc(final ret) 11010048
+UniFromEnc(original ret) enc:173 initial result:8800
+UniFromEnc(ret1) 8800
+UniFromEnc(ret2) enc:173 final result:576716800
+UniFromEnc(final ret) 576716800
+UniFromEnc(original ret) enc:174 initial result:198
+UniFromEnc(ret1) 198
+UniFromEnc(ret2) enc:174 final result:12976128
+UniFromEnc(final ret) 12976128
+UniFromEnc(original ret) enc:175 initial result:216
+UniFromEnc(ret1) 216
+UniFromEnc(ret2) enc:175 final result:14155776
+UniFromEnc(final ret) 14155776
+UniFromEnc(original ret) enc:176 initial result:8734
+UniFromEnc(ret1) 8734
+UniFromEnc(ret2) enc:176 final result:572391424
+UniFromEnc(final ret) 572391424
+UniFromEnc(original ret) enc:177 initial result:177
+UniFromEnc(ret1) 177
+UniFromEnc(ret2) enc:177 final result:11599872
+UniFromEnc(final ret) 11599872
+UniFromEnc(original ret) enc:178 initial result:8804
+UniFromEnc(ret1) 8804
+UniFromEnc(ret2) enc:178 final result:576978944
+UniFromEnc(final ret) 576978944
+UniFromEnc(original ret) enc:179 initial result:8805
+UniFromEnc(ret1) 8805
+UniFromEnc(ret2) enc:179 final result:577044480
+UniFromEnc(final ret) 577044480
+UniFromEnc(original ret) enc:180 initial result:165
+UniFromEnc(ret1) 165
+UniFromEnc(ret2) enc:180 final result:10813440
+UniFromEnc(final ret) 10813440
+UniFromEnc(original ret) enc:181 initial result:181
+UniFromEnc(ret1) 181
+UniFromEnc(ret2) enc:181 final result:11862016
+UniFromEnc(final ret) 11862016
+UniFromEnc(original ret) enc:182 initial result:8706
+UniFromEnc(ret1) 8706
+UniFromEnc(ret2) enc:182 final result:570556416
+UniFromEnc(final ret) 570556416
+UniFromEnc(original ret) enc:183 initial result:8721
+UniFromEnc(ret1) 8721
+UniFromEnc(ret2) enc:183 final result:571539456
+UniFromEnc(final ret) 571539456
+UniFromEnc(original ret) enc:184 initial result:8719
+UniFromEnc(ret1) 8719
+UniFromEnc(ret2) enc:184 final result:571408384
+UniFromEnc(final ret) 571408384
+UniFromEnc(original ret) enc:185 initial result:960
+UniFromEnc(ret1) 960
+UniFromEnc(ret2) enc:185 final result:62914560
+UniFromEnc(final ret) 62914560
+UniFromEnc(original ret) enc:186 initial result:8747
+UniFromEnc(ret1) 8747
+UniFromEnc(ret2) enc:186 final result:573243392
+UniFromEnc(final ret) 573243392
+UniFromEnc(original ret) enc:187 initial result:170
+UniFromEnc(ret1) 170
+UniFromEnc(ret2) enc:187 final result:11141120
+UniFromEnc(final ret) 11141120
+UniFromEnc(original ret) enc:188 initial result:186
+UniFromEnc(ret1) 186
+UniFromEnc(ret2) enc:188 final result:12189696
+UniFromEnc(final ret) 12189696
+UniFromEnc(original ret) enc:189 initial result:8486
+UniFromEnc(ret1) 8486
+UniFromEnc(ret2) enc:189 final result:556138496
+UniFromEnc(final ret) 556138496
+UniFromEnc(original ret) enc:190 initial result:230
+UniFromEnc(ret1) 230
+UniFromEnc(ret2) enc:190 final result:15073280
+UniFromEnc(final ret) 15073280
+UniFromEnc(original ret) enc:191 initial result:248
+UniFromEnc(ret1) 248
+UniFromEnc(ret2) enc:191 final result:16252928
+UniFromEnc(final ret) 16252928
+UniFromEnc(original ret) enc:192 initial result:191
+UniFromEnc(ret1) 191
+UniFromEnc(ret2) enc:192 final result:12517376
+UniFromEnc(final ret) 12517376
+UniFromEnc(original ret) enc:193 initial result:161
+UniFromEnc(ret1) 161
+UniFromEnc(ret2) enc:193 final result:10551296
+UniFromEnc(final ret) 10551296
+UniFromEnc(original ret) enc:194 initial result:172
+UniFromEnc(ret1) 172
+UniFromEnc(ret2) enc:194 final result:11272192
+UniFromEnc(final ret) 11272192
+UniFromEnc(original ret) enc:195 initial result:8730
+UniFromEnc(ret1) 8730
+UniFromEnc(ret2) enc:195 final result:572129280
+UniFromEnc(final ret) 572129280
+UniFromEnc(original ret) enc:196 initial result:402
+UniFromEnc(ret1) 402
+UniFromEnc(ret2) enc:196 final result:26345472
+UniFromEnc(final ret) 26345472
+UniFromEnc(original ret) enc:197 initial result:8776
+UniFromEnc(ret1) 8776
+UniFromEnc(ret2) enc:197 final result:575143936
+UniFromEnc(final ret) 575143936
+UniFromEnc(original ret) enc:198 initial result:8710
+UniFromEnc(ret1) 8710
+UniFromEnc(ret2) enc:198 final result:570818560
+UniFromEnc(final ret) 570818560
+UniFromEnc(original ret) enc:199 initial result:171
+UniFromEnc(ret1) 171
+UniFromEnc(ret2) enc:199 final result:11206656
+UniFromEnc(final ret) 11206656
+UniFromEnc(original ret) enc:200 initial result:187
+UniFromEnc(ret1) 187
+UniFromEnc(ret2) enc:200 final result:12255232
+UniFromEnc(final ret) 12255232
+UniFromEnc(original ret) enc:201 initial result:8230
+UniFromEnc(ret1) 8230
+UniFromEnc(ret2) enc:201 final result:539361280
+UniFromEnc(final ret) 539361280
+UniFromEnc(original ret) enc:202 initial result:160
+UniFromEnc(ret1) 160
+UniFromEnc(ret2) enc:202 final result:10485760
+UniFromEnc(final ret) 10485760
+UniFromEnc(original ret) enc:203 initial result:192
+UniFromEnc(ret1) 192
+UniFromEnc(ret2) enc:203 final result:12582912
+UniFromEnc(final ret) 12582912
+UniFromEnc(original ret) enc:204 initial result:195
+UniFromEnc(ret1) 195
+UniFromEnc(ret2) enc:204 final result:12779520
+UniFromEnc(final ret) 12779520
+UniFromEnc(original ret) enc:205 initial result:213
+UniFromEnc(ret1) 213
+UniFromEnc(ret2) enc:205 final result:13959168
+UniFromEnc(final ret) 13959168
+UniFromEnc(original ret) enc:206 initial result:338
+UniFromEnc(ret1) 338
+UniFromEnc(ret2) enc:206 final result:22151168
+UniFromEnc(final ret) 22151168
+UniFromEnc(original ret) enc:207 initial result:339
+UniFromEnc(ret1) 339
+UniFromEnc(ret2) enc:207 final result:22216704
+UniFromEnc(final ret) 22216704
+UniFromEnc(original ret) enc:208 initial result:8211
+UniFromEnc(ret1) 8211
+UniFromEnc(ret2) enc:208 final result:538116096
+UniFromEnc(final ret) 538116096
+UniFromEnc(original ret) enc:209 initial result:8212
+UniFromEnc(ret1) 8212
+UniFromEnc(ret2) enc:209 final result:538181632
+UniFromEnc(final ret) 538181632
+UniFromEnc(original ret) enc:210 initial result:8220
+UniFromEnc(ret1) 8220
+UniFromEnc(ret2) enc:210 final result:538705920
+UniFromEnc(final ret) 538705920
+UniFromEnc(original ret) enc:211 initial result:8221
+UniFromEnc(ret1) 8221
+UniFromEnc(ret2) enc:211 final result:538771456
+UniFromEnc(final ret) 538771456
+UniFromEnc(original ret) enc:212 initial result:8216
+UniFromEnc(ret1) 8216
+UniFromEnc(ret2) enc:212 final result:538443776
+UniFromEnc(final ret) 538443776
+UniFromEnc(original ret) enc:213 initial result:8217
+UniFromEnc(ret1) 8217
+UniFromEnc(ret2) enc:213 final result:538509312
+UniFromEnc(final ret) 538509312
+UniFromEnc(original ret) enc:214 initial result:247
+UniFromEnc(ret1) 247
+UniFromEnc(ret2) enc:214 final result:16187392
+UniFromEnc(final ret) 16187392
+UniFromEnc(original ret) enc:215 initial result:9674
+UniFromEnc(ret1) 9674
+UniFromEnc(ret2) enc:215 final result:633995264
+UniFromEnc(final ret) 633995264
+UniFromEnc(original ret) enc:216 initial result:255
+UniFromEnc(ret1) 255
+UniFromEnc(ret2) enc:216 final result:16711680
+UniFromEnc(final ret) 16711680
+UniFromEnc(original ret) enc:217 initial result:376
+UniFromEnc(ret1) 376
+UniFromEnc(ret2) enc:217 final result:24641536
+UniFromEnc(final ret) 24641536
+UniFromEnc(original ret) enc:218 initial result:8260
+UniFromEnc(ret1) 8260
+UniFromEnc(ret2) enc:218 final result:541327360
+UniFromEnc(final ret) 541327360
+UniFromEnc(original ret) enc:219 initial result:164
+UniFromEnc(ret1) 164
+UniFromEnc(ret2) enc:219 final result:10747904
+UniFromEnc(final ret) 10747904
+UniFromEnc(original ret) enc:220 initial result:8249
+UniFromEnc(ret1) 8249
+UniFromEnc(ret2) enc:220 final result:540606464
+UniFromEnc(final ret) 540606464
+UniFromEnc(original ret) enc:221 initial result:8250
+UniFromEnc(ret1) 8250
+UniFromEnc(ret2) enc:221 final result:540672000
+UniFromEnc(final ret) 540672000
+UniFromEnc(original ret) enc:222 initial result:64257
+UniFromEnc(ret1) 64257
+UniFromEnc(ret2) enc:222 final result:-83820544
+UniFromEnc(final ret) -83820544
+UniFromEnc(original ret) enc:223 initial result:64258
+UniFromEnc(ret1) 64258
+UniFromEnc(ret2) enc:223 final result:-83755008
+UniFromEnc(final ret) -83755008
+UniFromEnc(original ret) enc:224 initial result:8225
+UniFromEnc(ret1) 8225
+UniFromEnc(ret2) enc:224 final result:539033600
+UniFromEnc(final ret) 539033600
+UniFromEnc(original ret) enc:225 initial result:183
+UniFromEnc(ret1) 183
+UniFromEnc(ret2) enc:225 final result:11993088
+UniFromEnc(final ret) 11993088
+UniFromEnc(original ret) enc:226 initial result:8218
+UniFromEnc(ret1) 8218
+UniFromEnc(ret2) enc:226 final result:538574848
+UniFromEnc(final ret) 538574848
+UniFromEnc(original ret) enc:227 initial result:8222
+UniFromEnc(ret1) 8222
+UniFromEnc(ret2) enc:227 final result:538836992
+UniFromEnc(final ret) 538836992
+UniFromEnc(original ret) enc:228 initial result:8240
+UniFromEnc(ret1) 8240
+UniFromEnc(ret2) enc:228 final result:540016640
+UniFromEnc(final ret) 540016640
+UniFromEnc(original ret) enc:229 initial result:194
+UniFromEnc(ret1) 194
+UniFromEnc(ret2) enc:229 final result:12713984
+UniFromEnc(final ret) 12713984
+UniFromEnc(original ret) enc:230 initial result:202
+UniFromEnc(ret1) 202
+UniFromEnc(ret2) enc:230 final result:13238272
+UniFromEnc(final ret) 13238272
+UniFromEnc(original ret) enc:231 initial result:193
+UniFromEnc(ret1) 193
+UniFromEnc(ret2) enc:231 final result:12648448
+UniFromEnc(final ret) 12648448
+UniFromEnc(original ret) enc:232 initial result:203
+UniFromEnc(ret1) 203
+UniFromEnc(ret2) enc:232 final result:13303808
+UniFromEnc(final ret) 13303808
+UniFromEnc(original ret) enc:233 initial result:200
+UniFromEnc(ret1) 200
+UniFromEnc(ret2) enc:233 final result:13107200
+UniFromEnc(final ret) 13107200
+UniFromEnc(original ret) enc:234 initial result:205
+UniFromEnc(ret1) 205
+UniFromEnc(ret2) enc:234 final result:13434880
+UniFromEnc(final ret) 13434880
+UniFromEnc(original ret) enc:235 initial result:206
+UniFromEnc(ret1) 206
+UniFromEnc(ret2) enc:235 final result:13500416
+UniFromEnc(final ret) 13500416
+UniFromEnc(original ret) enc:236 initial result:207
+UniFromEnc(ret1) 207
+UniFromEnc(ret2) enc:236 final result:13565952
+UniFromEnc(final ret) 13565952
+UniFromEnc(original ret) enc:237 initial result:204
+UniFromEnc(ret1) 204
+UniFromEnc(ret2) enc:237 final result:13369344
+UniFromEnc(final ret) 13369344
+UniFromEnc(original ret) enc:238 initial result:211
+UniFromEnc(ret1) 211
+UniFromEnc(ret2) enc:238 final result:13828096
+UniFromEnc(final ret) 13828096
+UniFromEnc(original ret) enc:239 initial result:212
+UniFromEnc(ret1) 212
+UniFromEnc(ret2) enc:239 final result:13893632
+UniFromEnc(final ret) 13893632
+UniFromEnc(original ret) enc:241 initial result:210
+UniFromEnc(ret1) 210
+UniFromEnc(ret2) enc:241 final result:13762560
+UniFromEnc(final ret) 13762560
+UniFromEnc(original ret) enc:242 initial result:218
+UniFromEnc(ret1) 218
+UniFromEnc(ret2) enc:242 final result:14286848
+UniFromEnc(final ret) 14286848
+UniFromEnc(original ret) enc:243 initial result:219
+UniFromEnc(ret1) 219
+UniFromEnc(ret2) enc:243 final result:14352384
+UniFromEnc(final ret) 14352384
+UniFromEnc(original ret) enc:244 initial result:217
+UniFromEnc(ret1) 217
+UniFromEnc(ret2) enc:244 final result:14221312
+UniFromEnc(final ret) 14221312
+UniFromEnc(original ret) enc:245 initial result:305
+UniFromEnc(ret1) 305
+UniFromEnc(ret2) enc:245 final result:19988480
+UniFromEnc(final ret) 19988480
+UniFromEnc(original ret) enc:246 initial result:710
+UniFromEnc(ret1) 710
+UniFromEnc(ret2) enc:246 final result:46530560
+UniFromEnc(final ret) 46530560
+UniFromEnc(original ret) enc:247 initial result:732
+UniFromEnc(ret1) 732
+UniFromEnc(ret2) enc:247 final result:47972352
+UniFromEnc(final ret) 47972352
+UniFromEnc(original ret) enc:248 initial result:175
+UniFromEnc(ret1) 175
+UniFromEnc(ret2) enc:248 final result:11468800
+UniFromEnc(final ret) 11468800
+UniFromEnc(original ret) enc:249 initial result:728
+UniFromEnc(ret1) 728
+UniFromEnc(ret2) enc:249 final result:47710208
+UniFromEnc(final ret) 47710208
+UniFromEnc(original ret) enc:250 initial result:729
+UniFromEnc(ret1) 729
+UniFromEnc(ret2) enc:250 final result:47775744
+UniFromEnc(final ret) 47775744
+UniFromEnc(original ret) enc:251 initial result:730
+UniFromEnc(ret1) 730
+UniFromEnc(ret2) enc:251 final result:47841280
+UniFromEnc(final ret) 47841280
+UniFromEnc(original ret) enc:252 initial result:184
+UniFromEnc(ret1) 184
+UniFromEnc(ret2) enc:252 final result:12058624
+UniFromEnc(final ret) 12058624
+UniFromEnc(original ret) enc:253 initial result:733
+UniFromEnc(ret1) 733
+UniFromEnc(ret2) enc:253 final result:48037888
+UniFromEnc(final ret) 48037888
+UniFromEnc(original ret) enc:254 initial result:731
+UniFromEnc(ret1) 731
+UniFromEnc(ret2) enc:254 final result:47906816
+UniFromEnc(final ret) 47906816
+UniFromEnc(original ret) enc:255 initial result:711
+UniFromEnc(ret1) 711
+UniFromEnc(ret2) enc:255 final result:46596096
+UniFromEnc(final ret) 46596096
+UniFromEnc(original ret) enc:0 initial result:0
+UniFromEnc(ret1) 0
+UniFromEnc(ret2) enc:0 final result:0
+UniFromEnc(final ret) 0
+UniFromEnc(original ret) enc:1 initial result:1
+UniFromEnc(ret1) 1
+UniFromEnc(ret2) enc:1 final result:65536
+UniFromEnc(final ret) 65536
+UniFromEnc(original ret) enc:2 initial result:2
+UniFromEnc(ret1) 2
+UniFromEnc(ret2) enc:2 final result:131072
+UniFromEnc(final ret) 131072
+UniFromEnc(original ret) enc:3 initial result:3
+UniFromEnc(ret1) 3
+UniFromEnc(ret2) enc:3 final result:196608
+UniFromEnc(final ret) 196608
+UniFromEnc(original ret) enc:4 initial result:4
+UniFromEnc(ret1) 4
+UniFromEnc(ret2) enc:4 final result:262144
+UniFromEnc(final ret) 262144
+UniFromEnc(original ret) enc:5 initial result:5
+UniFromEnc(ret1) 5
+UniFromEnc(ret2) enc:5 final result:327680
+UniFromEnc(final ret) 327680
+UniFromEnc(original ret) enc:6 initial result:6
+UniFromEnc(ret1) 6
+UniFromEnc(ret2) enc:6 final result:393216
+UniFromEnc(final ret) 393216
+UniFromEnc(original ret) enc:7 initial result:7
+UniFromEnc(ret1) 7
+UniFromEnc(ret2) enc:7 final result:458752
+UniFromEnc(final ret) 458752
+UniFromEnc(original ret) enc:8 initial result:8
+UniFromEnc(ret1) 8
+UniFromEnc(ret2) enc:8 final result:524288
+UniFromEnc(final ret) 524288
+UniFromEnc(original ret) enc:9 initial result:9
+UniFromEnc(ret1) 9
+UniFromEnc(ret2) enc:9 final result:589824
+UniFromEnc(final ret) 589824
+UniFromEnc(original ret) enc:10 initial result:10
+UniFromEnc(ret1) 10
+UniFromEnc(ret2) enc:10 final result:655360
+UniFromEnc(final ret) 655360
+UniFromEnc(original ret) enc:11 initial result:11
+UniFromEnc(ret1) 11
+UniFromEnc(ret2) enc:11 final result:720896
+UniFromEnc(final ret) 720896
+UniFromEnc(original ret) enc:12 initial result:12
+UniFromEnc(ret1) 12
+UniFromEnc(ret2) enc:12 final result:786432
+UniFromEnc(final ret) 786432
+UniFromEnc(original ret) enc:13 initial result:13
+UniFromEnc(ret1) 13
+UniFromEnc(ret2) enc:13 final result:851968
+UniFromEnc(final ret) 851968
+UniFromEnc(original ret) enc:14 initial result:14
+UniFromEnc(ret1) 14
+UniFromEnc(ret2) enc:14 final result:917504
+UniFromEnc(final ret) 917504
+UniFromEnc(original ret) enc:15 initial result:15
+UniFromEnc(ret1) 15
+UniFromEnc(ret2) enc:15 final result:983040
+UniFromEnc(final ret) 983040
+UniFromEnc(original ret) enc:16 initial result:16
+UniFromEnc(ret1) 16
+UniFromEnc(ret2) enc:16 final result:1048576
+UniFromEnc(final ret) 1048576
+UniFromEnc(original ret) enc:17 initial result:17
+UniFromEnc(ret1) 17
+UniFromEnc(ret2) enc:17 final result:1114112
+UniFromEnc(final ret) 1114112
+UniFromEnc(original ret) enc:18 initial result:18
+UniFromEnc(ret1) 18
+UniFromEnc(ret2) enc:18 final result:1179648
+UniFromEnc(final ret) 1179648
+UniFromEnc(original ret) enc:19 initial result:19
+UniFromEnc(ret1) 19
+UniFromEnc(ret2) enc:19 final result:1245184
+UniFromEnc(final ret) 1245184
+UniFromEnc(original ret) enc:20 initial result:20
+UniFromEnc(ret1) 20
+UniFromEnc(ret2) enc:20 final result:1310720
+UniFromEnc(final ret) 1310720
+UniFromEnc(original ret) enc:21 initial result:21
+UniFromEnc(ret1) 21
+UniFromEnc(ret2) enc:21 final result:1376256
+UniFromEnc(final ret) 1376256
+UniFromEnc(original ret) enc:22 initial result:22
+UniFromEnc(ret1) 22
+UniFromEnc(ret2) enc:22 final result:1441792
+UniFromEnc(final ret) 1441792
+UniFromEnc(original ret) enc:23 initial result:23
+UniFromEnc(ret1) 23
+UniFromEnc(ret2) enc:23 final result:1507328
+UniFromEnc(final ret) 1507328
+UniFromEnc(original ret) enc:24 initial result:24
+UniFromEnc(ret1) 24
+UniFromEnc(ret2) enc:24 final result:1572864
+UniFromEnc(final ret) 1572864
+UniFromEnc(original ret) enc:25 initial result:25
+UniFromEnc(ret1) 25
+UniFromEnc(ret2) enc:25 final result:1638400
+UniFromEnc(final ret) 1638400
+UniFromEnc(original ret) enc:26 initial result:26
+UniFromEnc(ret1) 26
+UniFromEnc(ret2) enc:26 final result:1703936
+UniFromEnc(final ret) 1703936
+UniFromEnc(original ret) enc:27 initial result:27
+UniFromEnc(ret1) 27
+UniFromEnc(ret2) enc:27 final result:1769472
+UniFromEnc(final ret) 1769472
+UniFromEnc(original ret) enc:28 initial result:28
+UniFromEnc(ret1) 28
+UniFromEnc(ret2) enc:28 final result:1835008
+UniFromEnc(final ret) 1835008
+UniFromEnc(original ret) enc:29 initial result:29
+UniFromEnc(ret1) 29
+UniFromEnc(ret2) enc:29 final result:1900544
+UniFromEnc(final ret) 1900544
+UniFromEnc(original ret) enc:30 initial result:30
+UniFromEnc(ret1) 30
+UniFromEnc(ret2) enc:30 final result:1966080
+UniFromEnc(final ret) 1966080
+UniFromEnc(original ret) enc:31 initial result:31
+UniFromEnc(ret1) 31
+UniFromEnc(ret2) enc:31 final result:2031616
+UniFromEnc(final ret) 2031616
+UniFromEnc(original ret) enc:32 initial result:32
+UniFromEnc(ret1) 32
+UniFromEnc(ret2) enc:32 final result:2097152
+UniFromEnc(final ret) 2097152
+UniFromEnc(original ret) enc:33 initial result:33
+UniFromEnc(ret1) 33
+UniFromEnc(ret2) enc:33 final result:2162688
+UniFromEnc(final ret) 2162688
+UniFromEnc(original ret) enc:34 initial result:34
+UniFromEnc(ret1) 34
+UniFromEnc(ret2) enc:34 final result:2228224
+UniFromEnc(final ret) 2228224
+UniFromEnc(original ret) enc:35 initial result:35
+UniFromEnc(ret1) 35
+UniFromEnc(ret2) enc:35 final result:2293760
+UniFromEnc(final ret) 2293760
+UniFromEnc(original ret) enc:36 initial result:36
+UniFromEnc(ret1) 36
+UniFromEnc(ret2) enc:36 final result:2359296
+UniFromEnc(final ret) 2359296
+UniFromEnc(original ret) enc:37 initial result:37
+UniFromEnc(ret1) 37
+UniFromEnc(ret2) enc:37 final result:2424832
+UniFromEnc(final ret) 2424832
+UniFromEnc(original ret) enc:38 initial result:38
+UniFromEnc(ret1) 38
+UniFromEnc(ret2) enc:38 final result:2490368
+UniFromEnc(final ret) 2490368
+UniFromEnc(original ret) enc:39 initial result:39
+UniFromEnc(ret1) 39
+UniFromEnc(ret2) enc:39 final result:2555904
+UniFromEnc(final ret) 2555904
+UniFromEnc(original ret) enc:40 initial result:40
+UniFromEnc(ret1) 40
+UniFromEnc(ret2) enc:40 final result:2621440
+UniFromEnc(final ret) 2621440
+UniFromEnc(original ret) enc:41 initial result:41
+UniFromEnc(ret1) 41
+UniFromEnc(ret2) enc:41 final result:2686976
+UniFromEnc(final ret) 2686976
+UniFromEnc(original ret) enc:42 initial result:42
+UniFromEnc(ret1) 42
+UniFromEnc(ret2) enc:42 final result:2752512
+UniFromEnc(final ret) 2752512
+UniFromEnc(original ret) enc:43 initial result:43
+UniFromEnc(ret1) 43
+UniFromEnc(ret2) enc:43 final result:2818048
+UniFromEnc(final ret) 2818048
+UniFromEnc(original ret) enc:44 initial result:44
+UniFromEnc(ret1) 44
+UniFromEnc(ret2) enc:44 final result:2883584
+UniFromEnc(final ret) 2883584
+UniFromEnc(original ret) enc:45 initial result:45
+UniFromEnc(ret1) 45
+UniFromEnc(ret2) enc:45 final result:2949120
+UniFromEnc(final ret) 2949120
+UniFromEnc(original ret) enc:46 initial result:46
+UniFromEnc(ret1) 46
+UniFromEnc(ret2) enc:46 final result:3014656
+UniFromEnc(final ret) 3014656
+UniFromEnc(original ret) enc:47 initial result:47
+UniFromEnc(ret1) 47
+UniFromEnc(ret2) enc:47 final result:3080192
+UniFromEnc(final ret) 3080192
+UniFromEnc(original ret) enc:48 initial result:48
+UniFromEnc(ret1) 48
+UniFromEnc(ret2) enc:48 final result:3145728
+UniFromEnc(final ret) 3145728
+UniFromEnc(original ret) enc:49 initial result:49
+UniFromEnc(ret1) 49
+UniFromEnc(ret2) enc:49 final result:3211264
+UniFromEnc(final ret) 3211264
+UniFromEnc(original ret) enc:50 initial result:50
+UniFromEnc(ret1) 50
+UniFromEnc(ret2) enc:50 final result:3276800
+UniFromEnc(final ret) 3276800
+UniFromEnc(original ret) enc:51 initial result:51
+UniFromEnc(ret1) 51
+UniFromEnc(ret2) enc:51 final result:3342336
+UniFromEnc(final ret) 3342336
+UniFromEnc(original ret) enc:52 initial result:52
+UniFromEnc(ret1) 52
+UniFromEnc(ret2) enc:52 final result:3407872
+UniFromEnc(final ret) 3407872
+UniFromEnc(original ret) enc:53 initial result:53
+UniFromEnc(ret1) 53
+UniFromEnc(ret2) enc:53 final result:3473408
+UniFromEnc(final ret) 3473408
+UniFromEnc(original ret) enc:54 initial result:54
+UniFromEnc(ret1) 54
+UniFromEnc(ret2) enc:54 final result:3538944
+UniFromEnc(final ret) 3538944
+UniFromEnc(original ret) enc:55 initial result:55
+UniFromEnc(ret1) 55
+UniFromEnc(ret2) enc:55 final result:3604480
+UniFromEnc(final ret) 3604480
+UniFromEnc(original ret) enc:56 initial result:56
+UniFromEnc(ret1) 56
+UniFromEnc(ret2) enc:56 final result:3670016
+UniFromEnc(final ret) 3670016
+UniFromEnc(original ret) enc:57 initial result:57
+UniFromEnc(ret1) 57
+UniFromEnc(ret2) enc:57 final result:3735552
+UniFromEnc(final ret) 3735552
+UniFromEnc(original ret) enc:58 initial result:58
+UniFromEnc(ret1) 58
+UniFromEnc(ret2) enc:58 final result:3801088
+UniFromEnc(final ret) 3801088
+UniFromEnc(original ret) enc:59 initial result:59
+UniFromEnc(ret1) 59
+UniFromEnc(ret2) enc:59 final result:3866624
+UniFromEnc(final ret) 3866624
+UniFromEnc(original ret) enc:60 initial result:60
+UniFromEnc(ret1) 60
+UniFromEnc(ret2) enc:60 final result:3932160
+UniFromEnc(final ret) 3932160
+UniFromEnc(original ret) enc:61 initial result:61
+UniFromEnc(ret1) 61
+UniFromEnc(ret2) enc:61 final result:3997696
+UniFromEnc(final ret) 3997696
+UniFromEnc(original ret) enc:62 initial result:62
+UniFromEnc(ret1) 62
+UniFromEnc(ret2) enc:62 final result:4063232
+UniFromEnc(final ret) 4063232
+UniFromEnc(original ret) enc:63 initial result:63
+UniFromEnc(ret1) 63
+UniFromEnc(ret2) enc:63 final result:4128768
+UniFromEnc(final ret) 4128768
+UniFromEnc(original ret) enc:64 initial result:64
+UniFromEnc(ret1) 64
+UniFromEnc(ret2) enc:64 final result:4194304
+UniFromEnc(final ret) 4194304
+UniFromEnc(original ret) enc:65 initial result:65
+UniFromEnc(ret1) 65
+UniFromEnc(ret2) enc:65 final result:4259840
+UniFromEnc(final ret) 4259840
+UniFromEnc(original ret) enc:66 initial result:66
+UniFromEnc(ret1) 66
+UniFromEnc(ret2) enc:66 final result:4325376
+UniFromEnc(final ret) 4325376
+UniFromEnc(original ret) enc:67 initial result:67
+UniFromEnc(ret1) 67
+UniFromEnc(ret2) enc:67 final result:4390912
+UniFromEnc(final ret) 4390912
+UniFromEnc(original ret) enc:68 initial result:68
+UniFromEnc(ret1) 68
+UniFromEnc(ret2) enc:68 final result:4456448
+UniFromEnc(final ret) 4456448
+UniFromEnc(original ret) enc:69 initial result:69
+UniFromEnc(ret1) 69
+UniFromEnc(ret2) enc:69 final result:4521984
+UniFromEnc(final ret) 4521984
+UniFromEnc(original ret) enc:70 initial result:70
+UniFromEnc(ret1) 70
+UniFromEnc(ret2) enc:70 final result:4587520
+UniFromEnc(final ret) 4587520
+UniFromEnc(original ret) enc:71 initial result:71
+UniFromEnc(ret1) 71
+UniFromEnc(ret2) enc:71 final result:4653056
+UniFromEnc(final ret) 4653056
+UniFromEnc(original ret) enc:72 initial result:72
+UniFromEnc(ret1) 72
+UniFromEnc(ret2) enc:72 final result:4718592
+UniFromEnc(final ret) 4718592
+UniFromEnc(original ret) enc:73 initial result:73
+UniFromEnc(ret1) 73
+UniFromEnc(ret2) enc:73 final result:4784128
+UniFromEnc(final ret) 4784128
+UniFromEnc(original ret) enc:74 initial result:74
+UniFromEnc(ret1) 74
+UniFromEnc(ret2) enc:74 final result:4849664
+UniFromEnc(final ret) 4849664
+UniFromEnc(original ret) enc:75 initial result:75
+UniFromEnc(ret1) 75
+UniFromEnc(ret2) enc:75 final result:4915200
+UniFromEnc(final ret) 4915200
+UniFromEnc(original ret) enc:76 initial result:76
+UniFromEnc(ret1) 76
+UniFromEnc(ret2) enc:76 final result:4980736
+UniFromEnc(final ret) 4980736
+UniFromEnc(original ret) enc:77 initial result:77
+UniFromEnc(ret1) 77
+UniFromEnc(ret2) enc:77 final result:5046272
+UniFromEnc(final ret) 5046272
+UniFromEnc(original ret) enc:78 initial result:78
+UniFromEnc(ret1) 78
+UniFromEnc(ret2) enc:78 final result:5111808
+UniFromEnc(final ret) 5111808
+UniFromEnc(original ret) enc:79 initial result:79
+UniFromEnc(ret1) 79
+UniFromEnc(ret2) enc:79 final result:5177344
+UniFromEnc(final ret) 5177344
+UniFromEnc(original ret) enc:80 initial result:80
+UniFromEnc(ret1) 80
+UniFromEnc(ret2) enc:80 final result:5242880
+UniFromEnc(final ret) 5242880
+UniFromEnc(original ret) enc:81 initial result:81
+UniFromEnc(ret1) 81
+UniFromEnc(ret2) enc:81 final result:5308416
+UniFromEnc(final ret) 5308416
+UniFromEnc(original ret) enc:82 initial result:82
+UniFromEnc(ret1) 82
+UniFromEnc(ret2) enc:82 final result:5373952
+UniFromEnc(final ret) 5373952
+UniFromEnc(original ret) enc:83 initial result:83
+UniFromEnc(ret1) 83
+UniFromEnc(ret2) enc:83 final result:5439488
+UniFromEnc(final ret) 5439488
+UniFromEnc(original ret) enc:84 initial result:84
+UniFromEnc(ret1) 84
+UniFromEnc(ret2) enc:84 final result:5505024
+UniFromEnc(final ret) 5505024
+UniFromEnc(original ret) enc:85 initial result:85
+UniFromEnc(ret1) 85
+UniFromEnc(ret2) enc:85 final result:5570560
+UniFromEnc(final ret) 5570560
+UniFromEnc(original ret) enc:86 initial result:86
+UniFromEnc(ret1) 86
+UniFromEnc(ret2) enc:86 final result:5636096
+UniFromEnc(final ret) 5636096
+UniFromEnc(original ret) enc:87 initial result:87
+UniFromEnc(ret1) 87
+UniFromEnc(ret2) enc:87 final result:5701632
+UniFromEnc(final ret) 5701632
+UniFromEnc(original ret) enc:88 initial result:88
+UniFromEnc(ret1) 88
+UniFromEnc(ret2) enc:88 final result:5767168
+UniFromEnc(final ret) 5767168
+UniFromEnc(original ret) enc:89 initial result:89
+UniFromEnc(ret1) 89
+UniFromEnc(ret2) enc:89 final result:5832704
+UniFromEnc(final ret) 5832704
+UniFromEnc(original ret) enc:90 initial result:90
+UniFromEnc(ret1) 90
+UniFromEnc(ret2) enc:90 final result:5898240
+UniFromEnc(final ret) 5898240
+UniFromEnc(original ret) enc:91 initial result:91
+UniFromEnc(ret1) 91
+UniFromEnc(ret2) enc:91 final result:5963776
+UniFromEnc(final ret) 5963776
+UniFromEnc(original ret) enc:92 initial result:92
+UniFromEnc(ret1) 92
+UniFromEnc(ret2) enc:92 final result:6029312
+UniFromEnc(final ret) 6029312
+UniFromEnc(original ret) enc:93 initial result:93
+UniFromEnc(ret1) 93
+UniFromEnc(ret2) enc:93 final result:6094848
+UniFromEnc(final ret) 6094848
+UniFromEnc(original ret) enc:94 initial result:94
+UniFromEnc(ret1) 94
+UniFromEnc(ret2) enc:94 final result:6160384
+UniFromEnc(final ret) 6160384
+UniFromEnc(original ret) enc:95 initial result:95
+UniFromEnc(ret1) 95
+UniFromEnc(ret2) enc:95 final result:6225920
+UniFromEnc(final ret) 6225920
+UniFromEnc(original ret) enc:96 initial result:96
+UniFromEnc(ret1) 96
+UniFromEnc(ret2) enc:96 final result:6291456
+UniFromEnc(final ret) 6291456
+UniFromEnc(original ret) enc:97 initial result:97
+UniFromEnc(ret1) 97
+UniFromEnc(ret2) enc:97 final result:6356992
+UniFromEnc(final ret) 6356992
+UniFromEnc(original ret) enc:98 initial result:98
+UniFromEnc(ret1) 98
+UniFromEnc(ret2) enc:98 final result:6422528
+UniFromEnc(final ret) 6422528
+UniFromEnc(original ret) enc:99 initial result:99
+UniFromEnc(ret1) 99
+UniFromEnc(ret2) enc:99 final result:6488064
+UniFromEnc(final ret) 6488064
+UniFromEnc(original ret) enc:100 initial result:100
+UniFromEnc(ret1) 100
+UniFromEnc(ret2) enc:100 final result:6553600
+UniFromEnc(final ret) 6553600
+UniFromEnc(original ret) enc:101 initial result:101
+UniFromEnc(ret1) 101
+UniFromEnc(ret2) enc:101 final result:6619136
+UniFromEnc(final ret) 6619136
+UniFromEnc(original ret) enc:102 initial result:102
+UniFromEnc(ret1) 102
+UniFromEnc(ret2) enc:102 final result:6684672
+UniFromEnc(final ret) 6684672
+UniFromEnc(original ret) enc:103 initial result:103
+UniFromEnc(ret1) 103
+UniFromEnc(ret2) enc:103 final result:6750208
+UniFromEnc(final ret) 6750208
+UniFromEnc(original ret) enc:104 initial result:104
+UniFromEnc(ret1) 104
+UniFromEnc(ret2) enc:104 final result:6815744
+UniFromEnc(final ret) 6815744
+UniFromEnc(original ret) enc:105 initial result:105
+UniFromEnc(ret1) 105
+UniFromEnc(ret2) enc:105 final result:6881280
+UniFromEnc(final ret) 6881280
+UniFromEnc(original ret) enc:106 initial result:106
+UniFromEnc(ret1) 106
+UniFromEnc(ret2) enc:106 final result:6946816
+UniFromEnc(final ret) 6946816
+UniFromEnc(original ret) enc:107 initial result:107
+UniFromEnc(ret1) 107
+UniFromEnc(ret2) enc:107 final result:7012352
+UniFromEnc(final ret) 7012352
+UniFromEnc(original ret) enc:108 initial result:108
+UniFromEnc(ret1) 108
+UniFromEnc(ret2) enc:108 final result:7077888
+UniFromEnc(final ret) 7077888
+UniFromEnc(original ret) enc:109 initial result:109
+UniFromEnc(ret1) 109
+UniFromEnc(ret2) enc:109 final result:7143424
+UniFromEnc(final ret) 7143424
+UniFromEnc(original ret) enc:110 initial result:110
+UniFromEnc(ret1) 110
+UniFromEnc(ret2) enc:110 final result:7208960
+UniFromEnc(final ret) 7208960
+UniFromEnc(original ret) enc:111 initial result:111
+UniFromEnc(ret1) 111
+UniFromEnc(ret2) enc:111 final result:7274496
+UniFromEnc(final ret) 7274496
+UniFromEnc(original ret) enc:112 initial result:112
+UniFromEnc(ret1) 112
+UniFromEnc(ret2) enc:112 final result:7340032
+UniFromEnc(final ret) 7340032
+UniFromEnc(original ret) enc:113 initial result:113
+UniFromEnc(ret1) 113
+UniFromEnc(ret2) enc:113 final result:7405568
+UniFromEnc(final ret) 7405568
+UniFromEnc(original ret) enc:114 initial result:114
+UniFromEnc(ret1) 114
+UniFromEnc(ret2) enc:114 final result:7471104
+UniFromEnc(final ret) 7471104
+UniFromEnc(original ret) enc:115 initial result:115
+UniFromEnc(ret1) 115
+UniFromEnc(ret2) enc:115 final result:7536640
+UniFromEnc(final ret) 7536640
+UniFromEnc(original ret) enc:116 initial result:116
+UniFromEnc(ret1) 116
+UniFromEnc(ret2) enc:116 final result:7602176
+UniFromEnc(final ret) 7602176
+UniFromEnc(original ret) enc:117 initial result:117
+UniFromEnc(ret1) 117
+UniFromEnc(ret2) enc:117 final result:7667712
+UniFromEnc(final ret) 7667712
+UniFromEnc(original ret) enc:118 initial result:118
+UniFromEnc(ret1) 118
+UniFromEnc(ret2) enc:118 final result:7733248
+UniFromEnc(final ret) 7733248
+UniFromEnc(original ret) enc:119 initial result:119
+UniFromEnc(ret1) 119
+UniFromEnc(ret2) enc:119 final result:7798784
+UniFromEnc(final ret) 7798784
+UniFromEnc(original ret) enc:120 initial result:120
+UniFromEnc(ret1) 120
+UniFromEnc(ret2) enc:120 final result:7864320
+UniFromEnc(final ret) 7864320
+UniFromEnc(original ret) enc:121 initial result:121
+UniFromEnc(ret1) 121
+UniFromEnc(ret2) enc:121 final result:7929856
+UniFromEnc(final ret) 7929856
+UniFromEnc(original ret) enc:122 initial result:122
+UniFromEnc(ret1) 122
+UniFromEnc(ret2) enc:122 final result:7995392
+UniFromEnc(final ret) 7995392
+UniFromEnc(original ret) enc:123 initial result:123
+UniFromEnc(ret1) 123
+UniFromEnc(ret2) enc:123 final result:8060928
+UniFromEnc(final ret) 8060928
+UniFromEnc(original ret) enc:124 initial result:124
+UniFromEnc(ret1) 124
+UniFromEnc(ret2) enc:124 final result:8126464
+UniFromEnc(final ret) 8126464
+UniFromEnc(original ret) enc:125 initial result:125
+UniFromEnc(ret1) 125
+UniFromEnc(ret2) enc:125 final result:8192000
+UniFromEnc(final ret) 8192000
+UniFromEnc(original ret) enc:126 initial result:126
+UniFromEnc(ret1) 126
+UniFromEnc(ret2) enc:126 final result:8257536
+UniFromEnc(final ret) 8257536
+UniFromEnc(original ret) enc:127 initial result:127
+UniFromEnc(ret1) 127
+UniFromEnc(ret2) enc:127 final result:8323072
+UniFromEnc(final ret) 8323072
+UniFromEnc(original ret) enc:128 initial result:196
+UniFromEnc(ret1) 196
+UniFromEnc(ret2) enc:128 final result:12845056
+UniFromEnc(final ret) 12845056
+UniFromEnc(original ret) enc:129 initial result:197
+UniFromEnc(ret1) 197
+UniFromEnc(ret2) enc:129 final result:12910592
+UniFromEnc(final ret) 12910592
+UniFromEnc(original ret) enc:130 initial result:199
+UniFromEnc(ret1) 199
+UniFromEnc(ret2) enc:130 final result:13041664
+UniFromEnc(final ret) 13041664
+UniFromEnc(original ret) enc:131 initial result:201
+UniFromEnc(ret1) 201
+UniFromEnc(ret2) enc:131 final result:13172736
+UniFromEnc(final ret) 13172736
+UniFromEnc(original ret) enc:132 initial result:209
+UniFromEnc(ret1) 209
+UniFromEnc(ret2) enc:132 final result:13697024
+UniFromEnc(final ret) 13697024
+UniFromEnc(original ret) enc:133 initial result:214
+UniFromEnc(ret1) 214
+UniFromEnc(ret2) enc:133 final result:14024704
+UniFromEnc(final ret) 14024704
+UniFromEnc(original ret) enc:134 initial result:220
+UniFromEnc(ret1) 220
+UniFromEnc(ret2) enc:134 final result:14417920
+UniFromEnc(final ret) 14417920
+UniFromEnc(original ret) enc:135 initial result:225
+UniFromEnc(ret1) 225
+UniFromEnc(ret2) enc:135 final result:14745600
+UniFromEnc(final ret) 14745600
+UniFromEnc(original ret) enc:136 initial result:224
+UniFromEnc(ret1) 224
+UniFromEnc(ret2) enc:136 final result:14680064
+UniFromEnc(final ret) 14680064
+UniFromEnc(original ret) enc:137 initial result:226
+UniFromEnc(ret1) 226
+UniFromEnc(ret2) enc:137 final result:14811136
+UniFromEnc(final ret) 14811136
+UniFromEnc(original ret) enc:138 initial result:228
+UniFromEnc(ret1) 228
+UniFromEnc(ret2) enc:138 final result:14942208
+UniFromEnc(final ret) 14942208
+UniFromEnc(original ret) enc:139 initial result:227
+UniFromEnc(ret1) 227
+UniFromEnc(ret2) enc:139 final result:14876672
+UniFromEnc(final ret) 14876672
+UniFromEnc(original ret) enc:140 initial result:229
+UniFromEnc(ret1) 229
+UniFromEnc(ret2) enc:140 final result:15007744
+UniFromEnc(final ret) 15007744
+UniFromEnc(original ret) enc:141 initial result:231
+UniFromEnc(ret1) 231
+UniFromEnc(ret2) enc:141 final result:15138816
+UniFromEnc(final ret) 15138816
+UniFromEnc(original ret) enc:142 initial result:233
+UniFromEnc(ret1) 233
+UniFromEnc(ret2) enc:142 final result:15269888
+UniFromEnc(final ret) 15269888
+UniFromEnc(original ret) enc:143 initial result:232
+UniFromEnc(ret1) 232
+UniFromEnc(ret2) enc:143 final result:15204352
+UniFromEnc(final ret) 15204352
+UniFromEnc(original ret) enc:144 initial result:234
+UniFromEnc(ret1) 234
+UniFromEnc(ret2) enc:144 final result:15335424
+UniFromEnc(final ret) 15335424
+UniFromEnc(original ret) enc:145 initial result:235
+UniFromEnc(ret1) 235
+UniFromEnc(ret2) enc:145 final result:15400960
+UniFromEnc(final ret) 15400960
+UniFromEnc(original ret) enc:146 initial result:237
+UniFromEnc(ret1) 237
+UniFromEnc(ret2) enc:146 final result:15532032
+UniFromEnc(final ret) 15532032
+UniFromEnc(original ret) enc:147 initial result:236
+UniFromEnc(ret1) 236
+UniFromEnc(ret2) enc:147 final result:15466496
+UniFromEnc(final ret) 15466496
+UniFromEnc(original ret) enc:148 initial result:238
+UniFromEnc(ret1) 238
+UniFromEnc(ret2) enc:148 final result:15597568
+UniFromEnc(final ret) 15597568
+UniFromEnc(original ret) enc:149 initial result:239
+UniFromEnc(ret1) 239
+UniFromEnc(ret2) enc:149 final result:15663104
+UniFromEnc(final ret) 15663104
+UniFromEnc(original ret) enc:150 initial result:241
+UniFromEnc(ret1) 241
+UniFromEnc(ret2) enc:150 final result:15794176
+UniFromEnc(final ret) 15794176
+UniFromEnc(original ret) enc:151 initial result:243
+UniFromEnc(ret1) 243
+UniFromEnc(ret2) enc:151 final result:15925248
+UniFromEnc(final ret) 15925248
+UniFromEnc(original ret) enc:152 initial result:242
+UniFromEnc(ret1) 242
+UniFromEnc(ret2) enc:152 final result:15859712
+UniFromEnc(final ret) 15859712
+UniFromEnc(original ret) enc:153 initial result:244
+UniFromEnc(ret1) 244
+UniFromEnc(ret2) enc:153 final result:15990784
+UniFromEnc(final ret) 15990784
+UniFromEnc(original ret) enc:154 initial result:246
+UniFromEnc(ret1) 246
+UniFromEnc(ret2) enc:154 final result:16121856
+UniFromEnc(final ret) 16121856
+UniFromEnc(original ret) enc:155 initial result:245
+UniFromEnc(ret1) 245
+UniFromEnc(ret2) enc:155 final result:16056320
+UniFromEnc(final ret) 16056320
+UniFromEnc(original ret) enc:156 initial result:250
+UniFromEnc(ret1) 250
+UniFromEnc(ret2) enc:156 final result:16384000
+UniFromEnc(final ret) 16384000
+UniFromEnc(original ret) enc:157 initial result:249
+UniFromEnc(ret1) 249
+UniFromEnc(ret2) enc:157 final result:16318464
+UniFromEnc(final ret) 16318464
+UniFromEnc(original ret) enc:158 initial result:251
+UniFromEnc(ret1) 251
+UniFromEnc(ret2) enc:158 final result:16449536
+UniFromEnc(final ret) 16449536
+UniFromEnc(original ret) enc:159 initial result:252
+UniFromEnc(ret1) 252
+UniFromEnc(ret2) enc:159 final result:16515072
+UniFromEnc(final ret) 16515072
+UniFromEnc(original ret) enc:160 initial result:8224
+UniFromEnc(ret1) 8224
+UniFromEnc(ret2) enc:160 final result:538968064
+UniFromEnc(final ret) 538968064
+UniFromEnc(original ret) enc:161 initial result:176
+UniFromEnc(ret1) 176
+UniFromEnc(ret2) enc:161 final result:11534336
+UniFromEnc(final ret) 11534336
+UniFromEnc(original ret) enc:162 initial result:162
+UniFromEnc(ret1) 162
+UniFromEnc(ret2) enc:162 final result:10616832
+UniFromEnc(final ret) 10616832
+UniFromEnc(original ret) enc:163 initial result:163
+UniFromEnc(ret1) 163
+UniFromEnc(ret2) enc:163 final result:10682368
+UniFromEnc(final ret) 10682368
+UniFromEnc(original ret) enc:164 initial result:167
+UniFromEnc(ret1) 167
+UniFromEnc(ret2) enc:164 final result:10944512
+UniFromEnc(final ret) 10944512
+UniFromEnc(original ret) enc:165 initial result:8226
+UniFromEnc(ret1) 8226
+UniFromEnc(ret2) enc:165 final result:539099136
+UniFromEnc(final ret) 539099136
+UniFromEnc(original ret) enc:166 initial result:182
+UniFromEnc(ret1) 182
+UniFromEnc(ret2) enc:166 final result:11927552
+UniFromEnc(final ret) 11927552
+UniFromEnc(original ret) enc:167 initial result:223
+UniFromEnc(ret1) 223
+UniFromEnc(ret2) enc:167 final result:14614528
+UniFromEnc(final ret) 14614528
+UniFromEnc(original ret) enc:168 initial result:174
+UniFromEnc(ret1) 174
+UniFromEnc(ret2) enc:168 final result:11403264
+UniFromEnc(final ret) 11403264
+UniFromEnc(original ret) enc:169 initial result:169
+UniFromEnc(ret1) 169
+UniFromEnc(ret2) enc:169 final result:11075584
+UniFromEnc(final ret) 11075584
+UniFromEnc(original ret) enc:170 initial result:8482
+UniFromEnc(ret1) 8482
+UniFromEnc(ret2) enc:170 final result:555876352
+UniFromEnc(final ret) 555876352
+UniFromEnc(original ret) enc:171 initial result:180
+UniFromEnc(ret1) 180
+UniFromEnc(ret2) enc:171 final result:11796480
+UniFromEnc(final ret) 11796480
+UniFromEnc(original ret) enc:172 initial result:168
+UniFromEnc(ret1) 168
+UniFromEnc(ret2) enc:172 final result:11010048
+UniFromEnc(final ret) 11010048
+UniFromEnc(original ret) enc:173 initial result:8800
+UniFromEnc(ret1) 8800
+UniFromEnc(ret2) enc:173 final result:576716800
+UniFromEnc(final ret) 576716800
+UniFromEnc(original ret) enc:174 initial result:198
+UniFromEnc(ret1) 198
+UniFromEnc(ret2) enc:174 final result:12976128
+UniFromEnc(final ret) 12976128
+UniFromEnc(original ret) enc:175 initial result:216
+UniFromEnc(ret1) 216
+UniFromEnc(ret2) enc:175 final result:14155776
+UniFromEnc(final ret) 14155776
+UniFromEnc(original ret) enc:176 initial result:8734
+UniFromEnc(ret1) 8734
+UniFromEnc(ret2) enc:176 final result:572391424
+UniFromEnc(final ret) 572391424
+UniFromEnc(original ret) enc:177 initial result:177
+UniFromEnc(ret1) 177
+UniFromEnc(ret2) enc:177 final result:11599872
+UniFromEnc(final ret) 11599872
+UniFromEnc(original ret) enc:178 initial result:8804
+UniFromEnc(ret1) 8804
+UniFromEnc(ret2) enc:178 final result:576978944
+UniFromEnc(final ret) 576978944
+UniFromEnc(original ret) enc:179 initial result:8805
+UniFromEnc(ret1) 8805
+UniFromEnc(ret2) enc:179 final result:577044480
+UniFromEnc(final ret) 577044480
+UniFromEnc(original ret) enc:180 initial result:165
+UniFromEnc(ret1) 165
+UniFromEnc(ret2) enc:180 final result:10813440
+UniFromEnc(final ret) 10813440
+UniFromEnc(original ret) enc:181 initial result:181
+UniFromEnc(ret1) 181
+UniFromEnc(ret2) enc:181 final result:11862016
+UniFromEnc(final ret) 11862016
+UniFromEnc(original ret) enc:182 initial result:8706
+UniFromEnc(ret1) 8706
+UniFromEnc(ret2) enc:182 final result:570556416
+UniFromEnc(final ret) 570556416
+UniFromEnc(original ret) enc:183 initial result:8721
+UniFromEnc(ret1) 8721
+UniFromEnc(ret2) enc:183 final result:571539456
+UniFromEnc(final ret) 571539456
+UniFromEnc(original ret) enc:184 initial result:8719
+UniFromEnc(ret1) 8719
+UniFromEnc(ret2) enc:184 final result:571408384
+UniFromEnc(final ret) 571408384
+UniFromEnc(original ret) enc:185 initial result:960
+UniFromEnc(ret1) 960
+UniFromEnc(ret2) enc:185 final result:62914560
+UniFromEnc(final ret) 62914560
+UniFromEnc(original ret) enc:186 initial result:8747
+UniFromEnc(ret1) 8747
+UniFromEnc(ret2) enc:186 final result:573243392
+UniFromEnc(final ret) 573243392
+UniFromEnc(original ret) enc:187 initial result:170
+UniFromEnc(ret1) 170
+UniFromEnc(ret2) enc:187 final result:11141120
+UniFromEnc(final ret) 11141120
+UniFromEnc(original ret) enc:188 initial result:186
+UniFromEnc(ret1) 186
+UniFromEnc(ret2) enc:188 final result:12189696
+UniFromEnc(final ret) 12189696
+UniFromEnc(original ret) enc:189 initial result:8486
+UniFromEnc(ret1) 8486
+UniFromEnc(ret2) enc:189 final result:556138496
+UniFromEnc(final ret) 556138496
+UniFromEnc(original ret) enc:190 initial result:230
+UniFromEnc(ret1) 230
+UniFromEnc(ret2) enc:190 final result:15073280
+UniFromEnc(final ret) 15073280
+UniFromEnc(original ret) enc:191 initial result:248
+UniFromEnc(ret1) 248
+UniFromEnc(ret2) enc:191 final result:16252928
+UniFromEnc(final ret) 16252928
+UniFromEnc(original ret) enc:192 initial result:191
+UniFromEnc(ret1) 191
+UniFromEnc(ret2) enc:192 final result:12517376
+UniFromEnc(final ret) 12517376
+UniFromEnc(original ret) enc:193 initial result:161
+UniFromEnc(ret1) 161
+UniFromEnc(ret2) enc:193 final result:10551296
+UniFromEnc(final ret) 10551296
+UniFromEnc(original ret) enc:194 initial result:172
+UniFromEnc(ret1) 172
+UniFromEnc(ret2) enc:194 final result:11272192
+UniFromEnc(final ret) 11272192
+UniFromEnc(original ret) enc:195 initial result:8730
+UniFromEnc(ret1) 8730
+UniFromEnc(ret2) enc:195 final result:572129280
+UniFromEnc(final ret) 572129280
+UniFromEnc(original ret) enc:196 initial result:402
+UniFromEnc(ret1) 402
+UniFromEnc(ret2) enc:196 final result:26345472
+UniFromEnc(final ret) 26345472
+UniFromEnc(original ret) enc:197 initial result:8776
+UniFromEnc(ret1) 8776
+UniFromEnc(ret2) enc:197 final result:575143936
+UniFromEnc(final ret) 575143936
+UniFromEnc(original ret) enc:198 initial result:8710
+UniFromEnc(ret1) 8710
+UniFromEnc(ret2) enc:198 final result:570818560
+UniFromEnc(final ret) 570818560
+UniFromEnc(original ret) enc:199 initial result:171
+UniFromEnc(ret1) 171
+UniFromEnc(ret2) enc:199 final result:11206656
+UniFromEnc(final ret) 11206656
+UniFromEnc(original ret) enc:200 initial result:187
+UniFromEnc(ret1) 187
+UniFromEnc(ret2) enc:200 final result:12255232
+UniFromEnc(final ret) 12255232
+UniFromEnc(original ret) enc:201 initial result:8230
+UniFromEnc(ret1) 8230
+UniFromEnc(ret2) enc:201 final result:539361280
+UniFromEnc(final ret) 539361280
+UniFromEnc(original ret) enc:202 initial result:160
+UniFromEnc(ret1) 160
+UniFromEnc(ret2) enc:202 final result:10485760
+UniFromEnc(final ret) 10485760
+UniFromEnc(original ret) enc:203 initial result:192
+UniFromEnc(ret1) 192
+UniFromEnc(ret2) enc:203 final result:12582912
+UniFromEnc(final ret) 12582912
+UniFromEnc(original ret) enc:204 initial result:195
+UniFromEnc(ret1) 195
+UniFromEnc(ret2) enc:204 final result:12779520
+UniFromEnc(final ret) 12779520
+UniFromEnc(original ret) enc:205 initial result:213
+UniFromEnc(ret1) 213
+UniFromEnc(ret2) enc:205 final result:13959168
+UniFromEnc(final ret) 13959168
+UniFromEnc(original ret) enc:206 initial result:338
+UniFromEnc(ret1) 338
+UniFromEnc(ret2) enc:206 final result:22151168
+UniFromEnc(final ret) 22151168
+UniFromEnc(original ret) enc:207 initial result:339
+UniFromEnc(ret1) 339
+UniFromEnc(ret2) enc:207 final result:22216704
+UniFromEnc(final ret) 22216704
+UniFromEnc(original ret) enc:208 initial result:8211
+UniFromEnc(ret1) 8211
+UniFromEnc(ret2) enc:208 final result:538116096
+UniFromEnc(final ret) 538116096
+UniFromEnc(original ret) enc:209 initial result:8212
+UniFromEnc(ret1) 8212
+UniFromEnc(ret2) enc:209 final result:538181632
+UniFromEnc(final ret) 538181632
+UniFromEnc(original ret) enc:210 initial result:8220
+UniFromEnc(ret1) 8220
+UniFromEnc(ret2) enc:210 final result:538705920
+UniFromEnc(final ret) 538705920
+UniFromEnc(original ret) enc:211 initial result:8221
+UniFromEnc(ret1) 8221
+UniFromEnc(ret2) enc:211 final result:538771456
+UniFromEnc(final ret) 538771456
+UniFromEnc(original ret) enc:212 initial result:8216
+UniFromEnc(ret1) 8216
+UniFromEnc(ret2) enc:212 final result:538443776
+UniFromEnc(final ret) 538443776
+UniFromEnc(original ret) enc:213 initial result:8217
+UniFromEnc(ret1) 8217
+UniFromEnc(ret2) enc:213 final result:538509312
+UniFromEnc(final ret) 538509312
+UniFromEnc(original ret) enc:214 initial result:247
+UniFromEnc(ret1) 247
+UniFromEnc(ret2) enc:214 final result:16187392
+UniFromEnc(final ret) 16187392
+UniFromEnc(original ret) enc:215 initial result:9674
+UniFromEnc(ret1) 9674
+UniFromEnc(ret2) enc:215 final result:633995264
+UniFromEnc(final ret) 633995264
+UniFromEnc(original ret) enc:216 initial result:255
+UniFromEnc(ret1) 255
+UniFromEnc(ret2) enc:216 final result:16711680
+UniFromEnc(final ret) 16711680
+UniFromEnc(original ret) enc:217 initial result:376
+UniFromEnc(ret1) 376
+UniFromEnc(ret2) enc:217 final result:24641536
+UniFromEnc(final ret) 24641536
+UniFromEnc(original ret) enc:218 initial result:8260
+UniFromEnc(ret1) 8260
+UniFromEnc(ret2) enc:218 final result:541327360
+UniFromEnc(final ret) 541327360
+UniFromEnc(original ret) enc:219 initial result:164
+UniFromEnc(ret1) 164
+UniFromEnc(ret2) enc:219 final result:10747904
+UniFromEnc(final ret) 10747904
+UniFromEnc(original ret) enc:220 initial result:8249
+UniFromEnc(ret1) 8249
+UniFromEnc(ret2) enc:220 final result:540606464
+UniFromEnc(final ret) 540606464
+UniFromEnc(original ret) enc:221 initial result:8250
+UniFromEnc(ret1) 8250
+UniFromEnc(ret2) enc:221 final result:540672000
+UniFromEnc(final ret) 540672000
+UniFromEnc(original ret) enc:222 initial result:64257
+UniFromEnc(ret1) 64257
+UniFromEnc(ret2) enc:222 final result:-83820544
+UniFromEnc(final ret) -83820544
+UniFromEnc(original ret) enc:223 initial result:64258
+UniFromEnc(ret1) 64258
+UniFromEnc(ret2) enc:223 final result:-83755008
+UniFromEnc(final ret) -83755008
+UniFromEnc(original ret) enc:224 initial result:8225
+UniFromEnc(ret1) 8225
+UniFromEnc(ret2) enc:224 final result:539033600
+UniFromEnc(final ret) 539033600
+UniFromEnc(original ret) enc:225 initial result:183
+UniFromEnc(ret1) 183
+UniFromEnc(ret2) enc:225 final result:11993088
+UniFromEnc(final ret) 11993088
+UniFromEnc(original ret) enc:226 initial result:8218
+UniFromEnc(ret1) 8218
+UniFromEnc(ret2) enc:226 final result:538574848
+UniFromEnc(final ret) 538574848
+UniFromEnc(original ret) enc:227 initial result:8222
+UniFromEnc(ret1) 8222
+UniFromEnc(ret2) enc:227 final result:538836992
+UniFromEnc(final ret) 538836992
+UniFromEnc(original ret) enc:228 initial result:8240
+UniFromEnc(ret1) 8240
+UniFromEnc(ret2) enc:228 final result:540016640
+UniFromEnc(final ret) 540016640
+UniFromEnc(original ret) enc:229 initial result:194
+UniFromEnc(ret1) 194
+UniFromEnc(ret2) enc:229 final result:12713984
+UniFromEnc(final ret) 12713984
+UniFromEnc(original ret) enc:230 initial result:202
+UniFromEnc(ret1) 202
+UniFromEnc(ret2) enc:230 final result:13238272
+UniFromEnc(final ret) 13238272
+UniFromEnc(original ret) enc:231 initial result:193
+UniFromEnc(ret1) 193
+UniFromEnc(ret2) enc:231 final result:12648448
+UniFromEnc(final ret) 12648448
+UniFromEnc(original ret) enc:232 initial result:203
+UniFromEnc(ret1) 203
+UniFromEnc(ret2) enc:232 final result:13303808
+UniFromEnc(final ret) 13303808
+UniFromEnc(original ret) enc:233 initial result:200
+UniFromEnc(ret1) 200
+UniFromEnc(ret2) enc:233 final result:13107200
+UniFromEnc(final ret) 13107200
+UniFromEnc(original ret) enc:234 initial result:205
+UniFromEnc(ret1) 205
+UniFromEnc(ret2) enc:234 final result:13434880
+UniFromEnc(final ret) 13434880
+UniFromEnc(original ret) enc:235 initial result:206
+UniFromEnc(ret1) 206
+UniFromEnc(ret2) enc:235 final result:13500416
+UniFromEnc(final ret) 13500416
+UniFromEnc(original ret) enc:236 initial result:207
+UniFromEnc(ret1) 207
+UniFromEnc(ret2) enc:236 final result:13565952
+UniFromEnc(final ret) 13565952
+UniFromEnc(original ret) enc:237 initial result:204
+UniFromEnc(ret1) 204
+UniFromEnc(ret2) enc:237 final result:13369344
+UniFromEnc(final ret) 13369344
+UniFromEnc(original ret) enc:238 initial result:211
+UniFromEnc(ret1) 211
+UniFromEnc(ret2) enc:238 final result:13828096
+UniFromEnc(final ret) 13828096
+UniFromEnc(original ret) enc:239 initial result:212
+UniFromEnc(ret1) 212
+UniFromEnc(ret2) enc:239 final result:13893632
+UniFromEnc(final ret) 13893632
+UniFromEnc(original ret) enc:241 initial result:210
+UniFromEnc(ret1) 210
+UniFromEnc(ret2) enc:241 final result:13762560
+UniFromEnc(final ret) 13762560
+UniFromEnc(original ret) enc:242 initial result:218
+UniFromEnc(ret1) 218
+UniFromEnc(ret2) enc:242 final result:14286848
+UniFromEnc(final ret) 14286848
+UniFromEnc(original ret) enc:243 initial result:219
+UniFromEnc(ret1) 219
+UniFromEnc(ret2) enc:243 final result:14352384
+UniFromEnc(final ret) 14352384
+UniFromEnc(original ret) enc:244 initial result:217
+UniFromEnc(ret1) 217
+UniFromEnc(ret2) enc:244 final result:14221312
+UniFromEnc(final ret) 14221312
+UniFromEnc(original ret) enc:245 initial result:305
+UniFromEnc(ret1) 305
+UniFromEnc(ret2) enc:245 final result:19988480
+UniFromEnc(final ret) 19988480
+UniFromEnc(original ret) enc:246 initial result:710
+UniFromEnc(ret1) 710
+UniFromEnc(ret2) enc:246 final result:46530560
+UniFromEnc(final ret) 46530560
+UniFromEnc(original ret) enc:247 initial result:732
+UniFromEnc(ret1) 732
+UniFromEnc(ret2) enc:247 final result:47972352
+UniFromEnc(final ret) 47972352
+UniFromEnc(original ret) enc:248 initial result:175
+UniFromEnc(ret1) 175
+UniFromEnc(ret2) enc:248 final result:11468800
+UniFromEnc(final ret) 11468800
+UniFromEnc(original ret) enc:249 initial result:728
+UniFromEnc(ret1) 728
+UniFromEnc(ret2) enc:249 final result:47710208
+UniFromEnc(final ret) 47710208
+UniFromEnc(original ret) enc:250 initial result:729
+UniFromEnc(ret1) 729
+UniFromEnc(ret2) enc:250 final result:47775744
+UniFromEnc(final ret) 47775744
+UniFromEnc(original ret) enc:251 initial result:730
+UniFromEnc(ret1) 730
+UniFromEnc(ret2) enc:251 final result:47841280
+UniFromEnc(final ret) 47841280
+UniFromEnc(original ret) enc:252 initial result:184
+UniFromEnc(ret1) 184
+UniFromEnc(ret2) enc:252 final result:12058624
+UniFromEnc(final ret) 12058624
+UniFromEnc(original ret) enc:253 initial result:733
+UniFromEnc(ret1) 733
+UniFromEnc(ret2) enc:253 final result:48037888
+UniFromEnc(final ret) 48037888
+UniFromEnc(original ret) enc:254 initial result:731
+UniFromEnc(ret1) 731
+UniFromEnc(ret2) enc:254 final result:47906816
+UniFromEnc(final ret) 47906816
+UniFromEnc(original ret) enc:255 initial result:711
+UniFromEnc(ret1) 711
+UniFromEnc(ret2) enc:255 final result:46596096
+UniFromEnc(final ret) 46596096

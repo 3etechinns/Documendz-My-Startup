@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="javascripts/jquery1.9.1.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/main_page_style.css"/>
+
+<script type="text/javascript">
+
+function bodyload()
+{
+	document.getElementById("psd").style.display = "none";
+	document.getElementById("ps1").style.display = "inline-block";
+	document.getElementById("ps2").style.display = "inline-block";
+	document.getElementById("ps3").style.display = "inline-block";
+	document.getElementById("ps4").style.display = "inline-block";
+	document.getElementById("ps5").style.display = "inline-block";
+}
+
+function scorePassword(pass) {
+    var score = 0;
+    if (!pass)
+        return score;
+
+    // award every unique letter until 5 repetitions
+    var letters = new Object();
+    for (var i=0; i<pass.length; i++) {
+        letters[pass[i]] = (letters[pass[i]] || 0) + 1;
+        score += 5.0 / letters[pass[i]];
+    }
+
+    // bonus points for mixing it up
+    var variations = {
+        digits: /\d/.test(pass),
+        lower: /[a-z]/.test(pass),
+        upper: /[A-Z]/.test(pass),
+        nonWords: /\W/.test(pass),
+    }
+
+    variationCount = 0;
+    for (var check in variations) {
+        variationCount += (variations[check] == true) ? 1 : 0;
+    }
+    score += (variationCount - 1) * 10;
+
+    return parseInt(score);
+}
+
+function checkPassStrength(pass) {
+    var score = scorePassword(pass);
+    if(document.getElementById("password").value.length!=0)
+    {
+    if (score >= 100)
+        return "Secure";
+    if (score >= 75)
+        return "Strong";
+    if (score >= 50)
+        return "Good";
+    if (score >= 25)
+        return "Average";
+    if (score >= 0)
+        return "Weak";
+
+    return "";
+    }
+    else
+    	{
+    	document.getElementById("psd").style.display = "none";
+    	}
+}
+
+function checkstrength(pass)
+{
+	document.getElementById("wrapper").style.display = "inline-block";
+	document.getElementById("psd").style.display = "inline-block";
+	var ps = checkPassStrength(pass);
+	if(ps=="Weak")
+	{
+		document.getElementById("ps1").style.display = "inline-block";
+		document.getElementById("ps1").style.background = "red";
+		document.getElementById("ps2").style.display = "none";
+		document.getElementById("ps3").style.display = "none";
+		document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none";
+	}
+	else if(ps=="Average")
+	{
+		document.getElementById("ps1").style.display = "inline-block";
+		document.getElementById("ps2").style.display = "inline-block";
+		document.getElementById("ps1").style.background = "pink";
+		document.getElementById("ps2").style.background = "pink";
+		document.getElementById("ps3").style.display = "none";
+		document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none";
+	}
+	else if(ps=="Good")
+	{
+		document.getElementById("ps1").style.display = "inline-block";
+		document.getElementById("ps2").style.display = "inline-block";
+		document.getElementById("ps3").style.display = "inline-block";
+		document.getElementById("ps1").style.background = "orange";
+		document.getElementById("ps2").style.background = "orange";
+		document.getElementById("ps3").style.background = "orange";
+		document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none";
+	}
+	else if(ps=="Strong")
+	{
+		document.getElementById("ps1").style.display = "inline-block";
+		document.getElementById("ps2").style.display = "inline-block";
+		document.getElementById("ps3").style.display = "inline-block";
+		document.getElementById("ps4").style.display = "inline-block";
+		document.getElementById("ps1").style.background = "yellow";
+		document.getElementById("ps2").style.background = "yellow";
+		document.getElementById("ps3").style.background = "yellow";
+		document.getElementById("ps4").style.background = "yellow";
+		document.getElementById("ps5").style.display = "none";
+	}
+	else if(ps=="Secure")
+	{
+		document.getElementById("ps1").style.display = "inline-block";
+		document.getElementById("ps2").style.display = "inline-block";
+		document.getElementById("ps3").style.display = "inline-block";
+		document.getElementById("ps4").style.display = "inline-block";
+		document.getElementById("ps5").style.display = "inline-block";
+		document.getElementById("ps1").style.background = "green";
+		document.getElementById("ps2").style.background = "green";
+		document.getElementById("ps3").style.background = "green";
+		document.getElementById("ps4").style.background = "green";
+		document.getElementById("ps5").style.background = "green";
+	}
+	else
+	{
+		document.getElementById("ps1").style.display = "none";
+		document.getElementById("ps2").style.display = "none";
+		document.getElementById("ps3").style.display = "none";
+		document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none";
+	}
+	document.getElementById("ps").innerHTML = "<strong>Password Strength: "+ps+"</strong>";
+}
+
+
+
+document.onmousedown=disableclick;
+status="Right Click Disabled";
+function disableclick(event)
+{
+  if(event.button==2)
+   {
+     alert(status);
+     return false;    
+   }
+}
+
+
+$(document).on({
+	submit:function(e){
+	
+		var un = document.registration.uname;
+		var pw = document.registration.pwd;
+		var cpw = document.registration.pwdc;
+		var em = document.registration.email;
+	alert(em.value);	
+
+	
+	
+	if(!check_empty_fields(un,em,pw,cpw)){
+		return false
+	}
+	
+	if(!validate_email(em)){
+		return false;
+	}
+	
+	if(!pass_validation(cpw,pw,6)){
+		return false;
+	}
+		
+	if(!email_exist(em.value)){
+		alert("in at not");
+		return false;
+	}
+	
+	alert("came here");
+		e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+		var post_data = $(this).serializeArray();
+		
+	    $.ajax({
+	        type:"POST",
+	        
+	        url:"t_registercheck.php",
+	        datatype: "text",
+	        data : post_data,
+			success: function(username){
+					alert(username);		
+				},
+			error: function(){
+					alert("Ajax for share failed somewhere");
+					}
+		    });
+
+		}
+		
+	},'#registration-form');
+
+
+
+function check_empty_fields(un,em,pw,cpw)
+{
+  if(un.value.length!=0 && pw.value.length!=0 && cpw.value.length!=0 && em.value.length!=0){
+	return true;  
+  }
+  else{
+	  alert("Please fill all the fields");
+	  return false;
+	  
+  }
+  }
+
+function validate_email(em){
+
+	
+	var pattern =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(em.value.match(pattern)){
+    
+    	/* showUser(document.registration.email.value); */
+    	return true;
+    }
+    else{
+    	alert("Please enter a valid Email Id");
+    	return false;
+    }
+}
+
+
+function pass_validation(cpw,pw,mx)  
+{  
+var pw_len = pw.value.length;  
+if (pw_len < mx)  
+{  
+alert("Password should contain atleast "+mx+" characters" );    
+return false;  
+}
+if(pw.value!=cpw.value)
+{
+	alert("Confirm password and Password do not match");  
+	return false;
+}
+return true;  
+}
+
+
+function email_exist(str1) {
+var ret = "" ;	
+	 $.ajax({
+	        type:"POST",
+	        cache:false,
+	        url:"t_checkexist.php?e="+str1,
+	        datatype: "string",
+	        async:false,
+			success: function(exist_response){
+				console.log(exist_response);
+					if(exist_response.trim().localeCompare("found") == 0){
+						alert("Email Id already registered");
+						 ret = false;
+						
+					}		
+					else {
+						
+						 ret = true;
+					}
+				},
+			error: function(){
+					alert("Ajax for share failed somewhere");
+					}
+		    });
+return ret;
+}	
+	
+	/* if(document.getElementById("txtHint").innerHTML=="Registration"){
+	document.getElementById("txtHint").innerHTML="";
+	}
+	  if (window.XMLHttpRequest) {
+	  
+	    xmlhttp=new XMLHttpRequest();
+	  } else { // code for IE6, IE5
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+	      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+	    }
+	  }
+	  xmlhttp.open("GET","t_checkexist.php?u="+str1,true);
+	  xmlhttp.send(); */
+
+
+
+
+/* 
+function ValidateEmail(em)  
+{  
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+if(em.value.match(mailformat))  
+{  
+return true;  
+}  
+else  
+{  
+alert("You have entered an invalid email address!");  
+em.style.borderColor="red";
+em.focus();  
+return false;  
+}  
+}
+ */
+///////////////////////////////////////////////////////////////////////////////// 
+////////////////////////     Forgot ajax call and functions    ////////////////// 
+/////////////////////////////////////////////////////////////////////////////////
+
+ $(document).on({
+		submit:function(e){
+		
+	var ue = document.forgot.useremail;	
+	if(ue.value.length==0) //if empty just exit 
+	 {
+	
+		return false;
+		
+	 }
+		
+	$("#myModal").modal('hide');
+	
+			e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+			var post_data = $(this).serializeArray();
+	
+		
+			
+		    $.ajax({
+		        type:"POST",
+		        
+		        url:"t_forgot.php",
+		        datatype: "text",
+		        data : post_data,
+				success: function(forgot_resp){
+						alert(forgot_resp);		
+					},
+				error: function(){
+						alert("Ajax for share failed somewhere");
+						}
+			    });
+
+			}
+			
+		},'#forgot-pass-form');
+
+
+</script>
+</head>
+<body onload="bodyload()">
+<form name="registration" id="registration-form" method="post" novalidate>
+<div id="txtHint">Registration</div><br>
+<!-- Full Name<input type="text" name="fname" maxlength="150" required/><br/> -->
+UserName<input id="un" type="text" name="uname" required  /><br/>
+Email<input id="em" type="text" name="email" required/><br/>
+Password<input id="password" type="password" required name="pwd" onkeyup="checkstrength(this.value)" />
+<div id="wrapper" style="height:10px">
+ <div id="psd" style="height:7px"><p id="ps"></p></div>
+ <div id="psm" style="height:5px;overflow:hidden">
+  <div id="ps1" style="height:5px;width:18%;float:left;margin-right:2px"></div>
+  <div id="ps2" style="height:5px;width:18%;float:left;margin-right:2px"></div>
+  <div id="ps3" style="height:5px;width:18%;float:left;margin-right:2px"></div>
+  <div id="ps4" style="height:5px;width:18%;float:left;margin-right:2px"></div>
+  <div id="ps5" style="height:5px;width:18%;float:left;margin-right:2px"></div>
+ </div>
+</div><br/>
+Confirm Password<input type="password" required name="pwdc" /><br/>
+<!-- Captcha Image:<input type="text" readonly id="txtCaptcha" style="-moz-user-select: none; user-select: none; -ms-user-select: none; -webkit-user-select: none; -khtml-user-select: none; background-image:url(cap.JPG); text-align:center; border:none; font-weight: bold; font-family:Modern" />
+ <input type="button" id="btnrefresh" value="Refresh" onclick="DrawCaptcha();" /><br/>
+Enter Captcha Image Code:<input type="text" required  name="txtInput"/><br/> -->
+<input id="mySubmit" type="submit" name="submit" value="Register" />&nbsp;
+</form>
+
+ <button data-target="#myModal" class="btn" data-toggle="modal">Forgot Password</button>
+
+<!-- ////////////////////////////////////////////////////////////////// 
+////////////////////modal for forgot password/////////////////////
+////////////////////////////////////////////////////////////////// -->
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog">
+    <div class = "modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Forgot your password?</h3>
+    </div>
+  
+    <div class="modal-body">
+  
+      <form id="forgot-pass-form" name="forgot" method="POST" enctype = 'multipart/form-data'>
+
+      <table>
+        
+        <tbody>  
+          <tr>Please enter the e-mail address for your account. A new password will be sent to you</tr>
+          <tr>
+            <td>Email-id</td>
+            <td><input type="text" name="useremail" id="useremail" /><br /><br /><span class="hide help-inline">This is required</span></td>
+          </tr> 
+      	</tbody>
+      
+      </table>
+     <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+     <!--  <input class="btn btn-primary" type="submit" name="forgot_check" data-dismiss="modal" id="forgot-pass" value="submit"/> -->
+    <button class="btn btn-primary" type="submit" value="Submit" name='forgot_check'>Submit</button>
+    </div>
+       </form>
+    </div>
+ 
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

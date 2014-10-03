@@ -1,0 +1,39 @@
+removeHighlights: function(element,class_name_without_dot) {
+        	
+          /*  var container = (element !== undefined ? element : this.context);*/  /*original one*/
+            var container = '#svg-container';
+
+            var unwrapHighlight = function(highlight) {
+            	/*return $(highlight).contents().unwrap().get(0)*/; /*original*/
+            	
+            	return $(highlight).contents().unwrap().get();
+               
+            };
+
+            var mergeSiblingTextNodes = function(textNode) {
+                var prev = textNode.previousSibling;
+                var next = textNode.nextSibling;
+
+                if (prev && prev.nodeType == nodeTypes.TEXT_NODE) {
+                    textNode.nodeValue = prev.nodeValue + textNode.nodeValue;
+                    prev.parentNode.removeChild(prev);
+                }
+                if (next && next.nodeType == nodeTypes.TEXT_NODE) {
+                    textNode.nodeValue = textNode.nodeValue + next.nodeValue;
+                    next.parentNode.removeChild(next);
+                }
+            };
+
+            var self = this;
+            var class_del = element;
+            var class_name_without_dot = class_name_without_dot;
+            var $highlights = this.getAllHighlights(container,true,class_del,class_name_without_dot);
+            $highlights.each(function() {
+                if (self.options.onRemoveHighlight(this) == true) {
+                	
+                    var textNode = unwrapHighlight(this);
+                    
+                    mergeSiblingTextNodes(textNode);
+                }
+            });
+        },

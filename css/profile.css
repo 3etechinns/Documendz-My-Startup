@@ -1,0 +1,241 @@
+@CHARSET "ISO-8859-1";
+
+progress {
+  	   margin-right:5px;
+       width: 200px;
+       height: 17px;
+       /* margin: 50px auto; */
+       display: inline-block;
+       float:left;
+       /* Important Thing */
+       -webkit-appearance: none;
+       border: 1px solid black;
+ border-radius: 50px;
+}
+
+/* All good till now. Now we'll style the background */
+progress::-webkit-progress-bar {
+       background: #fff;
+       border-radius: 50px;
+       padding: 2px;
+       box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
+       
+}
+
+/* Now the value part */
+progress::-webkit-progress-value {
+       border-radius: 50px;
+       box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+       background:
+               -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+               -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+               -webkit-linear-gradient(left, #00CCFF, #7De5ff);
+       
+       /* Looks great, now animating it */
+       background-size: 25px 14px, 100% 100%, 100% 100%;
+       /*-webkit-animation: move 5s linear 0 infinite;*/
+       
+}
+
+/* That's it! Now let's try creating a new stripe pattern and animate it using animation and keyframes properties  */
+
+@-webkit-keyframes move {
+       0% {background-position: 0px 0px, 0 0, 0 0}
+       100% {background-position: -100px 0px, 0 0, 0 0}
+}
+
+
+#uploaded_container{
+	
+	width:500px;
+	margin-left: 100px;
+	
+	
+}
+
+#demo_uploaded_container{
+	
+	width:500px;
+	margin-left: 100px;
+	/*padding-top:50px;*/
+	
+}
+
+#self_uploaded{
+	/* height: 290px; */ 
+	height:auto;
+	margin:10px 0px;
+	
+}
+
+#demo_self_uploaded{
+	/* height: 290px; */ 
+	height:auto;
+	margin:30px 0px;
+	
+}
+
+
+#self_uploaded_no_search{
+	
+	display:none;
+	
+}
+
+#received_no_search{
+	
+	display:none;
+	
+}
+
+#display_progress{
+	
+	width:100%;
+	height:30px;
+	
+}
+
+#alert-container{
+	
+display:none;
+position:absolute;
+width:300px;
+margin:auto;
+left:0;
+right:0;
+z-index:2	
+	
+}
+
+#received{
+	/* height: 290px;  for scroll*/
+	margin:10px 0;
+	height:auto;
+	
+}
+
+
+#demo_received{
+	/* height: 290px;  for scroll*/
+	margin:30px 0;
+	height:auto;
+}
+
+.btn-file {
+   position: relative;
+   overflow: hidden;
+}
+.btn-file input[type=file] {
+   position: absolute;
+   top: 0;
+   right: 0;
+   min-width: 100%;
+   min-height: 100%;
+   font-size: 999px;
+   text-align: right;
+   filter: alpha(opacity=0);
+   opacity: 0;
+   outline: none;
+   background: white;
+   cursor: inherit;
+   display: block;
+}
+
+.individual_file_container{
+border: 0;
+border-bottom: 1px solid #eee;
+padding:10px 0px 0px 0px;
+}
+
+/*.display_share{
+	
+	float:right;
+	margin-right:5px;
+	
+}*/
+
+.share_summary_container{
+	
+	display:none;
+	list-style-type:none;
+	margin-bottom:0px !important;
+	padding-left:0px;
+        
+	
+}
+
+#delete-all{
+	
+	float:right;
+	margin-right: 1px;
+	margin-top: 12px;
+	border: solid 1px rgb(217, 223, 230);
+	background-color: aliceblue;
+	cursor: pointer;
+	border-radius: 4px;
+	
+}
+
+#search_tab{
+	display:none;
+	float:left;
+	border: solid 1px rgb(217, 223, 230);
+	background-color: aliceblue;
+	border-radius: 4px;
+	margin-top:12px;
+	margin-left:5px;
+	
+	
+}
+
+#delete-search{
+	
+	cursor:pointer;
+}
+
+.ssc-content{
+	background-color: #f9f7f7;
+        margin: 2px;
+}
+
+.ssc-header{
+	
+	position:relative;
+	background-color: #e9e9e9 !important;
+}
+
+.ssc-header:after{
+	content: '';
+position: absolute;
+top: -7%;
+left: 0%;
+margin-left: -14px;
+width: 0;
+height: 0;
+border-right: solid 13px #e9e9e9;
+border-top: solid 13px transparent;
+border-bottom: solid 13px transparent;
+	
+}
+/*  .ssc-holder{
+	
+display: none;
+position: relative;
+top:20px;
+float:right;
+right:-22px;
+width: 0px;
+height: 0px;
+font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+border-left-width: 10px;
+border-left-style: solid;
+border-left-color: transparent;
+border-right-width: 10px;
+border-right-style: solid;
+border-right-color: transparent;
+border-bottom-width: 10px;
+border-bottom-style: solid;
+border-bottom-color: #e9e9e9;
+-webkit-user-select: text;
+
+}  */

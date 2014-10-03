@@ -1,0 +1,1058 @@
+<html>
+
+	<head>
+	<title>Documendz</title>
+	<link rel="icon" type="img/ico" href="/favicon.ico">
+	
+		<link type="text/css" rel="stylesheet" href="css/main_page_style.css"/>
+      	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		
+		<script type="text/javascript" src="javascripts/jquery1.9.1.js"></script>
+		<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+		<script type="text/javascript" src="javascripts/feedback_front.js"></script>
+		<!-- <script type="text/javascript" src="focus.js"></script> -->
+      	
+
+<script type="text/javascript">
+
+
+$.ajax({
+	        type:"POST",
+	        cache:false,
+		async: false,
+	        url:"already_logged_in.php",
+		data: {token:"jh67jb"},
+	        datatype: "text",
+	        
+			success: function(response){
+				
+				if (parseInt(response) == 1) {
+					window.location = "http://www.documendz.com/profile_page.php";
+				}
+				else{
+					// Run normal
+				}
+				
+				},
+			error: function(){
+					alert("Oops! Something went wrong");
+					}
+		    });
+
+		    
+		    
+		    
+function empty_modal(){
+	$('#display-result').css('display','none');
+	$('#useremail').val('');
+	
+	}
+ //if user is in pending take his email from the url itself
+ 
+  function gup( name )
+{
+ name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+ var regexS = "[\\?&]"+name+"=([^&#]*)";
+ var regex = new RegExp( regexS );
+ var results = regex.exec( window.location.href );
+ if( results == null )
+   return null;
+ else
+   return results[1];
+}
+ 
+
+///////////////////////////////////////////////////////////////
+///////////// signup form structure is below////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+
+function bodyload()
+{
+	/* document.getElementById("psd").style.display = "none"; */
+	document.getElementById("ps1").style.display = "none";
+	document.getElementById("ps2").style.display = "none";
+	document.getElementById("ps3").style.display = "none";
+	document.getElementById("ps4").style.display = "none";
+	document.getElementById("ps5").style.display = "none";
+	
+	var em = gup('em');
+	if (em != null) {
+		
+		$("#em").val(decodeURIComponent(em));
+	}
+	
+}
+
+function scorePassword(pass) {
+    var score = 0;
+    if (!pass)
+        return score;
+
+    // award every unique letter until 5 repetitions
+    var letters = new Object();
+    for (var i=0; i<pass.length; i++) {
+        letters[pass[i]] = (letters[pass[i]] || 0) + 1;
+        score += 5.0 / letters[pass[i]];
+    }
+
+    // bonus points for mixing it up
+    var variations = {
+        digits: /\d/.test(pass),
+        lower: /[a-z]/.test(pass),
+        upper: /[A-Z]/.test(pass),
+        nonWords: /\W/.test(pass),
+    }
+
+    variationCount = 0;
+    for (var check in variations) {
+        variationCount += (variations[check] == true) ? 1 : 0;
+    }
+    score += (variationCount - 1) * 10;
+
+    return parseInt(score);
+}
+
+function checkPassStrength(pass) {
+    var score = scorePassword(pass);
+    if(document.getElementById("password").value.length!=0)
+    {
+    if (score >= 90)
+        return "Secure";
+    if (score >= 75)
+        return "Strong";
+    if (score >= 50)
+        return "Good";
+    if (score >= 25)
+        return "Average";
+    if (score >= 0)
+        return "Weak";
+
+    return "";
+    }
+    else
+    	{
+    	 /* document.getElementById("psd").style.display = "none"; --commentout for now */
+    	 return "empty";
+    	}
+} 
+
+function checkstrength(pass)
+{
+	
+	
+	/* document.getElementById("wrapper").style.display = "block"; */
+	/* document.getElementById("psd").style.display = "block";  */
+	var ps = checkPassStrength(pass);
+	if(ps=="Weak")
+	{
+		document.getElementById("ps1").style.display = "block";
+		
+		document.getElementById("ps2").style.display = "none";
+		 document.getElementById("ps3").style.display = "none";
+		document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none"
+	}
+	else if(ps=="Average")
+	{
+		 document.getElementById("ps1").style.display = "block"; 
+		document.getElementById("ps2").style.display = "block";
+		
+		document.getElementById("ps3").style.display = "none";
+		 document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none"; 
+	}
+	else if(ps=="Good")
+	{
+		 document.getElementById("ps1").style.display = "block";
+		document.getElementById("ps2").style.display = "block"; 
+		document.getElementById("ps3").style.display = "block";
+		
+		document.getElementById("ps4").style.display = "none";
+		 document.getElementById("ps5").style.display = "none"; 
+	}
+	else if(ps=="Strong")
+	{
+		 document.getElementById("ps1").style.display = "block";
+		document.getElementById("ps2").style.display = "block";
+		document.getElementById("ps3").style.display = "block"; 
+		document.getElementById("ps4").style.display = "block";
+		
+		document.getElementById("ps5").style.display = "none";
+	}
+	else if(ps=="Secure")
+	{
+		 document.getElementById("ps1").style.display = "block";
+		document.getElementById("ps2").style.display = "block";
+		document.getElementById("ps3").style.display = "block";
+		document.getElementById("ps4").style.display = "block"; 
+		document.getElementById("ps5").style.display = "block";
+		
+	}
+	else // input is empty
+	{
+	
+		document.getElementById("ps1").style.display = "none";
+		document.getElementById("ps2").style.display = "none";
+		document.getElementById("ps3").style.display = "none";
+		document.getElementById("ps4").style.display = "none";
+		document.getElementById("ps5").style.display = "none";
+	}
+	/* document.getElementById("ps").innerHTML = "<strong>Password Strength: "+ps+"</strong>"; */
+}
+
+
+
+$(document).on({
+	submit:function(e){
+
+		var un = document.registration.uname;
+		var pw = document.registration.pwd;
+		var cpw = document.registration.pwdc;
+		var em = document.registration.email;
+	
+	
+	if(!check_empty_fields(un,em,pw,cpw)){
+		return false
+	}
+	
+	if(!validate_email(em)){
+		return false;
+	}
+	
+	if(!pass_validation(cpw,pw,6)){
+		return false;
+	}
+		
+	if(!email_exist(em.value)){
+		
+		return false;
+	}
+	
+		e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+		var post_data = $(this).serializeArray();
+		
+		
+		$('#sign-up-button').prop('disabled', true); // Disabling the sign-up button
+	        $('#sign-up-button').val("Wait...");
+		$("#alert-error").css('display','none');
+		
+	    $.ajax({
+		
+		
+	
+	
+	        type:"POST",
+	        
+	        url:"t_registercheck.php",
+	        datatype: "text",
+	        data : post_data,
+			success: function(response){
+					$("#alert-error").html(response);
+					$("#alert-error").css('display','block');
+					$("#alert-error").css('background','#D7F1D7');
+					$("#alert-error").css('border','1px solid green');
+					$('#sign-up-button').prop('disabled', false); // Enabling the sign-up button on success
+	                                $('#sign-up-button').val("Sign up");
+					
+				},
+			error: function(err){
+					
+					alert("Oops, something went wrong.");
+					
+					}
+		    });
+
+		}
+		
+	},'#registration-form');
+
+
+
+$(document).on({
+	submit:function(e){
+		
+		$('#contact-us-button').prop("disabled", true);
+		$('#contact-us-button').text("Sending...");
+		setTimeout(function()
+			   {
+				
+		$('#contact-us-button').prop("disabled", false);
+		$('#contact-us-button').text("Thanks, we'll get back to you !");
+		            }
+		
+			   , 2000);
+		
+		
+		
+		var name=$.trim($("#contact-us-name").val());
+                var email = $.trim($("#contact-us-email").val());
+		
+		var message=$.trim($("#contact-us-message").val());
+                
+		e.preventDefault(); // This is very imp. It prevents the default functionality of submit form
+		$.ajax(
+				{
+					type:'POST',
+					url:'contact_us.php',
+					cache:false,
+					data:{
+                                            field1:name,
+                                            field2:email,
+					    field3:message,
+                                            field4:"dfvh3fd5"
+                                            },
+					datatype:"text",	
+					success: function(){
+$('#contact-us-button').text("Send");
+		
+		$("#contact-us-name").val('');
+              $("#contact-us-email").val('');
+		
+		$("#contact-us-message").val('');
+		
+					}
+						
+
+				}
+
+			)
+	}
+		
+	},'#contact-us-form');
+
+
+function check_empty_fields(un,em,pw,cpw)
+{
+  if(un.value.length!=0 && pw.value.length!=0 && cpw.value.length!=0 && em.value.length!=0){
+	return true;  
+  }
+  else{
+	  $("#alert-error").fadeIn();
+	  $("#alert-error").html('Please fill all the fields');
+	  return false;
+	  
+  }
+  }
+
+function validate_email(em){
+
+	
+	var pattern =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(em.value.match(pattern)){
+    
+    	/* showUser(document.registration.email.value); */
+    	return true;
+    }
+    else{
+	 $("#alert-error").fadeIn();
+	$("#alert-error").html("Please enter a valid Email Id");
+    	
+    	return false;
+    }
+}
+
+
+function pass_validation(cpw,pw,mx)  
+{  
+var pw_len = pw.value.length;  
+if (pw_len < mx)  
+{
+	$("#alert-error").fadeIn();
+	$("#alert-error").html("Password should contain atleast "+mx+" characters");
+   
+	return false;  
+}
+if(pw.value!=cpw.value)
+{
+	
+	$("#alert-error").fadeIn();
+	$("#alert-error").html("Confirm password and Password do not match");
+    
+	return false;
+}
+return true;  
+}
+
+
+function email_exist(str1) {
+var ret = "" ;	
+	 $.ajax({
+	        type:"POST",
+	        cache:false,
+	        url:"t_checkexist.php?e="+str1,
+		data: {
+			check: "sadh675fdA"	
+		},
+	        datatype: "string",
+	        async:false,
+			success: function(exist_response){
+				
+					if(exist_response.trim().localeCompare("found") == 0){
+						
+						$("#alert-error").fadeIn();
+						$("#alert-error").html("Email id already registered");
+
+						 ret = false;
+						
+					}		
+					else {
+						
+						 ret = true;
+					}
+				},
+			error: function(){
+					alert("Something went wrong, please try again");
+					}
+		    });
+return ret;
+}	
+	
+	
+///////////////////////////////////////////////////////////////////////////////// 
+////////////////////////     Forgot ajax call and functions    ////////////////// 
+/////////////////////////////////////////////////////////////////////////////////
+
+ $(document).on({
+		submit:function(e){
+		
+		 
+	        $('#forgot-submit-button').text("Sending..");
+		$('#forgot-submit-button').prop('disabled', true);
+	var ue = document.forgot.useremail;	
+	if(ue.value.length==0) //if empty just exit 
+	 {
+	
+		return false;
+		
+	 }
+	e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+			var post_data = $(this).serializeArray();
+			
+		    $.ajax({
+		        type:"POST",
+		        
+		        url:"t_forgot.php",
+		        datatype: "text",
+		        data : post_data,
+				success: function(forgot_resp){
+					$("#display-result").html(forgot_resp);
+					$("#display-result").fadeIn();
+					$('#forgot-submit-button').prop('disabled', false); // Disabling the sign-up button
+	        $('#forgot-submit-button').text("Submit");
+					
+					},
+				error: function(){
+						alert("Oops! Something went wrong");
+						}
+			    });
+
+			}
+			
+		},"#forgot-pass-form");
+
+ 
+//////////////////////////////////////////////////
+///////////////// sign in form ///////////////////
+////////////////////////////////////////////////// 
+ 
+ $(document).on({
+	submit:function(e){
+	
+		var un = document.login.email;
+		var pw = document.login.pwd;
+			 if(un.value.length == 0) // email field not empty
+				 {
+				$("#alert-error").fadeIn();
+				$("#alert-error").html("Please enter your Email id");
+				 un.focus();
+				 return false;
+				 
+				 }
+				 if(pw.value.length == 0) // pwd field is not empty
+					 {
+						
+					 $("#alert-error").fadeIn();
+		
+					$("#alert-error").html("Please enter your password");
+					 pw.focus();
+					 return false;
+					 }
+				
+	 
+		e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+		var signin_data = $(this).serializeArray();
+		
+	    $.ajax({
+	        type:"POST",
+	        
+	        url:"t_logincheck.php",
+	        datatype: "text",
+	        data : signin_data,
+			success: function(message){
+				
+					if(message.trim().localeCompare("login-success") == 0){
+						
+						window.location.href = "profile_page.php";
+						
+					}
+					else{
+						
+						$("#alert-error").fadeIn();
+						$("#alert-error").html(message);
+					}
+					
+				},
+			error: function(){
+					alert("Oops! Something went wrong");
+					}
+		    });
+
+		}
+		
+	},'#signin-form');
+ 
+ 
+ 
+
+
+$(function() { // jquery for remember me
+
+    if (localStorage.chkbx && localStorage.chkbx != '') {
+        $('#remember_me').attr('checked', 'checked');
+        $('#email').val(localStorage.usrname);
+        $('#pass').val(localStorage.pass);
+    } else {
+        $('#remember_me').removeAttr('checked');
+        $('#email').val('');
+        $('#pass').val('');
+    }
+
+    $('#remember_me').click(function() {
+
+        if ($('#remember_me').is(':checked')) {
+            // save email and password
+            localStorage.usrname = $('#email').val();
+            localStorage.pass = $('#pass').val();
+            localStorage.chkbx = $('#remember_me').val();
+        } else {
+            localStorage.usrname = '';
+            localStorage.pass = '';
+            localStorage.chkbx = '';
+        }
+    });
+});
+ 
+ 
+ 
+
+////////////////////////////////////////////////
+/////////// in page styles ////////////////////
+///////////////////////////////////////////////
+
+
+	$(document).ready(function()
+	{
+		
+		$(function() {
+  $('a[href*=#]:not([href=#suggestion_front])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 80
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+		
+		
+		
+		
+		$(".blank").focusin(function () {
+
+			$(this).parent().children(0).css({"opacity":"1"});
+			
+		});	
+
+		$(".blank").focusout(function () {
+
+		var text=$.trim($(this).val());
+
+		if(text==""){
+
+			$(this).parent().children(0).css({"opacity":".5"});
+			/* document.getElementById("ps1").style.display = "none";
+			document.getElementById("ps2").style.display = "none";
+			document.getElementById("ps3").style.display = "none";
+			document.getElementById("ps4").style.display = "none";
+			document.getElementById("ps5").style.display = "none"; */
+			
+		}
+
+		else{
+
+			$(this).parent().children(0).css({"opacity":"1"});
+		}
+
+				});
+
+
+
+	});
+
+	</script>	
+	</head>
+
+<body onload="bodyload()">
+	<div class="background-image-overlay"></div>
+<div class="navbar navbar-default" style="position:fixed;width:100%;z-index:1000;margin-bottom:0px;box-shadow: 0 1px 23px -3px rgba(0,0,0,0.2);background-color: white;padding: 2px 0px;" >
+  		<div class="container-fluid" style="width:80%;margin:auto;padding-left:30px;padding-right: 30px;">
+   		 
+   		 <div class="navbar-header">
+      		
+     		 <a href="http://www.documendz.com/"><img style="width:175px; padding-top: 5px;" src="images/logo1.gif"></a> 
+   		 </div>
+      
+      		<ul class="nav navbar-nav navbar-right">
+       			<li><a href="#features">Features</a></li>
+       			
+       			 <li><a href="#about-us">About Us</a></li>
+			 <li><a href="#contact-us">Contact-us</a></li>
+			  <li><a href="http://www.documendz.com/faq.html">FAQs</a></li>
+			  <li><a href="#suggestion_front" data-toggle="modal">Feedback</a></li>
+       			 
+     		 </ul>
+   		 
+
+	  	</div>
+  
+		</div>
+	
+	
+<div class="row" style="margin-left: 0px;
+margin-right: 0px;
+padding-top: 62px;
+background-image: url('main_page_images/bck7.jpg');
+background-size:cover;">
+
+			<div class="central_container" style="padding:20px;margin:auto;width:80%;">
+			
+			<div class="col-md-5" style="width:50%">
+				<p style="font-weight: 800;font-size: 30px;color: #403b33;">Indian Premier League</p>
+				<p style="font-weight: 200;font-size: 19px;color: #7C7373;">I will use the co.
+
+In its original form, the Twitter Marketing Template looks like this</p>
+				<img src="main_page_images/flow.gif" style="
+    width: 394px;
+">
+			</div>
+			
+			
+			
+			
+			<div class="col-md-5"style="width:50%">
+                            
+			<div id="registration-container" align="center" style="width:340px">
+
+				<form id="signin-form" name="login" method="post" style="width: 300px; height: 120px;margin:0px">
+			 
+
+					
+	<input id="email" class="login_blank"  style="width: 100%" type="email" name="email" placeholder="Email" autofocus="autofocus"/>
+						
+					
+					
+<input id="pass" class="login_blank" style="width: 70%"type="password" name="pwd" placeholder="Password"/>
+						
+					
+					
+						<input style="height: 30px;width: 72px;float: right;line-height: 10px;font-size:13px;" class="btn btn-primary btn-sm" type="submit" name="submit" value="Login" />
+					<a data-target="#myModal" data-toggle="modal" onclick="empty_modal();" style="cursor:pointer;vertical-align: bottom;float: left; font-size: 13px;color:#3A3939;">Forgot password ?</a>
+									
+				</form>
+
+				
+				
+				
+<!-- ////////////////////////////////////////////////////////////////// 
+////////////////////modal for forgot password/////////////////////
+////////////////////////////////////////////////////////////////// -->
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    
+    <div class="modal-dialog">
+    <div class = "modal-content">
+    <div class="modal-header">
+      
+      <h3 id="myModalLabel">Forgot your password?</h3>
+    </div>
+  
+    <div class="modal-body">
+  
+      <form id="forgot-pass-form" name="forgot" method="POST">
+
+          Not to worry. Just enter your email address below and we'll send you an instruction email for recovery
+            
+            <input class="form-control" type="text" name="useremail" id="useremail" placeholder="Enter your email-id" >
+          
+      	
+      
+      
+     <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+     <!--  <input class="btn btn-primary" type="submit" name="forgot_check" data-dismiss="modal" id="forgot-pass" value="submit"/> -->
+    <button id ="forgot-submit-button" class="btn btn-primary" type="submit" value="Submit" name='forgot_check'>Submit</button>
+    </div>
+     
+     <div id="display-result"></div>
+     
+     
+       </form>
+    </div>
+ 
+    </div>
+    </div>
+</div>
+
+
+
+				<div style="margin-left:0px">
+					<p style="margin-bottom:10px; text-align:left;font-size: 13px;color: #3A3939;">New user ? Register here</p>
+				</div>
+			
+
+				<form name="registration" id="registration-form" method="post" novalidate style="width: 300px; wheight: 229px;">
+			
+					<div class="blank_div" align="center";>
+						<label class="input_image"><img src="main_page_images/mail.jpg"/></label>
+						<input id="em" class="blank" type="text" name="email" placeholder="Email id" required/>
+						
+					</div>
+
+					<div class="blank_div">
+						<label class="input_image"><img src="main_page_images/user.png"/></label>
+						<input id="un" class="blank" type="text" name="uname" placeholder="Name" required/>
+						
+					</div>
+
+					<div class="blank_div" style="margin-bottom:0px !important">
+						<label class="input_image"><img src="main_page_images/pass.jpg"/></label>
+						<input class="blank" id="password" type="password" name="pwd" placeholder="Password" onkeyup="checkstrength(this.value)" required  />
+					</div>
+
+<!--                      password strength                         -->
+
+<div id="wrapper" style="height:10px">
+<!--  <div id="psd" style="height:7px"><p id="ps"></p></div> -->
+ <div id="psm" style="height:4px;overflow:hidden">
+  <div id="ps1" class="password-meter" style="background: #3276B1;opacity: 0.5; display: none;" ></div>
+  <div id="ps2" class="password-meter" style="background: #3276B1;opacity: 0.7; display: none;"></div>
+  <div id="ps3" class="password-meter" style="background: #3276B1;opacity: 0.8; display: none;"></div>
+  <div id="ps4" class="password-meter" style="background: #3276B1;opacity: 0.9; display: none;"></div>
+  <div id="ps5" class="password-meter" style="background: #3276B1;opacity: 1; display: none;"></div>
+ </div>
+</div><br/>
+
+					<div class="blank_div" style="margin-top:-15px !important">
+						<label class="input_image"><img src="
+						main_page_images/pass.jpg"/></label>
+						<input class="blank" type="password" name="pwdc" placeholder="Confirm password" required/>
+					</div>
+
+					<div style="float:left">
+						<input id = "sign-up-button" style="height: 30px;width: 80px;line-height: 10px;font-size:13px;" type="submit" name="submit" value="Sign up"   class="btn btn-primary btn-sm"/>						
+					</div>
+	<div style="float: right;font-size: 9px; width: 195px;color:white;">By signing up, I agree to the <a href="http://www.documendz.com/legal/terms_of_service.html">terms of service</a> and <a href="http://www.documendz.com/legal/privacy_policy.html">privacy policy</a></div>
+				</form>
+				
+				
+				
+<div id="alert-error" style="
+    display: none;	
+    margin-top: 53px;
+    padding: 2px;
+    text-align: center;
+    /* align-content: center; */
+    font-size: 11px;
+    color: black;
+    border: 1px solid brown;
+    background: antiquewhite;
+"></div>
+				
+				
+			</div>
+			</div>
+		
+                        
+                </div>
+		</div>
+
+
+
+               
+	       
+	       
+
+
+<div class="row" id = "features" style = "margin-left:0px;margin-right:0px;background-color: white";>
+
+<div class="central_container" style="width:80%;margin:auto;padding:20px">
+
+
+	
+<div class="col-sm-4 ff" style="margin-top:40px">
+<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-share"></i></div>
+<h2 class="feature-header">Free Delivery in india</h2>
+<p class="feature-font">Shipment is done free to any part of India. 
+Any corner of India from east to west, 
+north to south, is one for us.</p>
+			</div>
+
+
+			
+<div class="col-sm-4 ff" style="margin-top:40px">
+
+<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-comment"></i></div>
+<h2 class="feature-header">Free Delivery in india</h2>
+<p class="feature-font">Shipment is done free to any part of India. 
+Any corner of India from east to west, 
+north to south, is one for us.</p>
+			</div>
+
+			
+<div class="col-sm-4 ff" style="margin-top:40px">
+				<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-text-width"></i></div>
+				<h2 class="feature-header">Free Delivery in india</h2>
+				<p class="feature-font">Shipment is done free to any part of India. 
+Any corner of India from east to west, 
+north to south, is one for us.</p>
+			</div>			
+	
+	
+<div class="col-sm-6 ff" style="margin-top:40px">
+<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-pencil"></i></div>
+<h2 class="feature-header">Free Delivery in india</h2>
+<p class="feature-font">Shipment is done free to any part of India. 
+Any corner of India from east to west, 
+north to south, is one for us.</p>
+			</div>
+
+<div class="col-sm-6 ff" style="margin-top:40px">
+				<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-file"></i></div>
+				<h2 class="feature-header">Free Delivery in india</h2>
+				<p class="feature-font">Shipment is done free to any part of India. 
+Any corner of India from east to west, 
+north to south, is one for us.</p>
+			</div>
+
+<!--
+<div class="col-sm-4 ff" style="margin-top:40px">
+				<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-pencil"></i></div>
+				<h2 class="feature-header">Free Delivery in india</h2>
+				<p class="feature-font">Shipment is done free to any part of India. 
+Any corner of India from east to west, 
+north to south, is one for us.</p>
+			</div>-->
+
+			
+</div>	
+</div>
+
+
+
+<div class="row" id="about-us" style="margin-left:0px;margin-right:0px;background-image: url('main_page_images/bck8.jpg'); background-size: cover;">
+<div class="central_container" style="width:80%;margin:auto;padding:20px">
+   
+   
+              <div class="col-md-5" style="width:50%">
+	       <div style="color: white;
+font-size: 20px;
+text-align: center;
+font-weight: 700;">Team</div>
+	       
+	       <ul class="cards">
+                       <li><img src="data:image/jpeg;base64,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">
+                               <hr>
+                               <div class="role-container">Nathan Bale</div>
+                               <div class="content">
+
+                                       <div style="margin-bottom: 3px;">Co-Founder</div>
+                                       <div>
+                                       <a href="#"><img class="social" src="main_page_images/fb.ico" /></a>&nbsp;
+                                       <a href="#"><img class="social" src="main_page_images/li.ico" /></a>
+                                       
+                                       </div>
+                                       
+
+                               </div></li>
+
+                       <li><img src="data:image/jpeg;base64,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">
+
+                               <hr>
+                               <div class="role-container">Steve Blank</div>
+                               <div class="content">
+                                       <div style="margin-bottom: 3px;">Co-Founder</div>
+                                        <a href="#"><img  class="social" src="main_page_images/fb.ico" /></a>&nbsp;
+                                       <a href="#"><img class="social" src="main_page_images/li.ico" /></a>
+                               </div></li>
+
+               </ul>
+	       </div>
+	      
+	       <div class="col-md-5" style="width:50%">
+	
+	<div style="color: white;
+font-size: 20px;
+text-align: center;
+font-weight: 700;">What we do</div>
+	<p>iuebckiqebcikbc</p>
+	
+    </div>
+    
+</div>
+       </div>
+
+
+<div class="row" id="contact-us" style="margin-left:0px;margin-right:0px;background-color:white";
+}">
+
+  	<div class="central_container" style="width:80%;margin:auto;padding:20px">
+  		<h2 style="margin-left:20px; color:rgba(59,156,156,1);">Contact</h2>
+  		
+
+<!--******************************************************** GOOGLE MAP ***************************************************************-->
+
+<div class="col-md-4" style="margin-top:30px; float:left;">
+      		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:280px;width:280px;"><div id="gmap_canvas" style="height:280px;width:280px;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.trivoo.net/google-maps/" id="get-map-data">trivoo</a></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(19.258045,72.85173899999995),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(19.258045, 72.85173899999995)});infowindow = new google.maps.InfoWindow({content:"<b>Documendz</b><br/>Link road, Dahisar (west)<br/> Mumbai" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+</div>
+
+
+<!--******************************************************** ADDRESS *******************************************************************-->
+
+  		<div class="col-md-4">
+  	    	<div style="margin-top:30px;">
+  	    	<div class="contact-text">
+  	    		<label class="glyphicon glyphicon-home" style="float:left; margin-top:5px;"></label>
+  	    		<div style="margin-left:30px;">
+  	    			<p style="margin-left:5px;"><strong>Documendz </strong><br> Gr. Floor, Hardik Apts, 120 link road, Near D-mart, Dahisar(W), Mumbai 400068</p>
+  	    		</div>
+  	    	</div>
+<!--
+  	    	<div class="contact-text">
+  	    		<label class="glyphicon glyphicon-earphone" style="float:left; margin-top:5px;"></label>
+  	    		<div style="margin-left:30px;">
+  	    			<p style="margin-left:5px;">9869499952</p>
+  	    		</div>
+  	    	</div>-->
+
+
+			<div class="contact-text">
+  	    		<label class="glyphicon glyphicon-envelope" style="float:left; margin-top:5px;"></label>
+  	    		<div style="margin-left:30px;">
+  	    			<p style="margin-left:5px;">feedback@documendz.com</p>
+  	    		</div>
+  	    	</div>
+
+  	    	
+  	    	</div>
+		</div>
+
+
+<!--********************************************************** CONTACT FORM ************************************************************-->
+
+    <div class="col-md-4">
+  			<p style="margin-top:26px; font-size:18px;">Write to us</p>
+  			<form  id="contact-us-form" role="form" >
+
+        			<input id="contact-us-name" type="text" name ="contact-name" class="form-control" placeholder="Name" required=""><br>
+  
+        			<input id="contact-us-email"  type="email" name ="contact-email" class="form-control" placeholder="Email address" required=""><br>
+        			
+        			<textarea id="contact-us-message" name ="contact-message" class="form-control" rows="3" placeholder="Message" required=""></textarea><br>
+        			
+        			<button id="contact-us-button" class="btn btn-lg btn-primary btn-block" type="submit" >Send</button>
+      			</form>
+  		</div>
+      
+
+      
+      
+      
+      </div>
+	</div>
+
+	<!--**********************************************************************************************************************-->
+
+	</div>
+	</div>
+
+	
+	<div class="navbar navbar-default" style="margin-bottom: 0px;">
+  		
+		
+		<div class="container-fluid" style="margin-top: 12px;">
+   		 
+   		 <div class="navbar-header" style="width: 100%;" >
+      		
+     		 <div class="col-md-4">
+		&copy; 2014 by Documendz. All rights reserved.
+		 </div>
+		 
+		  <div class="col-md-4" style="text-align: center;" >
+		 <a href="#">Terms of Service</a>  | <a href="#">Privacy Policy</a>
+		  </div>
+		  
+		  <div class="col-md-4">
+		 <a href="#"><img class="social-footer" src="main_page_images/fb.ico" /></a>&nbsp;
+                 <a href="#"><img class="social-footer" src="main_page_images/li.ico" /></a>&nbsp;
+		  </div>
+		 </div>
+      
+			
+		
+      		
+	  	</div>
+                
+		</div>
+	
+	
+	
+	  <div class="modal fade" id="suggestion_front" for="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+					<div class="modal-header">
+						<div style="font-size: 20px"> Help us improve ! </div>
+					</div>
+					
+						
+							<div id="feedback_front_div">
+								<div class="col-lg-12">
+							
+							<input type="email" id = "feedback_front_email"  style="width:467px; height:30px; font-size: 15px; margin-top:10px;" placeholder="Email Id">	 
+							<textarea id="feedback_front" style="width:467px; height:100px; font-size: 15px;  margin-top:10px;" placeholder="Your feedback"></textarea>
+							
+								</div>
+							</div>
+							
+						
+						<div id="feedback_front_display" style="font-size: 15px; margin: 5px 0px 0px 15px;"></div>
+					
+
+					<div class="modal-footer">
+						<a id="feedback_front_close" class="btn btn-default" data-dismiss="modal">close</a>
+						<a id="feedback_front_submit" class="btn btn-success">submit</a>
+					</div>	
+				
+			
+		</div>
+	</div>
+	 
+
+      	
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html> <!-- for forgot pwd -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+function checkforgot() // check pwd
+{
+	var ue = document.forgot.useremail;
+	if(checkfields(ue)) // check is fields empty
+		{
+		if(checkwhat(ue)) // check what user enterd email id or username
+			{
+			return true;
+			}
+		}
+	return false;
+}
+
+function checkwhat(ue)
+{
+	var mailformat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;  
+	 
+	if(ue.value.match(mailformat))   // if user entered email id
+	{  
+		/* document.forgot.pwd.value="em"; */
+		return true;  
+	}  
+	  
+	else // if not username or email id
+	{
+		 alert("Please enter a valid Email ID");
+		 return false;
+	}
+}
+
+function checkfields(ue)
+{
+	if(ue.value.length!=0)
+		{
+			return true;
+		}
+	else
+		{
+		 alert("Please enter your Email ID");
+		  return false;
+		}
+}
+</script>
+</head>
+<body>
+<form name="forgot" method="post" onsubmit="return checkforgot()" action="t_forgot.php" enctype = 'multipart/form-data'>
+Email ID : <input type="text" name="useremail" id="useremail" /><br /><br />
+<input type="submit" value="Submit" name='forgot_check'/>
+</form>
+</body>
+</html>

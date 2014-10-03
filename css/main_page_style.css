@@ -1,0 +1,309 @@
+body{
+	
+	margin: 0px;
+}
+
+
+.feature-font{
+	
+	font-size: 14px;
+max-width: 250px;
+margin: auto;
+color: #645f56;
+font-weight: 300;
+text-align:center;
+	
+}
+
+
+.feature-header{
+	
+font-size: 12px;
+text-transform: uppercase;
+position: relative;
+padding-bottom: 15px;
+margin-bottom: 20px;
+font-weight: 700;
+color: #403b33;
+font-family: "museo-sans",sans-serif;
+margin-top:20px;
+text-align:center;
+	
+}
+
+.feature-header:after{
+	
+	content: '';
+height: 1px;
+width: 50px;
+background: #529680;
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+transition: all 1s;
+}
+
+.ff:hover .feature-header:after{
+	content: '';
+height: 1px;
+width: 100px;
+background: #529680;
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+}
+
+#registration-container{
+	background-color: rgba(245, 245, 245, 0);
+border: 1px solid rgba(255,255,255, 1);
+
+box-shadow: 0 0 12px rgba(206, 203, 203, 0.85);
+float: right;
+position: relative;
+margin: 0 auto;
+padding: 20px;
+border-radius: 10px;
+	
+}
+
+.blank {
+	
+	border: 0;
+	box-shadow: none;
+	color: #333;
+	font-size: 13px;
+	width: 88%;
+	height: 23px;
+	vertical-align: middle;
+	outline: none;
+}
+
+
+.blank_div{
+	width: 300px;
+	background-color: #fff;
+	border: 1px solid #cacad4;
+	border-radius: 1px;
+	text-align: left;
+	padding: 3px;
+	opacity:1;
+	margin-bottom: 15px;
+}
+
+.input_image{display: inline-block;
+	height: 20;
+	overflow: hidden;
+	width: 22px;
+	margin: 0 2px 0 0;
+	vertical-align: middle;
+	opacity: 0.4;
+}
+
+
+
+.navigation_bar{
+	width: 100%;
+	height: 40px;
+	background-color: #eee;
+	box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+.header_li{
+margin-top: 0px;
+margin-left: 62px;
+color:grey;
+opacity:0.8;
+line-height: 40px;
+}
+
+.navigation{
+	float: right;
+margin: 0;
+list-style-type: none;
+height: 40px;
+}
+
+.container_head{
+	width: 80%;
+margin: auto;
+height:40px;
+margin-top: 0px;
+}
+
+.top-navigation.crash {
+
+overflow: visible;
+}
+
+.button_display{
+	padding: 5px 0 5px 5px;
+border-left: none;
+line-height: 20px;
+text-align: -webkit-match-parent;
+}
+
+.header_li > a{
+	color: grey;
+	opacity:0.8;
+	position:absolute;
+	text-decoration: none;
+	float:left;
+
+}
+
+.header_li > a:hover{
+	color: black;
+	opacity: 1.2;
+}
+
+.header_li:hover{
+	color:black;
+	opacity:1.2;
+}
+
+
+
+.footer_list{
+	list-style-type: none;
+	 padding:0px;
+	 background-color: #eee;
+	
+}
+.footer_list >li{
+	 height: 30px;
+}
+
+.site-footer-nav h5{
+	color:#666;
+}
+
+.footer_list li a{
+	color:#666;
+}
+
+.site-footer-nav{
+	padding-top: 20px;
+	background-color: #eee;
+	
+}
+
+
+.login_div{
+
+	background-color: #fff;
+	border: 1px solid #cacad4;
+	border-radius: 1px;
+	text-align: left;
+	padding: 3px;
+	margin-bottom: 10px;
+	
+	float: left;
+
+
+}
+
+.login_blank{
+	margin-bottom:10px;
+	border: 1px;
+	box-shadow: none;
+	color: #333;
+	font-size: 13px;
+	float:left;
+	height: 30px;
+	
+	outline: none;
+	padding-left:2px;
+	border: 1px solid #cacad4;
+
+}
+
+.central_container{
+	width: 100%;
+	height: 473px;
+
+}
+
+.password-meter{
+	height:5px;
+	width:19.44%;
+	float:left;
+	margin-right:2px;
+	margin-top: 2px;
+}
+
+/*input:-webkit-autofill {  // In case if you want to remove the yellow background of autofill
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}*/
+
+
+ .cards {
+       margin: 0;
+       list-style: none;
+       padding-left:0px;
+}
+
+.cards li {
+       display: inline-block;
+       margin: .5rem;
+       width: 185px;
+       position: relative;
+       background-color: #FFF;
+       border: solid 1px #CCC;
+}
+
+li hr {
+       margin: 0px auto;
+       width: 80%;
+}
+
+.cards li > img {
+       width: 183px;
+       height: 183px;
+       margin-bottom: 2px;
+}
+
+.social{
+	width:20px;
+	height:20px;
+}
+
+.social-footer{
+width: 25px;
+height: 25px;
+float: right;
+margin-right: 5px;
+	
+}
+
+.content {
+       text-align: center;
+       position: relative;
+       padding:3px 0px;
+}
+
+.role-container {
+       display: table;
+       height: 14px;
+       width: 100%;
+       font-weight: 800;
+       color: #888;
+       margin-top: 5px;
+       text-align: center;
+}
+ 
+.background-image-overlay{
+	display: block;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+background: url(../images/background-image-overlay.png) repeat;
+}
+}
+

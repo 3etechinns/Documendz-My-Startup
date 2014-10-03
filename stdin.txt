@@ -1,0 +1,24 @@
+UniFromEnc(original ret) enc:33 initial result:33
+UniFromEnc(ret1) 33
+UniFromEnc(ret2) enc:33 final result:2162688
+UniFromEnc(final ret) 2162688
+UniFromEnc(original ret) enc:34 initial result:34
+UniFromEnc(ret1) 34
+UniFromEnc(ret2) enc:34 final result:2228224
+UniFromEnc(final ret) 2228224
+UniFromEnc(original ret) enc:35 initial result:35
+UniFromEnc(ret1) 35
+UniFromEnc(ret2) enc:35 final result:2293760
+UniFromEnc(final ret) 2293760
+UniFromEnc(original ret) enc:36 initial result:36
+UniFromEnc(ret1) 36
+UniFromEnc(ret2) enc:36 final result:2359296
+UniFromEnc(final ret) 2359296
+UniFromEnc(original ret) enc:37 initial result:37
+UniFromEnc(ret1) 37
+UniFromEnc(ret2) enc:37 final result:2424832
+UniFromEnc(final ret) 2424832
+UniFromEnc(original ret) enc:38 initial result:38
+UniFromEnc(ret1) 38
+UniFromEnc(ret2) enc:38 final result:2490368
+UniFromEnc(final ret) 2490368
