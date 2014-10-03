@@ -41,7 +41,7 @@ mysql_query("INSERT INTO remaining (UID) VALUES ('$uid')");
 $secret = "61oeix1=-4#%e03mo";
 $email = urlencode($em);
 $hash = MD5($em.$secret);
-$link = "http://localhost/local_documendz/t_verification.php?email=$email&hash=$hash&user=$un";
+$link = "http://www.documendz.com/t_verification.php?email=$email&hash=$hash&user=$un";
 
 email($em,"documendz",$un,$link);
 

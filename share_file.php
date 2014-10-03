@@ -151,7 +151,7 @@ $message->setBody(
 					<tr>
 						<td bgcolor="#ffffff" style="padding: 10px 10px 10px 10px;">
 
-							<a href="localhost/local_documendz/home.html?em='.$encode_email.'">
+							<a href="http://www.documendz.com/?em='.$encode_email.'">
 								<table border="0" cellpadding="0" cellspacing="0" width="100%">
 									<tr bgcolor="#ee4c50" height="37">
 										<td align="center" style="color: white;font-weight: bold;font-size: 15px;">Click here</td>

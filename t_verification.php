@@ -29,7 +29,7 @@ if ($check_ver['verified'] == 0){
 	
 	$sql_ver = "UPDATE signup SET verified = 1 WHERE emailid ='".$email."'";
 
-	
+
 	
 
 	$vefi_val = mysql_query( $sql_ver, $dbhandle );

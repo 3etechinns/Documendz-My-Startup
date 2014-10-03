@@ -4,6 +4,6 @@
 
 session_start();
 session_destroy();
-echo"<script>window.location.href ='https://www.documendz.com'</script>";
+echo"<script>window.location.href ='http://www.documendz.com'</script>";
 
 ?>
