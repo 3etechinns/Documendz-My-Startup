@@ -43,7 +43,7 @@ $email = urlencode($em);
 $hash = MD5($em.$secret);
 $link = "http://www.documendz.com/t_verification.php?email=$email&hash=$hash&user=$un";
 
-email($em,"documendz",$un,$link);
+email($em,"Documendz",$un,$link);
 
 }//closure for if(strlen........) 
 

@@ -1391,7 +1391,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 //To display received files for editing from other users
 
 $m = mysql_real_escape_string($_SESSION[userid]);
-    $received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHERE receiver_id = '$m' ");
+    $received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHERE receiver_id = '$m' ORDER BY shared_id ASC");
    
     while ($row = mysql_fetch_array($received_files_of_signed_in_user)) {
 	
@@ -1418,7 +1418,7 @@ $m = mysql_real_escape_string($_SESSION[userid]);
 		   <table style='width:500px; table-layout:fixed; margin-bottom:2px;'>
 		   <tr>
 		   <td style='width:20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>
-		   <td style='width:350px; overflow:hidden'><a style='color:#393c3f' id='received-file-open' class='file_name doc-viewer' name='file_name' target='_blank' href='" . $row['Uploaded_file_location'] . "?json_path=" . $row['json_file_name'] . "&shared_id=" . $row['shared_id'] . "&file=".htmlentities($row['file_name'])."&auth=".$row['sender_id']."&key=1'>" . $row['file_name'] . "</a></td>
+		   <td style='width:350px; overflow:hidden'><a style='color:#393c3f' id='received-file-open' class='file_name doc-viewer' name='file_name' target='_blank' href='" . $row['Uploaded_file_location'] . "?jp=" . $row['json_file_name'] . "&si=" . $row['shared_id'] . "&file=".htmlentities($row['file_name'])."&auth=".$row['sender_id']."&key=1'>" . $row['file_name'] . "</a></td>
 		   <td class='received-badge-wrapper' style='width:130px; text-align:right;'><span id='received-badge'>".$badge."</span></td>
 		   </tr>
 		   </table>

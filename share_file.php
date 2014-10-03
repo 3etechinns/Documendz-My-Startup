@@ -202,7 +202,7 @@ if (!$mailer) {
 	}
 }			
 			
-email($em, $_SESSION['Username']);
+email($em, "Documendz");
 
 
 			
