@@ -1095,6 +1095,8 @@ function alert_message(message,message_type_class) {
 
 <body>
    
+   <?php include_once('analyticstracking.php'); ?>
+   
     <div id='alert-container' class="alert" align="center" role="alert">
     <p></p>
     </div>
