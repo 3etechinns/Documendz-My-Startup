@@ -713,13 +713,16 @@ $("#self_uploaded").contents().fadeOut();
            }
        }
    }
-
-   if (interval > 1 || interval === 0) {
+if (interval < 0 ) {
+ return 'just now';
+}
+  else{ if (interval > 1 || interval === 0) {
        intervalType += 's';
    }
 
    return interval + ' ' + intervalType+' ago';
-};
+}
+ };
 
 function search_results(search_input){    //search operations
 
@@ -807,6 +810,9 @@ function search_results(search_input){    //search operations
 		else
 		{
 		var timeago = timeSince(parseInt(obj['last_edit']));
+		
+		
+		
 		}
 		
 		 
