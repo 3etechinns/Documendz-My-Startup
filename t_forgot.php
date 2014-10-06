@@ -29,7 +29,7 @@ $salt = 'change me cause im not secure';
     $path = '/t_changepass.php';
     $timestamp = time() + (30 * 24 * 60 * 60); // one month valid
     $hash = md5($salt . $timestamp); // order isn't important at all... just do the same when verifying
-    $url = "http://localhost/local_documendz{$path}?a=url&b=0&s={$hash}&t={$timestamp}&em=".md5($recipient_email_id);
+    $url = "http://www.documendz.com{$path}?a=url&b=0&s={$hash}&t={$timestamp}&em=".md5($recipient_email_id);
 
 
 $message->setSubject("Forgot password");
