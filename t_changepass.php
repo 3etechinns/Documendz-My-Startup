@@ -10,7 +10,7 @@ if(isset($_GET['em'])) // if encoded username is there in url
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Change password</title>
 
       	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
@@ -108,7 +108,7 @@ $(document).on({
 					
 					if ($.trim(message).localeCompare('passwordset') == 0) {
 				
-					$(".bs-example").html("<div class='form-group'>Password changed successfully</div>"+"<div class='form-group'>Please <a href='http://localhost/local_documendz/home.html'>click here</a> to continue</div>");
+					$(".bs-example").html("<div class='form-group'>Password changed successfully</div>"+"<div class='form-group'>Please <a href='http://www.documendz.com'>click here</a> to continue</div>");
 					}
 					
 					else if($.trim(message).localeCompare('wrongpassword') == 0){
