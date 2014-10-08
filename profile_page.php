@@ -560,7 +560,7 @@ $(document).on({
 			  setTimeout(function(){
 					 $("#send-file-button").prop('disabled','');
 					 $("#send-file-button").val('Send');
-					 alert_message("Email id you entered seems incorrect","alert-danger");
+					 alert_message("Email id you entered seems incorrect. Please try again","alert-danger");
 					}, 2000);
 			  
 			 }
@@ -1265,7 +1265,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 		</div>
 	</div>
    
-   
+   <div class="information">Currently only PDF and Images upto 4MB are supported. Support for more file types will be added soon.</div>
    
     <div id='uploaded_container' class='bs-docs-example'>
    

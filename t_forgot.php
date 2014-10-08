@@ -75,14 +75,14 @@ $message->setBody(
 					<tr>
 						<td bgcolor="#ffffff" style="padding: 10px 10px 10px 10px;">
 
-							<a href="'.$url.'">
+							
 								<table border="0" cellpadding="0" cellspacing="0" width="100%">
 									<tr bgcolor="#ee4c50" height="37">
-										<td align="center" style="color: white;font-weight: bold;font-size: 15px;">Click here to reset password</td>
+										<td align="center" style="font-size: 15px;"><a style="text-decoration:none; color:#fff; font-weight:bold; display:block; padding: 10px 0px;" href="'.$url.'">Click here to reset password</a></td>
 									</tr>
 
 								</table>
-						</a>
+						
 						</td>
 					</tr>
 					<tr>

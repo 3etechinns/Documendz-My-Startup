@@ -151,14 +151,14 @@ $message->setBody(
 					<tr>
 						<td bgcolor="#ffffff" style="padding: 10px 10px 10px 10px;">
 
-							<a href="http://www.documendz.com/?em='.$encode_email.'">
-								<table border="0" cellpadding="0" cellspacing="0" width="100%">
-									<tr bgcolor="#ee4c50" height="37">
-										<td align="center" style="color: white;font-weight: bold;font-size: 15px;">Click here</td>
-									</tr>
+							
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr bgcolor="#ee4c50" height="37">
+	<td align="center" style="font-size: 15px;text-decoration:none; color:#fff; font-weight:bold; display:block;padding: 10px 0px;"><a href="http://www.documendz.com/?em='.$encode_email.'">Click here</a></td>
+</tr>
 
 								</table>
-						</a>
+						
 						</td>
 					</tr>
 					<tr>

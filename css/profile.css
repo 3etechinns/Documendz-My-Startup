@@ -217,6 +217,20 @@ border-top: solid 13px transparent;
 border-bottom: solid 13px transparent;
 	
 }
+
+
+.information{
+         
+         float: right;
+margin: 5px 73px;
+padding: 5px;
+width: 325px;
+font-size: 10px;
+color: grey;
+border: 1px solid grey;
+border-radius: 5px;
+         
+}
 /*  .ssc-holder{
 	
 display: none;
