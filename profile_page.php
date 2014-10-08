@@ -1265,7 +1265,13 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 		</div>
 	</div>
    
-   <div class="information">Currently only PDF and Images upto 4MB are supported. Support for more file types will be added soon.</div>
+    <div style="margin-bottom: 0px;width: 420px;float: right;margin-right: 92px;" class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  Currently only PDFs and Images upto 4MB are supported. Support for more file types will be added soon.
+</div>  
+   
+   
+   
    
     <div id='uploaded_container' class='bs-docs-example'>
    
