@@ -695,7 +695,7 @@
 			
 				var x = e.pageX - _offset.left,
 					y = e.pageY - _offset.top;		
-			console.log("Hi, I am from sketchpad");
+			
 				_points.push([x, y]);
 				_c.attr({ path: points_to_svg() });
 			}
