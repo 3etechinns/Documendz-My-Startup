@@ -53,7 +53,7 @@ $mailer->send($message);
 }
 
 
-email($email,htmlspecialchars($text),"From Home page");
+email(htmlentities($email),htmlentities($text),"From Home page");
 }
 
 else{

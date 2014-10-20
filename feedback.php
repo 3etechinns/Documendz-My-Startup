@@ -59,7 +59,7 @@ $mailer->send($message);
 }
 
 
-email($_SESSION['email'],$text,$_SESSION['Username']);
+email($_SESSION['email'],htmlentities($text),$_SESSION['Username']);
 
 }
 }

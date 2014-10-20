@@ -363,6 +363,10 @@
 		//-----------------
 		// We can only attach events to the container, so do it.
 		
+		
+		function random(){function a() {return (((1 + Math.random()) * 65536) | 0).toString(16).substring(1);}
+								return (a() + "-" + a() + "-" + a() + a() + a()).toLowerCase() ;}
+							
 		function _pathclick(e) {
 			if (_options.editing == "erase") {
 				var stroke = this.attr();
@@ -390,7 +394,7 @@
 			
 			if(e.which == 1){  // To enable drawing only on left-click
 			
-				_disable_user_select();
+				
 
 			_pen.start(e, self);
 			
@@ -405,10 +409,9 @@
 		
 		
 		function _mouseup(e) {
-			function random(){function a() {return (((1 + Math.random()) * 65536) | 0).toString(16).substring(1);}
-								return (a() + "-" + a() + "-" + a() + a() + a()).toLowerCase() ;}
+			
 			var rnd = random();
-			_enable_user_select();
+			
 			
 			var path = _pen.finish(e, self);
 			
