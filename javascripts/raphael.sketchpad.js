@@ -20,7 +20,7 @@
  *       - Removed input option. To make editors/viewers, set editing option to true/false, respectively.
  *         To update an input field, listen to change event and update input field with json function.
  *       - Reduce file size V1. Changed stored path info from array into a string in  format.
- * 0.3.0 - Added erase, supported initializing data from input field.
+ * 0.3.0 - Added erase, supported initialiing data from input field.
  * 0.2.0 - Added iPhone/iPod Touch support, onchange event, animate.
  * 0.1.0 - Started code.
  *
