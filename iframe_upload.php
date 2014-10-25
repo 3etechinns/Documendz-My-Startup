@@ -175,8 +175,12 @@ session_start();
 include 'connect.php';
 include 'unique_random_alphanumeric.php';
 
-    
-    include 'connect.php';
+include 'connect.php';
+ 
+require 'vendor/autoload.php';
+
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
  
 
   
