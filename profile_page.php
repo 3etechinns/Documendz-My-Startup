@@ -1200,8 +1200,8 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
                 <span class="btn btn-primary  btn-sm btn-file"> 
                 <i class="glyphicon glyphicon-open"></i>&nbsp;&nbsp;Upload file
               
-    <form  enctype = 'multipart/form-data' method="post">
-        <input id="file-browse" type="file" name="file[]"  onchange = "display_progress();this.form.submit();"/>
+    <form  enctype = 'multipart/form-data' action="iframe_upload.php" target="my-iframe" method="post">
+        <input id="file-browse" type="file" name="file[]"  onchange = "show_iframe_upload();this.form.submit();"/>
       
     </form>
  </span>
