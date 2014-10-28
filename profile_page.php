@@ -72,10 +72,13 @@ use Aws\S3\Exception\S3Exception;
   
   function show_iframe_upload(){
   
+  $("#feedback_close_iframe").addClass("disabled");
   $("#iframe-upload").modal({backdrop:'static',keyboard:false});
   document.getElementById("iframe_upload_message").innerHTML = "";
     $("#iframe-upload").modal('show');
     $("#top-image").attr("src","images/loading.gif");
+    
+   
 
  }
  
@@ -401,6 +404,33 @@ return chk;
  
  
  
+ 
+ $(document).on({           
+	change:function(e){
+
+  var FileExt = this.value.substr(this.value.lastIndexOf('.')+1);
+	
+ if(this.files[0].size < 4096000 && (FileExt == "pdf" || FileExt == "png" || FileExt == "jpg" || FileExt == "svg" || FileExt == "swf" || FileExt == "bmp" )){
+  show_iframe_upload();
+   this.form.submit();
+  
+ }
+else {
+ 
+ show_iframe_upload();
+ document.getElementById("iframe_upload_message").innerHTML = " Currently only PDFs and Images upto 4MB are supported. Support for more file types will be added soon.";
+  $("#top-image").attr("src","images/cross.png");
+  $("#feedback_close_iframe").removeClass("disabled");
+
+ 
+}
+
+ }
+},"#file-browse");
+
+
+
+
 function check_remaining(){
  
  if(limit_array[0] > 0){
@@ -1149,21 +1179,23 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 		</div>
 	</div>
   
-   <div class="modal fade" id="iframe-upload" for="dialog">
+    <div class="modal fade" id="iframe-upload" for="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				
 					<div class="modal-header">
 						<div style="font-size: 20px;"> File upload
 						<img id="top-image" style="float:right;margin-right:4px;width:25px" src="images/loading.gif"> </div>
+						<p style="font-size: 12px;">Larger files with more images may take longer to process</p>
 					</div>
 					
 		<iframe style="border: none;width: 100%;height: 110px;" id="my-iframe" name="my-iframe" src="iframe_upload.php"></iframe>
 					
 					<div style="font-size: 15px;padding: 0 10px;color: rgb(143, 41, 53);" id="iframe_upload_message"></div>
 
-					<div style="margin-top:0px;" class="modal-footer">
-					<button id="feedback_close_iframe" class="btn btn-danger disabled" data-dismiss="modal">close</button>
+					<div style="margin-top:0px; padding-top:0px;" class="modal-footer">
+					 
+					<button id="feedback_close_iframe" class="btn btn-danger" data-dismiss="modal">close</button>
 	
 					</div>
 					
@@ -1171,7 +1203,6 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 			</div>
 		</div>
 	</div>
-  
   
    
     <div style="margin-bottom: 0px;width: 420px;float: right;margin-right: 92px;" class="alert alert-warning alert-dismissible" role="alert">
