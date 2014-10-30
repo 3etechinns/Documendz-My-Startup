@@ -302,3 +302,48 @@ border: none;
 .header-panel-btn[disabled]{
                 background-color: rgb(142, 151, 153);
                 }
+
+                
+#del-info{
+z-index: 1000;
+margin-bottom: 0px;
+width: 212px;
+float: right;
+margin-top: 46px;
+margin-right: 20px;
+background-color: rgba(252, 248, 227, 0.73);
+border-color: rgba(250, 235, 204, 0.5);
+color: #8a6d3b;
+padding: 15px;
+margin-bottom: 20px;
+border: 1px solid #faebcc;
+border-radius: 4px;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.42857143;
+}
+
+.close_info{
+padding: 0;
+cursor: pointer;
+background: 0 0;
+border: 0;
+-webkit-appearance: none;
+float: right;
+font-size: 19px;
+font-weight: 700;
+line-height: 1;
+color: #000;
+text-shadow: 0 1px 0 #fff;
+opacity: .2;}
+
+.close_area{
+position: absolute;
+width: 1px;
+height: 1px;
+margin: -1px;
+padding: 0;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+border: 0;}
+

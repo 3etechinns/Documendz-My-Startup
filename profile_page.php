@@ -17,7 +17,7 @@ use Aws\S3\Exception\S3Exception;
 
 <!doctype html>
 <meta charset="utf-8">
-
+<meta name=viewport content="width=device-width, initial-scale=1">
 <title>Documendz</title>
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
 

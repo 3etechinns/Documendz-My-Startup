@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <link rel="stylesheet" type="text/css" href="../../css/contextmenu.css">
-<link rel="stylesheet" type="text/css" href="../../css/documendz.css">
+<link rel="stylesheet" type="text/css" href="../../css/documendz.css?var=30102014">
 <link rel="stylesheet" type="text/css" href="../../css/perfect-scrollbar.min.css">
       <link rel="stylesheet" href="../../css/introjs.min.css">
 
@@ -950,7 +950,11 @@ function textbox_events(){
                 window.page_height = $(".pf").height();
                 window.comment_div_id_cnt = -1;	//for comment box id
                 
-                
+                 $(".close_info").click(function(){
+		$("#del-info").remove();
+	       
+	       });
+	        
                 $( "#display-history" ).click(function() {
                 	if($('#history').children().length > 0){
                 	  $( "#history" ).toggle( "fast", function() {
