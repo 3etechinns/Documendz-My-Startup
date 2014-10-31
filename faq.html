@@ -1,6 +1,7 @@
 <html>
     <head>
 	<meta charset="UTF-8">
+            <meta name="viewport" content = "width=device-width,initial-scale=1">
 	<meta name="description" content="Top frequently asked questions on Documendz">
         <title> Documendz FAQ</title>
         
@@ -17,7 +18,7 @@
     
     
     .textbox{
-        width:600px;
+        max-width:600px;
         background-color:#eee;
         margin:10px 25px 20px 25px;
         padding:10px;
@@ -26,7 +27,7 @@
     
     .wrapper{
         
-        width: 650px;
+        max-width: 650px;
         height: auto;
 margin: auto;
 margin-bottom: 10px;
@@ -37,7 +38,7 @@ background: rgb(188, 192, 192);
     }
     
 .question{
-        
+        width:80%;
         margin-left: 35px;
 margin-bottom: -8px;
     }
@@ -57,33 +58,27 @@ margin-right: 5px;
 
    </style>
    
- <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-55292613-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
-   
     </head>
     
     
     <body>
-        <div class="navbar navbar-default">
-            
-            
-            <div class="container-fluid" style="padding: 0px 165px;">
+       <nav class="navbar navbar-default" role="navigation" style="position:fixed;width:100%;z-index:1000;margin-bottom:0px;box-shadow: 0 1px 23px -3px rgba(0,0,0,0.2);background-color: white;padding: 2px 0px;">
+  		<div class="container-fluid" style="width:80%;margin:auto;">
    		 
    		 <div class="navbar-header">
-      		
+      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+	
      		 <a href="http://www.documendz.com"><img style="width:175px; padding-top: 5px;" src="images/logo1.gif"></a> 
    		 </div>
 
 
-   		
+   		<div id="navbar" class="navbar-collapse collapse">
       
       		<ul class="nav navbar-nav navbar-right">
        			 <li><a href="#suggestion_front" data-toggle="modal">Feedback</a></li>
@@ -92,10 +87,11 @@ margin-right: 5px;
        			 
      		 </ul>
    		 
+</div> 
 
 	  	</div>
   
-        </div>
+		</nav>
         <div id="header">FAQs</div>
          <div class="wrapper">
          <div class="textbox">
@@ -216,8 +212,8 @@ Whether you wish to get reports reviewed by your boss or your CV reviewed by you
 							<div id="feedback_front_div">
 								<div class="col-lg-12">
 							
-							<input type="email" id = "feedback_front_email"  style="width:467px; height:30px; font-size: 15px; margin-top:10px;" placeholder="Email Id">	 
-							<textarea id="feedback_front" style="width:467px; height:100px; font-size: 15px;  margin-top:10px;" placeholder="Your feedback"></textarea>
+							<input type="email" id = "feedback_front_email"  style="width:100%; height:30px; font-size: 15px; margin-top:10px;" placeholder="Email Id">	 
+							<textarea id="feedback_front" style="width:100%; height:100px; font-size: 15px;  margin-top:10px;" placeholder="Your feedback"></textarea>
 							
 								</div>
 							</div>
