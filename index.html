@@ -623,6 +623,15 @@ $(function() { // jquery for remember me
 
 <body onload="bodyload()">
 	
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
 <nav class="navbar navbar-default" role="navigation" style="position:fixed;width:100%;z-index:1000;margin-bottom:0px;box-shadow: 0 1px 23px -3px rgba(0,0,0,0.2);background-color: white;padding: 2px 0px;">
   		<div class="container-fluid" style="width:80%;margin:auto;">
 			
@@ -672,6 +681,8 @@ validate your reports, articles, CVs, designs or any other document, is here.</p
 				<a target="_blank" href="/uploaded/demo/" class="btn btn-success btn-large" style="margin-top: 18px;
     font-size: 19px;
 ">Try out a sample !</a></p>
+			
+			<div style="margin-top: 20px;" class="fb-like" data-href="https://www.facebook.com/pages/Documendz/347727192061458" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
 			</div>
 			
 			
