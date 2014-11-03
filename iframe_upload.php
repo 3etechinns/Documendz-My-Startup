@@ -72,7 +72,7 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
             theKid.enctype = "multipart/form-data";
             $(theKid).addClass("share-file-form");    //theKid.class cannot work, hence jquery
             theKid.method = "POST";
-            theKid.innerHTML ="<input type='text' class='form-control input-sm' style='width:180px;margin-bottom:10px' name='Emailid_to_be_sent' placeholder='Emailid' /> "
+            theKid.innerHTML ="<input type='text' class='form-control input-sm' style='width:180px;margin-bottom:10px' name='Email' placeholder='Emailid' /> "
                     + "<input type='hidden' name='unique_filename' value='" + encodedStr + "' /> "
                     + "<input type='hidden' name='file_name' value="+file+">"
                     + "<input id='send-file-button'type='submit' class='btn btn-primary btn-sm' name='share_file' value='Send' />";

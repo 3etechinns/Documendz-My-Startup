@@ -1298,7 +1298,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
       			<a class='dropdown-toggle btn btn-success btn-xs' href='#' data-toggle='dropdown'>Share&nbsp;<i class='glyphicon glyphicon-share-alt'></i></a>
         		<div class='dropdown-menu' style='padding: 15px;'>
         		<form class ='share-file-form' enctype = 'multipart/form-data' method='post'>
-        		<input type='text' class='form-control input-sm' style='width:180px;margin-bottom:10px' name='email' placeholder='Emailid' />
+        		<input type='text' class='form-control input-sm' style='width:180px;margin-bottom:10px' name='Email' placeholder='Emailid' />
         		<input type='hidden' name='file_name' value='" . htmlentities($row['file_name']) . "' />
         	<input type='hidden' name='unique_filename' value='" . htmlentities($row['unique_filename']) . "' />	
        		<input  id='send-file-button' type='submit' class='btn btn-primary btn-sm' name='share_file' value='Send' /> 
@@ -1602,5 +1602,4 @@ $m = mysql_real_escape_string($_SESSION[userid]);
 
 </body>
 </html>
-
 

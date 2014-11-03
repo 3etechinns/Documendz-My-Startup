@@ -10,10 +10,10 @@ if($_GET['token'] != $_SESSION['userid'] ){
 	
 	echo '999';
 }
-else if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+else if(filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)){
 
 
-$em = mysql_real_escape_string($_POST['email']);	
+$em = mysql_real_escape_string($_POST['Email']);	
 	// echo $_POST['Emailid_to_be_sent'];
 	//echo $_POST['file_name'];
 	//Extract the userid of the person to whom the file is to be shared with based on the entered email.
