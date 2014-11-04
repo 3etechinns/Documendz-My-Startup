@@ -308,14 +308,15 @@ border: none;
 z-index: 1000;
 margin-bottom: 0px;
 width: 212px;
-float: right;
+position: fixed;
+right: 0px;
 margin-top: 46px;
 margin-right: 20px;
 background-color: rgba(252, 248, 227, 0.73);
 border-color: rgba(250, 235, 204, 0.5);
 color: #8a6d3b;
 padding: 15px;
-margin-bottom: 20px;
+
 border: 1px solid #faebcc;
 border-radius: 4px;
 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
