@@ -1,4 +1,86 @@
 
+.unselectable {
+
+   user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -khtml-user-select: none
+
+}
+
+.comment-box{
+
+list-style-type:none;
+margin:0px;
+
+padding:0px 4px;
+border:solid 1px #D9D0D0;
+box-shadow: 2px 2px 7px #938888;
+border-radius: 5px;
+background-color: #FFF; 
+min-height:40px;
+position:absolute;
+left:0px;
+width:155px;
+height:auto;
+}
+
+.comment-reply {
+
+font-size: 10px;
+float:right;
+display: block;
+padding: 0px 2px;
+cursor:pointer;
+
+}
+
+.critic_name{
+
+font-size: 14px;
+border: 0;
+border-bottom: 1px solid #eee;
+width: 100%;
+margin: 2px 0px;
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+font-weight: 100;
+color: rgb(155, 155, 155);
+
+
+}
+
+.comment-text{
+	min-height:30px;
+	width:140px;
+	 /* margin:5px;  */ 
+	 height:auto;
+	 font-size:13px;
+	 /* display:inline; */  /* Commented out for mozilla to be editable */
+ 
+	 
+	}
+
+.comment-text:focus{
+	outline: 0; 
+	}
+	
+.delete-comment{
+	position:absolute;
+	top:-9px !important;
+	right:-9px !important;
+	float:right;
+	border:none;
+	height:16px;
+	width:16px;
+	cursor:pointer;
+	outline:none;
+	opacity:0.5;
+	background-image:url(../../images/delete16x16.png);
+	background-position: 50% 50%;
+	 background-repeat: no-repeat;
+	}
+
+
 input[type=radio], input[type=checkbox] {
 		display:none;
 	}
