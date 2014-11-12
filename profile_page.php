@@ -41,7 +41,7 @@ use Aws\S3\Exception\S3Exception;
    
 <!--<script src="jquery.gritter.min.js"></script>
 <link href="jquery.gritter.css"rel="stylesheet" type="text/css" />-->
-<script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+<script src="javascripts/pusher.js"></script>
 <script src="push/PusherNotifier.js"></script>
 
 
