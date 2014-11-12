@@ -791,7 +791,7 @@ function search_results(search_input){    //search operations
 
 
     $(document).ready(function() {
-    document.getElementById("display_progress").style.display = "none";
+  
 
 /*      $("#myTabContent").slimScroll({
 		
@@ -969,14 +969,7 @@ $("#self_uploaded").find("[data-file-identity = '"+obj['unique_filename']+ "']")
 	},'#delete-search');
 
 
-    
-    function display_progress(){
-    
-//    alert ("progress");
-    document.getElementById("display_progress").style.display = "block";
-    
-    }
- 
+   
   
 
 function alert_message(message,message_type_class) {
@@ -1242,14 +1235,6 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 
               
  
-    <div id = "display_progress" style="float: left" >
-    <progress id = "prog" value="0" max="100"></progress> 
-    <img style="float:left;margin-right:5px;" src="images/file_uploading.gif">
-    
-    <div id = "progress_indicator"></div>
-    </div>
-
-    
     
     <!--This is the horizontal title bar to be shown on every profile page-->
 
