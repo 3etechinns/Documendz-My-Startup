@@ -1337,7 +1337,7 @@ $m = mysql_real_escape_string($_SESSION[userid]);
       if($row['review_state'] == 1){
 		if($row['last_reviewer_id'] != $_SESSION['userid']){
 		 
-		 $badge = "<i class='glyphicon glyphicon-pencil'></i>";
+		 $badge = "<text style='color: rgb(44, 134, 2);font-size: 11px;border: 1px solid green;border-radius: 6px;padding: 2px;'>new updates</text>";
 		 
 		}
 		else{
