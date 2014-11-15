@@ -624,7 +624,7 @@ $(document).on({
 			
 		if($.trim($(this).parent().find('li:last > .comment-text').text()) != ""){
 		
-		$(this).before('<li><span class="critic_name" contenteditable="false">'+Author+':</span><span class="trash-comment"><img src="../../images/trash.png"></span><div class="comment-text" contenteditable="true" spellcheck=false></div></li>');
+		$(this).before('<li><span class="critic_name" contenteditable="false">Author:</span><span class="trash-comment"><img src="../../images/trash.png"></span><div class="comment-text" contenteditable="true" spellcheck=false></div></li>');
 		setSelection($(this).parent().children("li:last").children(".comment-text")[0]);	
 		}
 		else{
