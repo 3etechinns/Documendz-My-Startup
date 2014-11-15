@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <link rel="stylesheet" type="text/css" href="../../css/contextmenu.css">
-<link rel="stylesheet" type="text/css" href="../../css/documendz.css?var=30102014">
+<link rel="stylesheet" type="text/css" href="../../css/documendz.css?var=15112014">
 <link rel="stylesheet" type="text/css" href="../../css/perfect-scrollbar.min.css">
       <link rel="stylesheet" href="../../css/introjs.min.css">
 
@@ -117,7 +117,7 @@ listItems.each(function() {
 	$('#svg-container').textHighlighter();	
 	$('#svg-container').getHighlighter().removeHighlights("."+$(this).attr('class'),$(this).attr('class'));
 	
-	delete_commentbox_update_arrays($(del_class).children('.delete-comment')[0]);
+	delete_commentbox_update_arrays($(del_class).children('.new-comment')[0]);
    
    }
    
@@ -202,7 +202,7 @@ function check_empty_commentbox(comment_type){
 			 
 			 $('#svg-container').getHighlighter().destroy();
 		 }
-			delete_commentbox_update_arrays($(this).children(".delete-comment")[0]);
+			delete_commentbox_update_arrays($(this).children('.new-comment')[0]);
 			comm_del = 1;   //to set that the delete has happenend for an empty box, so the svg-container has not moved
 		}
 			
@@ -444,7 +444,7 @@ function contextmenu_activate(){
 				            $("#svg_id > " + elem).remove();
 							$("#connector-svg > " + elem).remove();
 							$("#history > " + elem).remove(); 
-							delete_commentbox_update_arrays($(elem).children('.delete-comment')[0]);
+							delete_commentbox_update_arrays($(elem).children('.new-comment')[0]);
 			                 if( $("#comment-container").children().length == 0){
 			 					/* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */   
 			 					comm_del = 0;												            
@@ -480,7 +480,7 @@ function contextmenu_activate(){
 		        	    	$("#svg_id > " + elem).remove();
 							$("#connector-svg > " + elem).remove();
 							$("#history > " + elem).remove();
-							delete_commentbox_update_arrays($(elem).children('.delete-comment')[0]);
+							delete_commentbox_update_arrays($(elem).children('.new-comment')[0]);
 					              
 					              if( $("#comment-container").children().length == 0){
 										/* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */   
@@ -524,7 +524,7 @@ function contextmenu_activate(){
 							$("#history > " + elem).remove(); 
 							
 			                
-			                 delete_commentbox_update_arrays($(elem).children('.delete-comment')[0]);
+			                 delete_commentbox_update_arrays($(elem).children('.new-comment')[0]);
 			                 if( $("#comment-container").children().length == 0){
 			 				/* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */   
 			 					comm_del = 0;												            
@@ -572,7 +572,7 @@ $(function(){
         	 $("#svg_id > " + elem).remove();
 			$("#connector-svg > " + elem).remove();
 			$("#image-container >" + elem).remove();	
-                 delete_commentbox_update_arrays($(elem).children('.delete-comment')[0]);
+                delete_commentbox_update_arrays($(elem).children('.new-comment')[0]);
                
                  if( $("#comment-container").children().length == 0){
  					/* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */   
@@ -624,18 +624,17 @@ $(document).on({
 			
 		if($.trim($(this).parent().find('li:last > .comment-text').text()) != ""){
 		
-		$(this).siblings('.delete-comment').before('<li><span class="critic_name" contenteditable="false">User:</span><div class="comment-text" contenteditable="true" spellcheck=false></div></li>');
+		$(this).before('<li><span class="critic_name" contenteditable="false">'+user+':</span><span class="trash-comment"><img src="../../images/trash.png"></span><div class="comment-text" contenteditable="true" spellcheck=false></div></li>');
 		setSelection($(this).parent().children("li:last").children(".comment-text")[0]);	
 		}
 		else{
-			//do nothing as one already empty li above
+			//do nothing as one ready empty li above
 			
 		}
 	}
 	
 	
-},'.comment-reply');
-
+},'.new-comment');
 
 $(document).on({
 
@@ -1098,48 +1097,62 @@ function textbox_events(){
 							// Comment-box events //
 		////////////////////////////////////////////////////////          
           
-
-		
-		$(document).on({
-			
+$(document).on({
+    
 			click: function() {
 				 
-				if( $("#comment-container").children().length == 1){
-					/* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */   
-					comm_del = 0;												            
-																				/* When last comment-box is deleted, page should shift*/
-					                                                            /* Currently hardcoded, should vary acc to page width*/
-				}
+				var del_class = "." + $(this).closest(".comment-box").attr('class').split(' ')[1];
 				
 				
+				if ($(del_class+" li").length == 1) {
+				 
+				 
 				if($('#strike').is(':checked') == true || $('#highlight').is(':checked') == true || $('#drag-comment').is(':checked') == true){
 				
-				var del_class = "." + $(this).parent().attr('class').split(' ')[1];
-					$('#svg-container').getHighlighter().removeHighlights("."+$(this).parent().attr('class').split(' ')[1],$(this).parent().attr('class').split(' ')[1]);
+				
+					$('#svg-container').getHighlighter().removeHighlights("."+$(this).closest(".comment-box").attr('class').split(' ')[1],$(this).closest(".comment-box").attr('class').split(' ')[1]);
 					$("#svg_id > " + del_class).remove();
 					$("#connector-svg > " + del_class).remove();
 					$("#image-container > "+ del_class).remove();
 					$("#history > " + del_class).remove();
-					delete_commentbox_update_arrays(this);
+					delete_commentbox_update_arrays($(this).parent());
 					
 				}
 				else{
 				
 					$('#svg-container').textHighlighter();	
-					$('#svg-container').getHighlighter().removeHighlights("."+$(this).parent().attr('class').split(' ')[1],$(this).parent().attr('class').split(' ')[1]);
-					var del_class = "." + $(this).parent().attr('class').split(' ')[1];
+					$('#svg-container').getHighlighter().removeHighlights("."+$(this).closest(".comment-box").attr('class').split(' ')[1],$(this).closest(".comment-box").attr('class').split(' ')[1]);
+					
 					$("#svg_id > " + del_class).remove();
 					$("#connector-svg > " + del_class).remove();
 					$("#image-container > "+del_class).remove();
 					$("#history > " + del_class).remove();
-					delete_commentbox_update_arrays(this);
+					delete_commentbox_update_arrays($(this).parent());
 					$('#svg-container').getHighlighter().destroy();
 					
 				}
+				 
+				 
+  
+				}
+				
+				else{
+				
+				$(this).parent().remove();
+				}
+				
+				if( $("#comment-container").children().length == 0){
+					
+					comm_del = 0;												            
+				}
+				
+			
 
 	           }		
-		},'.delete-comment');
+		},'.trash-comment');
 
+		
+		
        ///////////////////////////////////////////////////////
 
        
@@ -1964,10 +1977,11 @@ function svg_left_no_px(state){
                                             ' style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li>'+
                                     		'<span class="critic_name" contenteditable="false">User:</span>'+
+						'<span class="trash-comment"><img src="../../images/trash.png"></span>'+
                                             '<div class="comment-text" contenteditable="true" spellcheck=false></div>' +
                                             '</li>'+
-                                            '<div class="delete-comment" contenteditable="false" ></div>' +
-                                            '<div class="comment-reply">Reply</div>'+
+                                           
+                                            '<a class="new-comment">new comment</a>'+
                                             '</ul>');
                                 }
 
@@ -1977,10 +1991,11 @@ function svg_left_no_px(state){
                                             ' style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li>'+
                                     		'<span class="critic_name" contenteditable="false">User:</span>'+
+						'<span class="trash-comment"><img src="../../images/trash.png"></span>'+
                                             '<div class="comment-text" contenteditable="true" spellcheck=false></div>' +
                                             '</li>'+
-                                            '<div class="delete-comment" contenteditable="false" ></div>' +
-                                            '<div class="comment-reply">Reply</div>'+
+                                            
+                                            '<a class="new-comment">new comment</a>'+
                                             '</ul>');
                                 }
 
@@ -1991,10 +2006,11 @@ function svg_left_no_px(state){
                                             'style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li>'+
                                     		'<span class="critic_name" contenteditable="false">User:</span>'+
+						'<span class="trash-comment"><img src="../../images/trash.png"></span>'+
                                             '<div class="comment-text" contenteditable="true" spellcheck=false></div>' +
                                             '</li>'+
-                                            '<div class="delete-comment" contenteditable="false" ></div>' +
-                                            '<div class="comment-reply">Reply</div>'+
+                                           
+                                            '<a class="new-comment">new comment</a>'+
                                             '</ul>');
 
 
@@ -2186,10 +2202,11 @@ function svg_left_no_px(state){
                                             ' style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li>'+
                                     		'<span class="critic_name" contenteditable="false">User:</span>'+
+						'<span class="trash-comment"><img src="../../images/trash.png"></span>'+
                                             '<div class="comment-text" contenteditable="true" spellcheck=false></div>' +
                                             '</li>'+
-                                            '<div class="delete-comment" contenteditable="false"></div>' +
-                                            '<div class="comment-reply">Reply</div>'+
+                                           
+                                            '<a class="new-comment">new comment</a>'+
                                             '</ul>');
                                 }
 
@@ -2199,10 +2216,11 @@ function svg_left_no_px(state){
                                             ' style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li>'+
                                     		'<span class="critic_name" contenteditable="false">User:</span>'+
+						'<span class="trash-comment"><img src="../../images/trash.png"></span>'+
                                             '<div class="comment-text" contenteditable="true" spellcheck=false></div>' +
                                             '</li>'+
-                                            '<div class="delete-comment" contenteditable="false"></div>' +
-                                            '<div class="comment-reply">Reply</div>'+
+                                            
+                                            '<a class="new-comment">new comment</a>'+
                                             '</ul>');
                                 }
 
@@ -2213,10 +2231,11 @@ function svg_left_no_px(state){
                                             'style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li>'+
                                     		'<span class="critic_name" contenteditable="false">User:</span>'+
+						'<span class="trash-comment"><img src="../../images/trash.png"></span>'+
                                             '<div class="comment-text" contenteditable="true" spellcheck=false></div>' +
                                             '</li>'+
-                                            '<div class="delete-comment" contenteditable="false"></div>' +
-                                            '<div class="comment-reply">Reply</div>'+
+                                            
+                                            '<a class="new-comment">new comment</a>'+
                                             '</ul>');
 
                                 }
@@ -2349,97 +2368,6 @@ function svg_left_no_px(state){
 
         </script>
 <style type="text/css">
-/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=css: */
-/*! 
- * Base CSS for pdf2htmlEX
- * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com> 
- * https://github.com/coolwanglu/pdf2htmlEX/blob/master/share/LICENSE
- */
-/* Part 1: Web Page Layout: Free to modify, except for a few of them which are required by pdf2htmlEX.js, see the comments */
-.unselectable {
-
-   user-select: none;
-  -moz-user-select: -moz-none;
-  -webkit-user-select: none;
-  -khtml-user-select: none
-
-}
-
-.comment-box{
-
-list-style-type:none;
-margin:0px;
-
-padding:0px 4px;
-border:solid 1px #D9D0D0;
-box-shadow: 2px 2px 7px #938888;
-border-radius: 5px;
-background-color: #FFF; 
-min-height:40px;
-position:absolute;
-left:0px;
-width:155px;
-height:auto;
-}
-
-.comment-reply {
-
-font-size: 10px;
-float:right;
-display: block;
-padding: 0px 2px;
-cursor:pointer;
-
-}
-
-.critic_name{
-
-font-size: 14px;
-border: 0;
-border-bottom: 1px solid #eee;
-width: 100%;
-margin: 2px 0px;
-font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-font-weight: 100;
-color: rgb(155, 155, 155);
-
-
-}
-
-
-
-	.comment-text{
-	min-height:30px;
-	width:140px;
-	 /* margin:5px;  */ 
-	 height:auto;
-	 font-size:13px;
-	 /* display:inline; */  /* Commented out for mozilla to be editable */
-	 word-break:break-all;
-	 
-	}
-	
-	
-	
-	.comment-text:focus{
-	outline: 0; 
-	}
-	
-	.delete-comment{
-	position:absolute;
-	top:-9px !important;
-	right:-9px !important;
-	float:right;
-	border:none;
-	height:16px;
-	width:16px;
-	cursor:pointer;
-	outline:none;
-	opacity:0.5;
-	background-image:url(../../images/delete16x16.png);
-	background-position: 50% 50%;
-	 background-repeat: no-repeat;
-	}
 	
 	
 #sidebar { /* Sidebar */
