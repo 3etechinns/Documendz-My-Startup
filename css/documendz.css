@@ -78,7 +78,8 @@ overflow: hidden;
 
 .trash-comment{
                 
-    float: right;            
+    float: right;
+    cursor:pointer;
 }
 
 .trash-comment > img{
