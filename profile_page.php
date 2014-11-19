@@ -421,6 +421,7 @@ else {
  document.getElementById("iframe_upload_message").innerHTML = " Currently images, pdf and word files upto 4MB are supported. Support for other file types will be added soon.";
   $("#top-image").attr("src","images/cross.png");
   $("#feedback_close_iframe").removeClass("disabled");
+  $('#loading_display').css('display','none');
 
  
 }
