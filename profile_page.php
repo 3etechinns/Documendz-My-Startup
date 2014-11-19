@@ -77,7 +77,7 @@ use Aws\S3\Exception\S3Exception;
   document.getElementById("iframe_upload_message").innerHTML = "";
     $("#iframe-upload").modal('show');
     $("#top-image").attr("src","");
-    
+    $('#loading_display').css('display','block');
    
 
  }
