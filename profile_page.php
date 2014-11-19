@@ -76,7 +76,7 @@ use Aws\S3\Exception\S3Exception;
   $("#iframe-upload").modal({backdrop:'static',keyboard:false});
   document.getElementById("iframe_upload_message").innerHTML = "";
     $("#iframe-upload").modal('show');
-    $("#top-image").attr("src","images/loading.gif");
+    $("#top-image").attr("src","");
     
    
 
@@ -410,7 +410,7 @@ return chk;
 
   var FileExt = this.value.substr(this.value.lastIndexOf('.')+1);
 	
- if(this.files[0].size < 4096000 && (FileExt == "pdf" || FileExt == "png" || FileExt == "jpg" || FileExt == "svg" || FileExt == "swf" || FileExt == "bmp" )){
+ if(this.files[0].size < 4096000 && (FileExt == "doc" || FileExt == "docx" || FileExt == "pdf" || FileExt == "png" || FileExt == "jpg" || FileExt == "svg" || FileExt == "swf" || FileExt == "bmp" )){
   show_iframe_upload();
    this.form.submit();
   
@@ -418,7 +418,7 @@ return chk;
 else {
  
  show_iframe_upload();
- document.getElementById("iframe_upload_message").innerHTML = " Currently only PDFs and Images upto 4MB are supported. Support for more file types will be added soon.";
+ document.getElementById("iframe_upload_message").innerHTML = " Currently images, pdf and word files upto 4MB are supported. Support for other file types will be added soon.";
   $("#top-image").attr("src","images/cross.png");
   $("#feedback_close_iframe").removeClass("disabled");
 
@@ -1178,9 +1178,12 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 				
 					<div class="modal-header">
 						<div style="font-size: 20px;"> File upload
-						<img id="top-image" style="float:right;margin-right:4px;width:25px" src="images/loading.gif"> </div>
+						<img id="top-image" style="float:right;margin-right:4px;width:25px" src=""> </div>
 						<p style="font-size: 12px;">Larger files with more images may take longer to process</p>
 					</div>
+
+		<p id="loading_display" style="padding-left: 15px;padding-top: 12px;color: grey;">Uploading file
+		<img src="images/loader.gif" style="width: 29px;height: 16px;"></p>	
 					
 		<iframe style="border: none;width: 100%;height: 110px;" id="my-iframe" name="my-iframe" src="iframe_upload.php"></iframe>
 					
@@ -1198,9 +1201,10 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 	</div>
   
    
-    <div style="margin-bottom: 0px;width: 420px;float: right;margin-right: 92px;" class="alert alert-warning alert-dismissible" role="alert">
+    <div style="margin-bottom: 0px;width: 420px;float: right;margin-right: 92px;" class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  Currently only PDFs and Images upto 4MB are supported. Support for more file types will be added soon.
+  <b>We now support Microsoft Word files as well !!</b><br><br> You can now upload doc and docx
+ file formats in addition to existing pdf and images, all upto 4 MB.We will keep on adding more file types.<br>Enjoy using Documendz, its <u>absolutely free</u> :)
 </div>  
    
    

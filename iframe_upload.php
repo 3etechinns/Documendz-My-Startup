@@ -1,6 +1,6 @@
 <body>
 
-<div style="display:block; color: grey;padding: 8px;" id="start-message">Uploading your file ...</div>
+<div style="display:block; color: grey;padding: 8px;" id="start-message">Processing your file ...</div>
 <div style="display:none; color: grey;padding: 8px;" id="end-message">File uploaded successfully</div>
 
 <div style="display:none; padding-top:8px;" id = "display_progress" >
@@ -186,7 +186,8 @@ use Aws\S3\Exception\S3Exception;
   
     if (isset($_FILES['file'])) {          // When upload is pressed file should be uploaded
     
-    echo'<script> parent.document.getElementById("iframe_upload_message").innerHTML = "";</script>';    
+    echo'<script> parent.document.getElementById("iframe_upload_message").innerHTML = "";</script>';
+    echo'<script> parent.document.getElementById("loading_display").style.display = "none";</script>';
     echo'<script>display_progress();</script>';
     
         $file_cnt = count($_FILES['file']['name']);
@@ -205,12 +206,12 @@ use Aws\S3\Exception\S3Exception;
             $unique_filename =getToken(8);
             $file_name_html = $unique_filename . ".html"; //appending html extension to the uploaded file
           
-	  $allowed_files = array("image/png"  ,  "image/svg+xml" , "application/x-shockwave-flash" , "image/jpeg" , "image/bmp" , "application/pdf");
+	  $allowed_files = array("application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document","image/png"  ,  "image/svg+xml" , "application/x-shockwave-flash" , "image/jpeg" , "image/bmp" , "application/pdf");
             
 	    
 	    
 	    if ($file_size > 4096000 || $file_size == 0 || !in_array($file_type,$allowed_files)) {
-                echo '<script> parent.document.getElementById("iframe_upload_message").innerHTML = "Currently only Pdfs and images upto 4MB are supported. Support for other file types will be added soon";</script>';
+                echo '<script> parent.document.getElementById("iframe_upload_message").innerHTML = "Currently images, pdf and word files upto 4MB are supported. Support for other file types will be added soon";</script>';
 		echo '<script>window.parent.$("#feedback_close_iframe").removeClass("disabled");</script>';
 		echo'<script>document.getElementById("start-message").style.display = "none";</script>';
 		echo'<script>window.parent.$("#top-image").attr("src","images/cross.png");</script>';
@@ -228,6 +229,75 @@ use Aws\S3\Exception\S3Exception;
 
  
 // declaring the function 
+function ParseHeader($header='')
+{
+	$resArr = array();
+	$headerArr = explode("\n",$header);
+	foreach ($headerArr as $key => $value) {
+		$tmpArr=explode(": ",$value);
+		if (count($tmpArr)<1) continue;
+		$resArr = array_merge($resArr, array($tmpArr[0] => count($tmpArr) < 2 ? "" : $tmpArr[1]));
+	}
+	return $resArr;
+}
+
+function CallToApi($fileToConvert, $pathToSaveOutputFile, $apiKey, &$message,$unique_filename)
+{
+		try
+		{
+			
+		
+			$fileName = $unique_filename.".pdf";
+			 
+			$postdata =  array('OutputFileName' => $fileName, 'ApiKey' => $apiKey, 'file'=>"@".$fileToConvert);
+			$ch = curl_init("http://do.convertapi.com/word2pdf");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_HEADER, 1);
+			curl_setopt($ch, CURLOPT_POST, 1);
+  			curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+			$result = curl_exec($ch); 
+			$headers = curl_getinfo($ch);
+			
+			$header=ParseHeader(substr($result,0,$headers["header_size"]));
+			$body=substr($result, $headers["header_size"]);
+			
+			curl_close($ch);
+			if ( 0 < $headers['http_code'] && $headers['http_code'] < 400 ) 
+			{
+				// Check for Result = true
+				
+				if (in_array('Result',array_keys($header)) ?  !$header['Result']=="True" : true)
+				{
+					$message = "Something went wrong with request, did not reach ConvertApi service.<br />";
+			 		return false;
+				}
+				// Check content type 
+				if ($headers['content_type']<>"application/pdf")
+				{
+			 		$message = "Exception Message : returned content is not PDF file.<br />";
+			 		return false;
+				}
+				$fp = fopen($pathToSaveOutputFile.$fileName, "wbx");
+				
+				fwrite($fp, $body);
+
+				$message = "The conversion was successful! The word file $fileToConvert converted to PDF and saved at $pathToSaveOutputFile$fileName";
+				return true;
+			}
+			else 
+			{
+			 $message = "Exception Message : ".$result .".<br />Status Code :".$headers['http_code'].".<br />";
+			 return false; 
+			}
+		}
+		catch (Exception $e) 
+		{	
+			$message = "Exception Message :".$e.Message."</br>";
+			return false; 
+		}
+}
+
+
                
 function pdf2html($html_file_dest,$unique_filename,$file) {
         
@@ -458,6 +528,136 @@ catch(S3Exception $e){
 
  
     	break;
+
+
+case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+    
+    echo '<script>document.getElementById("start-message").style.display = "block"</script>';
+    move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.docx');
+    
+    //////////////  cloud conversion initiated   /////////////////
+    
+
+
+
+$physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/';
+	
+	
+	$uploadedFile = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.docx' ;
+	
+	$apiKey = 293619483;
+	
+	chmod($uploadedFile,0755);
+	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
+
+
+pdf2html($html_file_dest,$unique_filename,$file);
+
+
+mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$file','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+
+/* move to a diff location */
+
+
+
+$s3 = S3Client::factory(array(
+   'key' => "AKIAJD2CWX4IQ6USEPGA",
+   'secret' => "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",
+   'region' => "ap-southeast-1"
+));
+
+$filepath = 'uploaded/uploaded_files_'. $_SESSION["userid"].'_original/'. $unique_filename.'.docx';
+$bucket = 'zofler';
+$keyname = 'uploaded/uploaded_files_'. $_SESSION["userid"].'_original/'.$unique_filename.'.docx';
+
+try{
+ $result = $s3 -> putObject(array(
+   'Bucket'       => $bucket,
+   'Key'          => $keyname,
+   'SourceFile'   => $filepath
+
+));
+
+unlink($filepath);
+unlink('uploaded/uploaded_files_'. $_SESSION["userid"].'_original/'. $unique_filename.'.pdf'); 
+
+ 
+}
+catch(S3Exception $e){
+     
+   echo 'Failed to upload';
+
+   }
+
+    //////////////// cloud conversion ends    //////////////////
+ 
+    break;
+
+case "application/msword":
+    
+    echo '<script>document.getElementById("start-message").style.display = "block"</script>';
+    move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.doc');
+    
+    //////////////  cloud conversion initiated   /////////////////
+    
+
+
+
+$physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/';
+	
+	
+	$uploadedFile = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.doc' ;
+	
+	$apiKey = 293619483;
+	
+	chmod($uploadedFile,0755);
+	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
+
+
+pdf2html($html_file_dest,$unique_filename,$file);
+
+
+mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$file','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+
+/* move to a diff location */
+
+
+
+$s3 = S3Client::factory(array(
+   'key' => "AKIAJD2CWX4IQ6USEPGA",
+   'secret' => "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",
+   'region' => "ap-southeast-1"
+));
+
+$filepath = 'uploaded/uploaded_files_'. $_SESSION["userid"].'_original/'. $unique_filename.'.doc';
+$bucket = 'zofler';
+$keyname = 'uploaded/uploaded_files_'. $_SESSION["userid"].'_original/'.$unique_filename.'.doc';
+
+try{
+ $result = $s3 -> putObject(array(
+   'Bucket'       => $bucket,
+   'Key'          => $keyname,
+   'SourceFile'   => $filepath
+
+));
+
+unlink($filepath);
+unlink('uploaded/uploaded_files_'. $_SESSION["userid"].'_original/'. $unique_filename.'.pdf'); 
+
+ 
+}
+catch(S3Exception $e){
+     
+   echo 'Failed to upload';
+
+   }
+
+    //////////////// cloud conversion ends    //////////////////
+ 
+    break;
+
+
+
     
 default: 
     break;
@@ -474,7 +674,7 @@ default:
     
     else{
             
-            echo '<script> parent.document.getElementById("iframe_upload_message").innerHTML = "Currently only Pdfs and images upto 4MB are supported. Support for other file types will be added soon";</script>';
+            echo '<script> parent.document.getElementById("iframe_upload_message").innerHTML = "Currently images, pdf and word files upto 4MB are supported. Support for other file types will be added soon";</script>';
             echo '<script>window.parent.$("#feedback_close_iframe").removeClass("disabled");</script>';
 	    echo'<script>document.getElementById("start-message").style.display = "none";</script>';
 	    echo'<script>window.parent.$("#top-image").attr("src","images/cross.png");</script>';
