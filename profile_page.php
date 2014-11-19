@@ -1201,10 +1201,10 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 	</div>
   
    
-    <div style="margin-bottom: 0px;width: 420px;float: right;margin-right: 92px;" class="alert alert-success alert-dismissible" role="alert">
+    <div style="margin-bottom: 0px;width: 420px;float: right;position:absolute;top:96px;right:92px;" class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
   <b>We now support Microsoft Word files as well !!</b><br><br> You can now upload doc and docx
- file formats in addition to existing pdf and images, all upto 4 MB.We will keep on adding more file types.<br>Enjoy using Documendz, its <u>absolutely free</u> :)
+ file formats in addition to existing pdf and images, all upto 4 MB. We will keep on adding more file types.<br>Enjoy using Documendz, its <u>absolutely free</u> :)
 </div>  
    
    
