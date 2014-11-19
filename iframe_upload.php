@@ -61,7 +61,7 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
 	     window.parent.$("#feedback_close_iframe").removeClass("disabled");
 	     window.parent.$("#top-image").attr("src","images/right.png");
 	    
-            },3000);
+            },1500);
 
 	 
 	       
