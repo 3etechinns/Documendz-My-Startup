@@ -216,6 +216,7 @@ use Aws\S3\Exception\S3Exception;
 		echo'<script>document.getElementById("start-message").style.display = "none";</script>';
 		echo'<script>window.parent.$("#top-image").attr("src","images/cross.png");</script>';
 		echo '<script>document.getElementById("display_progress").style.display = "none";</script>';
+		echo'<script> parent.document.getElementById("loading_display").style.display = "none";</script>';
             }
 
              else {
@@ -679,6 +680,7 @@ default:
 	    echo'<script>document.getElementById("start-message").style.display = "none";</script>';
 	    echo'<script>window.parent.$("#top-image").attr("src","images/cross.png");</script>';
 	    echo '<script>document.getElementById("display_progress").style.display = "none";</script>';
+	    echo'<script> parent.document.getElementById("loading_display").style.display = "none";</script>';
 	}
 
 
