@@ -80,14 +80,14 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
                      
             theKid = "<div class='individual_file_container' data-file-identity ='"+file_name+"'>"+
 	    
-	    "<table width='500px' table-layout='fixed' style='margin-bottom:2px;'>"+
+	    "<table width='520px' table-layout='fixed' style='margin-bottom:2px;'>"+
 	      "<tr>"+
 	       "<td width='20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>"+
 	    "<td width='350px'><a class='file_name self_view' style='color:#393c3f;' name='file_name' href='uploaded/jhg76"+ session_user_id +"kd84/" + file_name + ".html?file=" +file+ "&key=0'> " + file + "</a></td>"+
 	    "<td width='130px' style='text-align:right;' ><a><i class='glyphicon glyphicon-remove delete_file'></i></a></td>"+
 	    "</tr></table>"+
 	    
-            "<table width='500px' table-layout='fixed' style='margin-bottom:2px;'>"+
+            "<table width='520px' table-layout='fixed' style='margin-bottom:2px;'>"+
 	    "<tr>"+
 	    "<td width='200px' ><div class='dropdown'>"+
             
@@ -130,7 +130,7 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
             
 // append theKid to the end of theParent
            
-            window.parent.$("#self_uploaded").prepend(theKid);
+            window.parent.$("#self_uploaded_no_search").after(theKid);
 	     window.parent.$(".self_view").colorbox({iframe:true, width:"80%", height:"90%"});
             /* theParent.appendChild(theKid); */
 

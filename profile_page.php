@@ -22,7 +22,7 @@ use Aws\S3\Exception\S3Exception;
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
 
 <link rel="stylesheet" href="css/colorbox.css" />
-<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/profile.css?var=27112014">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/introjs.min.css">
   
@@ -167,6 +167,52 @@ $(document).ready(function(){
 
 	});
 
+	
+	    $(document).on({           
+      click:function(e){
+       
+       var x = $(this).closest('.individual_file_container');
+       
+       if (x.attr("data-hidden") == 0) {
+       
+       x.addClass("hide-content");
+       x.attr("data-hidden","1");
+       var sh_id = x.find('.received-shared-id').attr('data-shared-id');
+       var state = 1;
+       $(this).html("<a>unhide</a>");
+       }
+       
+       else if (x.attr("data-hidden") == 1) {
+
+       x.toggleClass("hide-content");
+       x.attr("data-hidden","0");
+       var sh_id = x.find('.received-shared-id').attr('data-shared-id');
+       var state = 0;
+       $(this).html("<a>hide</a>");
+       }
+      
+       $.ajax({
+          type:  'post',
+          cache:  false ,
+          url:  'file_hide.php',
+          data:  {id:sh_id,hid_state:state}
+	 
+       });
+      }
+      
+  },".hide-file");
+     
+     
+     $(document).on({
+      
+      change:function(){
+
+	$("#received .individual_file_container").toggleClass("hide-content");
+	       
+      }
+      
+      })
+	
 });
 
 //////////////////////////////////////////////////
@@ -408,9 +454,9 @@ return chk;
  $(document).on({           
 	change:function(e){
 
-  var FileExt = this.value.substr(this.value.lastIndexOf('.')+1);
+  var FileExt = this.value.substr(this.value.lastIndexOf('.')+1).toLowerCase();
 	
- if(this.files[0].size < 4096000 && (FileExt == "doc" || FileExt == "docx" || FileExt == "pdf" || FileExt == "png" || FileExt == "jpg" || FileExt == "svg" || FileExt == "swf" || FileExt == "bmp" )){
+ if(this.files[0].size < 4096000 && (FileExt == "doc" || FileExt == "docx" || FileExt == "pdf" || FileExt == "png" || FileExt == "jpg" || FileExt == "svg" || FileExt == "swf" || FileExt == "bmp" || FileExt == "jpeg" )){
   show_iframe_upload();
    this.form.submit();
   
@@ -1259,10 +1305,12 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
       <li   class='switch_tab'><a href='#received' data-toggle='tab'>Files for reviewing</a></li>
        <li id='search_tab'>Search results <i id='delete-search' class='glyphicon glyphicon-remove'></i></li>
 		    
- <li id='delete-all'>Delete all files</li> 
+
 		</ul>
 		<div id='myTabContent' class='tab-content'>
-		<div id = 'self_uploaded' class='tab-pane fade in active'>";
+		<div id = 'self_uploaded' class='tab-pane fade in active'><div style='text-align:right;padding-bottom:3px;'>
+		 <button id='delete-all' style= 'background-image: linear-gradient(#f8f8f8,#d9d9d9);' class='btn btn-default btn-xs'>Delete All</button>
+		 </div>";
 		
     echo "<div id='self_uploaded_no_search'>No results found</div>";
     $s = mysql_real_escape_string($_SESSION[userid]);
@@ -1272,7 +1320,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 		
         echo "<div class='individual_file_container' data-file-identity =".$row['unique_filename'].">
 	
-	<table width='500px' table-layout='fixed' style='margin-bottom:2px;'>
+	<table width='520px' table-layout='fixed' style='margin-bottom:2px;'>
 	<tr>
 	<td width='20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>
        	<td width='350px' ><a class='file_name self_view' style='color:#393c3f;' name='file_name' href='uploaded/jhg76".$_SESSION['userid']."kd84/" . $row['unique_filename'] . ".html?file=".htmlentities($row['file_name'])."&key=0'>" . $row['file_name'] . "</a></td>"
@@ -1280,7 +1328,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 	."</tr></table>
 	
 	
-	<table width='500px' table-layout='fixed' style='margin-bottom:2px;'>
+	<table width='520px' table-layout='fixed' style='margin-bottom:2px;'>
 	<tr>
 	
         	<td width='200px' ><div class='dropdown' >
@@ -1335,7 +1383,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 //To display received files for editing from other users
 
 $m = mysql_real_escape_string($_SESSION[userid]);
-    $received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHERE receiver_id = '$m' ORDER BY shared_id ASC");
+    $received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHERE receiver_id = '$m' ORDER BY review_state");
    
     while ($row = mysql_fetch_array($received_files_of_signed_in_user)) {
 	
@@ -1356,18 +1404,42 @@ $m = mysql_real_escape_string($_SESSION[userid]);
 	$badge = "";
 	
        }
+	
+	  if ($row['hidden_state'] == 1) {
+	      
+	      $disp_class = "hide-content";
+	      $val = 1;
+	      $g = "unhide";
+	     }
+	     
+	     else if  ($row['hidden_state'] == 0){
+	      
+	      $disp_class = "";
+	      $val = 0;
+	      $g = "hide";
+	     }		
 		
-        echo "<div class='individual_file_container'>
+        echo "<div class='individual_file_container ".$disp_class."' data-hidden='".$val."'>
 	           
-		   <table style='width:500px; table-layout:fixed; margin-bottom:2px;'>
+		   <table style='width:520px; table-layout:fixed; margin-bottom:2px;'>
 		   <tr>
 		   <td style='width:20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>
 		   <td style='width:350px; overflow:hidden'><a style='color:#393c3f' id='received-file-open' class='file_name doc-viewer' name='file_name' target='_blank' href='" . $row['Uploaded_file_location'] . "?jp=" . $row['json_file_name'] . "&si=" . $row['shared_id'] . "&file=".htmlentities($row['file_name'])."&auth=".$row['sender_id']."&key=1'>" . $row['file_name'] . "</a></td>
 		   <td class='received-badge-wrapper' style='width:130px; text-align:right;'><span id='received-badge'>".$badge."</span></td>
+		   <td style='width:20px'>
+		    <div class='dropdown'>
+			 <button style='padding:5px;font-size:4px;' class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>
+			 <span class='caret'></span>
+			 </button>
+			 <ul class='dropdown-menu'>
+			 <li style='cursor:pointer' class='hide-file' role='presentation'><a>".$g."</a></li>
+			 </ul>
+			</div>
+		    </td>
 		   </tr>
 		   </table>
 		   
-		   <table style='width:500px; table-layout:fixed; margin-bottom:2px;'>
+		   <table style='width:520px; table-layout:fixed; margin-bottom:2px;'>
 		   <tr>
 		   <td style='width:50px; color:#66757f;font-size:13px;' >Author:</td>
 		   <td style='width:350px; color:#66757f; font-size:13px;overflow:hidden'><div class='author-name'>".$row['sender_name']."</div></td>

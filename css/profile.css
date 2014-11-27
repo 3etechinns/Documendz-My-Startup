@@ -1,5 +1,17 @@
 @CHARSET "ISO-8859-1";
 
+.show-content{
+           
+     display:block;      
+}
+
+
+.hide-content{
+           
+     display:none;      
+}
+
+
 progress {
   	   margin-right:5px;
        width: 200px;
@@ -47,7 +59,7 @@ progress::-webkit-progress-value {
 
 #uploaded_container{
 	
-	width:500px;
+	width:520px;
 	margin-left: 100px;
 	
 	
@@ -55,7 +67,7 @@ progress::-webkit-progress-value {
 
 #demo_uploaded_container{
 	
-	width:500px;
+	width:520px;
 	margin-left: 100px;
 	/*padding-top:50px;*/
 	
@@ -176,17 +188,7 @@ padding:10px 0px 0px 0px;
 	
 }
 
-#search_tab{
-	display:none;
-	float:left;
-	border: solid 1px rgb(217, 223, 230);
-	background-color: aliceblue;
-	border-radius: 4px;
-	margin-top:12px;
-	margin-left:5px;
-	
-	
-}
+
 
 #delete-search{
 	
