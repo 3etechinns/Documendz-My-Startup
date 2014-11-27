@@ -1389,7 +1389,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 //To display received files for editing from other users
 
 $m = mysql_real_escape_string($_SESSION[userid]);
-$received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHERE receiver_id = '$m' ORDER BY last_reviewer_id ");
+$received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHERE receiver_id = '$m' ORDER BY last_edit");
    
     while ($row = mysql_fetch_array($received_files_of_signed_in_user)) {
 	
