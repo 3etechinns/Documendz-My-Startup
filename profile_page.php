@@ -1377,10 +1377,10 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
         
     }
     echo"</div>";
-    echo "<div id = 'received' class='tab-pane fade in'>"; ?>
-     <div style="text-align:right;padding-bottom:3px;">
-	<span style='color:#333;font-size:12px'>Show hidden files<span>
-        <input id="viewit" type="checkbox">
+    echo "<div id = 'received' class='tab-pane fade in'> 
+     <div style='text-align:right;padding-bottom:3px;'>
+	<span style='color:#333;font-size:12px'>Show hidden files<span>" ;?>
+        <input id="viewit" type="checkbox" >
      
       </div>
     <div id='received_no_search'>No results found</div>
