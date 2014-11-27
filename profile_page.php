@@ -22,7 +22,7 @@ use Aws\S3\Exception\S3Exception;
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
 
 <link rel="stylesheet" href="css/colorbox.css" />
-<link rel="stylesheet" href="css/profile.css?var=27112014">
+<link rel="stylesheet" href="css/profile.css?var=27112014_1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/introjs.min.css">
   
@@ -1378,6 +1378,11 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
     }
     echo"</div>";
     echo "<div id = 'received' class='tab-pane fade in'>"; ?>
+     <div style="text-align:right;padding-bottom:3px;">
+	<span style='color:#333;font-size:12px'>Show hidden files<span>
+        <input id="viewit" type="checkbox">
+     
+      </div>
     <div id='received_no_search'>No results found</div>
 <?php
 //To display received files for editing from other users
