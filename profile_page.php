@@ -100,7 +100,7 @@ $(document).ready(function(){
   $("#my-iframe").contents().find('#end-message').hide();
   document.getElementById("iframe_upload_message").innerHTML = "";
   $('input[type = "file"]').val(null);
-  document.getElementById("viewit").checked = "false";
+  
   })
  
  
@@ -212,7 +212,7 @@ $(document).ready(function(){
 	       
       }
       
-      })
+      },"#viewit")
 	
 });
 
