@@ -180,6 +180,18 @@ padding:10px 0px 0px 0px;
 
 
 
+#search_tab{
+	display:none;
+	float:left;
+	border: solid 1px rgb(217, 223, 230);
+	background-color: aliceblue;
+	border-radius: 4px;
+	margin-top:12px;
+	margin-left:5px;
+	
+	
+}
+
 #delete-search{
 	
 	cursor:pointer;
