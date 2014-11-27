@@ -188,6 +188,7 @@ use Aws\S3\Exception\S3Exception;
     
     echo'<script> parent.document.getElementById("iframe_upload_message").innerHTML = "";</script>';
     echo'<script> parent.document.getElementById("loading_display").style.display = "none";</script>';
+    echo'<script>parent.document.getElementById("viewit").checked = "false";</script>';
     echo'<script>display_progress();</script>';
     
         $file_cnt = count($_FILES['file']['name']);
