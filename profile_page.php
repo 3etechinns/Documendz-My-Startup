@@ -23,25 +23,17 @@ use Aws\S3\Exception\S3Exception;
 
 <link rel="stylesheet" href="css/colorbox.css" />
 <link rel="stylesheet" href="css/profile.css?var=27112014_1">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/introjs.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://d28kungomln1xp.cloudfront.net/css/introjs.min.css">
   
   
-<script src="javascripts/jquery1.9.1.js"></script>
-<script src="javascripts/jquery_1.10.4_ui.js"></script>
-<script src="javascripts/bootstrap.min.js"></script>
-<script src="javascripts/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="javascripts/intro.min.modified.js"></script>
-
-<script src="javascripts/jquery.colorbox.js"></script>
-
-
-
-
-   
-<!--<script src="jquery.gritter.min.js"></script>
-<link href="jquery.gritter.css"rel="stylesheet" type="text/css" />-->
-<script src="javascripts/pusher.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery1.9.1.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery_1.10.4_ui.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/bootstrap.min.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery.slimscroll.min.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/intro.min.modified.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery.colorbox.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/pusher.js"></script>
 <script src="push/PusherNotifier.js"></script>
 
 
@@ -466,7 +458,7 @@ else {
  
  show_iframe_upload();
  document.getElementById("iframe_upload_message").innerHTML = " Currently images, pdf and word files upto 4MB are supported. Support for other file types will be added soon.";
-  $("#top-image").attr("src","images/cross.png");
+  $("#top-image").attr("src","http://d28kungomln1xp.cloudfront.net/images/cross.png");
   $("#feedback_close_iframe").removeClass("disabled");
   $('#loading_display').css('display','none');
 
@@ -1106,7 +1098,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
   
   <ul class="nav navbar-nav navbar-left"  style="padding:8px;">
  <li>
-  <img src="images/logo1.gif" style="width: 145px; margin-right:10px;" />
+  <img src="http://d28kungomln1xp.cloudfront.net/images/logo1.gif" style="width: 145px; margin-right:10px;" />
  </li>
 <li>
                                        <div role="search">
@@ -1231,7 +1223,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 					</div>
 
 		<p id="loading_display" style="padding-left: 15px;padding-top: 12px;color: grey;">Uploading file
-		<img src="images/loader.gif" style="width: 29px;height: 16px;"></p>	
+		<img src="http://d28kungomln1xp.cloudfront.net/images/loader.gif" style="width: 29px;height: 16px;"></p>	
 					
 		<iframe style="border: none;width: 100%;height: 110px;" id="my-iframe" name="my-iframe" src="iframe_upload.php"></iframe>
 					
