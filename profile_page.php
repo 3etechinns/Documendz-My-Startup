@@ -687,7 +687,7 @@ $(document).on({
 					setTimeout(function(){
 					 $("#send-file-button").prop('disabled','');
 					 $("#send-file-button").val('Send');
-					 alert_message("Oops, something went wrong","alert-danger");
+					 alert_message("Oops, something went wrong<br>Kindly check the entered email id","alert-danger");
 					}, 2000);
 					}
 		    });
