@@ -23,7 +23,7 @@ use Aws\S3\Exception\S3Exception;
 
 <link rel="stylesheet" href="css/colorbox.css" />
 <link rel="stylesheet" href="css/profile.css?var=27112014_1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://d28kungomln1xp.cloudfront.net/css/introjs.min.css">
   
   

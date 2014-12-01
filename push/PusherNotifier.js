@@ -107,7 +107,7 @@ var curr_review_state = parseInt(x.closest(".ssc-content").attr('data-review-sta
 
  if(notif_author_id == notif_reviewer_id) {
   
-  y.closest(".individual_file_container").find("#received-badge").html("<i class='glyphicon glyphicon-pencil'></i>");
+  y.closest(".individual_file_container").find("#received-badge").html("received-badge");
   
  }
 
