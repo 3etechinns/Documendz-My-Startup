@@ -107,7 +107,7 @@ var curr_review_state = parseInt(x.closest(".ssc-content").attr('data-review-sta
 
  if(notif_author_id == notif_reviewer_id) {
   
-  y.closest(".individual_file_container").find("#received-badge").html("received-badge");
+  y.closest(".individual_file_container").find("#received-badge").html("<text style='color: rgb(44, 134, 2);font-size: 11px;border: 1px solid green;border-radius: 6px;padding: 2px;'>new updates</text>");
   
  }
 
