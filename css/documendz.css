@@ -115,7 +115,7 @@ overflow: hidden;
 	cursor:pointer;
 	outline:none;
 	opacity:0.5;
-	background-image:url(../../images/delete16x16.png);
+	background-image:url('http://d28kungomln1xp.cloudfront.net/images/delete16x16.png');
 	background-position: 50% 50%;
 	 background-repeat: no-repeat;
 	}
@@ -363,7 +363,7 @@ input[type=checkbox] + label:hover{
 		left: 0;
 		right: 0;
 		position: fixed;
-		background-image: url('../images/intro_modal.png');
+		background-image: url('http://d28kungomln1xp.cloudfront.net/images/intro_modal.png');
 		z-index:2000;
 		display:none;
 		background-repeat:no-repeat;
