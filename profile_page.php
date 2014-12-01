@@ -21,13 +21,13 @@ use Aws\S3\Exception\S3Exception;
 <title>Documendz</title>
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
 
-<link rel="stylesheet" href="css/colorbox.css" />
-<link rel="stylesheet" href="css/profile.css?var=27112014_1">
+<link rel="stylesheet" href="http://d28kungomln1xp.cloudfront.net/css/colorbox.css" />
+<link rel="stylesheet" href="http://d28kungomln1xp.cloudfront.net/css/profile.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://d28kungomln1xp.cloudfront.net/css/introjs.min.css">
   
   
-<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery1.9.1.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery-1.9.1.min.js"></script>
 <script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery_1.10.4_ui.js"></script>
 <script src="http://d28kungomln1xp.cloudfront.net/javascripts/bootstrap.min.js"></script>
 <script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery.slimscroll.min.js"></script>
