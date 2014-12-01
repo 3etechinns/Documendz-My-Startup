@@ -27,7 +27,7 @@ use Aws\S3\Exception\S3Exception;
 <link rel="stylesheet" href="http://d28kungomln1xp.cloudfront.net/css/introjs.min.css">
   
   
-<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery-1.9.1.min.js"></script>
+<script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery_1.9.1.min.js"></script>
 <script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery_1.10.4_ui.js"></script>
 <script src="http://d28kungomln1xp.cloudfront.net/javascripts/bootstrap.min.js"></script>
 <script src="http://d28kungomln1xp.cloudfront.net/javascripts/jquery.slimscroll.min.js"></script>
