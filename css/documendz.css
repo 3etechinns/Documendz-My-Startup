@@ -1,3 +1,89 @@
+.hide {
+
+display:none;                
+                
+}
+
+#doc_name{
+     
+     position: absolute;
+left: 40%;
+font-size: 14px;
+font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+width: 342px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;                
+                
+                
+}
+
+.matter{
+       padding-left:1px;
+       margin-right:2px;
+       white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       line-height:24px;
+       float:left;
+       top:0px;
+       left: 40px;
+       height:20px;
+       width:95px;
+       font-size: 10pt;
+        
+}
+
+.anno_type {
+                
+text-align:right;
+color:#218221;
+opacity:0.6;
+font-size:8pt;
+line-height:23px;
+width:73px;
+height:20px;
+float:left                
+                
+}
+
+.other1 {
+                line-height:17px;
+                float:left;
+                color:#B2B2B2;
+                top:20px;
+                left:40px;
+                height:15px;
+                width:40px;
+                font-size: 8pt
+                
+}
+
+.other2{
+         line-height:17px;
+         float:left;
+         color:#B2B2B2;
+         top:20px;
+         height:15px;
+         width:65px;
+         font-size:8pt              
+}
+
+.other3{
+           line-height:17px;
+           color:#B2B2B2;
+           float:left;
+           top:20px;
+           height:15px;
+           width:65px;
+           font-size:8pt;
+           overflow:hidden;
+           white-space: nowrap;
+           text-overflow:ellipsis;
+           
+}
+
+
 .new-comment {
   -webkit-border-radius: 4;
   -moz-border-radius: 4;

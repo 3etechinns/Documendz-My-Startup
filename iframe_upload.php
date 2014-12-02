@@ -432,7 +432,9 @@ case "image/bmp":
 	
 		
 		/* move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.pdf'); */
-		pdf2html($html_file_dest,$unique_filename,$file);
+		
+		$name = mysql_real_escape_string($file);
+		pdf2html($html_file_dest,$unique_filename,$name);
 		
 	
 	$ui = mysql_real_escape_string($_SESSION[userid]);
@@ -441,7 +443,7 @@ case "image/bmp":
 	$file_ext = mysql_real_escape_string($file_ext);
 	
 	
-	mysql_query("INSERT INTO uploaded_files VALUES('','$ui','$file','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+	mysql_query("INSERT INTO uploaded_files VALUES('','$ui','$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
 		
 		   $s3 = S3Client::factory(array(
 	   'key' => "AKIAJ7CNKUCZLU6QSABA",
@@ -488,11 +490,13 @@ case "image/bmp":
         
         echo '<script>document.getElementById("start-message").style.display = "block"</script>';
     	move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.pdf');
-    	 
-    	pdf2html($html_file_dest,$unique_filename,$file);
+    	
+	$name = mysql_real_escape_string($file);
+	 
+    	pdf2html($html_file_dest,$unique_filename,$name);
 	
 		
-	mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$file','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+	mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
 
 /* move to a diff location */
 
@@ -552,11 +556,12 @@ $physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['useri
 	chmod($uploadedFile,0755);
 	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
 
+	$name = mysql_real_escape_string($file);
 
-pdf2html($html_file_dest,$unique_filename,$file);
+pdf2html($html_file_dest,$unique_filename,$name);
 
 
-mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$file','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
 
 /* move to a diff location */
 
@@ -615,11 +620,12 @@ $physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['useri
 	chmod($uploadedFile,0755);
 	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
 
+$name = mysql_real_escape_string($file);
 
-pdf2html($html_file_dest,$unique_filename,$file);
+pdf2html($html_file_dest,$unique_filename,$name);
 
 
-mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$file','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
 
 /* move to a diff location */
 

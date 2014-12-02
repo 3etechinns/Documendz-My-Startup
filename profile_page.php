@@ -1316,7 +1316,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 	<table width='520px' table-layout='fixed' style='margin-bottom:2px;'>
 	<tr>
 	<td width='20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>
-       	<td width='350px' ><a class='file_name self_view' style='color:#393c3f;' name='file_name' href='uploaded/jhg76".$_SESSION['userid']."kd84/" . $row['unique_filename'] . ".html?file=".htmlentities($row['file_name'])."&key=0'>" . $row['file_name'] . "</a></td>"
+       	<td width='350px' style='overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block; ><a class='file_name self_view' style='color:#393c3f;' name='file_name' href='uploaded/jhg76".$_SESSION['userid']."kd84/" . $row['unique_filename'] . ".html?file=".htmlentities($row['file_name'])."&key=0'>" . $row['file_name'] . "</a></td>"
 	."<td width='130px' style='text-align:right;'><a><i class='glyphicon glyphicon-remove delete_file'></i><a></td>"
 	."</tr></table>
 	
@@ -1422,7 +1422,7 @@ $received_files_of_signed_in_user = mysql_query("SELECT * FROM shared_files WHER
 		   <table style='width:520px; table-layout:fixed; margin-bottom:2px;'>
 		   <tr>
 		   <td style='width:20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>
-		   <td style='width:350px; overflow:hidden'><a style='color:#393c3f' id='received-file-open' class='file_name doc-viewer' name='file_name' target='_blank' href='" . $row['Uploaded_file_location'] . "?jp=" . $row['json_file_name'] . "&si=" . $row['shared_id'] . "&file=".htmlentities($row['file_name'])."&auth=".$row['sender_id']."&key=1'>" . $row['file_name'] . "</a></td>
+		   <td style='width: 350px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block;'><a style='color:#393c3f' id='received-file-open' class='file_name doc-viewer' name='file_name' target='_blank' href='" . $row['Uploaded_file_location'] . "?jp=" . $row['json_file_name'] . "&si=" . $row['shared_id'] . "&file=".htmlentities($row['file_name'])."&auth=".$row['sender_id']."&key=1'>" . $row['file_name'] . "</a></td>
 		   <td class='received-badge-wrapper' style='width:130px; text-align:right;'><span id='received-badge'>".$badge."</span></td>
 		   <td style='width:20px'>
 		    <div class='dropdown'>
