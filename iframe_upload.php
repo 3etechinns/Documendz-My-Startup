@@ -83,7 +83,7 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
 	    "<table width='520px' table-layout='fixed' style='margin-bottom:2px;'>"+
 	      "<tr>"+
 	       "<td width='20px' ><i class='glyphicon glyphicon-file' style='color:#393c3f'></i></td>"+
-	    "<td width='350px'><a class='file_name self_view' style='color:#393c3f;' name='file_name' href='uploaded/jhg76"+ session_user_id +"kd84/" + file_name + ".html?file=" +file+ "&key=0'> " + file + "</a></td>"+
+	    "<td width='350px'><a class='file_name self_view' style='color:#393c3f;' name='file_name' href='uploaded/jhg76"+ session_user_id +"kd84/" + file_name + ".html?file=" +escape(file)+ "&key=0'> " + file + "</a></td>"+
 	    "<td width='130px' style='text-align:right;' ><a><i class='glyphicon glyphicon-remove delete_file'></i></a></td>"+
 	    "</tr></table>"+
 	    
