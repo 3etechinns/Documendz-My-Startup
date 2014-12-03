@@ -191,7 +191,7 @@ mysql_query("INSERT INTO file_access (shared_id,file_id,access_status,changer_us
 			//algo for share summary script function call
 
 			$row['username'] = $receiver_username;
-			$row['href_path'] = "uploaded/jhg76".$_SESSION['userid']."kd84/".$_POST['unique_filename'].".html?jp=".$random_json_filename."&si=".$result['shared_id']."&file=".$_POST['file_name']."&auth=".$result['sender_id']."&key=1";
+			$row['href_path'] = "uploaded/jhg76".$_SESSION['userid']."kd84/".$_POST['unique_filename'].".html?jp=".$random_json_filename."&si=".$result['shared_id']."&file=".urlencode($_POST['file_name'])."&auth=".$result['sender_id']."&key=1";
 			$row['share_dt'] = $result['share_dt'];
 			$row['shared_id'] = $result['shared_id'];
 			$row['unique_filename'] = $result['unique_filename'];
