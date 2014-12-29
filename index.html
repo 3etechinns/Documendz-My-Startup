@@ -510,49 +510,62 @@ return ret;
 		}
 		
 	},'#signin-form');
+  
  
  
- 
-
-
-$(function() { // jquery for remember me
-
-    if (localStorage.chkbx && localStorage.chkbx != '') {
-        $('#remember_me').attr('checked', 'checked');
-        $('#email').val(localStorage.usrname);
-        $('#pass').val(localStorage.pass);
-    } else {
-        $('#remember_me').removeAttr('checked');
-        $('#email').val('');
-        $('#pass').val('');
-    }
-
-    $('#remember_me').click(function() {
-
-        if ($('#remember_me').is(':checked')) {
-            // save email and password
-            localStorage.usrname = $('#email').val();
-            localStorage.pass = $('#pass').val();
-            localStorage.chkbx = $('#remember_me').val();
-        } else {
-            localStorage.usrname = '';
-            localStorage.pass = '';
-            localStorage.chkbx = '';
-        }
-    });
-});
- 
- 
- 
-
-////////////////////////////////////////////////
-/////////// in page styles ////////////////////
-///////////////////////////////////////////////
-
-
 	$(document).ready(function()
 	{
 		
+
+
+
+		$("#one img").data('img_src', $("#one img").attr('src') );
+                        $("#one img").attr('src',  $("#one img").data('gif-src') );
+                        $("#three img").attr('src',  $("#three img").data('img_src') );
+                        $("#two img").attr('src',  $("#two img").data('img_src') );
+
+    var start = $('#carousel-963250').find('.active').attr('data-interval');
+    t = setTimeout("$('#carousel-963250').carousel({interval: 3000});", start-1000);
+    
+    $('#carousel-963250').on('slid.bs.carousel', function () {   
+        
+        clearTimeout(t);  
+         var duration = $(this).find('.active').attr('data-interval');
+         
+
+         $('#carousel-963250').carousel('pause');
+         t = setTimeout("$('#carousel-963250').carousel();", duration-1000);
+         switch(duration){
+            case "2600":
+                        $("#one img").data('img_src', $("#one img").attr('src') );
+                        $("#one img").attr('src',  $("#one img").data('gif-src') );
+                        $("#three img").attr('src',  $("#three img").data('img_src') );
+                        $("#two img").attr('src',  $("#two img").data('img_src') );
+
+
+                        break;
+            case "3000":
+                        $("#two img").data('img_src', $("#two img").attr('src') );
+                        $("#two img").attr('src',  $("#two img").data('gif-src') );
+                        $("#one img").attr('src',  $("#one img").data('img_src') );
+                         $("#three img").attr('src',  $("#three img").data('img_src') );
+                        
+                        break;
+            case "13600": 
+                        $("#three img").data('img_src', $("#three img").attr('src') );
+                        $("#three img").attr('src',  $("#three img").data('gif-src') );
+                        $("#one img").attr('src',  $("#one img").data('img_src') );
+                         $("#two img").attr('src',  $("#two img").data('img_src') );
+                        
+                        break;
+         }
+
+    });
+
+
+
+
+
 		$(function() {
   $('a[href*=#]:not([href=#suggestion_front])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -643,7 +656,7 @@ $(function() { // jquery for remember me
       <div id="navbar" class="navbar-collapse collapse">
       		<ul class="nav navbar-nav navbar-right">
        			<li><a href="#features">Features</a></li>
-       			
+       			<li><a href="#take-a-tour">Take a Tour</a></li>
        			 <li><a href="#about-us">About Us</a></li>
 			 <li><a href="#contact-us">Contact-us</a></li>
 			  <li><a href="http://www.documendz.com/faq.html">FAQs</a></li>
@@ -874,19 +887,40 @@ border-radius: 8px;">
 				<p class="feature-font">Drop and drag text boxes dynamically to fill pdf forms or insert texts on images </p>
 			</div>
 
-<!--
-<div class="col-sm-4 ff" style="margin-top:40px">
-				<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-pencil"></i></div>
-				<h2 class="feature-header">Free Delivery in india</h2>
-				<p class="feature-font">Shipment is done free to any part of India. 
-Any corner of India from east to west, 
-north to south, is one for us.</p>
-			</div>-->
 
 			
 </div>	
 </div>
 
+
+
+<div class="row clearfix" id="take-a-tour" style="margin: 0px;">
+        <div class="col-md-12 column" style="padding:0px;">
+            <div class="carousel slide" id="carousel-963250" style="height: 473px;">
+                <ol class="carousel-indicators">
+                    <li class="active" data-slide-to="0" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
+                    </li>
+                    <li data-slide-to="1" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
+                    </li>
+                    <li data-slide-to="2" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active" data-interval="2600" id="one">
+                        <img alt="" data-gif-src="http://d28kungomln1xp.cloudfront.net/main_page_images/how-it-works1.gif" src="http://d28kungomln1xp.cloudfront.net/main_page_images/test1.png">
+                        
+                    </div>
+                    <div class="item" data-interval="3000" id="two">
+                        <img alt="" data-gif-src="http://d28kungomln1xp.cloudfront.net/main_page_images/how-it-works2.gif" src="http://d28kungomln1xp.cloudfront.net/main_page_images/test2.png">
+                        
+                    </div>
+                    <div class="item" data-interval="13600" id="three">
+                        <img alt="" data-gif-src="http://d28kungomln1xp.cloudfront.net/main_page_images/how-it-works3.gif" src="http://d28kungomln1xp.cloudfront.net/main_page_images/test3.png">
+                    </div>
+                </div> <a class="left carousel-control" data-slide="prev" style="background-image: linear-gradient(to right,rgba(157, 155, 156, 0.5) 0,rgba(255, 252, 252, 0.0001) 100%);color:#B9B9B9" onclick="$('#carousel-963250').carousel('prev')"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" data-slide="next" style="background-image: linear-gradient(to right,rgba(255, 252, 252, 0.0001) 0,rgba(157, 155, 156, 0.5) 100%);color:#B9B9B9" onclick="$('#carousel-963250').carousel('next')"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div>
 
 
 <div class="row" id="about-us" style="margin-left:0px;margin-right:0px;background-image: url('http://d28kungomln1xp.cloudfront.net/main_page_images/bck8.jpg'); background-size: cover;">
