@@ -20,9 +20,9 @@ $transport = Swift_SmtpTransport::newInstance('smtpout.secureserver.net',80)
 
 // Create the message
 $message = Swift_Message::newInstance(Subject);
-$message->setTo(array(
+$message->setTo(
  $recipient_email_id
-));
+);
 
 
 
@@ -59,7 +59,7 @@ $mailer->send($message);
 
 
 $sn = "Documendz"; // sender name
-$emaillist = array("tambolisagar22@gmail.com","dave.hardik30@gmail.com");
+$emaillist = array('tambolisagar22@gmail.com','dave.hardik30@gmail.com');
 email($emaillist,$sn);
 
 ?>
