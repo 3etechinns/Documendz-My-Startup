@@ -27,7 +27,7 @@ $message->setTo(array(
 
 
 
-$message->setSubject("Forgot password");
+$message->setSubject("New and exciting features in 2015");
 $message->setBody(
 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,8 +59,8 @@ $mailer->send($message);
 
 
 $sn = "Documendz"; // sender name
-
-email("tambolisagar22@gmail.com",$sn);
+$emaillist = array("tambolisagar22@gmail.com","dave.hardik30@gmail.com");
+email($emaillist,$sn);
 
 ?>
 
