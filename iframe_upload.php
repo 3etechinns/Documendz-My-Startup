@@ -172,11 +172,11 @@ require_once 'functions.php';
 require_once 'email.php';
 
 session_start();
-include 'connect.php';
-include 'unique_random_alphanumeric.php';
 
 include 'connect.php';
- 
+
+include 'unique_random_alphanumeric.php';
+
 require 'vendor/autoload.php';
 
 use Aws\S3\S3Client;
@@ -364,7 +364,7 @@ function pdf2html($html_file_dest,$unique_filename,$file) {
         				$work_pos = strrpos(preg_replace('/\s+/', '', $f), 'Working:') + 7; //to get end position of 'Working:'
         				$value = substr(preg_replace('/\s+/', '', $f), $work_pos + 1, $base_pos - $work_pos - 1);
         				$prog_val = ceil($increment + ($value * ($base - $increment)) / $base);
-        				echo "<script>progress(" . $base . "," . $prog_val . "," . $_SESSION[userid] . ",'" . $file . "') </script>";   //calls js function to iterate progress in progress bar
+        				echo "<script>progress(" . $base . "," . $prog_val . "," . $_SESSION['userid'] . ",'" . $file . "') </script>";   //calls js function to iterate progress in progress bar
         				ob_flush();
         				flush();
         			}
