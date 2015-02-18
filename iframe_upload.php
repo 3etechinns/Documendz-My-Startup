@@ -437,7 +437,7 @@ case "image/bmp":
 		pdf2html($html_file_dest,$unique_filename,$name);
 		
 	
-	$ui = mysql_real_escape_string($_SESSION[userid]);
+	$ui = mysql_real_escape_string($_SESSION['userid']);
 	$file = mysql_real_escape_string($file);
 	$unique_filename = mysql_real_escape_string($unique_filename);
 	$file_ext = mysql_real_escape_string($file_ext);
