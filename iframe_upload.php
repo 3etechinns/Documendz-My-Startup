@@ -171,7 +171,7 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
 require_once 'functions.php';
 require_once 'email.php';
 
-session_start();
+// session_start();
 
 include 'connect.php';
 

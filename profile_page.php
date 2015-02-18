@@ -1306,7 +1306,7 @@ padding: 3px;" class="btn btn-default btn-sm"  href="#suggestion" data-toggle="m
 		 </div>";
 		
     echo "<div id='self_uploaded_no_search'>No results found</div>";
-    $s = mysql_real_escape_string($_SESSION[userid]);
+    $s = mysql_real_escape_string($_SESSION['userid']);
     $uploaded_files_of_signed_in_user = mysql_query("SELECT * FROM uploaded_files WHERE user_id = '$s' ORDER BY file_id DESC");
 
     while ($row = mysql_fetch_array($uploaded_files_of_signed_in_user)) {
