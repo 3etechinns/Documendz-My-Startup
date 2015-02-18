@@ -495,8 +495,8 @@ case "image/bmp":
 	 
     	pdf2html($html_file_dest,$unique_filename,$name);
 	
-		
-	mysql_query("INSERT INTO uploaded_files VALUES('','$_SESSION[userid]','$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+	$s = $_SESSION['userid'];	
+	mysql_query("INSERT INTO uploaded_files VALUES('',$s,'$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
 
 /* move to a diff location */
 
