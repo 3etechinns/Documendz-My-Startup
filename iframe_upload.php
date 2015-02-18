@@ -171,7 +171,7 @@ function progress(base, value, session_user_id,file_name) //assigns value and ma
 require_once 'functions.php';
 require_once 'email.php';
 
-// session_start();
+session_start();
 
 include 'connect.php';
 
@@ -496,7 +496,8 @@ case "image/bmp":
     	pdf2html($html_file_dest,$unique_filename,$name);
 	
 	$s = $_SESSION['userid'];	
-	mysql_query("INSERT INTO uploaded_files VALUES('',$s,'$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
+
+	mysql_query("INSERT INTO uploaded_files VALUES('',133,'$name','$unique_filename','$file_ext')"); //When $_SESSION is used inside a
 
 /* move to a diff location */
 
