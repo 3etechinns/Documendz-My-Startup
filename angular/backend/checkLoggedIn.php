@@ -2,16 +2,14 @@
 
 session_start();
 
-// if ($_SESSION['userid'] != '')
-// {
+if ($_SESSION['userid'] != '')
+{
 
-// 	echo ;
-// }
-// else {
+	echo ;
+}
+else {
 
-// 	echo 0;
-// }
-
-echo $_SESSION['userid'];
+	echo 0;
+}
 
 ?>
