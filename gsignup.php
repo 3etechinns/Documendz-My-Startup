@@ -24,7 +24,7 @@ if($x > 0 ){
 		$_SESSION['userid'] = $z['userid'];
 
 
-		 echo "<script>window.location.href ='angular/#/workgroups'</script>";
+		 echo "<script>window.location.href ='http://www.documendz.com/angular/#/workgroups'</script>";
 }
 
 else if( $x == 0){
