@@ -5,7 +5,7 @@ session_start();
 if ($_SESSION['userid'] != '')
 {
 
-	echo ;
+	echo 1;
 }
 else {
 
