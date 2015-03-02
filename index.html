@@ -493,10 +493,11 @@ return ret;
 	        datatype: "text",
 	        data : signin_data,
 			success: function(message){
-				
-					if(message.trim().localeCompare("login-success") == 0){
+				var m = JSON.parse(message);
+					if(m['notif'].trim().localeCompare("login-success") == 0){
 						
-						window.location.href = "profile_page.php";
+						console.log(m['id']);
+						window.location.href = "angular/#/workgroups";
 						
 					}
 					else{
