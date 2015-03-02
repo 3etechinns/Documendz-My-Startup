@@ -3,8 +3,8 @@
 var fs = require('fs');
  
 var ssl_options = {
-  key: fs.readFileSync('./private.key'),
-  cert: fs.readFileSync('./ssl.crt')
+  key: fs.readFileSync('/etc/ssl/crt/documendz.key'),
+  cert: fs.readFileSync('/etc/ssl/crt/primary.crt')
   
 };
 
