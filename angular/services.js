@@ -182,7 +182,7 @@ socket = "";
   return {
     set:function(){
 
-        socket = io.connect("https://zofler.com:9000", {'forceNew': true });
+        socket = io.connect("https://documendz.com:9000", {'forceNew': true });
     },
 
     on: function (eventName, callback) {

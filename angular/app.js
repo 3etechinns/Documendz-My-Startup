@@ -334,7 +334,7 @@ $scope.fiToggle = false;
                 $scope.workgroupParams.count = 0;
                 $scope.myWorkgroupCount = 0;
                 $scope.wgData = [];
-         		alert("vf");
+         		alert("workgroup blank");
          }
          else{
 	            $scope.wgData = data['wg'];
