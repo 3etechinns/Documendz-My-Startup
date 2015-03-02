@@ -1,0 +1,3384 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="scotchApp" ng-controller="mainController">
+
+<head>
+  <!-- SCROLLS -->
+<title ng-bind="Page.title()">Loading...</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/files.css" />
+<link rel="stylesheet" href="css/inform.min.css" />
+  <!-- SPELLS -->
+
+  <script src="../javascripts/1.7.2.jquery.min.js"></script>
+<script type="text/javascript" src="../javascripts/core.js"></script>
+    <script type="text/javascript" src="../javascripts/rangy-position.js"></script>
+  <script type="text/javascript" src="../javascripts/core.js"></script>
+    <script type="text/javascript" src="../javascripts/rangy-position.js"></script>
+    <script type="text/javascript" src="../javascripts/raphael.js"></script>
+    <!--<script type= "text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.min.js"></script>-->
+    <script type="text/javascript" src="../javascripts/raphael.sketchpad.js?var=20102014"></script>
+    <script type="text/javascript" src="../javascripts/highlighter.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.ba-resize.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery_1.10.4_ui.js"></script>
+
+    <!-- <script type="text/javascript" src="../../javascripts/log4javascript.js"></script> -->
+  
+    <script type="text/javascript" src="../javascripts/contextmenu.js"></script>
+    <script type="text/javascript" src="../javascripts/contextmenu.position.js"></script>
+    <script type="text/javascript" src="../javascripts/scrollTo.js"></script>
+    <script type="text/javascript" src="../javascripts/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="../javascripts/perfect-scrollbar.with-mousewheel.min.js"></script>
+    <script type="text/javascript" src="../javascripts/intro.min.original.js"></script>
+
+    <script type="text/javascript"> 
+      
+
+
+        var comm_del = 0;
+
+        window.shared_id = "<?php echo 140 ?>";
+        window.user = "<?php session_start(); echo $_SESSION['Username']; ?>";
+
+       
+
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+
+console.log("text is:" + text);
+
+            return text.replace(/[&<>"']/g, function(m) {
+                return map[m];
+            });
+        }
+
+        function setSelection(a, d) {
+            if (document.createRange) {
+                var b = document.createRange();
+                c = window.getSelection();
+                b.selectNodeContents(a);
+                if (d) {
+                    b.collapse(false)
+                }
+                c.removeAllRanges();
+                c.addRange(b);
+
+            } else {
+                if (document.body.createTextRange) {
+                    var b = document.body.createTextRange();
+                    b.moveToElementText(a);
+                    if (d) {
+                        b.collapse(false)
+                    }
+                    b.select();
+
+                }
+            }
+        }
+
+
+        function clear_all_history() {
+
+
+            $('#svg-container > .handle').remove(); /* Remove text boxes*/
+            $('#svg_id > path').remove();
+
+            var listItems = $("#history li");
+
+            listItems.each(function() {
+                    var x = $('.' + $(this).attr('class') + ' > #anno_type > b')[0].innerHTML;
+                    if ((x == "Pin comment") || (x == "Text comment")) {
+
+                        if ($("#comment-container").children().length == 1) {
+                            /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */
+                            comm_del = 0;
+                        }
+
+                        var del_class = "." + $(this).attr('class');
+
+                        $("#svg_id > " + del_class).remove();
+                        $("#connector-svg > " + del_class).remove();
+                        $("#image-container > " + del_class).remove();
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class'), $(this).attr('class'));
+
+                        delete_commentbox_update_arrays($(del_class).children('.new-comment')[0]);
+
+                    }
+
+                    if ((x == "Strike") || (x == "Highlight")) {
+
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class'), $(this).attr('class'));
+                    }
+                }
+
+            );
+
+            $("#history").empty(); /* Removes all Li from history */
+
+            $.contextMenu('destroy'); /* This and below paragraph brings doc to its original fresh state(as in all uncheck state) */
+            $('.highlight_colors').css('display', 'none');
+            $('.draw_colors').css('display', 'none');
+            $('#svg-container').textHighlighter();
+            $('#svg-container').getHighlighter().destroy();
+
+            change_sketchpads(0);
+            svg_cont_style("text");
+            document.getElementById("svg_id").style.pointerEvents = "none";
+            $('.clickable').unbind('click');
+            $('#svg-container').unbind();
+            $('#svg-container').css({
+                "cursor": "text"
+            });
+            $("#draw, #strike,#textbox, #highlight, #drop-comment,#drag-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue").prop('checked', false);
+
+            // click_counter= -1;
+            // comment_div_id_cnt = -1; //id no. for comment boxes to be set to -1 again
+
+        }
+
+        function hideintro() {
+
+
+            $('#intro-modal').fadeOut("slow");
+            $(document).unbind('keyup');
+        }
+
+        function displayintro() {
+
+            $('#intro-modal').css("display", "block");
+            $('#intro-modal').css("opacity", "0.65");
+            $(document).bind('keyup', function(e) {
+
+                if (($('#intro-modal').css("display") == "block") && (e.keyCode == 27)) {
+
+                    hideintro();
+                }
+            });
+        }
+
+
+        function check_empty_commentbox(comment_type) {
+
+            $(".comment-box").each(function() {
+
+                if ($(this).find('.active-comment').length == 1) {
+
+                    if ($.trim($(this).find('.active-comment').val()).length == 0) {
+
+
+
+                        if ($(this).children('li').length == 1) {
+
+
+                            var del_class = "." + $(this).attr('class').split(' ')[1];
+
+                            $("#svg_id > " + del_class).remove();
+                            $("#connector-svg > " + del_class).remove();
+                            $("#image-container > " + del_class).remove();
+                            $("#history > " + del_class).remove();
+                            $('#svg-container').textHighlighter();
+                            $('#svg-container').getHighlighter().removeHighlights(del_class, $(this).attr('class').split(' ')[1]);
+                            if ($('#strike').is(':checked') == true || $('#highlight').is(':checked') == true || $('#drag-comment').is(':checked') == true) {
+
+
+                            } else {
+
+                                $('#svg-container').getHighlighter().destroy();
+                            }
+                            delete_commentbox_update_arrays($(this).children(".new-comment")[0]);
+                            comm_del = 1; //to set that the delete has happenend for an empty box, so the svg-container has not moved
+                        } else {
+
+                            $(this).children('li:last').remove();
+
+                            $(this).find('.new-comment').addClass('new-comm-active').removeClass('new-comm-inactive');
+                            $(this).find('.submit-comment').addClass('submit-inactive').removeClass('submit-active');
+
+                        }
+
+                    }
+                }
+
+
+            });
+
+        }
+
+        function update_history(update_class, update_text, update_page) {
+
+            updateHistoryObject = {
+                update_class: update_class,
+                update_text: update_text,
+                update_page: update_page
+            };
+
+            // console.log("update " + update_class);
+
+            sendChangeData(updateHistoryObject, "update-history");
+
+            if (update_text != undefined) {
+
+                if (update_text.length > 25) {
+
+                    update_text = update_text.substring(0, 22) + "...";
+                };
+
+                $("#history").children("." + update_class).children('#matter').text(update_text);
+            }
+
+            if (update_page != undefined) {
+
+                $("#history").children("." + update_class).children('#other').text("Page: " + update_page);
+
+            }
+
+        };
+
+        function update_history_realtime(update_class, update_text, update_page) {
+
+            updateHistoryObject = {
+                update_class: update_class,
+                update_text: update_text,
+                update_page: update_page
+            };
+
+            if (update_text != undefined) {
+
+                if (update_text.length > 25) {
+
+                    update_text = update_text.substring(0, 22) + "...";
+                };
+
+                $("#history").children("." + update_class).children('#matter').text(update_text);
+            }
+
+            if (update_page != undefined) {
+
+                $("#history").children("." + update_class).children('#other').text("Page: " + update_page);
+
+            }
+
+        };
+
+
+        function add_history(append_class, append_text, page_no, anno_type) {
+
+
+
+            var date = new Date();
+            var month = new Array();
+            month[0] = "Jan";
+            month[1] = "Feb";
+            month[2] = "Mar";
+            month[3] = "Apr";
+            month[4] = "May";
+            month[5] = "Jun";
+            month[6] = "Jul";
+            month[7] = "Aug";
+            month[8] = "Sep";
+            month[9] = "Oct";
+            month[10] = "Nov";
+            month[11] = "Dec";
+
+            var month_name = month[date.getMonth()];
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+
+            var time = "  " + month_name + " " + day + " " + hour + ":" + minutes;
+
+
+            var addHistoryObject = {
+                append_class: append_class,
+                append_text: append_text,
+                page_no: page_no,
+                anno_type: anno_type,
+                time: time
+            };
+
+            sendChangeData(addHistoryObject, "add-history");
+
+
+            $("#history").append('<li class="' + append_class + '">' +
+                '<div id="matter" style="padding-left:1px;margin-right:2px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;line-height:24px;float:left; top:0px;left: 40px;height:20px;width:95px;font-size: 10pt">' + escapeHtml(append_text) + '</div>' +
+                '<div id="anno_type" style="text-align:right;color:#218221;opacity:0.6;font-size:8pt;line-height:23px;width:73px;height:20px;float:left"><b>' + anno_type + '</b></div>' +
+                '<div id="other1" style="line-height:17px;float:left;color:#B2B2B2;top:20px;left:40px; height:15px;width:40px;font-size: 8pt">Page:' + page_no + ' </div>' +
+                '<div id="other2" style="line-height:17px;float:left;color:#B2B2B2;top:20px;height:15px;width:65px;font-size:8pt">' + time + ' </div>' +
+                '<div id="other3" style="line-height:17px;color:#B2B2B2;float:left;top:20px;height:15px;width:65px;font-size:8pt; overflow:hidden">' + user + '</div></li>');
+
+        };
+
+
+        function add_history_realtime(append_class, append_text, page_no, anno_type, time, name) {
+
+
+
+
+            $("#history").append('<li class="' + append_class + '">' +
+                '<div id="matter" style="padding-left:1px;margin-right:2px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;line-height:24px;float:left; top:0px;left: 40px;height:20px;width:95px;font-size: 10pt">' + escapeHtml(append_text) + '</div>' +
+                '<div id="anno_type" style="text-align:right;color:#218221;opacity:0.6;font-size:8pt;line-height:23px;width:73px;height:20px;float:left"><b>' + anno_type + '</b></div>' +
+                '<div id="other1" style="line-height:17px;float:left;color:#B2B2B2;top:20px;left:40px; height:15px;width:40px;font-size: 8pt">Page:' + page_no + ' </div>' +
+                '<div id="other2" style="line-height:17px;float:left;color:#B2B2B2;top:20px;height:15px;width:65px;font-size:8pt">' + time + ' </div>' +
+                '<div id="other3" style="line-height:17px;color:#B2B2B2;float:left;top:20px;height:15px;width:65px;font-size:8pt; overflow:hidden">' + name + '</div></li>');
+
+        };
+
+
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+        }
+
+
+
+        function random_class_generator() {
+            function a() {
+                return (((1 + Math.random()) * 65536) | 0).toString(16).substring(1);
+            }
+            return (a() + "-" + a() + "-" + a() + a() + a()).toLowerCase();
+        }
+
+        function random_comm_id_generator() {
+            function a() {
+                return (((1 + Math.random()) * 65536) | 0).toString(16).substring(1);
+            }
+            return (a() + a() + "-" + a()).toLowerCase();
+        }
+
+
+        function svg_cont_style(cursor_type) {
+
+
+            /*  if( $("#comment-container").children().length > 0){ */
+
+            $('#svg-container').css({
+                'position': 'absolute',
+                'height': 'auto',
+                'left': svg_left("after"),
+                'cursor': cursor_type
+            });
+
+            /* } */
+
+            /* else if( $("#comment-container").children().length == 0){ */
+
+            /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before"),'cursor':cursor_type}); */
+
+            /* } */
+
+
+        }
+
+        function connector_lines(y1, y2, conn_class) {
+
+            var xmlns = "http://www.w3.org/2000/svg";
+            var conn_elem = document.createElementNS(xmlns, "line");
+
+            /*  elem.setAttributeNS(null,"style",recent_created_path.attr('style')); */
+
+
+            conn_elem.setAttributeNS(null, "x1", "0");
+            conn_elem.setAttributeNS(null, "y1", y1);
+            conn_elem.setAttributeNS(null, "x2", "27");
+            conn_elem.setAttributeNS(null, "y2", y2);
+            conn_elem.setAttributeNS(null, "style", "stroke:#99CCFF;stroke-width:1");
+            conn_elem.setAttributeNS(null, "class", conn_class);
+
+            document.getElementById('connector-svg').appendChild(conn_elem);
+
+
+        }
+
+        function comment_lines(x1, y1, x2, y2, rnd_class) {
+            var svg_width = $(".pf").width();
+
+            var xmlns = "http://www.w3.org/2000/svg";
+
+            var line_elem = document.createElementNS(xmlns, "line");
+
+            /*  elem.setAttributeNS(null,"style",recent_created_path.attr('style')); */
+
+
+            line_elem.setAttributeNS(null, "x1", x1);
+            line_elem.setAttributeNS(null, "y1", y1);
+            line_elem.setAttributeNS(null, "x2", svg_width);
+            line_elem.setAttributeNS(null, "y2", y2);
+            line_elem.setAttributeNS(null, "style", "stroke:#99CCFF;stroke-width:1");
+            line_elem.setAttributeNS(null, "class", rnd_class);
+
+            document.getElementById('svg_id').appendChild(line_elem);
+
+
+        }
+
+
+        function delete_commentbox_update_arrays(del_object) {
+
+
+            if (del_object != undefined) {
+                window.id_to_be_deleted = $(del_object).parent().attr('id');
+
+                var col2 = all_click_y_positions.map(function(value, index) {
+                    return value[1];
+                });
+
+
+
+
+                for (j = 0; j < col2.length; j++) {
+
+                    if (col2[j] == id_to_be_deleted) {
+                        var index_to_be_deleted = j;
+
+                        break;
+                    };
+
+                };
+
+                if (index_to_be_deleted == undefined) {
+
+
+
+                };
+
+
+                /*    var a = col2.indexOf("'"+id_to_be_deleted+"'");
+                 */
+
+                var ind = $(del_object).parent().parent().children().index($(del_object).parent());
+
+
+                $(del_object).parent().remove();
+                original_aligned_y.splice(ind, 1);
+                all_click_y_positions.splice(index_to_be_deleted, 1);
+
+
+                if (ind > 0) {
+                    height_change_align_comment_boxes(ind - 1);
+                } else if (ind == 0 && $("#comment-container").children().length > 0) { /* no re-alignment needed after last comment box is deleted   */
+                    var zeroeth_elem_orig_top = original_aligned_y[0];
+
+
+                    $("#comment-container ul:first-child").css('top', new_top_calculator(zeroeth_elem_orig_top));
+                    height_change_align_comment_boxes(0);
+                    $("#connector-svg > ." + $("#comment-container ul:first-child").attr('class').split(' ')[1]).attr("y2", new_top_calculator(zeroeth_elem_orig_top));
+                }
+            } /* for.... if(del_object != undefined) */
+            else {}
+
+        }
+
+
+        function contextmenu_activate() {
+
+            $(function() {
+                $.contextMenu({
+
+                    selector: '.highlighted',
+                    build: function(selector, e) {
+                        if ($(selector[0]).parent().attr('class').split(' ')[0] == 'striked') {
+
+                            return {
+                                callback: function(key, options) {
+
+                                    switch (key) {
+                                        case "remove-highlight":
+
+                                            var elem = "." + $(this).attr('class').split(' ')[1];
+
+                                            $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
+
+                                            /* var elem = "$('#comment-container > ."+$(this).attr('class').split(' ')[1] + "')";
+                                             */
+
+                                            removeCommentUl($(this).attr('class').split(' ')[1]);
+
+
+
+                                            sendChangeData($(this).attr('class').split(' ')[1], "remove-highlight");
+
+
+                                            $("#svg_id > " + elem).remove();
+                                            $("#connector-svg > " + elem).remove();
+                                            $("#history > " + elem).remove();
+                                            delete_commentbox_update_arrays($(elem).children('.delete-comment')[0]);
+                                            if ($("#comment-container").children().length == 0) {
+                                                /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */
+                                                comm_del = 0;
+                                                /* When last comment-box is deleted, page should shift*/
+                                                /* Currently hardcoded, should vary acc to page width*/
+                                            }
+
+                                            /*  delete_commentbox_update_arrays($(this).attr('class').split(' ')[1]); */
+                                            //sendChangeData(,"remove-highlight")
+
+                                            break;
+                                        case "remove-strike":
+                                            var str = "." + $(this).parent().attr('class').split(' ')[1];
+                                            $('#svg-container').getHighlighter().removeHighlights("." + $(this).parent().attr('class').split(' ')[1], $(this).parent().attr('class').split(' ')[1]);
+
+                                            $("#history > " + str).remove();
+
+                                            sendChangeData($(this).parent().attr('class').split(' ')[1], "remove-strikeout");
+
+                                            break;
+                                    }
+                                },
+                                items: {
+                                    "remove-highlight": {
+                                        name: "Remove Highlight",
+                                        icon: "delete"
+                                    },
+                                    "remove-strike": {
+                                        name: "Remove Strike",
+                                        icon: "delete"
+                                    },
+                                }
+                            };
+                        } else {
+                            return {
+                                callback: function(key, options) {
+                                    var elem = "." + $(this).attr('class').split(' ')[1];
+                                    $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
+
+                                    // Vipul Sodha ~ to send Changed data ! Currently sending serialized highlights
+                                    sendChangeData($(this).attr('class').split(' ')[1], "remove-highlight");
+
+                                    removeCommentUl($(this).attr('class').split(' ')[1]);
+
+
+                                    $(elem).remove();
+
+                                    delete_commentbox_update_arrays($(elem).children('.delete-comment')[0]);
+
+                                    if ($("#comment-container").children().length == 0) {
+                                        /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */
+                                        comm_del = 0;
+                                        /* When last comment-box is deleted, page should shift*/
+                                        /* Currently hardcoded, should vary acc to page width*/
+                                    }
+                                },
+                                items: {
+                                    "remove-highlight": {
+                                        name: "Remove Highlight",
+                                        icon: "delete"
+                                    },
+                                }
+                            };
+                        }
+                    }
+                });
+            });
+
+
+            $(function() {
+                $.contextMenu({
+
+                    selector: '.striked',
+                    build: function(selector, e) {
+                        if ($(selector[0]).parent().attr('class').split(' ')[0] == 'highlighted') {
+
+                            return {
+                                callback: function(key, options) {
+
+                                    switch (key) {
+                                        case "remove-strike":
+                                            var str = "." + $(this).attr('class').split(' ')[1];
+
+
+                                            sendChangeData($(this).attr('class').split(' ')[1], "remove-strikeout");
+
+
+
+                                            $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
+                                            $("#history > " + str).remove();
+
+
+                                            break;
+                                        case "remove-highlight":
+                                            var elem = "." + $(this).parent().attr('class').split(' ')[1];
+
+                                            sendChangeData($(this).parent().attr('class').split(' ')[1], "remove-highlight");
+
+                                            removeCommentUl($(this).parent().attr('class').split(' ')[1]);
+
+
+                                            $('#svg-container').getHighlighter().removeHighlights("." + $(this).parent().attr('class').split(' ')[1], $(this).parent().attr('class').split(' ')[1]);
+                                            $("#svg_id > " + elem).remove();
+                                            $("#connector-svg > " + elem).remove();
+                                            $("#history > " + elem).remove();
+
+
+                                            delete_commentbox_update_arrays($(elem).children('.new-comment')[0]);
+                                            if ($("#comment-container").children().length == 0) {
+                                                /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("before")}); */
+                                                comm_del = 0;
+                                                /* When last comment-box is deleted, page should shift*/
+                                                /* Currently hardcoded, should vary acc to page width*/
+                                            }
+                                            break;
+                                    }
+                                },
+                                items: {
+                                    "remove-highlight": {
+                                        name: "Remove Highlight",
+                                        icon: "delete"
+                                    },
+                                    "remove-strike": {
+                                        name: "Remove Strike",
+                                        icon: "delete"
+                                    },
+                                }
+                            };
+                        } else {
+                            return {
+                                callback: function(key, options) {
+                                    var str = "." + $(this).attr('class').split(' ')[1];
+                                    $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
+                                    $("#history > " + str).remove();
+
+                                    sendChangeData($(this).attr('class').split(' ')[1], "remove-strikeout");
+
+                                },
+                                items: {
+                                    "remove-strike": {
+                                        name: "Remove Strike",
+                                        icon: "delete"
+                                    },
+                                }
+                            };
+                        }
+                    }
+                });
+            });
+
+        }
+
+
+
+
+        function draw_contextmenu() {
+
+
+            $(function() {
+                $.contextMenu({
+
+                    selector: '.pathclass',
+                    callback: function() {
+
+                        var path_elem = $(this).attr('class').split(' ')[1]
+                        $("#svg_id ." + path_elem).remove();
+                        $("#history > ." + path_elem).remove();
+                        var removeDraw = {
+                            pathClass: path_elem
+                        };
+                        sendChangeData(removeDraw, "remove-draw");
+                    },
+                    items: {
+                        "remove-draw": {
+                            name: "Remove Path",
+                            icon: "delete"
+                        }
+
+                    }
+
+                });
+            });
+
+        }
+
+
+
+        function svg_left(state) {
+
+
+            var page_cont_width = $("#page-container").width();
+            var svg_width = $(".pf").width();
+
+            if (state == "before") {
+
+                return ((page_cont_width - 17 - svg_width) / 2) + "px";
+            } else if (state == "after") {
+
+                return 15 + "px";   // we have decided to keep this
+            }
+        }
+
+
+        function svg_left_no_px(state) {
+
+            var page_cont_width = $("#page-container").width();
+            var svg_width = $(".pf").width();
+
+            if (state == "before") {
+
+                return ((page_cont_width - 17 - svg_width) / 2);
+            } else if (state == "after") {
+
+                return 15;  // we have decided to keep this
+            }
+
+        }
+
+
+        function change_sketchpads(flag) {
+
+            if (flag == 1 && draw_state == 0) {
+
+                document.getElementById("svg_id").style.pointerEvents = "visiblepainted";
+                sketchpad.editing(true);
+                /* (eval("sketchpad")).editing(true); */
+
+            } else if (flag == 0 && draw_state == 1) {
+
+                sketchpad.editing(false);
+                /* (eval("sketchpad")).editing(false); */
+                document.getElementById("svg_id").style.pointerEvents = "none";
+
+                draw_state = 0;
+
+            } else {}
+        }
+
+        function change_draw_color(color) {
+
+            sketchpad.pen().color(color);
+            /* (eval("sketchpad")).pen().color(color); */
+
+        }
+
+
+
+        $(document).on({
+
+            click: function() {
+
+                $("#page-container").scrollTo("#svg-container ." + $(this).attr('class'), 0, {
+                    offset: -25
+                });
+                $(".tool").prop("checked", false);
+
+                switch ($('.' + $(this).attr('class') + ' > #anno_type > b')[0].innerHTML) {
+
+                    case "Strike":
+                        $("#strike").prop("checked", true);
+                        check_value("strike");
+                        break;
+
+                    case "Highlight":
+                        $("#highlight").prop("checked", true);
+                        check_value("highlight");
+                        break;
+
+                    case "Draw":
+                        $("#draw").prop("checked", true);
+                        check_value("draw");
+                        break;
+
+                    case "Text box":
+                        $("#textbox").prop("checked", true);
+                        check_value("textbox");
+                        break;
+
+                    case "Pin comment":
+                        $("#drop-comment").prop("checked", true);
+                        check_value("drop-comment");
+                        break;
+
+                    case "Text comment":
+                        $("#drag-comment").prop("checked", true);
+                        check_value("drag-comment");
+                        break;
+
+
+
+
+                }
+
+                ;
+
+
+            }
+        }, '#history > li');
+
+
+  $(document).on({
+
+            click: function() {
+
+           if($(this).parent().children('.shortComments').length == 0){     
+                var c = $(this).parent().children('li').length;
+                $(this).siblings().hide();
+                $(this).children().removeClass('fa-minus').addClass('fa-plus');
+                $(this).parent().append("<span class='shortComments'>"+c+" comment(s)</span>");
+            }
+        else {
+        
+        $(this).parent().children('.shortComments').remove();
+        $(this).children().removeClass('fa-plus').addClass('fa-minus');
+        $(this).siblings().show();
+
+        }
+            }
+        },'.collapseComments');
+
+
+        $(document).on({
+  
+            mouseover: function() {
+console.log("ok");
+                if ($('#draw').is(':checked') == true) {
+                    $(this).css({
+                        "cursor": "url(../images/right-click.cur),default"
+                    });
+                } else {
+
+                    $(this).css({
+                        "cursor": "url(../images/textbox.cur),default"
+                    });
+                }
+
+            }
+        }, '.pathclass');
+
+
+
+
+        $(document).on({
+
+            keyup: function() {
+
+                if ($(this).val() != "") {
+
+                    $(this).parent().siblings('.submit-comment').addClass('submit-active').removeClass('submit-inactive');
+
+                } else {
+
+                    $(this).parent().siblings('.submit-comment').addClass('submit-inactive').removeClass('submit-active');
+
+                }
+
+            }
+        }, '.active-comment');
+
+
+
+        $(document).on({
+
+            click: function() {
+
+
+            
+
+    console.log($(this).parent().children("li:last").children(".active-comment").val());
+
+                var new_elem_content = escapeHtml($(this).parent().children("li:last").children(".active-comment").val()).replace(/\r\n|\r|\n/g, "<br />");
+                $(this).parent().children("li:last").append("<div class='comment-text' contenteditable='false'>" + new_elem_content + "</div>");
+
+
+                $(this).parent().find(".active-comment").remove();
+
+
+                var par_class = $(this).parent().attr('class').split(' ')[1];
+                dropCommentObject = {
+                    elemId: $(this).parent().attr("id"),
+                    newLiId: $(this).parent().children("li:last").attr('id'),
+                    uniqueClass: par_class,
+                    content: $(this).parent().children("li:last").children(".comment-text").html()
+                };
+
+
+
+                if ($("." + par_class + " li").length == 1) {
+                    //first comment in box
+
+
+
+                    var position = $("#image-container > ." + par_class).position();
+
+                    dropCommentObject.cords = commentBoxCords[par_class];
+                    // console.log(commentBoxCords);
+
+                    if (commentBoxCords[par_class].type === 'drag') {
+                        dropCommentObject.serializeData = dropCommentObject.cords.highlight;
+                        delete dropCommentObject.cords.highlight;
+
+                    }
+
+            
+
+                    sendChangeData(dropCommentObject, "new-drop-comment");
+
+                } else {
+                    alert("two");
+                    //console.log( $("#"+ dropCommentObject.newLiId).prev().attr('id'));
+                    dropCommentObject.afterLiId = $("#" + dropCommentObject.newLiId).prev().attr('id');
+                    dropCommentObject.cords = commentBoxCords[par_class];
+                    //console.log(dropCommentObject);
+                    sendChangeData(dropCommentObject, "update-drop-comment");
+                }
+                // console.log(commentBoxCords);
+
+    $(this).siblings('.new-comment').addClass('new-comm-active').removeClass('new-comm-inactive');
+                $(this).addClass('submit-inactive').removeClass('submit-active');
+
+            }
+        }, '.submit-active');
+
+        $(document).on({
+
+            click: function() {
+                var rnd_comm_id = random_comm_id_generator();
+
+                $(this).addClass('new-comm-inactive').removeClass('new-comm-active');
+
+                $(this).before('<li id = ' + rnd_comm_id + '><span class="critic_name" contenteditable="false">' + user + ':</span><span class="trash-comment"><img src="../images/trash.png"></span><textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea></li>');
+
+                $("#" + rnd_comm_id).find('textarea').focus();
+                // console.log($("#"+rnd_comm_id).find('textarea'));
+                //$("#"+rnd_comm_id+" .comment-text").click();
+
+            }
+        }, '.new-comm-active');
+
+
+        $(document).on({
+
+            click: function() {
+
+                $(this).parent().siblings('.submit-comment').addClass('submit-inactive').removeClass('submit-active');
+                $(this).parent().siblings('.new-comment').addClass('new-comm-active').removeClass('new-comm-inactive');
+
+            }
+        }, '.comment-box span.trash-comment:last');
+
+
+        $(document).on({
+
+            click: function() {
+
+                var del_class = "." + $(this).closest(".comment-box").attr('class').split(' ')[1];
+
+                dropCommentObject = {
+                    delLiId: $(this).parent().attr('id'),
+                    uniqueClass: $(this).parent().parent().attr('class').split(' ')[1]
+
+                };
+
+                dropCommentObject.type = commentBoxCords[dropCommentObject.uniqueClass].type;
+                sendChangeData(dropCommentObject, "delete-drop-comment");
+
+
+
+                if ($(del_class + " li").length == 1) {
+
+
+                    if ($('#strike').is(':checked') == true || $('#highlight').is(':checked') == true || $('#drag-comment').is(':checked') == true) {
+
+
+                        $('#svg-container').getHighlighter().removeHighlights("." + $(this).closest(".comment-box").attr('class').split(' ')[1], $(this).closest(".comment-box").attr('class').split(' ')[1]);
+                        $("#svg_id > " + del_class).remove();
+                        $("#connector-svg > " + del_class).remove();
+                        $("#image-container > " + del_class).remove();
+                        $("#history > " + del_class).remove();
+                        delete_commentbox_update_arrays($(this).parent());
+
+                    } else {
+
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().removeHighlights("." + $(this).closest(".comment-box").attr('class').split(' ')[1], $(this).closest(".comment-box").attr('class').split(' ')[1]);
+
+                        $("#svg_id > " + del_class).remove();
+                        $("#connector-svg > " + del_class).remove();
+                        $("#image-container > " + del_class).remove();
+                        $("#history > " + del_class).remove();
+                        delete_commentbox_update_arrays($(this).parent());
+                        $('#svg-container').getHighlighter().destroy();
+
+                    }
+
+
+
+                } else {
+
+
+
+
+                    $(this).parent().remove();
+
+                }
+
+                if ($("#comment-container").children().length == 0) {
+
+                    comm_del = 0;
+                }
+
+
+
+            }
+        }, '.trash-comment');
+
+
+
+
+        $(document).on({
+
+            mouseenter: function(e) {
+
+                e.stopPropagation();
+                var rgb_str = $(this).css("background-color");
+                var rgba_str = "rgba(" + rgb_str.substring(rgb_str.lastIndexOf('(') + 1, rgb_str.lastIndexOf(')')) + ", 0.6)";
+
+
+                if ($('#strike').is(':checked') == true || $('#highlight').is(':checked') == true || $('#drag-comment').is(':checked') == true) {
+
+                    $('#svg-container span.' + $(this).attr('class').split(' ')[1]).css("background-color", rgba_str); /* '#abc .xyz' searches for xyz class within entire abc  */
+
+                    $('#comment-container .' + $(this).attr('class').split(' ')[1]).css("border-color", "rgba(255,255,255,0.5)");
+                    $('#svg_id > .' + $(this).attr('class').split(' ')[1]).css("stroke", "rgba(127,255,255,0.4)");
+                    $('#connector-svg > .' + $(this).attr('class').split(' ')[1]).css("stroke", "rgba(127,255,255,0.4)");
+
+                } else {
+
+                }
+
+            },
+            mouseleave: function(e) {
+                e.stopPropagation();
+                var rgb_str = $(this).css("background-color");
+                var rgba_str = "rgba(" + rgb_str.substring(rgb_str.lastIndexOf("(") + 1, rgb_str.lastIndexOf(",")) + ",1)";
+
+                if ($('#strike').is(':checked') == true || $('#highlight').is(':checked') == true || $('#drag-comment').is(':checked') == true) {
+
+                    $('#svg-container span.' + $(this).attr('class').split(' ')[1]).css("background-color", rgba_str);
+                    $('#comment-container .' + $(this).attr('class').split(' ')[1]).css("border-color", "rgba(255,255,255,1)");
+
+                    $('#svg_id > .' + $(this).attr('class').split(' ')[1]).css("stroke", "#99CCFF");
+                    $('#connector-svg > .' + $(this).attr('class').split(' ')[1]).css("stroke", "#99CCFF");
+                } else {
+
+                    /*not to be run for any checks other than drag, highlight, strike  */
+                }
+
+            }
+
+        }, '.highlighted');
+
+
+
+        $(document).on({
+
+            mouseenter: function(e) {
+
+                e.stopPropagation();
+                var rgb_str = $("#svg-container ." + $(this).attr('class').split(' ')[1]).css("background-color");
+                var rgba_str = "rgba(" + rgb_str.substring(rgb_str.lastIndexOf("(") + 1, rgb_str.lastIndexOf(")")) + ", 0.6)";
+
+                $('#svg-container span.' + $(this).attr('class').split(' ')[1]).css("background-color", rgba_str); /* '#abc .xyz' searches for xyz class within entire abc  */
+
+                $(this).css("border-color", "rgba(255,255,255,0.5)");
+                $('#svg_id > .' + $(this).attr('class').split(' ')[1]).css("stroke", "rgba(127,255,255,0.4)");
+                $('#connector-svg > .' + $(this).attr('class').split(' ')[1]).css("stroke", "rgba(127,255,255,0.4)");
+
+            },
+            mouseleave: function(e) {
+                e.stopPropagation();
+                var rgb_str = $("#svg-container ." + $(this).attr('class').split(' ')[1]).css("background-color");
+                var rgba_str = "rgba(" + rgb_str.substring(rgb_str.lastIndexOf("(") + 1, rgb_str.lastIndexOf(",")) + ",1)";
+
+                $('#svg-container span.' + $(this).attr('class').split(' ')[1]).css("background-color", rgba_str);
+                $(this).css("border-color", "rgba(255,255,255,1)");
+
+                $('#svg_id > .' + $(this).attr('class').split(' ')[1]).css("stroke", "#99CCFF");
+                $('#connector-svg > .' + $(this).attr('class').split(' ')[1]).css("stroke", "#99CCFF");
+            }
+
+        }, '.comment-box');
+
+
+        $(document)
+            .on('focus.textarea', '.autoExpand', function() {
+                var savedValue = this.value;
+                this.value = '';
+                this.baseScrollHeight = this.scrollHeight;
+                this.value = savedValue;
+            })
+            .on('input.textarea', '.autoExpand', function() {
+                var minRows = this.getAttribute('data-min-rows') | 0,
+                    rows;
+                this.rows = minRows;
+                rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+                this.rows = minRows + rows;
+            });
+
+        function remove_textbox_styles(cursor_style) {
+
+
+            $(document).off("mouseenter mouseleave mouseup mousedown click mouseover", ".handle");
+            $(document).off("mouseenter mouseleave click ", ".box");
+            $(document).off("mouseenter mouseleave click mouseover", ".delete-text-box");
+            $('.handle').find(".delete-text-box").css({
+                "opacity": "0"
+            });
+            $('.handle').css('outline', 'none');
+            $('.handle').css('cursor', function() {
+                return cursor_style;
+            });
+            $('.handle').draggable();
+            $('.handle').draggable('disable');
+            $('.box').attr('contenteditable', 'false');
+            $('.handle').addClass('unselectable');
+
+        }
+
+
+        function textbox_events() {
+
+
+            svg_cont_style("url(../images/textbox.cur),default");
+
+            $('.box').attr('contenteditable', 'true');
+            $('.handle').removeClass('unselectable');
+
+            $(document).on({
+
+                mouseenter: function() {
+
+                    $(this).css('outline', '1px solid #33CCFF');
+                    //$(this).find(".box").css('outline','none');
+                    $(this).find(".delete-text-box").css({
+                        "opacity": "0.4"
+                    });
+                },
+                mouseleave: function() {
+
+                    //$(this).css('outline','none');
+                    $(this).find(".delete-text-box").css({
+                        "opacity": "0"
+                    });
+                    if ($(this).find(".box").is(':focus') == false) {
+                        $(this).css('outline', 'none');
+                    }
+                },
+                click: function() {
+                    //don't do anything as click on handle shouldn't
+                },
+                mousedown: function() {
+
+                    $(this).css('cursor', 'url(../images/closedhand.cur),auto');
+
+                },
+                mouseup: function() {
+
+                    $(this).css('cursor', 'url(../images/openhand.cur),auto');
+                },
+                mouseover: function() {
+                    $(this).css('cursor', 'url(../images/openhand.cur),auto');
+                    $(this).draggable({
+                        containment: 'parent',
+                        stop: function() {
+
+                            var offset = $(this).offset();
+                            var xPos = offset.left;
+                            var yPos = offset.top - $("#svg-container").offset().top;
+                            var page_no = (Math.ceil(yPos / (page_height + 13)) > cnt ? cnt : Math.ceil(yPos / (page_height + 13)));
+
+                            update_history($(this).attr('class').split(' ')[2], undefined, page_no);
+                            var position = $(this).position();
+
+                            textBoxObject = {
+                                x: position.left,
+                                y: position.top,
+                                uniqueClass: $(this).attr('class').split(' ')[2]
+                            };
+                            sendChangeData(textBoxObject, "textbox-position-update");
+
+                        }
+                    });
+                }
+            }, '.handle');
+
+
+            $(document).on({
+
+                mouseenter: function(event) {
+
+                    $(this).css({
+                        "opacity": "1"
+                    });
+                    //$(this).css({"opacity":"1","background-size":"16px 16px"});
+                    $(this).siblings(".box").css({
+                        "opacity": "0.3"
+                    });
+                    $(this).parent().css('outline', '1px solid #33CCFF');
+                    event.stopPropagation();
+                },
+                mouseleave: function() {
+                    //$(this).css({"opacity":"0.4","background-size":"12px 12px"});
+
+                    $(this).css({
+                        "opacity": "0.4"
+                    });
+                    $(this).siblings(".box").css({
+                        "opacity": "1"
+                    });
+                },
+                mouseover: function() {
+
+                    $(this).css({
+                        "cursor": "pointer"
+                    });
+                },
+                click: function(event) {
+                    event.stopPropagation();
+                    if ($.trim($('#svg-container div.box:last').text()).length === 0) {
+
+                        $('#svg-container div.box:last').parent().remove();
+                        fcs = 0;
+                        textBoxObject = {
+                            uniqueClass: $(this).parent().attr('class').split(' ')[2]
+                        };
+                        sendChangeData(textBoxObject, "delete-textbox");
+
+                    } else {}
+
+                    fcs = 0;
+                    $("#history > ." + $(this).parent().attr('class').split(' ')[2]).remove();
+                    $(this).parent().remove();
+
+
+
+                }
+
+            }, '.delete-text-box');
+
+            // $(document).on({
+
+            //     mouseenter: function() {
+            //         $(this).css('cursor', 'text');
+            //         $(this).parent().draggable('disable');
+            //         // $(this).css('outline','1px dotted #6f6f77');
+            //         // $(this).parent().css('outline','none');
+
+            //     },
+            //     mouseleave: function() {
+            //         $(this).parent().draggable('enable');
+            //     },
+            //     click: function() {
+            //         $('.handle').css('outline', 'none');
+            //         $(this).parent().css('outline', '1px solid #33CCFF');
+            //         $('.delete-text-box').css('opacity', '0');
+
+            //         $(this).siblings(".delete-text-box").css('opacity', '0.4');
+            //     }
+
+            // }, '.box');
+
+
+        }
+
+        function call_handle_jquery() {
+            $('.handle').css('outline', 'none');
+            $('.delete-text-box').css('opacity', '0');
+
+
+
+            $(".handle").draggable({
+                containment: 'parent'
+            });
+
+            $('.handle').mouseenter(function() {
+
+                $(this).css('outline', '1px solid #33CCFF');
+                //$(this).find(".box").css('outline','none');
+                $(this).find(".delete-text-box").css({
+                    "opacity": "0.4"
+                });
+            });
+
+            $('.handle').mouseleave(function() {
+
+                //$(this).css('outline','none');
+                $(this).find(".delete-text-box").css({
+                    "opacity": "0"
+                });
+                if ($(this).find(".box").is(':focus') == false) {
+                    $(this).css('outline', 'none');
+                }
+
+            });
+
+            $('.delete-text-box').mouseenter(function() {
+
+                event.stopPropagation();
+                $(this).css({
+                    "opacity": "1"
+                });
+                //$(this).css({"opacity":"1","background-size":"16px 16px"});
+                $(this).siblings(".box").css({
+                    "opacity": "0.3"
+                });
+                $(this).parent().css('outline', '1px solid #33CCFF');
+            });
+
+            $('.delete-text-box').mouseleave(function() {
+                //$(this).css({"opacity":"0.4","background-size":"12px 12px"});
+
+                $(this).css({
+                    "opacity": "0.4"
+                });
+                $(this).siblings(".box").css({
+                    "opacity": "1"
+                });
+            });
+
+            $('.box').mouseenter(function() {
+                $(this).css('cursor', 'text');
+                $(this).parent().draggable('disable');
+                //  $(this).css('outline','1px dotted #6f6f77');
+                //  $(this).parent().css('outline','none');
+
+            });
+
+            $('.box').mouseleave(function() {
+                $(this).parent().draggable('enable');
+
+            });
+
+            $('.box').click(function() {
+                $('.handle').css('outline', 'none');
+                $(this).parent().css('outline', '1px solid #33CCFF');
+                $('.delete-text-box').css('opacity', '0');
+
+                $(this).siblings(".delete-text-box").css('opacity', '0.4');
+            });
+
+            $('.handle').click(function() {
+                //Dont do anything as clicked on handle
+
+            });
+
+            $('.delete-text-box').click(function() {
+                event.stopPropagation();
+
+
+                if ($.trim($('#svg-container div.box:last').text()).length === 0) {
+
+
+                    $('#svg-container div.box:last').parent().remove();
+                    fcs = 0;
+                } else {}
+
+                fcs = 0;
+                $(this).parent().remove();
+                /* $(this).siblings(".box").remove(); */
+
+            });
+        }
+
+
+        function check_value(check_id) { //sends the id of the checked button
+
+            if (document.getElementById(check_id).checked) { //will case the button which is checked 
+
+                switch (check_id) {
+
+                    case "textbox":
+
+
+
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy();
+                        $('#svg-container').unbind(); //to unbind click for comment
+                        $.contextMenu('destroy');
+                        //  call_handle_jquery();
+
+
+                        window.focussed_class = "";
+                        window.fcs = 0;
+                        $('.clickable')
+                            .bind(
+                                'click',
+                                function(ev) {
+
+                                    var page_no_textbox = (Math.ceil((ev.clientY - $(".clickable").offset().top) / ($('.pf').height() + 13)) > cnt ? cnt : Math.ceil((ev.clientY - $(".clickable").offset().top) / ($('.pf').height() + 13)));
+
+                                    if ($(".box").length > 0) { // If the no of .box > 0 only then the below condition needs to be checked   
+
+                                        if ($.trim($('#svg-container div.box:last').text()).length === 0) {
+
+                                            $("#history  li." + $('#svg-container div.handle:last').attr('class').split(' ')[2]).remove();
+
+                                            $('#svg-container div.box:last').parent().remove();
+
+                                            fcs = 0;
+                                        } else {
+
+                                        }
+                                    }
+
+                                    if ($(".box").is(':focus') == false && fcs != 1) {
+                                        var $div = $(ev.target);
+
+
+                                        var offset = $div.offset();
+                                        var x = ev.clientX - offset.left;
+                                        var y = ev.clientY - offset.top;
+
+                                        $('.handle').css('outline', 'none');
+
+                                        textBoxObject.x = x;
+                                        textBoxObject.y = y;
+
+                                        //console.log("called X Y" + x);
+
+
+                                        var rnd_class = random_class_generator();
+
+                                        // constructTextBox(rnd_class, x, y, "", true);
+                                        $("#svg-container")
+                                            .append(
+                                                '<div class="handle bar ' + rnd_class + '"' + ' style="margin:8px;z-index:3;cursor:url(../images/openhand.cur) 7.5 7.5,default;height:auto; width:auto;overflow:visible;outline: 1px solid #33CCFF;color:red;text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;' + 'position:absolute;padding:6px;background:transparent;top:' + y + 'px;left:' + x + 'px">'
+                                                //cursor has 'default' .. don't know        what it means
+
+                                                + '<div class="box lim" ' + 'style="vertical-align:baseline;background:transparent;float:left;border:1px;solid;padding:1px;outline:none"' + ' contenteditable="true" spellcheck="false">' + '</div>'
+
+                                                + '<div class="delete-text-box" style="position:absolute;top:-9px;right:-9px;float:right;background-image:url(../images/delete16x16.png);background-repeat:no-repeat;background-position:center center;' + 'border: none;cursor: default;height: 16px;width: 16px;outline: none;opacity:0.4"></div>'
+
+                                                + '</div>');
+                                        $(".box").focus();
+
+                                        fcs = 1;
+
+
+                                    } else {
+
+                                        if ($(".box").is(':focus') == true) {
+                                            fcs = 1;
+
+
+
+
+
+                                            if (focussed_class != "") {
+                                                if ($.trim($("#svg-container ." + focussed_class).text()).length == 0) {
+
+                                                    $("#history  li." + focussed_class).remove();
+                                                    $("#svg-container ." + focussed_class).remove();
+
+                                                } else {
+
+                                                    //console.log(focussed_class);
+
+                                                    update_history(focussed_class, $("#svg-container ." + focussed_class + " > .box").text());
+
+                                                    var text = $("." + focussed_class + " > .box").html();
+                                                    //console.log(text);
+                                                    textBoxObject.uniqueClass = focussed_class;
+                                                    textBoxObject.content = text;
+                                                    //console.log(focussed_class);
+
+                                                    //console.log("update Called 1");
+                                                    sendChangeData(textBoxObject, "textbox-update");
+
+                                                    // console.log(textBoxObject);
+                                                }
+
+                                            }
+
+
+
+                                            focussed_class = document.activeElement.parentElement.getAttribute('class').split(' ')[2];
+                                            // console.log(focussed_class);
+                                            var last_class = $('#svg-container div.handle:last').attr('class').split(' ')[2];
+
+                                            if ($("#history > li." + last_class).length == 0) {
+                                                add_history(last_class, $("." + last_class).text(), page_no_textbox, "Text box");
+
+                                                var text = $("." + last_class + " > .box").text();
+
+                                                textBoxObject.content = text;
+                                                textBoxObject.uniqueClass = last_class;
+
+                                                //box - > old box
+                                                console.log("add called 1 : Box-> old Box");
+                                                sendChangeData(textBoxObject, "textbox-new");
+                                            }
+
+
+                                        } else {
+
+                                            //clicked outside a textbox when one has focus
+
+                                            fcs = 0;
+                                            $(".handle").css('outline', 'none');
+                                            $(".delete-text-box").css('opacity', '0');
+
+                                            var last_class = $('#svg-container div.handle:last').attr('class').split(' ')[2];
+
+                                            if ($("#history > li." + last_class).length == 0) {
+                                                add_history(last_class, $("." + last_class).text(), page_no_textbox, "Text box");
+
+
+                                                //new box one focus out on page
+                                                var text = $("." + last_class + " > .box").html();
+
+                                                textBoxObject.content = text;
+                                                textBoxObject.uniqueClass = last_class;
+
+
+                                                // Box -> window
+                                                //console.log("add called 2 Box-> Window");
+                                                sendChangeData(textBoxObject, "textbox-new");
+
+                                            } else {
+
+
+                                                if ($.trim($("#svg-container ." + focussed_class).text()).length === 0) {
+
+                                                    $("#history  li." + focussed_class).remove();
+                                                    $("#svg-container ." + focussed_class).remove();
+
+                                                } else {
+                                                    update_history(focussed_class, $("#svg-container ." + focussed_class + " > .box").text());
+                                                    // update just the string as the history ref is also present
+
+                                                    //UPDATE TEXT BOX 
+                                                    var text = $("#svg-container ." + focussed_class + " > .box").html();
+                                                    //console.log(text);
+
+                                                    textBoxObject.uniqueClass = focussed_class;
+                                                    textBoxObject.content = text;
+
+                                                    //console.log("update called 2 !  Edit -> window");
+                                                    sendChangeData(textBoxObject, "textbox-update");
+                                                }
+                                            }
+
+                                        }
+                                    };
+
+                                });
+
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy();
+                        $('.highlight_colors').css('display', 'none');
+                        $('.draw_colors').css('display', 'none');
+
+                        $("#draw, #strike, #highlight, #drop-comment,#drag-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue").prop('checked', false);
+
+
+                        change_sketchpads(0);
+                        document.getElementById("svg_id").style.pointerEvents = "visiblepainted";
+                        textbox_events();
+
+                        break;
+
+                    case "highlight":
+
+                        remove_textbox_styles("");
+
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy();
+                        $("#draw, #strike,#textbox, #drop-comment,#drag-comment, #highlight_blue, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue").prop('checked', false);
+                        document.getElementById("highlight_red").checked = true; // Because default is red here
+
+
+                        $('.highlight_colors').css('display', 'block');
+                        $('.draw_colors').css('display', 'none');
+                        change_sketchpads(0);
+                        document.getElementById("svg_id").style.pointerEvents = "none";
+                        $('.clickable').unbind();
+
+                        svg_cont_style("url(../images/red.cur),default");
+
+
+                        /*               $("#svg-container").css({"cursor":"url(../../images/red.cur),default"}); */
+                        $('#svg-container').textHighlighter({
+
+                            onAfterHighlight: function(highlights, range) {
+                                var json_str = high.serializeHighlights();
+
+                                var par_class = $(highlights[0]).attr('class').split(' ')[1];
+
+                                json_str = highlightedSeries(json_str, par_class);
+
+                                var highlightObject = {
+                                    serializeData: json_str,
+                                    uniqueClass: par_class
+                                };
+                                sendChangeData(highlightObject, "highlight");
+
+
+
+                                add_history(par_class, range, $($(highlights[0]).closest(".pf")[0]).index() + 1, "Highlight");
+                                //console.log(high);
+                            }
+
+                        });
+
+                        high = $('#svg-container').getHighlighter();
+                        //var json_str = high.serializeHighlights();
+                        // console.log(json_str);
+                        high.setStrike('');
+                        // console.log(high);
+                        $('#svg-container').getHighlighter().setColor('#ee7d7d');
+                        contextmenu_activate();
+
+                        break;
+
+                    case "strike":
+
+                        remove_textbox_styles("text");
+
+                        /* $("#svg-container").css({"cursor": "text"}); */
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy();
+
+                        $("#draw, #textbox, #highlight, #drop-comment,#drag-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue").prop('checked', false);
+
+                        $('.highlight_colors').css('display', 'none');
+                        $('.draw_colors').css('display', 'none');
+
+                        change_sketchpads(0);
+                        svg_cont_style("url(../images/strike.cur),default");
+
+
+                        document.getElementById("svg_id").style.pointerEvents = "none";
+                        $('.clickable').unbind();
+
+                        $('#svg-container').textHighlighter({
+
+                            onAfterHighlight: function(highlights, range) {
+
+                                var json_str = strike.serializeStriked();
+                                // Vipul Sodha ~ to send Changed data ! Currently sending serialized highlights
+                                var par_class = $(highlights[0]).attr('class').split(' ')[1];
+                                json_str = highlightedSeries(json_str, par_class);
+
+                                var strikeObject = {
+                                    serializeData: json_str,
+                                    uniqueClass: par_class
+                                };
+                                sendChangeData(strikeObject, "strikeout");
+
+                                add_history($(highlights[0]).attr('class').split(' ')[1], range, $($(highlights[0]).closest(".pf")[0]).index() + 1, "Strike");
+
+                            }
+
+                        });
+
+
+                        var strike = $('#svg-container').getHighlighter();
+                        strike.setStrike('line-through');
+                        contextmenu_activate();
+                        break;
+
+                    case "highlight_red":
+
+                        $("#highlight_blue, #highlight_green, #highlight_yellow,").prop('checked', false);
+                        $('#svg-container').css({
+                            "cursor": "url(../images/red.cur),default"
+                        });
+                        /* document.getElementById("strike").checked = false;
+                         document.getElementById("highlight_blue").checked = false;
+                         document.getElementById("highlight_green").checked = false;
+                         document.getElementById("highlight_yellow").checked = false;
+                         document.getElementById("draw").checked = false;
+                         document.getElementById("textbox").checked = false; */
+                        change_sketchpads(0);
+
+                        $('#svg-container').getHighlighter().setStrike('');
+                        $('#svg-container').getHighlighter().setColor('#ee7d7d');
+                        break;
+
+                    case "highlight_blue":
+
+                        $("#highlight_red, #highlight_green, #highlight_yellow").prop('checked', false);
+                        $('#svg-container').css({
+                            "cursor": "url(../images/blue.cur),default"
+                        });
+                        change_sketchpads(0);
+
+                        $('#svg-container').getHighlighter().setStrike('');
+                        $('#svg-container').getHighlighter().setColor('#80E6FF');
+                        /* $('.highlighted').live('mouseup', function() {
+                             var firstClass = $(this).attr("class").split(" ")[0];
+                        
+                             $('#page-container').getHighlighter().removeHighlights(eval("'."+firstClass+"'"));
+                     
+                             }); */
+                        break;
+
+                    case "highlight_green":
+
+                        $("#highlight_blue, #highlight_red,#highlight_yellow").prop('checked', false);
+                        change_sketchpads(0);
+                        $('#svg-container').css({
+                            "cursor": "url(../images/green.cur),default"
+                        });
+
+                        $('#svg-container').getHighlighter().setStrike('');
+                        $('#svg-container').getHighlighter().setColor('#99FF99');
+                        break;
+
+                    case "highlight_yellow":
+
+                        $("#highlight_blue, #highlight_red, #highlight_green").prop('checked', false);
+                        change_sketchpads(0);
+                        $('#svg-container').css({
+                            "cursor": "url(../images/yellow.cur),default"
+                        });
+                        $('#svg-container').getHighlighter().setStrike('');
+                        $('#svg-container').getHighlighter().setColor('#Fefe58');
+
+
+                        break;
+
+                    case "draw":
+
+                        remove_textbox_styles("");
+                        /* $.contextMenu( 'destroy' ); */
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy(); //to destroy the highlighter, it should be set then destroyed
+                        $('.highlight_colors').css('display', 'none');
+                        $('.draw_colors').css('display', 'block');
+                        $("#strike,#textbox, #highlight, #drop-comment,#drag-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow,#draw_red, #draw_green, #draw_blue").prop('checked', false);
+
+                        document.getElementById("draw_black").checked = true;
+
+                        $('.clickable').unbind();
+                        change_sketchpads(1);
+
+
+
+                        /*  $('#svg-container').css({"cursor":"url(../../images/draw_black.cur),default"}); */
+                        change_draw_color('#000000');
+                        draw_state = 1;
+                        svg_cont_style("url(../images/draw_black.cur),default");
+                        draw_contextmenu();
+                        break;
+
+                    case "draw_black":
+                        //to destroy the highlighter, it should be set then destroyed
+                        //                                    $('.highlight_colors').css('display', 'none');
+                        //                                    $('.draw_colors').css('display', 'block');
+                        $("#draw_red, #draw_green, #draw_blue").prop('checked', false);
+
+                        $('#svg-container').css({
+                            "cursor": "url(../images/draw_black.cur),default"
+                        });
+                        change_draw_color('#000000');
+                        //                                    change_sketchpads(1,'#000000');
+                        draw_state = 1;
+                        break;
+
+                    case "draw_green":
+                        //to destroy the highlighter, it should be set then destroyed
+                        //                                      $('.highlight_colors').css('display', 'none');  
+                        $("#draw_black, #draw_red,#draw_blue").prop('checked', false);
+                        $('#svg-container').css({
+                            "cursor": "url(../images/draw_green.cur),default"
+                        });
+                        change_draw_color('#33CC33');
+                        draw_state = 1;
+                        break;
+
+                    case "draw_red":
+                        //to destroy the highlighter, it should be set then destroyed
+                        //                                      $('.highlight_colors').css('display', 'none');
+                        $('#svg-container').css({
+                            "cursor": "url(../images/draw_red.cur),default"
+                        });
+                        $("#draw_black,#draw_green, #draw_blue").prop('checked', false);
+                        document.getElementById("highlight").checked = false;
+                        document.getElementById("draw_black").checked = false;
+                        document.getElementById("draw_blue").checked = false;
+                        document.getElementById("draw_green").checked = false;
+                        document.getElementById("textbox").checked = false;
+                        change_draw_color('#FF0000');
+                        draw_state = 1;
+                        break;
+
+                    case "draw_blue":
+                        //to destroy the highlighter, it should be set then destroyed
+                        //                                      $('.highlight_colors').css('display', 'none');    
+                        $("#draw_black, #draw_red, #draw_green").prop('checked', false);
+                        $('#svg-container').css({
+                            "cursor": "url(../images/draw_blue.cur),default"
+                        });
+                        change_draw_color('#3366FF');
+                        draw_state = 1;
+                        break;
+
+
+                    case "drag-comment":
+
+                        remove_textbox_styles("text");
+                        /* $.contextMenu( 'destroy' ); */
+                        /* $("#svg-container").css({"cursor": "crosshair"});   */
+
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy();
+                        $('#svg-container').unbind();
+                        $('.clickable').unbind();
+                        contextmenu_activate();
+
+                        function showSelectionPosition() {
+
+                            var wholeSelRectEl, startSelEl, endSelEl;
+                            // Draw an element representing the whole selection rectangle
+                            var wholeSelRect = rangy.getSelection().getBoundingDocumentRect();
+
+                            //removeSelectionIndicators();
+
+                            if (!wholeSelRect) {
+                                return;
+                            }
+                            var startPos = rangy.getSelection().getRangeAt(0).getStartClientPos();
+
+
+                            if ($.browser.mozilla) { //mozilla offsets the comment lines in x and y both, hence it needs to be adjusted             
+
+                                //offset is from the start of the main text line, this selects it      
+                                var parent_node_left_pos = $(rangy.getSelection().getRangeAt(0).startContainer.parentNode).closest('.t').offset().left - $("#svg-container").offset().left;
+
+                                var new_xpos = ((startPos.x - parent_node_left_pos - $("#svg-container").offset().left) / 3) + $("#svg-container").offset().left + parent_node_left_pos;
+
+                                var new_ypos = startPos.y + 17; // 16 is an arbitary value, not perfect at all
+                                // height of the highlight is to be obtained in place of 16 
+                                return [new_xpos, new_ypos];
+                            } else { //for chrome and others
+
+                                return [startPos.x, startPos.y];
+
+                            }
+                            var endPos = rangy.getSelection().getEndDocumentPos();
+                        }
+
+
+                        document.getElementById("svg_id").style.pointerEvents = "none";
+
+
+                        $('#svg-container').textHighlighter({
+
+                            onBeforeHighlight: function(range) {
+                                var pos_drag = showSelectionPosition();
+                                window.y_pos_drag = pos_drag[1];
+                                window.x_pos_drag = pos_drag[0];
+
+
+
+                                return true;
+                            },
+                            onAfterHighlight: function(highlights, range) {
+
+
+                                var drag_highlight_class = $(highlights[0]).attr('class').split(' ')[1];
+                               
+                                create_drag_comment(y_pos_drag - $("#svg-container").offset().top, drag_highlight_class);
+                               
+                                var page_no = (Math.ceil((y_pos_drag - $("#svg-container").offset().top) / (page_height + 13)) > cnt ? cnt : Math.ceil((y_pos_drag - $("#svg-container").offset().top) / (page_height + 13)));
+                               
+                                add_history(drag_highlight_class, range, page_no, "Text comment");
+                               
+                                var json_str = high.serializeHighlights();
+
+
+                                commentBoxCords[drag_highlight_class].highlight = highlightedSeries(json_str, drag_highlight_class);
+                                //console.log(sendJsonString);
+
+
+
+                            }
+
+
+
+
+                        });
+                        var high = $('#svg-container').getHighlighter();
+                        high.setStrike('');
+                        high.setColor('#FB8520');
+
+
+                        $('.highlight_colors').css('display', 'none');
+                        $('.draw_colors').css('display', 'none');
+
+
+                        $("#draw, #strike, #highlight, #drop-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue, #textbox").prop('checked', false);
+                        change_sketchpads(0);
+
+                        svg_cont_style("url(../images/drag.cur),default");
+
+
+                        function create_drag_comment(y_drag, drag_highlight_class) {
+
+                            commentBoxId = random_class_generator();
+
+                            check_empty_commentbox();
+
+                            /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("after"),'cursor':'url(../../images/drag.cur),default'}); */
+                            $('#comment-container').css('display', 'block');
+                            /*  $('#svg-container').css('left', '30.1015px'); */
+
+
+                            function checkCoords(y) {
+
+                                var click_y_coord = y;
+
+                                //storing aligned-original y-top positions of comment boxes
+
+                                original_aligned_y.push([click_y_coord]);
+
+                                original_aligned_y.sort(function(a, b) {
+                                    return a - b
+                                });
+
+                                if ($(".comment-box").length == 0) {
+
+                                    all_click_y_positions.push([y, commentBoxId]);
+                                    /* console.log(all_click_y_positions); */
+                                }
+
+                                if ($(".comment-box").length > 0) {
+
+
+                                    window.col1 = all_click_y_positions.map(function(value, index) {
+                                        return value[0];
+                                    }); //map working for IE9+
+                                    window.col2 = all_click_y_positions.map(function(value, index) {
+                                        return value[1];
+                                    });
+
+                                    all_click_y_positions.push([y, commentBoxId]);
+
+
+                                    var getClosestValues = function(a, x) {
+
+
+
+                                        /* var a = b.map(function(value,index) { return value[0]; });
+                                         var col2 =  b.map(function(value,index) { return value[1]; }); */
+
+                                        var lo, hi, array_position;
+                                        for (var i = 0; i < a.length; i++) {
+                                            if (a[i] <= x && (lo === undefined || lo < a[i])) {
+                                                lo = a[i];
+                                                array_position = col2[i]
+                                            };
+                                            if (a[i] >= x && (hi === undefined || hi > a[i]))
+                                                hi = a[i];
+                                        };
+                                        return [lo, hi, array_position];
+                                    }
+
+
+                                    window.result = getClosestValues(col1, y); // [5, 9]
+
+
+                                    $ts = $(".comment-box");
+
+                                    for (var i = 0; i < $ts.length; i++) {
+
+
+
+                                        var $ti = $ts.eq(i);
+
+                                        var tcoords = [$ti.offset().top - $ti.parent().offset().top, $ti.offset().top + $ti.height() - $ti.parent().offset().top, $ti.attr('id')]
+
+                                        if (click_y_coord >= tcoords[0] && click_y_coord <= tcoords[1]) {
+
+                                            /*   console.log("top is in id: "+tcoords[2]); */
+
+                                            y = $("#" + result[2]).offset().top - $("#" + result[2]).parent().offset().top + $("#" + result[2]).height() + 10;
+
+                                            /* 
+                                             y = eval("$('#"+result[2]+"').offset().top - $('#"+result[2]+"').parent().offset().top + $('#"+result[2]+"').height()+ 10");
+                                             */
+
+
+                                        }
+                                        /*    else if((click_y_coord +50)>=tcoords[0] && (click_y_coord +50)<= tcoords[1]){
+                                         eval("$('#"+tcoords[2]+"').css('top','"+(y+50+10)+"px');");
+                                         } */
+
+
+                                    }
+                                }
+                                return y;
+                            }
+
+                            var offset = $(this).offset();
+                            var comment_box_y_coord = checkCoords(y_drag);
+
+
+
+
+
+                            if ($('#comment-container').children().length == 0 && comm_del == 0) {
+
+
+                                comment_lines(x_pos_drag - $("#svg-container").offset().left, y_pos_drag - $("#svg-container").offset().top, 800, y_pos_drag - $("#svg-container").offset().top, drag_highlight_class);
+                                connector_lines((y_pos_drag - $("#svg-container").offset().top), comment_box_y_coord, drag_highlight_class);
+
+                            } else {
+
+                                comment_lines(x_pos_drag - $("#svg-container").offset().left, y_pos_drag - $("#svg-container").offset().top, 800, y_pos_drag - $("#svg-container").offset().top, drag_highlight_class);
+                                connector_lines((y_pos_drag - $("#svg-container").offset().top), comment_box_y_coord, drag_highlight_class);
+
+                            }
+                            var newOffset = $("#svg-container").offset();
+
+                            commentBoxCords[drag_highlight_class] = {
+                                pageX: x_pos_drag,
+                                pageY: y_pos_drag,
+                                offsetTop: newOffset.top,
+                                offsetLeft: newOffset.left,
+                                boxY: y_drag,
+                                type: "drag"
+                            };
+
+                            if (typeof result === 'undefined') {
+                                //  dropCommentObject.result = null;
+                            } else {
+                                commentBoxCords[drag_highlight_class].result = result;
+                            }
+
+
+                            var rndLiId = random_comm_id_generator();
+
+                            if ($(".comment-box").length == 0) {
+
+                                //alert(commentBoxId);
+
+                                $("#comment-container").append('<ul class="comment-box ' + drag_highlight_class + '" id="' + commentBoxId + '"' +
+                                    ' style="top:' + comment_box_y_coord + 'px;">' +
+                                    '<li id = ' + rndLiId + '>' +
+                                    '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                                    '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
+                                    '</li>' +
+
+                                    '<a class="new-comment new-comm-inactive">new comment</a>' +
+                                    '<a class="submit-comment submit-inactive">submit</a>' +
+                                     '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                                    '</ul>');
+                            } else if (result[2] == undefined) {
+
+                                $("#comment-container").prepend('<ul class="comment-box ' + drag_highlight_class + '" id="' + commentBoxId + '"' +
+                                    ' style="top:' + comment_box_y_coord + 'px;">' +
+                                    '<li id = ' + rndLiId + '>' +
+                                    '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                                    '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
+                                    '</li>' +
+                                     '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                                    '<a class="new-comment new-comm-inactive">new comment</a>' +
+                                    '<a class="submit-comment submit-inactive">submit</a>' +
+
+                                    '</ul>');
+                            } else {
+
+
+                                $("#comment-container #" + result[2]).after('<ul class="comment-box ' + drag_highlight_class + '" id="' + commentBoxId + '"' +
+                                    'style="top:' + comment_box_y_coord + 'px;">' +
+                                    '<li id = ' + rndLiId + '>' +
+                                    '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                                    '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
+                                    '</li>' +
+
+                                    '<a class="new-comment new-comm-inactive">new comment</a>' +
+                                    '<a class="submit-comment submit-inactive">submit</a>' +
+                                     '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                                    '</ul>');
+
+
+
+                            }
+
+
+
+
+                            $("#" + commentBoxId).resize(function() {
+
+                                height_change_align_comment_boxes($(this).parent().children().index(this));
+
+                            });
+
+                            new_box_entry_align_comment_boxes(); //align on new box entry
+
+
+                        }
+
+                        break;
+
+
+                    case "drop-comment":
+
+                        remove_textbox_styles("url(../images/drop_comment.cur),default");
+                        $.contextMenu('destroy');
+                        // drop_contextmenu();
+                        $('#svg-container').unbind();
+                        $('.clickable').unbind();
+                        $('#svg-container').textHighlighter();
+                        $('#svg-container').getHighlighter().destroy();
+
+
+                        $('.highlight_colors').css('display', 'none');
+                        $('.draw_colors').css('display', 'none');
+
+
+
+                        $("#draw, #strike, #highlight, #drag-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue, #textbox").prop('checked', false);
+                        change_sketchpads(0);
+
+                        svg_cont_style("url(../images/drop_comment.cur),default");
+
+                        document.getElementById("svg_id").style.pointerEvents = "none";
+                        /*  $("#svg-container").css('cursor','url(../../images/openhand.cur) 3 12 , url(../../images/openhand.cur), text '); */
+
+
+
+
+
+                        $('#svg-container').mousedown(function(e) {
+
+                                if (e.which == 1) {
+
+
+                                    commentBoxId = random_class_generator();
+
+                                    check_empty_commentbox();
+
+                                    $('#comment-container').css('display', 'block');
+                                    /* $('#svg-container').css('left', '30.1015px'); */
+                                    /*  $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("after"),'cursor':'url(../../images/drop_comment.cur),default'}); */
+
+
+                                    function checkCoords(y) {
+                                        /* console.log(y); */
+                                        var click_y_coord = y;
+
+                                        //storing aligned-original y-top positions of comment boxes
+
+
+                                        original_aligned_y.push([click_y_coord]);
+                                        /*  console.log("original_stored:" + original_aligned_y); */
+                                        original_aligned_y.sort(function(a, b) {
+                                            return a - b
+                                        });
+                                        // console.log("original_aligned_y_sorted:" + original_aligned_y); 
+
+                                        // console.log(original_aligned_y);
+
+
+                                        if ($(".comment-box").length == 0) {
+
+                                            all_click_y_positions.push([y, commentBoxId]);
+                                            console.log(all_click_y_positions);
+                                        }
+
+                                        if ($(".comment-box").length > 0) {
+
+
+                                            window.col1 = all_click_y_positions.map(function(value, index) {
+                                                return value[0];
+                                            }); //map working for IE9+
+                                            window.col2 = all_click_y_positions.map(function(value, index) {
+                                                return value[1];
+                                            });
+
+                                            all_click_y_positions.push([y, commentBoxId]);
+                                            // console.log("all_click_y_pos: " + all_click_y_positions);
+
+                                            var getClosestValues = function(a, x) {
+
+                                                /* var a = b.map(function(value,index) { return value[0]; });
+                                                 var col2 =  b.map(function(value,index) { return value[1]; }); */
+
+
+
+                                                var lo, hi, array_position;
+                                                for (var i = 0; i < a.length; i++) {
+                                                    if (a[i] <= x && (lo === undefined || lo < a[i])) {
+                                                        lo = a[i];
+
+                                                        array_position = col2[i];
+
+                                                    };
+                                                    if (a[i] >= x && (hi === undefined || hi > a[i]))
+                                                        hi = a[i];
+                                                };
+                                                return [lo, hi, array_position];
+                                            }
+
+
+                                            window.result = getClosestValues(col1, y); // [5, 9]
+
+                                            // console.log("result array" + result);
+                                            $ts = $(".comment-box");
+
+                                            for (var i = 0; i < $ts.length; i++) {
+
+
+                                                var $ti = $ts.eq(i);
+
+                                                var tcoords = [$ti.offset().top - $ti.parent().offset().top, $ti.offset().top + $ti.height() - $ti.parent().offset().top, $ti.attr('id')]
+
+
+
+                                                if (click_y_coord >= tcoords[0] && click_y_coord <= tcoords[1]) {
+
+
+
+                                                    y = $("#" + result[2]).offset().top - $("#" + result[2]).parent().offset().top + $("#" + result[2]).height() + 10;
+
+                                                }
+
+                                            }
+                                        }
+                                        return y;
+                                    }
+
+
+
+
+                                    var offset = $(this).offset();
+                                    var comment_box_y_coord = checkCoords(e.pageY - offset.top);
+
+
+
+
+                                    var rnd_drop = random_class_generator();
+
+                                    if ($('#comment-container').children().length == 0 && comm_del == 0) { //if first ever commentbox is to be put
+
+
+
+
+
+                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
+
+                                        comment_lines((e.pageX - offset.left), (e.pageY - offset.top), 800, (e.pageY - offset.top), rnd_drop);
+                                        connector_lines((e.pageY - offset.top), comment_box_y_coord, rnd_drop);
+
+
+
+
+                                    } else {
+
+
+
+                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>")
+
+                                        comment_lines((e.pageX - offset.left), (e.pageY - offset.top), 800, (e.pageY - offset.top), rnd_drop);
+                                        connector_lines((e.pageY - offset.top), comment_box_y_coord, rnd_drop);
+
+
+                                    }
+
+
+                                    // console.log(comment_box_y_coord);
+                                    commentBoxCords[rnd_drop] = {
+                                        pageX: e.pageX,
+                                        pageY: e.pageY,
+                                        offsetTop: offset.top,
+                                        offsetLeft: offset.left,
+                                        boxY: e.pageY - offset.top,
+                                        type: "drop"
+                                    };
+
+
+                                    if (typeof result === 'undefined') {
+                                        //  dropCommentObject.result = null;
+                                    } else {
+                                        commentBoxCords[rnd_drop].result = result;
+                                    }
+
+
+
+
+
+
+                                    var rnd_comm_id = random_comm_id_generator();
+                                    //dropCommentObject.comLiId = rnd_comm_id;
+                                    if ($(".comment-box").length == 0) { // first ever commentbox
+
+
+
+                                        $("#comment-container").append('<ul class="comment-box ' + rnd_drop + '" id="' + commentBoxId + '"' +
+                                            ' style="top:' + comment_box_y_coord + 'px;">' +
+                                            '<li id = ' + rnd_comm_id + '>' +
+                                            '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                                            '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
+                                            '</li>' +
+
+                                            '<a class="new-comment new-comm-inactive">new comment</a>' +
+                                            '<a class="submit-comment submit-inactive">submit</a>' +
+                                             '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                                            '</ul>');
+
+                                    } else if (result[2] == undefined) { // a box is  not present at needed y position
+
+                                        $("#comment-container").prepend('<ul class="comment-box ' + rnd_drop + '" id="' + commentBoxId + '"' +
+                                            ' style="top:' + comment_box_y_coord + 'px;">' +
+                                            '<li id = ' + rnd_comm_id + '>' +
+                                            '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                                            '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
+                                            '</li>' +
+                                            '<a class="new-comment new-comm-inactive">new comment</a>' +
+                                            '<a class="submit-comment submit-inactive">submit</a>' +
+                                             '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                                            '</ul>');
+
+                                    } else { // a box is  already present at needed y position
+
+
+                                        $("#comment-container #" + result[2]).after('<ul class="comment-box ' + rnd_drop + '" id="' + commentBoxId + '"' +
+                                            'style="top:' + comment_box_y_coord + 'px;">' +
+                                            '<li id = ' + rnd_comm_id + '>' +
+                                            '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                                            '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
+                                            '</li>' +
+
+                                            '<a class="new-comment new-comm-inactive">new comment</a>' +
+                                            '<a class="submit-comment submit-inactive">submit</a>' +
+                                             '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                                            '</ul>');
+
+                                    }
+
+                                    var page_no = (Math.ceil((e.pageY - offset.top) / (page_height + 13)) > cnt ? cnt : Math.ceil((e.pageY - offset.top) / (page_height + 13)));
+                                    add_history(rnd_drop, "[Pin comment]", page_no, "Pin comment");
+
+
+                                    $("#" + commentBoxId).resize(function() {
+                                        /* console.log("resize drop"); */
+                                        height_change_align_comment_boxes($(this).parent().children().index(this));
+
+                                    });
+
+                                    new_box_entry_align_comment_boxes();
+
+                                } /*end of if(e.which == 1)*/
+                                else {
+
+                                    //no right or middle click allowed
+                                }
+
+                            } /* end of mouse down in drop-comment */
+
+                        )
+
+                        break;
+
+                    default:
+
+                        break;
+
+                }
+
+            } else { //when unchecked
+                $.contextMenu('destroy');
+                $('.highlight_colors').css('display', 'none');
+                $('.draw_colors').css('display', 'none');
+                $('#svg-container').textHighlighter();
+                $('#svg-container').getHighlighter().destroy();
+
+                change_sketchpads(0);
+                svg_cont_style("text");
+                document.getElementById("svg_id").style.pointerEvents = "none";
+                $('.clickable').unbind('click');
+                $('#svg-container').unbind();
+                $('#svg-container').css({
+                    "cursor": "text"
+                });
+            }
+        }
+
+        function new_top_calculator(x) {
+            return x + 'px';
+        };
+
+        function new_box_entry_align_comment_boxes() {
+
+
+            $('#comment-container > .comment-box').each(function() {
+
+                if ($(this).parent().children().index(this) > 0) {
+
+                    if (($(this).offset().top - $(this).parent().offset().top) - ($(this).prev().offset().top - $(this).parent().offset().top + $(this).prev().height()) < 10) {
+
+                        window.new_top = $(this).prev().offset().top + $(this).prev().height() - $(this).parent().offset().top + 10;
+                        /* $(this).css('top',eval("'"+ new_top +"px'")); */
+
+                        $(this).css('top', new_top_calculator(new_top));
+
+                        $("#connector-svg > ." + $(this).attr('class').split(' ')[1]).attr("y2", new_top_calculator(new_top));
+                        // commentBoxCords[$(this).attr('class').split(' ')[1]].boxY = new_top;
+                    } else {};
+                }
+            })
+        }
+
+        function height_change_align_comment_boxes(check_resized_box_index) {
+
+
+            $('#comment-container > .comment-box').each(function() {
+
+
+
+                if ($(this).parent().children().index(this) > check_resized_box_index) {
+
+                    if ((($(this).offset().top - $(this).parent().offset().top) - ($(this).prev().offset().top - $(this).parent().offset().top + $(this).prev().height())) < 10) {
+
+                        window.new_top_move_down = $(this).prev().offset().top + $(this).prev().height() - $(this).parent().offset().top + 10;
+                        /*  $(this).css('top',eval("'"+ new_top_move_down +"px'")); */
+                        $(this).css('top', new_top_calculator(new_top_move_down));
+
+                        $("#connector-svg > ." + $(this).attr('class').split(' ')[1]).attr("y2", new_top_calculator(new_top_move_down));
+
+
+                    } else if ((($(this).offset().top - $(this).parent().offset().top) - ($(this).prev().offset().top - $(this).parent().offset().top + $(this).prev().height())) > 10) {
+
+                        var new_top_move_up = $(this).prev().offset().top + $(this).prev().height() - $(this).parent().offset().top + 10;
+
+                        if (original_aligned_y[$(this).parent().children().index(this)] > new_top_move_up) {
+
+                            new_top_move_up = original_aligned_y[$(this).parent().children().index(this)];
+                        };
+                        /* $(this).css('top',eval("'"+ new_top_move_up +"px'")); */
+                        $(this).css('top', new_top_calculator(new_top_move_up));
+
+
+                        $("#connector-svg > ." + $(this).attr('class').split(' ')[1]).attr("y2", new_top_calculator(new_top_move_up));
+
+
+                    } else {
+                        //no movement needed
+                    }
+                } else { // less than the required index 
+                };
+            })
+
+
+        }
+
+
+
+
+        function align_page() {
+
+            window.original_aligned_y = [];
+            all_click_y_positions = [];
+            window.commentBoxId = "random_useless";
+            var page_scroll_no_latest = 1;
+            var total_pages = $('.pf').length;
+            window.page_height = $(".pf").height();
+            var first_pg_id = "#" + $("#svg-container:first-child").attr('id');
+            window.cnt = $('.pf').length;
+
+
+
+            $(".close_info").click(function() {
+                $("#del-info").remove();
+
+            });
+
+            $("#display-history").click(function() {
+                if ($('#history').children().length > 0) {
+                    $("#history").toggle("fast", function() {
+
+                        if ($("#history").css('display') == "block") {
+
+                            $("#up-pull").css("display", "block");
+                            $("#down-drop").css("display", "none");
+                        } else if ($("#history").css('display') == "none") {
+
+                            $("#up-pull").css('display', 'none');
+                            $("#down-drop").css('display', 'block');
+                        }
+
+                    });
+
+
+                }
+
+            });
+
+
+
+            $("#history-container").perfectScrollbar();
+
+            $('#history').bind('DOMNodeInserted', function() {
+
+                if ($("#history").css('display') == "block") {
+
+                    $("#up-pull").css('display', 'block');
+                    $("#down-drop").css('display', 'none');
+
+                } else if ($("#history").css('display') == "none") {
+
+                    $("#up-pull").css('display', 'none');
+                    $("#down-drop").css('display', 'block');
+
+                }
+
+
+                $("#count-history").html($('#history').children().length);
+            });
+
+            $('#history').bind('DOMNodeRemoved', function() {
+
+                if ($('#history').children().length - 1 == 0) {
+                    $("#count-history").html("0");
+                    $("#down-drop").css("display", "none");
+                    $("#up-pull").css("display", "none");
+                } else {
+                    $("#count-history").html($('#history').children().length - 1);
+                }
+            });
+            $("#page-up").click(function() {
+
+                if (page_scroll_no_latest > 1) {
+
+                    $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + (page_scroll_no_latest - 1) + ")")[0].id);
+
+                }
+
+            })
+
+            $("#page-down").click(function() {
+
+                if (page_scroll_no_latest < total_pages) {
+
+                    $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + (page_scroll_no_latest + 1) + ")")[0].id);
+
+                }
+
+            })
+
+
+
+
+
+            /* set page no on scroll */
+
+            $("#page-container").bind('scroll', function(e) {
+                $('.pf').each(function() {
+                    if (
+                        $(this).offset().top < window.pageYOffset + ($(window).height() / 2)
+                        //begins before top
+                        && $(this).offset().top + $(this).height() > window.pageYOffset + ($(window).height() / 2)
+                        //but ends in visible area
+                        //+ 10 allows you to change hash before it hits the top border
+                    ) {
+
+                        /* window.location.hash = $(this).attr('id');   */
+
+                        $("#page_no")[0].value = $(this).index() + 1;
+                        page_scroll_no_latest = $(this).index() + 1;
+                    }
+                });
+            });
+
+
+            $("#page_no").keypress(function(e) {
+                if (e.keyCode == 13) {
+                    var page_no = $(this)[0].value;
+
+                    if (page_no <= total_pages && page_no > 0) {
+
+                        $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + page_no + ")").attr('id'));
+                        page_scroll_no_latest = $("#page_no")[0].value;
+
+                    } else if (page_no > total_pages) {
+
+                        $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + total_pages + ")").attr('id'));
+                        $("#page_no")[0].value = total_pages;
+                        page_scroll_no_latest = total_pages;
+
+                    } else if (page_no == 0) {
+                        $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(1)").attr('id'));
+                        $("#page_no")[0].value = 1;
+                        page_scroll_no_latest = 1;
+
+                    }
+                }
+            });
+
+
+
+
+
+            $("#page-container").scrollTo('first_pg_id');
+            $("#page_no")[0].value = "1";
+
+
+
+
+            for (var i = 0; i < cnt; i++) {
+
+                document.getElementsByClassName('pc')[i].setAttribute("id", "button" + i);
+
+                if (document.getElementById("button" + i).getElementsByTagName('img')[0] != undefined) {
+                    document.getElementById("button" + i).getElementsByTagName('img')[0].setAttribute("draggable", "false");
+
+                } //if condition is coz, image for every page may not be created
+            }
+
+            var page_cont_width = $("#page-container").width();
+
+            var svg_height = $("#svg-container").height();
+            var svg_width = $(".pf").width();
+
+
+
+
+            var svg_cont_left = 15+"px";
+
+            var conn_cont_left = (svg_width+15) + "px";
+            var comm_cont_left = svg_width +15 + 27 + "px";
+
+            console.log("svg_width: " + svg_width);
+
+
+            var name = "sketchpad";
+
+            var svg_width_px = svg_width + "px";
+
+            /* $("#svg-container").css('width',svg_width_px);  */
+
+
+
+            var connector_ht = svg_height + "px";
+            $("#connector-container").css('height', connector_ht);
+
+            window.sketchpad = Raphael.sketchpad("svg-container", {
+                width: svg_width,
+                height: svg_height,
+                editing: true
+
+            });
+
+            sketchpad.change(function() {
+
+
+
+                var recent_created_path = $("#svg_id").children("path:last");
+
+                //console.log(recent_created_path);
+
+                var drawObject = {
+                    d: recent_created_path.attr('d'),
+                    pathClass: recent_created_path.attr('class').split(' ')[1],
+                    color: recent_created_path.attr('stroke')
+
+                };
+                //console.log(drawObject);
+                sendChangeData(drawObject, "draw-create");
+
+
+                var xmlns = "http://www.w3.org/2000/svg";
+                var elem = document.createElementNS(xmlns, "path");
+
+                /*  elem.setAttributeNS(null,"style",recent_created_path.attr('style')); */
+                elem.setAttributeNS(null, "fill", "none");
+                elem.setAttributeNS(null, "stroke", "#bbb000");
+                elem.setAttributeNS(null, "d", recent_created_path.attr('d'));
+                elem.setAttributeNS(null, "stroke-opacity", "0");
+                elem.setAttributeNS(null, "stroke-width", "20");
+                elem.setAttributeNS(null, "stroke-linecap", "round");
+                elem.setAttributeNS(null, "stroke-linejoin", "round");
+                elem.setAttributeNS(null, "class", recent_created_path.attr('class'));
+
+                document.getElementById('svg_id').appendChild(elem);
+
+
+                var draw_start_y_coord = $("#svg_id :last-child")[0].pathSegList.getItem(0).y;
+                var page_no = (Math.ceil(draw_start_y_coord / (page_height + 13)) > cnt ? cnt : Math.ceil(draw_start_y_coord / (page_height + 13)));
+
+                add_history(recent_created_path.attr('class').split(' ')[1], "[Draw]", page_no, "Draw");
+                historyObject = {
+                    append_class: recent_created_path.attr('class').split(' ')[1],
+                    append_text: "[Draw]",
+                    page_no: page_no,
+
+                }
+
+
+
+            });
+
+            //Assigns an id to SVG tag of the page
+
+            document.getElementById('svg-container').children[0].setAttribute("id", "svg_id");
+
+            $("#svg-container").append($("#svg_id"));
+            //$("#svg-container").children[0].remove();
+            $("#svg_id").css({
+                position: "absolute",
+                top: "0px"
+            });
+
+            sketchpad.editing(false);
+            /* (eval("sketchpad")).editing(false); */
+            window.draw_state = 0;
+
+
+
+
+            $('#svg-container').css({
+                'position': 'absolute',
+                'height': 'auto',
+                'left': svg_left("after"),
+                'cursor': 'url(../images/drag.cur),default'
+            });
+            $('#connector-container').css({
+                'position': 'absolute',
+                'left': conn_cont_left,
+                'top': '0px',
+                'width': '27'
+            });
+
+            $('#comment-container').css({
+                'position': 'absolute',
+                'left': comm_cont_left,
+                'top': '0px',
+                'width': '185',
+                'height': '100%',
+                'z-index': '10',
+                'display': 'block'
+            });
+
+
+        }
+
+        function getChangeData(changeData) {
+
+
+
+            // console.log(changeData);
+            switch (changeData.type) {
+                case "highlight":
+
+
+                    $('#svg-container').textHighlighter();
+                    var highlighter = $('#svg-container').getHighlighter();
+                    highlighter.deserializeHighlights(changeData.data.serializeData);
+
+                    //add_history(,range,$($(highlights[0]).closest(".pf")[0]).index()+1,"Highlight");
+                    break;
+                    //case highlight ends
+                case "remove-highlight":
+                    // console.log("Removing Highlights" + changeData.data.data);
+
+                    $('#svg-container').getHighlighter().removeHighlights("." + changeData.data, changeData.data);
+                    $("." + changeData.data).remove();
+
+                    break; // case remove-highlight ends
+
+
+
+                case "strikeout":
+                    $('#svg-container').textHighlighter();
+
+                    var strike = $('#svg-container').getHighlighter();
+                    strike.deserializeHighlights(changeData.data.serializeData);
+
+                    break; // case strike out ends
+
+                case "remove-strikeout":
+
+                    // console.log("Removing Strike Out" + changeData.data.data);
+
+                    $('#svg-container').getHighlighter().removeHighlights("." + changeData.data, changeData.data);
+                    $("." + changeData.data).remove();
+                    break; // case remove-strikeout ends
+
+                case "draw-create":
+                    // console.log(changeData.data);
+                    drawPath(changeData.data.d, changeData.data.pathClass, "2", "1", changeData.data.color);
+                    drawPath(changeData.data.d, changeData.data.pathClass, "20", "0", "#bbb000");
+
+                    break;
+
+                case "remove-draw":
+                    // console.log(changeData.data.data);
+
+                    $("." + changeData.data.pathClass).remove();
+                    // $("#history > "+ changeData.data.data).remove();
+                    break;
+
+                case "textbox-update":
+                    //console.log(changeData.data);
+                    $("#svg-container ." + changeData.data.uniqueClass + " .box").text(changeData.data.content);
+
+                    break;
+
+                case "delete-textbox":
+                    // console.log(changeData.data.uniqueClass);
+                    $("." + changeData.data.uniqueClass).remove();
+                    //$("#history > ."+ changeData.data.data.uniqueClass).remove();
+                    break;
+
+
+                case "textbox-position-update":
+
+                    // console.log(changeData.data.data);
+                    var temp = changeData.data;
+                    $("." + temp.uniqueClass).css({
+                        'top': temp.y,
+                        'left': temp.x
+                    });
+                    break;
+
+                case "textbox-new":
+
+                    var temp = changeData.data;
+                    constructTextBox(temp.uniqueClass, temp.x, temp.y, temp.content, false);
+
+                    // console.log(changeData);
+
+                    break;
+
+                case "new-drop-comment":
+
+
+
+
+
+                    var temp = changeData.data;
+
+                    // all_click_y_positions.push([temp.cords.boxY - ])
+                    commentBoxCords[temp.uniqueClass] = temp.cords;
+
+
+                    switch (changeData.data.cords.type) {
+
+                        case "drop":
+
+
+                            // console.log("case Drop");
+
+                            $("#image-container").append("<img class='drop-comment " + temp.uniqueClass + "' style='z-index:100;position:absolute;top:" + (temp.cords.pageY - temp.cords.offsetTop - 24) + "px;left:" + (temp.cords.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
+
+
+
+                            break; //case nested drop
+
+
+                        case "drag":
+
+                            console.log(changeData);
+                            // console.log(temp.cords.highlight);
+                            $("#svg-container").textHighlighter();
+                            var high = $("#svg-container").getHighlighter();
+                            high.deserializeHighlights(temp.serializeData);
+
+                            break; // case nested drag
+
+                    }
+
+                    // making comment box code : ->
+
+
+
+
+                    comment_lines((temp.cords.pageX - temp.cords.offsetLeft), (temp.cords.pageY - temp.cords.offsetTop), 800, (temp.cords.pageY - temp.cords.offsetTop), temp.uniqueClass);
+                    connector_lines((temp.cords.pageY - temp.cords.offsetTop), temp.cords.boxY, temp.uniqueClass);
+
+
+                    var y1 = temp.cords.pageY - temp.cords.offsetTop;
+                    original_aligned_y.push([y1]);
+                    original_aligned_y.sort(function(a, b) {
+                        return a - b
+                    });
+                    all_click_y_positions.push([y1, temp.elemId]);
+                    // console.log(original_aligned_y);
+
+
+                    // Make Function
+
+
+                    if ($(".comment-box").length == 0) { // first ever commentbox
+
+
+
+
+
+                        $("#comment-container").append('<ul class="comment-box ' + temp.uniqueClass + '" id="' + temp.elemId + '"' +
+                            ' style="top:' + temp.cords.boxY + 'px;">' +
+                            '<li id = ' + temp.newLiId + '>' +
+                            '<span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span>' +
+                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                            '<div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div>' +
+                            '</li>' +
+                            '<a class="new-comment new-comm-active">new comment</a>' +
+                            '<a class="submit-comment submit-inactive">submit</a>' +
+                            '</ul>');
+
+                    } else if (temp.cords.result[2] == undefined) { // a box is  not present at needed y position
+
+                        $("#comment-container").prepend('<ul class="comment-box ' + temp.uniqueClass + '" id="' + temp.elemId + '"' +
+                            ' style="top:' + temp.cords.boxY + 'px;">' +
+                            '<li id = ' + temp.newLiId + '>' +
+                            '<span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span>' +
+                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                            '<div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content +
+                            '</div>' +
+                            '</li>' +
+                            '<a class="new-comment new-comm-active">new comment</a>' +
+                            '<a class="submit-comment submit-inactive">submit</a>' +
+
+                            '</ul>');
+
+                    } else { // a box is  already present at needed y position
+
+
+                        $("#comment-container #" + temp.cords.result[2]).after('<ul class="comment-box ' + temp.uniqueClass + '" id="' + temp.elemId + '"' +
+                            'style="top:' + temp.cords.boxY + 'px;">' +
+                            '<li id = ' + temp.newLiId + '>' +
+                            '<span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span>' +
+                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                            '<div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div>' +
+                            '</li>' +
+
+                            '<a class="new-comment new-comm-active">new comment</a>' +
+                            '<a class="submit-comment submit-inactive">submit</a>' +
+
+                            '</ul>');
+
+                    }
+
+
+
+                    $("#" + temp.elemId).resize(function() {
+                        /* console.log("resize drop"); */
+                        height_change_align_comment_boxes($(this).parent().children().index(this));
+
+                    });
+
+                    new_box_entry_align_comment_boxes();
+
+
+                    //making comment box code ends 
+
+
+                    break; // mian case ends
+
+
+                case "update-drop-comment":
+
+                    var temp = changeData.data;
+
+                    $("#" + temp.afterLiId).after('<li id = ' + temp.newLiId + '><span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span><span class="trash-comment"><img src="../images/trash.png"></span><div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div></li>');
+
+
+
+
+
+                    break;
+
+                case "delete-drop-comment":
+
+                    if ($("." + changeData.data.uniqueClass + " li").length == 1) {
+                        delete_commentbox_update_arrays($("#" + changeData.data.delLiId));
+                        $("." + changeData.data.uniqueClass).remove();
+                    } else {
+
+                        $("#" + changeData.data.delLiId).remove();
+
+                    }
+
+                    break;
+
+                case "add-history":
+                    var temp = changeData.data;
+                    add_history_realtime(temp.append_class, temp.append_text, temp.page_no, temp.anno_type, temp.time, temp.userName);
+
+                    break;
+
+                case "update-history":
+                    var temp = changeData.data;
+                    update_history_realtime(temp.update_class, temp.update_text, temp.update_page);
+                    break;
+
+                case "remove-comment-ul":
+
+                    // console.log(changeData);
+
+                    $('#svg-container').getHighlighter().removeHighlights("." + changeData.uniqueClass, changeData.uniqueClass);
+                    $("." + changeData.uniqueClass).remove();
+
+                    break;
+
+            }
+
+
+        };
+
+
+
+        function sendChangeData(data, type) {
+
+            // console.log(data);
+            // console.log(type);
+            socket.emit('sendChangeData', {
+                data: data,
+                type: type
+            });
+
+        }
+
+        function highlightedSeries(json_str, unique_class) {
+            json_str = JSON.parse(json_str);
+
+            var sendJsonString = [];
+            $.each(json_str, function(key, value) {
+
+                if (value[0].indexOf(unique_class) > -1) {
+                    sendJsonString.push(value);
+                }
+
+            });
+            return JSON.stringify(sendJsonString);
+        }
+
+
+        var textBoxObject = {};
+        var dropCommentObject = {};
+        var commentBoxCords = {};
+        var historyObject = {};
+
+
+
+        function drawPath(d, pathclass, stroke_width, stroke_opacity, color) {
+
+            var xmlns = "http://www.w3.org/2000/svg";
+            var elem = document.createElementNS(xmlns, "path");
+
+            /*  elem.setAttributeNS(null,"style",recent_created_path.attr('style')); */
+            elem.setAttributeNS(null, "fill", "none");
+            elem.setAttributeNS(null, "stroke", color);
+            elem.setAttributeNS(null, "d", d);
+            elem.setAttributeNS(null, "stroke-opacity", stroke_opacity);
+            elem.setAttributeNS(null, "stroke-width", stroke_width);
+            elem.setAttributeNS(null, "stroke-linecap", "round");
+            elem.setAttributeNS(null, "stroke-linejoin", "round");
+            elem.setAttributeNS(null, "class", "pathclass " + pathclass);
+            $('#svg_id').prepend(elem);
+
+        }
+
+        function constructTextBox(uniqueClass, x, y, content, contenteditable) {
+
+            //      console.log(uniqueClass);
+
+            $("#svg-container").append(
+                '<div class="handle bar ' + uniqueClass + ' unselectable"' + ' style="margin:8px;z-index:3;cursor:url(../images/openhand.cur) 7.5 7.5,default;height:auto; width:auto;overflow:visible;color:red;text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;' + 'position:absolute;padding:6px;background:transparent;top:' + y + 'px;left:' + x + 'px">'
+                //cursor has 'default' .. don't know what it means
+
+                + '<div class="box lim" ' + 'style="vertical-align:baseline;background:transparent;float:left;border:1px;solid;padding:1px;outline:none"' + ' contenteditable=' + contenteditable + ' spellcheck="false">' +
+                content + '</div>'
+
+                + '<div class="delete-text-box" style="position:absolute;top:-9px;right:-9px;float:right;background-image:url(../images/delete16x16.png);background-repeat:no-repeat;background-position:center center;' + 'border: none;cursor: default;height: 16px;width: 16px;outline: none;opacity:0"></div>'
+
+                + '</div>');
+
+        }
+
+
+        function parseData(data) {
+
+            deserializeAnnotations(data.highlight);
+            deserializeAnnotations(data.strikeout);
+            deserializeAnnotations(data.highlightComment);
+            renderDraw(data.draw);
+            renderTextBox(data.textBoxComment);
+            var tempArray = data.pinComment.concat(data.highlightComment);
+            renderCommentBox(tempArray);
+            // renderCommentBox(data.highlightComment);
+
+        }
+
+
+        function renderCommentBox(data) {
+
+            data.sort(function(a, b) {
+                if (a.cords.boxY > b.cords.boxY) {
+                    return 1;
+                }
+                if (a.cords.boxY < b.cords.boxY) {
+                    return -1;
+                }
+                return 0;
+            });
+
+            // console.log(data);
+
+
+
+
+
+            $.each(data, function(index, value) {
+
+
+                switch (value.cords.type) {
+
+                    case "drop":
+                        $("#image-container").append("<img class='drop-comment " + value.uniqueClass + "' style='z-index:100;position:absolute;top:" + (value.cords.pageY - value.cords.offsetTop - 24) + "px;left:" + (value.cords.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
+                        break;
+
+                    case "drag":
+                        //nothing
+
+                        break;
+
+                }
+
+
+
+
+
+                comment_lines((value.cords.pageX - value.cords.offsetLeft), (value.cords.pageY - value.cords.offsetTop), 800, (value.cords.pageY - value.cords.offsetTop), value.uniqueClass);
+                connector_lines((value.cords.pageY - value.cords.offsetTop), value.cords.boxY, value.uniqueClass);
+
+
+                original_aligned_y.push([value.cords.boxY]);
+
+                all_click_y_positions.push([value.cords.boxY, value.elemId]);
+                original_aligned_y.sort(function(a, b) {
+                    return a - b
+                });
+
+
+
+                commentBoxCords[value.uniqueClass] = value.cords;
+
+                $("#comment-container").append('<ul class="comment-box ' + value.uniqueClass + '" id="' + value.elemId + '"' +
+                    ' style="top:' + (value.cords.pageY - value.cords.offsetTop) + 'px;">' +
+                    '<a class="new-comment new-comm-active">new comment</a>' +
+                    '<a class="submit-comment submit-inactive">submit</a>' +
+                    '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
+                    '</ul>');
+
+                $("#comment-container ." + value.uniqueClass).resize(function() {
+
+                    //console.log($(this).parent().children().index(this));
+                    height_change_align_comment_boxes($(this).parent().children().index(this));
+
+                });
+
+                // alert("hello");
+
+                constructComments(value);
+
+                new_box_entry_align_comment_boxes();
+
+
+            });
+
+
+
+            // console.log(original_aligned_y);
+            // console.log(all_click_y_positions);
+
+        }
+
+
+        function constructComments(data) {
+
+            $.each(data.comments.reverse(), function(index, value) {
+                //console.log(value);
+                $("#comment-container ." + data.uniqueClass).prepend('<li id = ' + value.liId + '>' +
+                    '<span class="critic_name" contenteditable="false">' + value.userName + ':</span>' +
+                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
+                    '<div class="comment-text" contenteditable="false" spellcheck=false>' + value.content + '</div>' +
+                    '</li>');
+
+            });
+
+        }
+
+
+
+
+        function renderDraw(data) {
+            $.each(data, function(index, value) {
+                drawPath(value.d, value.pathClass, "2", "1", value.color);
+                drawPath(value.d, value.pathClass, "20", "0", "#bbb000");
+            });
+        }
+
+        function renderTextBox(data) {
+
+            $.each(data, function(index, value) {
+                constructTextBox(value.uniqueClass, value.x, value.y, value.content, false);
+            });
+
+        }
+
+        function deserializeAnnotations(data) {
+            $("#svg-container").textHighlighter();
+            var high = $("#svg-container").getHighlighter();
+            $.each(data, function(index, value) {
+                high.deserializeHighlights(value.serializeData);
+            });
+
+            high.destroy();
+        }
+
+
+        function removeCommentUl(uniqueClass) {
+
+            // console.log("Removing ul Function Called");
+
+
+            if ($("#comment-container ." + uniqueClass).length) {
+                var removeUlObject = {
+                    uniqueClass: uniqueClass
+                };
+                sendChangeData(removeUlObject, "remove-comment-ul");
+
+                // console.log("Removing Ul");
+                // console.log(removeUlObject);
+            }
+        }
+
+    </script>
+
+  <script> var socket; var usables; </script>
+ 
+  <script type="text/javascript" src="../javascripts/socket.io.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+
+  
+
+  <script src="ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+  <script src="services.js"></script>
+
+  <script src="xeditable.min.js"></script>
+  <script src="angularFileUpload.js"></script>
+  <script src="ng-showdown.min.js"></script>
+  <script src="cookies.js"></script>
+  <script src="app.js"></script>
+
+<script type="text/ng-template" id="feedback.html">
+      
+<div class="modal-header center">
+<a ng-click="cancel()" class="close">x</a>
+<h4>We love feedbacks. If you have any suggestions or complaints, feel free to write to us.</h4>
+</div>
+
+
+
+<form name="feedback" >
+    
+<div class="modal-body center">
+    
+
+     <textarea id="feedback" style="width: 350px;
+height: 150px;
+border-radius: 5px;
+outline: none;
+padding: 10px;" ng-model="fb.feedbackMessage" name="feedback"  placeholder="Your feedback" /> 
+</div>
+
+  <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+<div class="btn btn-primary btn-large" ng-click= "sendFeedback()" tabindex="120" ng-disabled = "feedback.$invalid"  >Submit</div>
+
+</div>
+</form> 
+
+
+
+
+    </script> 
+
+
+</head>
+
+
+<!-- define angular controller -->
+<body class="layout" >
+
+  <nav style="margin-bottom:0px; background: #02394B;position: fixed;
+left: 0;
+top: 0;
+width: 100%;
+z-index: 500;" class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/workgroups" style="padding:0px;margin-left:-40px">
+          <img width="145px" src="../css/images/logo_black.gif"></img>
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+     
+        <li><a style="color:white;" href="#/workgroups"><i class="fa fa-reorder"></i> Workgroups</a></li>
+        
+        <li><a style="color:white;cursor:pointer;" ng-click="askFeedback()"><i class="fa fa-comment"></i> Feedback</a></li>
+        <li>
+          <div  dropdown is-open="status.isopen1" class="profile-drop">
+      <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        {{ut}} <span class="caret"></span>
+      </span>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#/account/{{pt}}">Account</a></li>
+        <li><a href="#/faq">FAQs</a></li>
+        <li><a href="#/logout" ng-click="predicate = 'authid'; reverse=false">Logout</a></li>
+    
+        
+      </ul>
+    </div>
+        </li>
+
+    </div>
+  </nav>
+
+</div>
+
+
+  <div id="main">
+  
+    <!-- angular templating -->
+        <!-- this is where content will be injected -->
+    <div ng-view ></div>
+
+    
+
+
+  </div>
+  
+
+  
+</body>
+
+</html>

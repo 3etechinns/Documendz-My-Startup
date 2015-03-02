@@ -19,8 +19,12 @@ if ($num_results == 1) {						// Starting session only if unique username and pa
         session_start();		
 	$_SESSION['Username'] = $Username;			// Storing the username of the logged in person
 	$_SESSION['userid'] =  $row['userid'];              //Will take the userid of the logged in user from registered users db and assign it to SESSION userid
-        redirect_to("profile_page.php");
+        //redirect_to("profile_page.php");
+
+	redirect_to("http://localhost/local_ang/angular/#/profile");
 } 
+
+
 else {
 echo "Username-Password combination incorrect";
 }

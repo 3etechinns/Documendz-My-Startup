@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap 3, from LayoutIt!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+	<script type="text/javascript" src="../javascripts/jquery1.9.1.js"></script>
+	
+
+ 
+  
+<style>
+
+
+.embed-link{
+
+width:410px;
+height:90px;
+white-space: pre-wrap;
+word-wrap: break-word;
+resize:none;
+vertical-align: top;
+
+
+}
+</style>
+</head>
+
+<body>
+<div class="container" id="main" name="main">
+	<div class="row clearfix">
+     Select Scale:- <select id="mode" onchange="setValue();">
+                      <option value="fit-width">Fit Width</option> 
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                      
+                    </select><br>
+      Wth:- <input type="text" id="wth" value="780px"><br><br>
+      hth :- <input type="text" id="hth" value="400px"><br><br>
+      Link:- <textarea readonly class="embed-link" id="link" row="9" cols="50" value='<iframe id="embedframe" style="float:left;" id="viewer" src = "http://localhost/local_documendz/docviewer/ViewerJS/finalTrial2.html" width="780px" height="400px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" ></iframe>'>
+    </textarea><br><br><br><br><br>
+      <div id="previ">
+
+          <iframe id="embedframe" style="float:left;" id="viewer" src = "http://localhost/local_documendz/docviewer/ViewerJS/finalTrial2.html" width="780px" height="700px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" ></iframe>
+
+      </div>
+  </div>		
+</div>
+</body>
+
+<script type="text/javascript">
+  function setValue(){
+
+    var mode = $('#mode').val();
+    switch(mode){
+      case "small":$("#wth").val("350px");$("#hth").val("400px");break;
+      case "medium":$("#wth").val("500px");$("#hth").val("650px");break;
+      case "large":$("#wth").val("800px");$("#hth").val("700px");break;
+      case "fit-width":$("#wth").val("780px");$("#hth").val("700px");break;
+    }
+    var h=document.getElementById("hth").value;
+    var w=document.getElementById("wth").value;
+    
+    var link='<iframe id="embedframe" style="float:left;" id="viewer" src = "http://localhost/local_documendz/docviewer/ViewerJS/finalTrial2.html" width="'+w+'" height="'+h+'" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" ></iframe>';
+    
+    $('#link').val(link);
+    document.getElementById('previ').innerHTML = link;
+
+  }
+</script>
+</html>

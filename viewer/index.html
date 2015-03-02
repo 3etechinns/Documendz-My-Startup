@@ -1,0 +1,157 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content = "width=device-width,initial-scale=1">
+<title>Documendz</title>
+
+
+
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/profile.css">
+<link rel="stylesheet" href="../css/preview.css">
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="../javascripts/bootstrap.min.js"></script>
+
+
+
+<script>
+  
+   function show_iframe_upload(){
+   
+    
+    $("#viewer-close-iframe").addClass("disabled");
+    $("#viewer-iframe-upload").modal({backdrop:'static',keyboard:false});
+    document.getElementById("viewer-iframe-upload-message").innerHTML = "";
+    $("#viewer-iframe-upload").modal('show');
+    $("#top-image").attr("src","../images/loading.gif");
+      
+     
+   
+   }
+
+   $(document).on({           
+      change:function(e){
+   
+    var FileExt = this.value.substr(this.value.lastIndexOf('.')+1);
+      
+   if(this.files[0].size < 4096000 && (FileExt == "pdf" || FileExt == "png" || FileExt == "jpg" || FileExt == "svg" || FileExt == "swf" || FileExt == "bmp" )){
+
+   	 show_iframe_upload();
+   	 this.form.submit();
+
+   }
+   else {
+
+   	    show_iframe_upload();
+		
+  
+		alert(" Currently only PDFs and Images upto 4MB are supported. Support for more file types will be added soon.");
+
+   }
+   
+   }
+   },"#viewer-file-browse");
+   
+
+</script>
+
+
+<!-- For preview body -->
+
+
+<script type="text/javascript">
+  function setValue(){
+
+    var mode = $('#mode').val();
+    switch(mode){
+      case "small":$("#wth").val("350px");$("#hth").val("400px");break;
+      case "medium":$("#wth").val("500px");$("#hth").val("650px");break;
+      case "large":$("#wth").val("800px");$("#hth").val("700px");break;
+      case "fit-width":$("#wth").val("780px");$("#hth").val("700px");break;
+    }
+    var h=document.getElementById("hth").value;
+    var w=document.getElementById("wth").value;
+   
+    var s = $("#embedframe").attr('src');
+    
+
+    var link='<iframe id="embedframe" style="float:left;" id="viewer" src = "'+s+'" width="'+w+'" height="'+h+'" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" ></iframe>';
+    
+    $('#link').val(link);
+    document.getElementById('previ').innerHTML = link;
+
+  }
+</script>
+
+
+
+<!-- ... -->
+
+
+<body>
+
+ <div class="input-group" style="margin-bottom:10px; width: 100px;">
+         <span class="input-group-btn">
+            <span class="btn btn-primary  btn-sm btn-file">
+               <i class="glyphicon glyphicon-open"></i>&nbsp;&nbsp;Upload file
+               <form  id="viewer-upload-form" target="viewer-iframe" enctype = 'multipart/form-data' action="viewer-upload.php" method="post">
+                  <input id="viewer-file-browse" type="file" name="viewer-file" />
+               </form>
+               
+            </span>
+         </span>
+      </div>
+   <div class="modal fade" id="viewer-iframe-upload" for="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <div style="font-size: 20px;"> File upload
+                  <img id="top-image" style="float:right;margin-right:4px;width:25px" src="../images/loading.gif"> 
+               </div>
+            </div>
+            <iframe style="border: none;width: 100%;height: 110px;" id="viewer-iframe" name="viewer-iframe" src="viewer-upload.php"></iframe>
+            <div style="font-size: 15px;padding: 0 10px;color: rgb(143, 41, 53);" id="viewer-iframe-upload-message"></div>
+            <div style="margin-top:0px; padding-top:0px;" class="modal-footer">
+               <p style="float: left; font-size: 12px;">Larger files with more images may take longer to process</p>
+               <button id="viewer-close-iframe" class="btn btn-danger" data-dismiss="modal">close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+<div id="preview-selector" class="">
+
+    <div class="container" id="main" name="main">
+  <div class="row clearfix">
+     Select Scale:- <select id="mode" onchange="setValue();">
+                      <option value="fit-width">Fit Width</option> 
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                      
+                    </select><br>
+      Wth:- <input type="text" id="wth" value="780px"><br><br>
+      hth :- <input type="text" id="hth" value="400px"><br><br>
+      Link:- <textarea readonly class="embed-link" id="link" row="9" cols="50" value=''>
+    </textarea><br><br><br><br><br>
+      <div id="previ">
+
+
+
+      </div>
+  </div>    
+</div>
+
+
+</div>
+
+
+</body>
+
+
+
+</html>

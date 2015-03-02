@@ -1,0 +1,15 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <script type="text/javascript" src="http://localhost:9000/socket.io/socket.io.js"></script>
+        <script type="text/javascript" >
+            var socket = io.connect("http://localhost:9000");
+            socket.emit("joined");
+            
+
+            socket.emit("documentInfo", {userId:1234, shareId:4569});
+        </script>
+    </body>
+</html>

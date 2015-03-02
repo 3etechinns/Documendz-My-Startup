@@ -20,8 +20,8 @@ $em = mysql_real_escape_string($em);
 
 	
 $sql = "INSERT INTO signup ".
-		"(username, password, emailid) ".
-		"VALUES('$un','$pw','$em')";
+		"(username, password, emailid, workgroups, files, collaborators) ".
+		"VALUES('$un','$pw','$em',3,10,3)";
 		
 		
 
@@ -41,9 +41,9 @@ mysql_query("INSERT INTO remaining (UID) VALUES ('$uid')");
 $secret = "61oeix1=-4#%e03mo";
 $email = urlencode($em);
 $hash = MD5($em.$secret);
-$link = "http://www.documendz.com/t_verification.php?email=$email&hash=$hash&user=$un";
+$link = "https://www.documendz.com/t_verification.php?email=$email&hash=$hash&user=$un";
 
-email($em,"Documendz",$un,$link);
+email($em,"zofler",$un,$link);
 
 }//closure for if(strlen........) 
 
@@ -101,9 +101,7 @@ $message->setBody(
 				<table align="center" cellpadding="0" cellspacing="0"
 					width="600" style="border-collapse: collapse; border-collapse: collapse;border: 1px solid #cecaca;color: #363535;">
 					<tr>
-						<td align="center" bgcolor="#F5F5F5" style="padding: 10px 0 10px 0;"><img
-							src="https://s3-ap-southeast-1.amazonaws.com/documendz-public/documendz_logo.gif" alt="logo"
-							width="150" height="37.5" style="display: block;" /></td>
+						<td align="center" bgcolor="#F5F5F5" style="padding: 10px 0 10px 0;"></td>
 					</tr>
 					<tr>
 						<td bgcolor="#ffffff" style="padding: 10px 10px 10px 10px;">
@@ -114,7 +112,7 @@ $message->setBody(
 								</tr>
 								<tr>&nbsp;</tr>
 								<tr>
-									<td>Welcome to Documendz! To get started, please confirm your email address</td>	
+									<td>Welcome to Zofler! To get started, please confirm your email address</td>	
 								</tr>
 
 							</table>

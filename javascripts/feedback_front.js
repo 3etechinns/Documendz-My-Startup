@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+
+
+
 	$("#feedback_front_submit").click(function(){		
 		var text=$.trim($("#feedback_front").val());
                 var email = $.trim($("#feedback_front_email").val());

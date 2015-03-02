@@ -1,0 +1,52 @@
+
+<div  ng-controller="modalnewProject" 
+style="top: 0px;
+left: 0px;
+text-align:center;	
+margin-left: auto;
+margin-right: auto;
+margin-top: 10%;
+opacity:1 !important;
+width: 550px;
+overflow: visible;
+-webkit-font-smoothing: antialiased;
+border-radius: 6px;
+z-index: 1050;
+background-color:#ffffff">
+
+<div class="modal-header">
+<a ng-click="closeModalWindow()" class="close">×</a>
+<h2>Create a new workgroup</h2>
+</div>
+
+
+<form name="saveproj" ng-submit = saveProject()>
+<input style="border: 1px solid #d7dbdf;
+border-radius: 3px;
+background: 0 0;
+font-size: 14px;
+font-family: 'Open Sans',open-sans,sans-serif;
+font-weight: 400;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+padding: 9px 18px 8px;
+width: 372px;
+color: #464f5d;
+font-weight: 600!important;"
+id="projectname" type="text" ng-model="newProj.projectName" name="projectName" inv-autofocus="" tabindex="101" placeholder="Workgroup name" required />
+
+  <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+<button class="btn btn-primary" type="submit" tabindex="120" ng-disabled = "saveproj.$invalid"  >Add</button>
+
+</div>
+
+</form>
+
+</div>
+
+

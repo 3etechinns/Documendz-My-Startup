@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Documendz Viewer</title>
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/viewer.css" media="screen" />
+
+
+
+    <style type="text/css">
+        
+        
+        <style type="text/css"> #page-container {
+           
+            
+            position: absolute;
+           
+            top: 35px;
+            left: 0px;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            
+        }
+        @media screen {
+            /* for sidebar */
+            
+            #sidebar.opened + #page-container {
+                left: 200px;
+            }
+            #page-container {
+               
+                
+                bottom: 0;
+                right: 0;
+                overflow: auto;
+            }
+        }
+        @media print {
+            @page {
+                margin: 0;
+            }
+            html {
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact;
+                /* enable printing background images for WebKit */
+            }
+            #sidebar {
+                display: none;
+            }
+            #page-container {
+                width: auto;
+                height: auto;
+                overflow: visible;
+                background-color: transparent;
+            }
+            .d {
+                display: none;
+            }
+        }
+        
+        
+        .pf {
+            /* page */
+            
+            position: relative;
+            background-color: white;
+            overflow: hidden;
+            margin: 0;
+            border: 0;
+           
+        }
+        .pc {
+            /* content of a page */
+            
+            position: absolute;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: block;
+            /* set transform-origin for scaling */
+            
+            transform-origin: 0% 0%;
+            -ms-transform-origin: 0% 0%;
+            -webkit-transform-origin: 0% 0%;
+        }
+        .pc.opened {
+            
+            
+            display: block;
+        }
+        .bf {
+            /* images that occupies the whole page */
+            
+            position: absolute;
+            border: 0;
+            margin: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .bi {
+            /* images that cover only a part of the page */
+            
+            position: absolute;
+            border: 0;
+            margin: 0;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        @media print {
+            .pf {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            @-moz-document url-prefix() {
+                /* fix page truncation for FireFox */
+                
+                .pf {
+                    overflow: visible;
+                    border: 1px solid #FFFFFF;
+                }
+                .pc {
+                    overflow: visible;
+                }
+            }
+        }
+        .c {
+            /* clip box */
+            
+            position: absolute;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            display: block;
+        }
+        .t {
+            /* text line */
+            
+            position: absolute;
+            white-space: pre;
+            font-size: 1px;
+            transform-origin: 0% 100%;
+            -ms-transform-origin: 0% 100%;
+            -webkit-transform-origin: 0% 100%;
+            unicode-bidi: bidi-override;
+            /* For rtl lanauges, e.g. Hebrew, we don't want the default Unicode behaviour */
+            
+            -moz-font-feature-settings: "liga" 0;
+            /* We don't want Firefox to recognize ligatures */
+        }
+        span {
+            /* text blocks within a line */
+            
+            position: relative;
+            vertical-align: baseline;
+            /* _<id> for spaces may need display:inline, which will override this */
+            
+            display: inline-block;
+            unicode-bidi: bidi-override;
+            /* For rtl lanauges, e.g. Hebrew, we don't want the default Unicode behaviour */
+        }
+        ._ {
+            /* text shift */
+            
+            color: transparent;
+            z-index: -1;
+        }
+        /* selection background should not be opaque, for fallback mode */
+        
+        ::selection {
+            background: rgba(127, 255, 255, 0.4);
+        }
+        ::-moz-selection {
+            background: rgba(127, 255, 255, 0.4);
+        }
+        .pi {
+            /* info for Javascript */
+            
+            display: none;
+        }
+        .l {
+            /* annotation links */
+        }
+        /* transparent color - WebKit */
+        
+        .d {
+            /* css drawing */
+            
+            position: absolute;
+            transform-origin: 0% 100%;
+            -ms-transform-origin: 0% 100%;
+            -webkit-transform-origin: 0% 100%;
+        }
+        /* Base CSS END */
+    </style>
+    <style type="text/css">
+       
+        
+        @keyframes fadein {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @-webkit-keyframes fadein {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes swing {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(0deg);
+            }
+            90% {
+                transform: rotate(720deg);
+            }
+            100% {
+                transform: rotate(720deg);
+            }
+        }
+        @-webkit-keyframes swing {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            10% {
+                -webkit-transform: rotate(0deg);
+            }
+            90% {
+                -webkit-transform: rotate(720deg);
+            }
+            100% {
+                -webkit-transform: rotate(720deg);
+            }
+        }
+        @media screen {
+            #sidebar {
+                background-color: white;
+                /* modified from http://philbit.com/svgpatterns/#crossstripes */
+            }
+            #outline {
+                font-family: Georgia, Times, "Times New Roman", serif;
+                font-size: 13px;
+                margin: 2em 1em;
+            }
+            #outline ul {
+                padding: 0;
+            }
+            #outline li {
+                list-style-type: none;
+                margin: 1em 0;
+            }
+            #outline li > ul {
+                margin-left: 1em;
+            }
+            #outline a,
+            #outline a:visited,
+            #outline a:hover,
+            #outline a:active {
+                line-height: 1.2;
+                color: #e8e8e8;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-decoration: none;
+                display: block;
+                overflow: hidden;
+                outline: 0;
+            }
+            #outline a:hover {
+                color: rgb(0, 204, 255);
+            }
+            #page-container {
+                background-color: #ede9e9;
+                /* http://philbit.com/svgpatterns/#thinstripes */
+                
+                -webkit-transition: left 500ms;
+                transition: left 500ms;
+            }
+            .pf {
+                margin: 13px auto;
+                box-shadow: 1px 1px 3px 1px #333;
+                /* Needed by IE to make box-shadow works * https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+                
+                border-collapse: separate;
+            }
+            .pc.opened {
+                /* used by pdf2htmlEX.js, to show/hide pages */
+                
+                -webkit-animation: fadein 100ms;
+                animation: fadein 100ms;
+            }
+            .loading-indicator.active {
+                /* 
+     * use 0.01s instead of 0s,
+     * since YUI Compressor will change 0s to 0,
+     * which is not recognized by Firefox
+     */
+                
+                -webkit-animation: swing 1.5s ease-in-out 0.01s infinite alternate none;
+                animation: swing 1.5s ease-in-out 0.01s infinite alternate none;
+            }
+        }
+        /* Fancy CSS END */
+    </style>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+    <script>
+        var f = '<?php echo $_GET["f"]; ?>';
+
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+        }
+
+        function change_page_no() {
+
+            $('.pf').each(function() {
+
+
+                if (
+                    $(this).position().top < ($(window).height() / 2)
+
+                ) {
+
+
+                    $("#page_no").val($(this).index());
+                    page_scroll_no_latest = $(this).index();
+                }
+            });
+
+        }
+
+
+        function load_page_no() {
+
+
+            $(document).ready(function() {
+
+
+                window.total_pages = $('.pf').length;
+                window.page_scroll_no_latest = 1;
+
+
+                $("#numPages").html("of " + total_pages);
+
+                $("#page-up").click(function() {
+
+
+                    if (page_scroll_no_latest > 1) {
+
+                        $("#canvasContainer").scrollTo("#" + $("#page-container > div:nth-child(" + page_scroll_no_latest + ")")[0].id);
+
+                    }
+
+                })
+
+                $("#page-down").click(function() {
+
+                    if (page_scroll_no_latest < total_pages) {
+
+                        $("#canvasContainer").scrollTo("#" + $("#page-container > div:nth-child(" + (page_scroll_no_latest + 2) + ")")[0].id);
+
+                    }
+
+                })
+
+                $("#canvasContainer").bind('scroll', function(e) {
+
+                    change_page_no();
+                });
+
+
+                $("#page_no").keypress(function(e) {
+
+
+                    if (e.keyCode == 13) {
+                        var pg = parseInt($(this).val());
+
+                        if (pg < total_pages && pg > 0) {
+
+                            $("#canvasContainer").scrollTo("#" + $("#page-container > div:nth-child(" + (pg + 1) + ")")[0].id);
+
+                            change_page_no(); //to insert proper value in textbox after scroll
+
+                        } else if (pg >= total_pages) {
+
+                            $("#canvasContainer").scrollTo("#" + $("#page-container > div:nth-child(" + (total_pages + 1) + ")")[0].id);
+                            $("#page_no").val(total_pages);
+                            page_scroll_no_latest = total_pages;
+
+                        } else if (pg == 0) {
+                            $("#canvasContainer").scrollTo("#" + $("#page-container > div:nth-child(2)").attr('id'));
+                            $("#page_no").val(1);
+                            page_scroll_no_latest = 1;
+
+                        }
+                    }
+
+
+
+                });
+
+
+
+
+
+
+                $("#page_no").val(1);
+
+
+
+            });
+
+        }
+
+
+
+
+        var request = $.ajax({
+            url: "http://localhost/local_documendz/uploaded/viewer_files/" + f + ".html",
+            type: "GET",
+            cache: false,
+            async: true
+        });
+
+
+        request.done(function(data) {
+
+            $("#page-container").ready(function() {
+
+                $("#page-container").html(data);
+
+                load_page_no();
+
+            });
+
+
+        });
+
+
+        (function() {
+            function b(a, b, e, f) {
+                var c = (a.className || "").split(/\s+/g);
+                "" === c[0] && c.shift();
+                var d = c.indexOf(b);
+                0 > d && e && c.push(b);
+                0 <= d && f && c.splice(d, 1);
+                a.className = c.join(" ");
+                return 0 <= d
+            }
+            if (!("classList" in document.createElement("div"))) {
+                var e = {
+                    add: function(a) {
+                        b(this.element, a, !0, !1)
+                    },
+                    contains: function(a) {
+                        return b(this.element, a, !1, !1)
+                    },
+                    remove: function(a) {
+                        b(this.element, a, !1, !0)
+                    },
+                    toggle: function(a) {
+                        b(this.element, a, !0, !0)
+                    }
+                };
+                Object.defineProperty(HTMLElement.prototype, "classList", {
+                    get: function() {
+                        if (this._classList) return this._classList;
+                        var a = Object.create(e, {
+                            element: {
+                                value: this,
+                                writable: !1,
+                                enumerable: !0
+                            }
+                        });
+                        Object.defineProperty(this, "_classList", {
+                            value: a,
+                            writable: !1,
+                            enumerable: !1
+                        });
+                        return a
+                    },
+                    enumerable: !0
+                })
+            }
+        })();
+    </script>
+
+    <script>
+        try {
+            pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
+        } catch (e) {}
+    </script>
+
+    <style type="text/css">
+        /*new css for viewers only*/
+        
+        :-webkit-full-screen #page-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            getAutoZoom();
+        });
+        $(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange", function() {
+            if (!isDocumentInFullScreenMode()) {
+                $("#page-container").css("zoom", magnify);
+            }
+        });
+
+        function isDocumentInFullScreenMode() {
+            // Note that the browser fullscreen (triggered by short keys) might
+            // be considered different from content fullscreen when expecting a boolean
+            return ((document.fullscreenElement && document.fullscreenElement !== null) || // alternative standard methods
+                document.mozFullScreen || document.webkitIsFullScreen); // current working methods
+        }
+    </script>
+
+    <script>
+        try {
+            pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
+        } catch (e) {}
+    </script>
+</head>
+
+<body>
+    <div id="viewer">
+        <div id="titlebar">
+            <div id="documentName"></div>
+            <div id="toolbarRight">
+                <span id="scaleSelectContainer" class="dropdownToolbarButton">
+                                <select id="scaleSelect" title="Zoom" onchange="setZoom();">
+                                    <option value="auto">Automatic</option>
+                                    <option value="0.5">50%</option>
+                                    <option value="0.75">75%</option>
+                                    <option value="1">100%</option>
+                                    <option value="1.25">125%</option>
+                                    <option value="1.5">150%</option>
+                                    <option value="2">200%</option>
+                                </select>
+                    </span>
+                <button id="presentation" class="toolbarButton presentation" title="Presentation"></button>
+                <button id="fullscreen" class="toolbarButton fullscreen" title="Fullscreen" onclick="toggleFullScreen();"></button>
+                <button id="about" class="toolbarButton about" title="About" onclick="redirect();" style="background-image:url(" paper.gif ");">Documendz</button>
+            </div>
+        </div>
+        <div id="toolbarContainer">
+            <div id="toolbar">
+                <div id="toolbarLeft" style="visibility: visible;">
+                    <div id="navButtons" class="splitToolbarButton">
+                        <button id="page-up" class="toolbarButton pageUp" title="Previous Page"></button>
+                        <div class="splitToolbarButtonSeparator"></div>
+                        <button id="page-down" class="toolbarButton pageDown" title="Next Page"></button>
+                    </div>
+                    <label id="pageNumberLabel" class="toolbarLabel" for="pageNumber">Page:</label>
+                    <input type="number" onkeypress="return isNumber(event)" id="page_no" class="toolbarField pageNumber">
+                    <span id="numPages" class="toolbarLabel"></span>
+                </div>
+
+            </div>
+        </div>
+        <div id="canvasContainer">
+            <div id="canvas">
+                <!--hardik sir's code starts here-->
+
+                <div id="page-container">
+
+                </div>
+
+
+                <!--hardik sir's code ends here -->
+            </div>
+        </div>
+
+        <div id="overlayNavigator">
+            <div id="previousPage"></div>
+            <div id="nextPage"></div>
+        </div>
+        <div id="overlayCloseButton">
+            &#10006;
+        </div>
+        <div id="dialogOverlay"></div>
+        <div id="blanked"></div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var parentwt, magnify;
+
+    function setZoom() {
+        var zoom = $('#scaleSelect').val();
+
+        switch (zoom) {
+            case "auto":
+                $("#page-container").css("zoom", magnify);
+                break;
+            default: // handle every other case here
+                $("#page-container").css("zoom", magnify * zoom);
+                break;
+            
+        }
+
+        change_page_no();
+    }
+
+    //////Autozoom/////////////////////
+    function getAutoZoom() {
+
+        parentwt = $(document.body).width();
+
+        magnify = (parentwt - 40) / 800;
+
+        $("#page-container").css("zoom", magnify);
+
+    }
+
+
+    ///redirect to documendz/////////////////////
+    function redirect() {
+        window.open("http://documendz.com", "_blank");
+    }
+
+    //////////////togglescreen/////////////////////
+    function toggleFullScreen() {
+        if (!document.fullscreenElement && // alternative standard method
+            !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) { // current working methods
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+            $("#page-container").css("zoom", 1);
+
+        }
+    }
+</script>
+<script type="text/javascript" src="../javascripts/scrollTo.js"></script>
+
+</html>

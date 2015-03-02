@@ -20,7 +20,7 @@
  *       - Removed input option. To make editors/viewers, set editing option to true/false, respectively.
  *         To update an input field, listen to change event and update input field with json function.
  *       - Reduce file size V1. Changed stored path info from array into a string in  format.
- * 0.3.0 - Added erase, supported initialiing data from input field.
+ * 0.3.0 - Added erase, supported initializing data from input field.
  * 0.2.0 - Added iPhone/iPod Touch support, onchange event, animate.
  * 0.1.0 - Started code.
  *
@@ -359,14 +359,14 @@
 			}
 		}
 		
+		
+		function random(){function a() {return (((1 + Math.random()) * 65536) | 0).toString(16).substring(1);}
+								return (a() + "-" + a() + "-" + a() + a() + a()).toLowerCase() ;}
+		
 		// Event handlers
 		//-----------------
 		// We can only attach events to the container, so do it.
 		
-		
-		function random(){function a() {return (((1 + Math.random()) * 65536) | 0).toString(16).substring(1);}
-								return (a() + "-" + a() + "-" + a() + a() + a()).toLowerCase() ;}
-							
 		function _pathclick(e) {
 			if (_options.editing == "erase") {
 				var stroke = this.attr();
@@ -394,7 +394,7 @@
 			
 			if(e.which == 1){  // To enable drawing only on left-click
 			
-				
+				//_disable_user_select();
 
 			_pen.start(e, self);
 			
@@ -411,7 +411,7 @@
 		function _mouseup(e) {
 			
 			var rnd = random();
-			
+			//_enable_user_select();
 			
 			var path = _pen.finish(e, self);
 			

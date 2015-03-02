@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<!--
+  Copyright (C) 2012-2014 KO GmbH <copyright@kogmbh.com>
+
+  @licstart
+  This file is part of WebODF.
+
+  WebODF is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Affero General Public License (GNU AGPL)
+  as published by the Free Software Foundation, either version 3 of
+  the License, or (at your option) any later version.
+
+  WebODF is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+
+  You should have received a copy of the GNU Affero General Public License
+  along with WebODF.  If not, see <http://www.gnu.org/licenses/>.
+  @licend
+
+  @source: http://www.webodf.org/
+  @source: https://github.com/kogmbh/WebODF/
+-->
+
+<!--
+  This file is a derivative from a part of Mozilla's PDF.js project. The
+  original license header follows.
+-->
+
+<!--
+Copyright 2012 Mozilla Foundation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html dir="ltr" lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Documendz Viewer</title>
+        <!-- If you want to use custom CSS (@font-face rules, for example) you should uncomment
+             the following reference and use a local.css file for that. See the example.local.css
+             file for a sample.
+        <link rel="stylesheet" type="text/css" href="local.css" media="screen"/>
+        -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="viewer.css" media="screen"/>
+      
+        
+       
+        <style type="text/css">
+/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=css: */
+/*! 
+ * Base CSS for pdf2htmlEX
+ * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com> 
+ * https://github.com/coolwanglu/pdf2htmlEX/blob/master/share/LICENSE
+ */
+/* Part 1: Web Page Layout: Free to modify, except for a few of them which are required by pdf2htmlEX.js, see the comments */
+<style type="text/css">
+            
+#page-container { /* PDF container */
+  position:absolute; /* required for calulating relative positions of pages in pdf2htmlEX.js */
+  top:35px;
+  left:0px;
+  margin:0; 
+  padding:0;
+  border:0; /* required for lazy page loading in pdf2htmlEX.js (page visibility test) */
+}
+@media screen {
+  /* for sidebar */
+  #sidebar.opened + #page-container { left:200px; }
+  #page-container {
+    /* `bottom' and `right' are required for lazy page loading in pdf2htmlEX.js (page visibility test)
+     * alternatively you may set width and height
+     */
+    bottom:0;
+    right:0;
+    overflow:auto;
+  }
+
+}
+@media print { 
+  @page { margin:0; }
+  html { margin:0; }
+  body { 
+    margin:0; 
+    -webkit-print-color-adjust:exact; /* enable printing background images for WebKit */
+  }
+  #sidebar { display:none; }
+  #page-container {
+    width:auto;
+    height:auto;
+    overflow:visible;
+    background-color:transparent;
+  }
+  .d { display:none; }
+}
+/* Part 2: Page Elements: Modify with caution
+ * The followings are base classes, some of which are meant to be override by PDF specific classes
+ * So do not increase the specificity (e.g. ".classname" -> "#page-container .classname")
+ */
+.pf { /* page */
+  position:relative;
+  background-color:white;
+  overflow: hidden;
+  margin:0; 
+  border:0; /* required by pdf2htmlEX.js for page visibility test */
+}
+.pc { /* content of a page */
+  position:absolute;
+  border:0;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  display:block;
+  /* set transform-origin for scaling */
+  transform-origin:0% 0%;
+  -ms-transform-origin:0% 0%;
+  -webkit-transform-origin:0% 0%;
+}
+.pc.opened { /* used by pdf2htmlEX.js, to show/hide pages */
+  display:block;
+}
+.bf { /* images that occupies the whole page */
+  position:absolute;
+  border:0;
+  margin:0;
+  top:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  -ms-user-select:none;
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  user-select:none;
+ 
+}
+.bi { /* images that cover only a part of the page */
+  position:absolute;
+  border:0;
+  margin:0;
+  -ms-user-select:none;
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  user-select:none;
+  
+}
+@media print {
+  .pf {
+    margin:0;
+    box-shadow:none;
+    page-break-after:always;
+    page-break-inside:avoid;
+  }
+  @-moz-document url-prefix() {
+    /* fix page truncation for FireFox */
+    .pf {
+      overflow:visible;
+      border:1px solid #FFFFFF;
+    }
+    .pc {overflow:visible;}
+  }
+}
+.c { /* clip box */
+  position:absolute;
+  border:0;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  display:block;
+}
+.t { /* text line */
+  position:absolute;
+  white-space:pre;
+  font-size:1px;
+  transform-origin:0% 100%;
+  -ms-transform-origin:0% 100%;
+  -webkit-transform-origin:0% 100%;
+  unicode-bidi:bidi-override;/* For rtl lanauges, e.g. Hebrew, we don't want the default Unicode behaviour */
+  -moz-font-feature-settings:"liga" 0;/* We don't want Firefox to recognize ligatures */
+}
+span { /* text blocks within a line */
+  position:relative;
+  vertical-align: baseline;
+  /* _<id> for spaces may need display:inline, which will override this */ 
+  display:inline-block;
+  unicode-bidi:bidi-override; /* For rtl lanauges, e.g. Hebrew, we don't want the default Unicode behaviour */
+}
+._ { /* text shift */
+  color:transparent;
+  z-index:-1;
+}
+/* selection background should not be opaque, for fallback mode */
+::selection{
+  background: rgba(127,255,255,0.4);
+}
+::-moz-selection{
+  background: rgba(127,255,255,0.4);
+}
+.pi { /* info for Javascript */
+  display:none;
+}
+.l { /* annotation links */
+}
+/* transparent color - WebKit */
+.d { /* css drawing */
+  position:absolute;
+  transform-origin:0% 100%;
+  -ms-transform-origin:0% 100%;
+  -webkit-transform-origin:0% 100%;
+}
+/* Base CSS END */
+</style>
+<style type="text/css">
+/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=css: */
+/*! 
+ * Fancy styles for pdf2htmlEX
+ * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com> 
+ * https://github.com/coolwanglu/pdf2htmlEX/blob/master/share/LICENSE
+ */
+@keyframes fadein { from { opacity:0;} to { opacity:1;} }
+@-webkit-keyframes fadein { from { opacity:0;} to { opacity:1;} }
+@keyframes swing {
+  0%  { transform: rotate(0deg); }
+  10% { transform: rotate(0deg); }
+  90% { transform: rotate(720deg); }
+  100%{ transform: rotate(720deg); }
+}
+@-webkit-keyframes swing {
+  0%  { -webkit-transform: rotate(0deg); }
+  10% { -webkit-transform: rotate(0deg); }
+  90% { -webkit-transform: rotate(720deg); }
+  100%{ -webkit-transform: rotate(720deg); }
+}
+@media screen { 
+  #sidebar {
+    background-color:white;
+    /* modified from http://philbit.com/svgpatterns/#crossstripes */
+   
+  }
+  #outline {
+    font-family:Georgia,Times,"Times New Roman",serif;
+    font-size:13px;
+    margin:2em 1em;
+  }
+  #outline ul {
+    padding:0;
+  }
+  #outline li {
+    list-style-type:none;
+    margin:1em 0;
+  }
+  #outline li > ul {
+    margin-left: 1em;
+  }
+  #outline a,
+  #outline a:visited,
+  #outline a:hover,
+  #outline a:active {
+    line-height:1.2;
+    color:#e8e8e8;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    text-decoration:none;
+    display:block;
+    overflow:hidden;
+    outline:0;
+  }
+  #outline a:hover {
+    color:rgb(0,204,255);
+  }
+  #page-container {
+    background-color:#ede9e9;
+    /* http://philbit.com/svgpatterns/#thinstripes */
+    
+    -webkit-transition:left 500ms;
+    transition:left 500ms;
+  }
+  .pf {
+    margin: 13px auto;
+    box-shadow: 1px 1px 3px 1px #333;
+    /* Needed by IE to make box-shadow works * https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+    border-collapse: separate;
+  }
+  .pc.opened { /* used by pdf2htmlEX.js, to show/hide pages */
+    -webkit-animation: fadein 100ms;
+    animation: fadein 100ms; 
+  }
+  .loading-indicator.active {
+    /* 
+     * use 0.01s instead of 0s,
+     * since YUI Compressor will change 0s to 0,
+     * which is not recognized by Firefox
+     */
+    -webkit-animation: swing 1.5s ease-in-out 0.01s infinite alternate none;
+    animation: swing 1.5s ease-in-out 0.01s infinite alternate none;
+  }
+}
+/* Fancy CSS END */
+</style>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script>
+
+
+
+  var request = $.ajax({
+                url:"https://s3-ap-southeast-1.amazonaws.com/docs-test/aoaaJU3uIRjt.html",
+                type:"GET",
+                cache:false,
+                async:true
+            });
+
+
+          request.done(function(data){
+
+           $("#page-container").ready(function(){
+
+            $("#page-container").html(data);
+            
+
+           });
+            
+
+ });
+
+
+
+
+/*
+ Copyright 2012 Mozilla Foundation 
+ Copyright 2013 Lu Wang <coolwanglu@gmail.com>
+ Apachine License Version 2.0 
+*/
+(function(){function b(a,b,e,f){var c=(a.className||"").split(/\s+/g);""===c[0]&&c.shift();var d=c.indexOf(b);0>d&&e&&c.push(b);0<=d&&f&&c.splice(d,1);a.className=c.join(" ");return 0<=d}if(!("classList"in document.createElement("div"))){var e={add:function(a){b(this.element,a,!0,!1)},contains:function(a){return b(this.element,a,!1,!1)},remove:function(a){b(this.element,a,!1,!0)},toggle:function(a){b(this.element,a,!0,!0)}};Object.defineProperty(HTMLElement.prototype,"classList",{get:function(){if(this._classList)return this._classList;
+var a=Object.create(e,{element:{value:this,writable:!1,enumerable:!0}});Object.defineProperty(this,"_classList",{value:a,writable:!1,enumerable:!1});return a},enumerable:!0})}})();
+</script>
+
+<script>
+try{
+  pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
+}catch(e){}
+</script>
+
+<style type="text/css">/*new css for viewers only*/
+:-webkit-full-screen #page-container {
+  width: 100%;
+  height: 100%;
+}
+
+</style>
+
+      <script type="text/javascript">
+      $(document).ready(function(){ 
+            getAutoZoom();
+      });
+      $(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange",function(){
+      if(!isDocumentInFullScreenMode()){
+         $("#page-container").css("zoom",magnify);
+      }
+      });
+
+      function isDocumentInFullScreenMode() {
+        // Note that the browser fullscreen (triggered by short keys) might
+        // be considered different from content fullscreen when expecting a boolean
+        return ((document.fullscreenElement && document.fullscreenElement !== null) ||    // alternative standard methods
+        document.mozFullScreen || document.webkitIsFullScreen);                   // current working methods
+      }
+</script>
+
+
+<!-- // /*
+//  Copyright 2012 Mozilla Foundation 
+//  Copyright 2013 Lu Wang <coolwanglu@gmail.com>
+//  Apachine License Version 2.0 
+// */
+// (function(){function b(a,b,e,f){var c=(a.className||"").split(/\s+/g);""===c[0]&&c.shift();var d=c.indexOf(b);0>d&&e&&c.push(b);0<=d&&f&&c.splice(d,1);a.className=c.join(" ");return 0<=d}if(!("classList"in document.createElement("div"))){var e={add:function(a){b(this.element,a,!0,!1)},contains:function(a){return b(this.element,a,!1,!1)},remove:function(a){b(this.element,a,!1,!0)},toggle:function(a){b(this.element,a,!0,!0)}};Object.defineProperty(HTMLElement.prototype,"classList",{get:function(){if(this._classList)return this._classList;
+// var a=Object.create(e,{element:{value:this,writable:!1,enumerable:!0}});Object.defineProperty(this,"_classList",{value:a,writable:!1,enumerable:!1});return a},enumerable:!0})}})();
+ -->
+<script>
+try{
+  pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
+}catch(e){}
+</script>
+    </head>
+
+    <body>
+        <div id = "viewer">
+            <div id = "titlebar">
+                <div id = "documentName"></div>
+                <div id = "toolbarRight">
+                    <span id="scaleSelectContainer" class="dropdownToolbarButton">
+                                <select id="scaleSelect" title="Zoom" onchange="setZoom();">
+                                    <option value="auto">Automatic</option>
+                                    <option value="0.5">50%</option>
+                                    <option value="0.75">75%</option>
+                                    <option value="1">100%</option>
+                                    <option value="1.25">125%</option>
+                                    <option value="1.5">150%</option>
+                                    <option value="2">200%</option>
+                                </select>
+                    </span>
+                    <button id = "presentation" class = "toolbarButton presentation" title = "Presentation" ></button>
+                    <button id = "fullscreen" class = "toolbarButton fullscreen" title = "Fullscreen" onclick="toggleFullScreen();"></button>
+                    <button id = "about" class = "toolbarButton about" title = "About" onclick="redirect();" style="background-image:url("paper.gif");">Documendz</button>
+                </div>
+           </div>
+            <div id = "toolbarContainer">
+                <div id = "toolbar">
+                    <div id = "toolbarLeft">
+                        <div id = "navButtons" class = "splitToolbarButton">
+                            <button id = "previous" class = "toolbarButton pageUp" title = "Previous Page"></button>
+                            <div class="splitToolbarButtonSeparator"></div>
+                            <button id = "next" class = "toolbarButton pageDown" title = "Next Page"></button>
+                        </div>
+                        <label id = "pageNumberLabel" class = "toolbarLabel" for = "pageNumber">Page:</label>
+                        <input type = "number" id = "pageNumber" class = "toolbarField pageNumber"/>
+                        <span id = "numPages" class = "toolbarLabel"></span>
+                    </div>
+                   
+                </div>
+            </div>             
+            <div id = "canvasContainer">
+                <div id = "canvas">
+                     <!--hardik sir's code starts here-->
+                 
+                     <div id="page-container">
+
+                     </div>
+
+                  
+                 <!--hardik sir's code ends here -->
+                </div>
+            </div>
+
+            <div id = "overlayNavigator">
+                <div id = "previousPage"></div>
+                <div id = "nextPage"></div>
+            </div>
+            <div id = "overlayCloseButton">
+            &#10006;
+            </div>
+            <div id = "dialogOverlay"></div>
+            <div id = "blanked"></div>
+        </div>
+    </body>
+
+<script type="text/javascript">
+
+
+
+
+var parentwt,magnify;
+
+  function setZoom(){
+    var zoom = $('#scaleSelect').val();
+   
+    switch(zoom){
+      case "auto":$("#page-container").css("zoom",magnify);break;
+      case "0.5":$("#page-container").css("zoom",magnify*0.50);break;
+      case "0.75":$("#page-container").css("zoom",magnify*0.75);break;
+      case "1":$("#page-container").css("zoom",magnify*1.00);break;
+      case "1.25":$("#page-container").css("zoom",magnify*1.25);break;
+      case "1.5":$("#page-container").css("zoom",magnify*1.50);break;
+      case "2":$("#page-container").css("zoom",magnify*2.00);break;
+    }
+  }
+
+  //////Autozoom/////////////////////
+  function getAutoZoom(){
+
+        parentwt= $(document.body).width();
+                
+               magnify = (parentwt - 40 )/800 ;
+             
+$("#page-container").css("zoom",magnify);
+
+  }
+
+
+  ///redirect to documendz/////////////////////
+  function redirect(){
+    window.open("http://documendz.com", "_blank");
+  }
+
+  //////////////togglescreen/////////////////////
+  function toggleFullScreen() {
+      if (!document.fullscreenElement &&    // alternative standard method
+      !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) {
+        document.documentElement.msRequestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+          $("#page-container").css("zoom",1);
+           
+    } 
+  }
+</script>
+</html>

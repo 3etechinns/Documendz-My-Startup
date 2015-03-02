@@ -1,5 +1,12 @@
 <?php
 
+require_once 'angular/backend/functions.php';
+require_once 'unique_random_alphanumeric.php';
+include 'angular/backend/connect.php';
+
+session_start();
+	
+
 $email = $_GET['email'];
 $hashcode = $_GET['hash'];
 
@@ -9,75 +16,66 @@ $secret = "61oeix1=-4#%e03mo";
 
 if (MD5($email.$secret) == $hashcode){
 	
-	$username = "root";
-	$password = "Zofler6991";
-	$hostname = "localhost";		
-	//connection to the database
-	$dbhandle = mysql_connect($hostname, $username, $password)
-	or die("Unable to connect mysql");
 	
-	//select a database to work with
-	$selected = mysql_select_db("project",$dbhandle)
-	or die("Could not select examples");
-
-$email = mysql_real_escape_string($email);
+$email = mysqli_real_escape_string($dbhandle,$email);
 	
-$check_ver = mysql_fetch_array(mysql_query("SELECT verified FROM signup WHERE emailid = '".$email."'"),MYSQL_ASSOC);
+$check_ver = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT verified FROM signup WHERE emailid = '".$email."'"),MYSQLI_ASSOC);
 
 if ($check_ver['verified'] == 0){
  
 	
-	$sql_ver = "UPDATE signup SET verified = 1 WHERE emailid ='".$email."'";
-
-
 	
 
-	$vefi_val = mysql_query( $sql_ver, $dbhandle );
-	
+	$vefi_val = mysqli_query( $dbhandle, "UPDATE signup SET verified = 1 WHERE emailid ='".$email."'");
 
-	$query_to_take_current_userid = "SELECT userid,username FROM signup WHERE emailid ='".$email."'";
-	$id = mysql_query($query_to_take_current_userid);
-	$new_register_user_id = mysql_fetch_array($id,MYSQL_ASSOC);
+	
+$new_register_user_id = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT userid,username FROM signup WHERE emailid ='".$email."'"),MYSQLI_ASSOC);
 
-	mysql_query("UPDATE shared_files SET receiver_id =".$new_register_user_id['userid'].",receiver_name = '".$new_register_user_id['username']."' WHERE receiver_email ='".$email."'");
+	// $query_to_take_current_userid = "SELECT userid,username FROM signup WHERE emailid ='".$email."'";
+	// $id = mysqli_query($dbhandle,$query_to_take_current_userid);
+	// $new_register_user_id = mysqli_fetch_array($id,MYSQLI_ASSOC);
+
+	// mysql_query("UPDATE shared_files SET receiver_id =".$new_register_user_id['userid'].",receiver_name = '".$new_register_user_id['username']."' WHERE receiver_email ='".$email."'");
 	
-	
-	
-	// deleting values from pending_shared_files table
-	mysql_query("DELETE FROM pending_shared_files WHERE receiver_email_id ='".$email."'");
-	
+		
 	/////  make user folder  ////
 
-	mysql_query("INSERT INTO features (userid,used,file_limit) VALUES (".$new_register_user_id['userid'].",0,30)");
+	$r1 = getToken(20);
+    $r2 = getToken(20);
+    
+
+    $s1 = getToken(15);
+    $s2 = getToken(15);
+    $s3 = getToken(15);
+    $s4 = getToken(15);
+/// 2 sample wkgroups ///
+
+	mysqli_query($dbhandle,"INSERT INTO workgroups (uniqueId,wname,wdesc,auth_id,auth_name,sample) 
+                        VALUES ('".$r1."','Documents (Sample)','This is where you can add a short description for your workgroup to let your collaborators know a few details about the files, deadlines, tasks that you need to complete. ',". $i['userid'].",'".$i['username']."',1),
+                               ('".$r2."','Designs (Sample)','Example: Let us get the final draft for these designs by 18th Dec. Add your designs and revisions here.',". $i['userid'].",'".$i['username']."',1)");
 	
+$my_date = date("Y-m-d H:i:s");
+
+	mysqli_query($dbhandle,"INSERT INTO files VALUES('','".$s1."','Legal document.pdf','".$r1."',".$i['userid'].",'$my_date','pdf',11),
+	                                                ('','".$s2."','Research paper.pdf','".$r1."',".$i['userid'].",'$my_date','pdf',12),
+						                            ('','".$s3."','Creative design.jpg','".$r2."',".$i['userid'].",'$my_date','pdf',21),
+						                            ('','".$s4."','Floor plan.jpg','".$r2."',".$i['userid'].",'$my_date','pdf',22)");
+    
+
 	mkdir('uploaded/uploaded_files_'.$new_register_user_id['userid'].'_original');
 	mkdir('uploaded/jhg76'.$new_register_user_id['userid'].'kd84');
-	mkdir('received/received_files_'.$new_register_user_id['userid']);
 	
-	
-	
-	$fp=fopen('uploaded/jhg76'.$new_register_user_id['userid'].'kd84/editor_change.php','w');
-	fwrite($fp, '<?php
-$json_path = $_GET["json_path"];
-$edited_data = $_POST["edited_data"];
-$result = file_put_contents($json_path, $edited_data);
 
-if($result === false){   // file_put_contents returns boolean
-    echo "false";
-}
-else{
-echo "true";
-}
-?>');
-	fclose($fp);
 	
-	
-	session_start();
+
 	$_SESSION['Username'] = $new_register_user_id['username'];			// Username of the registerd user
 	$_SESSION['userid'] =  $new_register_user_id['userid']; // Will take the userid of the registered user
 	$_SESSION['email'] = $email;
-    echo "<script>window.location.href = 'profile_page.php'</script>";
+
+     echo "<script>window.location.href ='https://www.zofler.com/enterprise/angular/#/workgroups'</script>";
 	
+	// echo $_SESSION['Username'];
+	// echo $_SESSION['userid'];
 	
 }
 

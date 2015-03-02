@@ -23,6 +23,6 @@ while($r = mysql_fetch_assoc($shared_files_info)){
 
 echo json_encode($response);
 
-mysql_close($dbhandle);
+mysql_close($mysql_conn);
 
 ?>

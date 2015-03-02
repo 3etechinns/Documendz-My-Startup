@@ -460,8 +460,87 @@
         /**
          * Serializes all highlights to stringified JSON object.
          */
+// Vipul ~ New function to serialize highlights 9/12/14
+ getHighlightSerialize: function(container, andSelf,class_del,class_name_without_dot) {
+            
+           
+           var classSelectorStr = '.' + this.options.highlightedClass;
+            var $highlights = $(container).find(classSelectorStr);
+            if (andSelf == true && $(container).hasClass(this.options.highlightedClass)) {
+                $highlights = $highlights.add(container);
+            }
+            return $highlights;
+        },
+
+         getStrikeSerialize: function(container, andSelf,class_del,class_name_without_dot) {
+            
+           
+           var classSelectorStr = '.' + this.options.strikedClass;
+            var $highlights = $(container).find(classSelectorStr);
+            if (andSelf == true && $(container).hasClass(this.options.strikedClass)) {
+                $highlights = $highlights.add(container);
+            }
+            return $highlights;
+        },
+
+
+ serializeStriked: function() {
+console.log(this.context);
+
+            var $highlights = this.getStrikeSerialize(this.context);
+            console.log($highlights);
+            var refEl = this.context;
+            var hlDescriptors = [];
+            var self = this;
+
+            var getElementPath = function (el, refElement) {
+                var path = [];
+
+                do {
+                    var elIndex = $.inArray(el, el.parentNode.childNodes);
+                    path.unshift(elIndex);
+                    el = el.parentNode;
+                } while (el !== refElement);
+
+                return path;
+            };
+
+            $highlights.each(function(i, highlight) {
+                var offset = 0; // Hl offset from previous sibling within parent node.
+                var length = highlight.firstChild.length;
+                var hlPath = getElementPath(highlight, refEl);
+                var wrapper = $(highlight).clone().empty().get(0).outerHTML;
+
+                if (highlight.previousSibling && highlight.previousSibling.nodeType === nodeTypes.TEXT_NODE) {
+                    offset = highlight.previousSibling.length;
+                }
+
+                hlDescriptors.push([
+                    wrapper,
+                    $(highlight).text(),
+                    hlPath.join(':'),
+                    offset,
+                    length
+                ]);
+            });
+
+            return JSON.stringify(hlDescriptors);
+        },
+
+
+
+
+
+
+
+
+
+
         serializeHighlights: function() {
-            var $highlights = this.getAllHighlights(this.context);
+//console.log(this.context);
+
+            var $highlights = this.getHighlightSerialize(this.context);
+            //console.log($highlights);
             var refEl = this.context;
             var hlDescriptors = [];
             var self = this;
@@ -504,6 +583,7 @@
          * Deserializes highlights from stringified JSON given as parameter.
          */
         deserializeHighlights: function(json) {
+             console.log(json);
             try {
                 var hlDescriptors = JSON.parse(json);
             } catch (e) {
@@ -513,6 +593,7 @@
             var self = this;
 
             var deserializationFn = function (hlDescriptor) {
+                 console.log(hlDescriptor);
                 var wrapper = hlDescriptor[0];
                 var hlText = hlDescriptor[1];
                 var hlPath = hlDescriptor[2].split(':');
@@ -521,13 +602,18 @@
                 var elIndex = hlPath.pop();
                 var idx = null;
                 var node = self.context;
+                // console.log(node);
 
                 while ((idx = hlPath.shift()) !== undefined) {
                     node = node.childNodes[idx];
                 }
 
+                 console.log(node.childNodes[elIndex-1].nodeType);
+                 console.log(nodeTypes.Te)
+
                 if (node.childNodes[elIndex-1] && node.childNodes[elIndex-1].nodeType === nodeTypes.TEXT_NODE) {
                     elIndex -= 1;
+                    // console.log("If 1");
                 }
 
                 var textNode = node.childNodes[elIndex];
@@ -536,10 +622,13 @@
 
                 if (hlNode.nextSibling && hlNode.nextSibling.nodeValue == '') {
                     hlNode.parentNode.removeChild(hlNode.nextSibling);
+                    // console.log("If 2");
                 }
 
+                console.log(hlNode);
                 if (hlNode.previousSibling && hlNode.previousSibling.nodeValue == '') {
                     hlNode.parentNode.removeChild(hlNode.previousSibling);
+                    // console.log("If 3");
                 }
 
                 var highlight = $(hlNode).wrap(wrapper).parent().get(0);
@@ -547,6 +636,7 @@
             };
 
             $.each(hlDescriptors, function(i, hlDescriptor) {
+            
                 try {
                     deserializationFn(hlDescriptor);
                 } catch (e) {

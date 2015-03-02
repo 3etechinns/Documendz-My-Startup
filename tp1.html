@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap 3, from LayoutIt!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+  
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script>
+
+$( document ).ready(function() {
+	
+	var img;
+	var t;
+	var tym;
+	var start = $('#carousel-963250').find('.active').attr('data-interval');
+	t = setTimeout("$('#carousel-963250').carousel({interval: 3000});", start-1000);
+	console.log(start);
+	$('#carousel-963250').on('slid.bs.carousel', function () {   
+	    
+		clearTimeout(t);  
+	     var duration = $(this).find('.active').attr('data-interval');
+	     console.log(duration);
+
+	     $('#carousel-963250').carousel('pause');
+	     t = setTimeout("$('#carousel-963250').carousel();", duration-1000);
+	     switch(duration){
+	     	case "1500":tym=new Date().getTime();
+	     				document.getElementById("one").innerHTML = '<img  src="img\\final\\newManage.gif?'+tym+'">';
+	     				console.log("inside 2000");
+	     				break;
+	     	case "12500":tym=new Date().getTime();
+	     				document.getElementById("two").innerHTML = '<img  src="img\\final\\newAnnotation.gif?'+tym+'">';
+	     				console.log("inside 11000");
+	     				break;
+	     	case "2000":tym=new Date().getTime();
+	     				document.getElementById("three").innerHTML = '<img  src="img\\final\\newShare.gif?'+tym+'">';
+	     				console.log("inside 3000");
+	     				break;
+	     }
+
+	});
+
+	$('.carousel-control.right').on('click', function(){
+	    clearTimeout(t);   
+	});
+
+	$('.carousel-control.left').on('click', function(){
+	    clearTimeout(t);   
+	});
+	
+});
+</script>
+</head>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="carousel slide" id="carousel-963250">
+				<ol class="carousel-indicators">
+					<li class="active" data-slide-to="0" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
+					</li>
+					<li data-slide-to="1" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
+					</li>
+					<li data-slide-to="2" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active" data-interval="1500" id="one">
+						<img alt="" src="img/final/newManage.gif">
+						
+					</div>
+					<div class="item" data-interval="12500" id="two">
+						<img alt="" src="img/final/newAnnotation.gif">
+						
+					</div>
+					<div class="item" data-interval="2000" id="three">
+						<img alt="" src="img/final/newShare.gif">
+					</div>
+				</div> <a class="left carousel-control" href="#carousel-963250" data-slide="prev" style="background-image: linear-gradient(to right,rgba(157, 155, 156, 0.5) 0,rgba(255, 252, 252, 0.0001) 100%);color:#B9B9B9"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-963250" data-slide="next" style="background-image: linear-gradient(to right,rgba(255, 252, 252, 0.0001) 0,rgba(157, 155, 156, 0.5) 100%);color:#B9B9B9"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

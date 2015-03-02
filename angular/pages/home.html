@@ -1,0 +1,207 @@
+
+
+	
+
+<div id="add-project-container" style="background:#fff;height:73px;padding: 20px 32px;margin-top:50px; margin-bottom:30px; box-shadow: 4px 3px 7px #879088;">
+
+
+
+
+
+
+<script type="text/ng-template" id="limitReached.html">
+
+<div class="modal-header center">
+<a ng-click="cancel()" class="close">×</a>
+
+</div>
+		
+<div class="modal-body center">
+Looks like you have reached the maximum limit of 3 workgroups.
+Let us know if you would like to have more !
+
+ 
+</div>
+
+ <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+
+ <div class="btn btn-warning" ng-click="increaseLimit('Workgroup')">let us know </div>
+
+
+</div>
+
+</script>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+
+<form name="saveproj">
+
+<div class="modal-header center">
+<a ng-click="cancel()" class="close">×</a>
+<h2>Create a new workgroup</h2>
+</div>
+		
+<div class="modal-body center">
+		<input id="projectName" type="text" ng-model="newProj.projectName" name="projectName" placeholder="Workgroup name" required /></br>
+
+		 <textarea id="projectDesc" ng-model="newProj.projectDesc" name="projectDesc"  placeholder="Describe your project here"/> 
+</div>
+
+  <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+<div class="btn btn-primary btn-large" ng-click= "saveProject()" tabindex="120" ng-disabled = "saveproj.$invalid"  >Add</div>
+
+</div>
+</form>	
+
+    </script>
+
+
+
+<!-- <div ng-controller="ModalDemoCtrl"> -->
+
+ <button class="btn btn-new	" ng-valid ng-click="addWorkgGroup()"><i class="fa fa-plus-square"></i>  Add Workgroup</button>
+
+<!-- </div> -->
+
+
+</div>
+	
+<div inform class="inform-animate inform-fixed inform-shadow"></div>	
+
+<div>
+<div style="width: 100%;
+font-size: 12px;
+display: inline-block;
+padding: 0 15px;
+line-height: 26px;
+font-size: 14px;
+font-weight: 600;
+background-color: #f9f9fb;
+color: #b9c2cb;
+text-transform: uppercase;
+vertical-align: middle;
+position: relative;
+z-index: 1;">
+My Workgroups
+</div>
+<hr>
+</div>
+
+			
+<div class="row locate">
+        <div class="col-md-4"  ng-repeat="wg in wgData | filter:search" ng-if="wg.auth_id == pt">
+        	
+
+        	<div class="inner-container">
+	          <a href="#/workgroups/{{wg.uniqueId}}"> 
+
+	          <div class="workgroup-title"><p>{{wg.wname}}</p>
+	          </div>
+	          <div ng-if="wg.wdesc" class="workgroup-description">{{wg.wdesc}} </div>
+	          <div ng-if="!wg.wdesc" class="workgroup-description"><i>No description added</i></div>
+	      </a>
+
+	      <div class="workgroup-author-time">Created on {{wg.time |  date:"MMM d',' h:mm a"}} by {{wg.auth_name}}</div>
+	          <div class="workgroup-functions">
+	          	
+               <div class="btn-group workgroup-functions-item" dropdown is-open="emToggle">
+				      <i tooltip-placement="bottom" tooltip="Archive" type="button" class="fa fa-user fa-lg dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+				      </i>
+				      <ul class=" dropdown-design dropdown-menu " role="menu">
+				        <li ng-repeat="em in emData[0][wg.uniqueId]">{{em}}</li> 
+				      </ul>
+				</div>
+              
+                  <i tooltip-placement="bottom" tooltip="Archive" class="fa fa-archive fa-lg workgroup-functions-item " ng-click="add(msg)"></i>
+
+                 <i tooltip-placement="bottom" tooltip="Delete" ng-if="wg.auth_id == pt" ng-click="deleteWkgroup(wg.uniqueId,wg.sample)" confirmation="Deleting workgroup will delete all the files and collaborators that it contains. Do you want to proceed?" class="fa fa-trash-o fa-lg workgroup-functions-item "></i>
+
+
+	          </div>
+	        </div>
+        </div>
+
+      </div>
+
+
+<div style="width: 100%;
+font-size: 12px;
+display: inline-block;
+padding: 0 15px;
+line-height: 26px;
+font-size: 14px;
+font-weight: 600;
+background-color: #f9f9fb;
+color: #b9c2cb;
+text-transform: uppercase;
+vertical-align: middle;
+position: relative;
+z-index: 1;">
+Shared Workgroups
+</div>
+<hr>
+</div>
+
+
+		
+<div class="row locate">
+        <div class="col-md-4"  ng-repeat="wg in wgData | filter:search" ng-if="wg.auth_id != pt">
+        	
+
+        	<div  class="inner-container">
+	          <a href="#/workgroups/{{wg.uniqueId}}"> 
+
+	          <div class="workgroup-title2"><p>{{wg.wname}}</p>
+	          </div>
+	          <div ng-if="wg.wdesc" class="workgroup-description">{{wg.wdesc}} </div>
+	          <div ng-if="!wg.wdesc" class="workgroup-description"><i>No description added</i></div>
+	      </a>
+
+	      <div class="workgroup-author-time">Created on {{wg.time |  date:"MMM d',' h:mm a"}} by {{wg.auth_name}}</div>
+	          <div class="workgroup-functions">
+	          	
+               <div class="btn-group workgroup-functions-item2" dropdown is-open="emToggle">
+				      <i type="button" class="fa fa-user fa-lg dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+				      </i>
+				      <ul class=" dropdown-design dropdown-menu " role="menu">
+				        <li ng-repeat="em in emData[0][wg.uniqueId]">{{em}}</li> 
+				      </ul>
+				</div>
+              
+                  <i tooltip-placement="bottom" tooltip="Archive" class="fa fa-archive fa-lg workgroup-functions-item2 " ng-click="add(msg)"></i>
+                   <i tooltip-placement="bottom" tooltip="Delete" ng-if="wg.auth_id == pt" ng-click="deleteWkgroup(wg.uniqueId)" class="fa fa-trash-o fa-lg workgroup-functions-item "></i>
+
+
+	          </div>
+	        </div>
+        </div>
+
+      </div>
+
+
+
+
+<ul>
+	<!-- <li  ng-repeat="wg in wgData"> -->
+	<!-- <a  href="#/workgroups/{{wg.uniqueId}}"> <p>{{wg.wname}}</p></a>
+    <p>{{wg.auth_id}}</p> 
+    <p ng-if="wg.auth_id == pt" ng-click="deleteWkgroup(wg.uniqueId)">x</p> -->
+
+
+
+
+
+
+</li>
+
+</ul>
+

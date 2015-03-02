@@ -1,0 +1,136 @@
+<html>
+
+
+<div style="margin-top:50px">
+<div id="activity-sidebar-nav" class="hidden-xs" >
+        
+        <ul id="dashboard-menu" class="nav nav-list" ng-repeat="wg in activityWg" >
+             <span class="list-group-item-heading activity-wkgroup-name">
+                {{wg.wname}}
+            </span>
+
+            <li  ng-repeat="files in activityFiles | filter: {workgroupid : wg.uniqueId}" ng-class="files.uniqueFilename == '{{selFile}}' ? 'active-list' : 'inactive-list'"  ng-click="selectionFile(files.uniqueFilename)">
+                <p rel="tooltip" data-placement="right" data-original-title="Dashboard" href="index.html"> 
+                    <span class="activity-files">{{files.filename}}</span>
+                    <i class="fa fa-check" style="float: right;"></i>
+                </p>
+            </li>
+            
+         
+            
+            
+        </ul>
+
+        
+</div>
+
+
+
+<div class="activity-content">
+
+ 
+            <div class="row">
+    <div class="col-sm-8 main-content">
+
+            <h2 style="color: #41414c;font-size: 1.25em;font-weight: normal;margin-bottom:25px">
+                File Activity
+                
+            </h2>
+            <ul class="item-summary" ng-if="noData == 0">
+            
+
+            
+                <li ng-repeat="history in activityHistory | orderBy:'':'true'">
+                    <div class="overview">
+                        <p class="main-detail">{{history.time | date:'MMM d'}}</p>
+                        
+                        <span class="label label-success">{{history.anno_type}}</span>
+                    </div>
+                    <div ng-if="history.anno_type == 'Highlight'" class="info">
+                        <p>{{history.userName}} highlighted some text on page {{history.page_no}}</p>
+                        
+                    </div>
+                    
+                    <div ng-if="history.anno_type == 'Strike'" class="info">
+                        <p>{{history.userName}} striked out some text on page {{history.page_no}}</p>
+                        
+                    </div>
+
+
+                    <div ng-if="history.anno_type == 'Draw'" class="info">
+                        <p>{{history.userName}} sketched a line on page {{history.page_no}}</p>
+                        
+                    </div>
+
+
+                    <div ng-if="history.anno_type == 'Pin comment'" class="info">
+                        <p>{{history.userName}} pinned a comment box on page {{history.page_no}}</p>
+                        
+                    </div>
+
+                    <div ng-if="history.anno_type == 'Text comment'" class="info">
+                        <p>{{history.userName}} commented for some text on page {{history.page_no}}</p>
+                        
+                    </div>
+
+
+                    <div ng-if="history.anno_type == 'Text box'" class="info">
+                        <p>{{history.userName}} added a textbox with &#34 <i>{{history.append_text}}</i> &#34 on page {{history.page_no}}</p>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+            
+            </ul>
+<div ng-if="noData == 1">
+
+    No activities on this file
+
+        </div>
+
+        </div>
+
+    <div class="col-sm-4 sidebar">
+        
+        <div class="widget">
+            <h2 style="color: #41414c;font-size: 1em;font-weight: normal">
+                File </h2>
+            <ul class="cards list-group" style="margin-bottom:0px;border:none;">
+                <li ng-repeat = "files in activityFiles  | filter:{uniqueFilename:selFile}" class="list-group-item">
+                    <p class="title">{{files.filename}}</p>
+                    
+                    <p class="info-text">Type:pdf</p>
+                       <p class="info-text">Added on: {{files.uploadtime | date:'MMM d, h:mm a'}}</p></p>
+                    <p class="info-text">Author:{{files.authname}}</p>
+                   
+                </li>
+                
+              
+            </ul>
+        </div>
+
+        <div class="widget">
+            <h2 style="color: #41414c;font-size: 1em;font-weight: normal">
+                Collaborators </h2>
+            <ul class="cards list-group" style="margin-bottom:0px;border:none;">
+                <li class="list-group-item" ng-repeat="collabs in activityCollab">
+                    <p class="title">{{collabs.collabName}}</p>
+                    
+                    <p class="info-text">Email: {{collabs.collabEmail}}</p>
+                    
+                   
+                </li>
+                
+              
+            </ul>
+        </div>
+      
+    </div>
+</div>
+<footer>
+            <hr>
+         
+        </footer>
+
+</div>
+</html>
