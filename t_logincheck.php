@@ -40,7 +40,8 @@ while ($row = mysql_fetch_array($result)) {
 
 		}
 		else {
-			echo "Please verify your account";
+			$m['notif'] = "Please verify your account";
+			echo json_encode($m);
 			
 		}
 	}
@@ -52,7 +53,8 @@ while ($row = mysql_fetch_array($result)) {
 if($c==0) // user not exist
 {
 	
-	echo "Username or Password does not match";
+	$m['notif'] = "Username or Password does not match";
+	echo json_encode($m);
 	
 }
 }
