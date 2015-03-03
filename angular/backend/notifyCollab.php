@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-function email($recipient_email_id, $senders_name{
+function email($recipient_email_id, $senders_name){
 
 
 require_once '../../swiftmailer/lib/swift_required.php';
