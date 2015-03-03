@@ -17,6 +17,14 @@ $result = mysqli_query($dbhandle, "DELETE FROM files where uniqueFilename = '".$
 
 $keyname = "uploaded/user_".$_SESSION['userid']."/";
 
+/// mongo connect ////
+
+$dbname = "annotationStorage";
+$m = new MongoClient();
+$db = $m ->$dbname;
+
+
+
 $s3 = S3Client::factory(array(
      'key' => "AKIAJQPVOOQRLNHZ4UEA",
    'secret' => "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",
@@ -48,6 +56,10 @@ try{
         'Key' => $keyname.'original/'.$f.'.'.$e                                           
                                                   
     ));
+
+$db->annotationData->remove(array("shareId" => $f));
+$db->annotationHistory->remove(array("shareId" => $f));
+
 }
 
 catch(S3Exception $e){
