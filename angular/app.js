@@ -762,7 +762,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
   	$scope.n = data;
         $timeout(function() {
 
-        $http.get('https://s3-ap-southeast-1.amazonaws.com/docs-ent/uploaded/user_'+userData.getData().userid+'/thumbnails/'+$scope.n+'.jpg')
+        $http.get('https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_'+userData.getData().userid+'/thumbnails/'+$scope.n+'.jpg')
     .success(function (data, status, headers, config) {
         $scope.tr = 1;
     }).error(function (data, status, headers, config) {
