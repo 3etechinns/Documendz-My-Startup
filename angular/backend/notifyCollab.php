@@ -22,7 +22,7 @@ $message->setTo(array(
 $uname="$un";
 $url = $link;
 
-$message->setSubject("Document shared for review");
+$message->setSubject("Added as a collaborator");
 $message->setBody(
 '<html>
 <head>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Minty-Multipurpose Responsive Email Template</title><style type="text/css">
@@ -196,7 +196,7 @@ $message->setBody(
 										<tr>
 											<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #666666; text-align:left;line-height: 24px;">
 												<p>
-													<span><strong>﻿</strong></span><b>'.$senders_name.'</b> has added you as a collaborator to a project on <b>documendz.com</b>. Click on the button below and start exploring the power of hassle-free collaboration
+													<b>'.$senders_name.'</b> has added you as a collaborator to a project on <b>documendz.com</b>. Click on the button below and start exploring the power of hassle-free collaboration
 												</p>
 											</td>
 										</tr>
@@ -218,7 +218,7 @@ $message->setBody(
 													<tbody>
 														<tr>
 															<td style="padding-left:18px; padding-right:18px;font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300;" width="auto" align="center" valign="middle" height="30">
-																 <span style="color: #ffffff; font-weight: 300;"> <a style="color: #ffffff; text-align:center;text-decoration: none;" href="localhost/local_documendz/home.html?em='.$encode_email.'" tabindex="-1"><span style="font-size: 8pt;">Lets go</span><span style="font-size: 8pt;">﻿</span><span style="font-size: 8pt;">!</span></a></span>
+																 <span style="color: #ffffff; font-weight: 300;"> <a style="color: #ffffff; text-align:center;text-decoration: none;" href="https://www.documendz.com" tabindex="-1"><span style="font-size: 8pt;">Lets go</span><span style="font-size: 8pt;">﻿</span><span style="font-size: 8pt;">!</span></a></span>
 															</td>
 														</tr>
 													</tbody>
