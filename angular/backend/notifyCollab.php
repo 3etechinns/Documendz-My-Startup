@@ -196,7 +196,7 @@ $message->setBody(
 										<tr>
 											<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #666666; text-align:left;line-height: 24px;">
 												<p>
-													<b>'.$senders_name.'</b> has added you as a collaborator to a project on <b>documendz.com</b>. Click on the button below and start exploring the power of hassle-free collaboration
+													<b>'.$recipient_email_id.'</b> has added you as a collaborator to a project on <b>documendz.com</b>. Click on the button below and start exploring the power of hassle-free collaboration
 												</p>
 											</td>
 										</tr>
