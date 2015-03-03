@@ -14,9 +14,10 @@ $unique_filename = $argv[1];
 $usId = $argv[2];
 $ext = $argv[3];
 
-           $s3 = S3Client::factory(array(   //keys are as per IAN roles in S3 
-   'key' => "AKIAJQPVOOQRLNHZ4UEA",
-   'secret' => "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",
+
+$s3 = S3Client::factory(array(
+     'key' => "AKIAJDPJXX4TZK42PTAA",
+   'secret' => "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",
    'region' => "ap-southeast-1"
 ));
 
@@ -36,7 +37,7 @@ $pdf_file   = 'uploaded/uploaded_files_' . $usId . '_original/' . $unique_filena
 
 
 $filepath = 'thumbnails/'.$unique_filename.'.jpg';
-$bucket = 'docs-ent';
+$bucket = 'documendz-ent';
 $keyname = 'uploaded/user_'. $usId.'/thumbnails/'.$unique_filename.'.jpg';
 
 
@@ -66,7 +67,7 @@ catch(S3Exception $e){
 
 
 $filepath1 = 'uploaded/uploaded_files_'. $usId.'_original/'. $unique_filename.'.'.$ext;
-$bucket1 = 'docs-ent';
+$bucket1 = 'documendz-ent';
 $keyname1 = 'uploaded/user_'.$usId.'/original/'.$unique_filename.'.'.$ext;
 
 try{
