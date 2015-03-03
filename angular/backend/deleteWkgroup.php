@@ -43,21 +43,21 @@ while($row = mysqli_fetch_assoc($result1))
     
     $del1 = $s3 -> deleteObject(array(
        
-        'Bucket' => 'docs-ent',
+        'Bucket' => 'documendz-ent',
         'Key' => "uploaded/user_".$row['authid'].'/converts/'.$row['uniqueFilename'].'.html'                                           
                                                   
     ));
     
     $del2 = $s3 -> deleteObject(array(
        
-        'Bucket' => 'docs-ent',
+        'Bucket' => 'documendz-ent',
         'Key' =>  "uploaded/user_".$row['authid'].'/thumbnails/'.$row['uniqueFilename'].'.jpg'                                        
                                                   
     ));
    
      $del3 = $s3 -> deleteObject(array(
        
-        'Bucket' => 'docs-ent',
+        'Bucket' => 'documendz-ent',
         'Key' => "uploaded/user_".$row['authid'].'/original/'.$row['uniqueFilename'].'.'.$row['extension']                                         
                                                   
     ));

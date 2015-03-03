@@ -38,21 +38,21 @@ try{
     
     $del_result1 = $s3 -> deleteObject(array(
        
-        'Bucket' => 'docs-ent',
+        'Bucket' => 'documendz-ent',
         'Key' => $keyname.'converts/'.$f.'.html'                                           
                                                   
     ));
     
     $del_result2 = $s3 -> deleteObject(array(
        
-        'Bucket' => 'docs-ent',
+        'Bucket' => 'documendz-ent',
         'Key' => $keyname.'thumbnails/'.$f.'.jpg'                                           
                                                   
     ));
    
      $del_result3 = $s3 -> deleteObject(array(
        
-        'Bucket' => 'docs-ent',
+        'Bucket' => 'documendz-ent',
         'Key' => $keyname.'original/'.$f.'.'.$e                                           
                                                   
     ));

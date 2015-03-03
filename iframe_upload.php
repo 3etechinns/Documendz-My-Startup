@@ -272,7 +272,7 @@ $s3 = S3Client::factory(array(
 $uploader = UploadBuilder::newInstance()
     ->setClient($s3)
     ->setSource($html_file_dest.'/'.$unique_filename.'.html')
-    ->setBucket('docs-ent')
+    ->setBucket('documendz-ent')
     ->setKey('uploaded/user_'. $_SESSION["userid"].'/converts/'.$unique_filename.'.html')
     ->setConcurrency(4)
     ->build();
