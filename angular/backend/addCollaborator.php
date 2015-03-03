@@ -41,7 +41,7 @@ mysqli_query($dbhandle,"INSERT INTO collaborators (wkUniqueId,collabEmail,collab
 
  echo "3";
 
-  exec('/usr/bin/php notifyCollab.php '.$e.'> /dev/null 2>/dev/null &');
+  exec('/usr/bin/php notifyCollab.php '.$e.' '.$_SESSION["Username"].'> /dev/null 2>/dev/null &');
 }
 
 ?>

@@ -24,77 +24,717 @@ $url = $link;
 
 $message->setSubject("Document shared for review");
 $message->setBody(
-'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Email</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+'<html>
+<head>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Minty-Multipurpose Responsive Email Template</title><style type="text/css">
+         /* Client-specific Styles */
+         #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+         body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}
+         /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+         .ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */
+         .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+         #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+         img {outline:none; text-decoration:none;border:none; -ms-interpolation-mode: bicubic;}
+         a img {border:none;}
+         .image_fix {display:block;}
+         p {margin: 0px 0px !important;}
+         
+         table td {border-collapse: collapse;}
+         table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+         /*a {color: #e95353;text-decoration: none;text-decoration:none!important;}*/
+         /*STYLES*/
+         table[class=full] { width: 100%; clear: both; }
+         
+         /*################################################*/
+         /*IPAD STYLES*/
+         /*################################################*/
+         @media only screen and (max-width: 640px) {
+         a[href^="tel"], a[href^="sms"] {
+         text-decoration: none;
+         color: #ffffff; /* or whatever your want */
+         pointer-events: none;
+         cursor: default;
+         }
+         .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+         text-decoration: default;
+         color: #ffffff !important;
+         pointer-events: auto;
+         cursor: default;
+         }
+         table[class=devicewidth] {width: 440px!important;text-align:center!important;}
+         table[class=devicewidthinner] {width: 420px!important;text-align:center!important;}
+         table[class="sthide"]{display: none!important;}
+         img[class="bigimage"]{width: 420px!important;height:219px!important;}
+         img[class="col2img"]{width: 420px!important;height:258px!important;}
+         img[class="image-banner"]{width: 440px!important;height:106px!important;}
+         td[class="menu"]{text-align:center !important; padding: 0 0 10px 0 !important;}
+         td[class="logo"]{padding:10px 0 5px 0!important;margin: 0 auto !important;}
+         img[class="logo"]{padding:0!important;margin: 0 auto !important;}
+
+         }
+         /*##############################################*/
+         /*IPHONE STYLES*/
+         /*##############################################*/
+         @media only screen and (max-width: 480px) {
+         a[href^="tel"], a[href^="sms"] {
+         text-decoration: none;
+         color: #ffffff; /* or whatever your want */
+         pointer-events: none;
+         cursor: default;
+         }
+         .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+         text-decoration: default;
+         color: #ffffff !important; 
+         pointer-events: auto;
+         cursor: default;
+         }
+         table[class=devicewidth] {width: 280px!important;text-align:center!important;}
+         table[class=devicewidthinner] {width: 260px!important;text-align:center!important;}
+         table[class="sthide"]{display: none!important;}
+         img[class="bigimage"]{width: 260px!important;height:136px!important;}
+         img[class="col2img"]{width: 260px!important;height:160px!important;}
+         img[class="image-banner"]{width: 280px!important;height:68px!important;}
+         
+         }
+      </style>
 </head>
-
-
-<body style="margin: 0; padding: 0; font-size: 16px; color: #736262; font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif";>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<body>
+<table width="100%" bgcolor="#f6f4f5" cellpadding="0" cellspacing="0" border="0">
+	<tbody>
 		<tr>
 			<td>
-				<table align="center" cellpadding="0" cellspacing="0"
-					width="600" style="border-collapse: collapse; border-collapse: collapse;border: 1px solid #cecaca;color: #363535;">
-					<tr>
-						<td align="center" bgcolor="#F5F5F5" style="padding: 10px 0 10px 0;"><img
-							src="https://s3-ap-southeast-1.amazonaws.com/documendz-public/documendz_logo.gif" alt="logo"
-							width="150" height="37.5" style="display: block;" /></td>
-					</tr>
-					<tr>
-						<td bgcolor="#ffffff" style="padding: 10px 10px 10px 10px;">
-							<table border="0" cellpadding="0" cellspacing="0" width="100%">
-								<tr>
-									<td>Hello,</td>
-								</tr>
-								<tr>&nbsp;</tr>
-								<tr>
-									<td>'.$_SESSION[Username].'&nbsp;has shared a document with you to review.</br>
-									Please click on the link below to access it<b>'.$pass.'</td>	
-								</tr>
+				<div class="innerbg">
+				</div>
+				<table width="580" bgcolor="#f5f5f5" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+					<tbody>
+						<tr>
+							<td>
+								<!-- logo -->
 
-							</table>
-						</td>
-					</tr>
-					<tr>
-						<td bgcolor="#ffffff" style="padding: 10px 10px 10px 10px;">
-
-							
-								<table border="0" cellpadding="0" cellspacing="0" width="100%">
-									<tr bgcolor="#ee4c50" height="37">
-										<td align="center" style="font-size: 15px;"><a style="text-decoration:none; color:#fff; font-weight:bold; display:block;padding: 10px 0px;" href="localhost/local_documendz/home.html?em='.$encode_email.'">Click here</a></td>
-									</tr>
-
+								<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" class="devicewidth" bgcolor="#f5f5f5">
+									<tbody>
+										<tr>
+											<td align="center" valign="middle" width="270" style="padding: 20px 0 0 20px;" class="logo">
+												<div class="imgpop">
+													<div class="uploader_wrap" style="width: 100px; margin-top: -6px; opacity: 0;">
+														<div class="upload_buttons">
+															<div class="img_link">
+															</div>
+															<div class="img_upload">
+															</div>
+															<div class="img_edit" style="visibility: visible;">
+															</div>
+														</div>
+													</div> <a href="#"><img src="https://ci3.googleusercontent.com/proxy/AyJXkBZLNZ1VuBQu-rfwUyR5Xpz3aPJ2GEkEscgWqJIfEjQJv1xf7KynYqkPWdX13mnCNba4i8KUhSQ0vTnW0URGxpPyxA1qxMah3kZ-vjcDof5GjC2h_dSoBndBuekuIg=s0-d-e1-ft#https://s3-ap-southeast-1.amazonaws.com/documendz-public/documendz_logo.gif" width="120px" height="45px" alt="logo" border="0" style="display:block; border:none; outline:none; text-decoration:none;" class="logo" /></a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
 								</table>
-						
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 10px 10px 10px 10px;">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-								<tr>
-									<td>Thanks,</td>
-								</tr>
-								<tr>
-									<td>Documendz Team</td>
-								</tr>
+								<!-- End of logo -->
 
-							</table>
-						
-						</td>
-					</tr>
+								<!-- menu -->
+
+								<table width="280" cellpadding="0" cellspacing="0" border="0" align="right" class="devicewidth" bgcolor="#f5f5f5">
+									<tbody>
+										<tr>
+											<td width="270" valign="middle" style="font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff;line-height: 24px; padding: 10px 0;" align="right" class="menu">
+												<p>
+												</p>
+											</td>
+											<td width="20">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- End of Menu -->
+
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			</td>
 		</tr>
-	</table>
-</body>
+	</tbody>
+</table>
+<table width="100%" bgcolor="#f6f4f5" cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td>
+				<div class="innerbg">
+				</div>
+				<table bgcolor="#ffffff" width="580" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth">
+					<tbody>
+						<tr>
+							<td width="100%" height="20">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="540" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidthinner">
+									<tbody>
+										<!-- title -->
 
+										<tr>
+											<td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; text-align:left;line-height: 20px;">
+												<p>
+													Hello there !!
+												</p>
+											</td>
+										</tr>
+										<!-- end of title -->
+
+										<!-- Spacing -->
+
+										<tr>
+											<td width="100%" height="10">
+											</td>
+										</tr>
+										<!-- Spacing -->
+
+										<!-- content -->
+
+										<tr>
+											<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #666666; text-align:left;line-height: 24px;">
+												<p>
+													<span><strong>﻿</strong></span><b>'.$senders_name.'</b> has added you as a collaborator to a project on <b>documendz.com</b>. Click on the button below and start exploring the power of hassle-free collaboration
+												</p>
+											</td>
+										</tr>
+										<!-- end of content -->
+
+										<!-- Spacing -->
+
+										<tr>
+											<td width="100%" height="10">
+											</td>
+										</tr>
+										<!-- button -->
+
+										<tr>
+											<td>
+												<div class="buttonbg">
+												</div>
+												<table height="30" align="left" valign="middle" border="0" cellpadding="0" cellspacing="0" class="tablet-button" style="border-radius: 4px; font-size: 13px; font-family: Helvetica, arial, sans-serif; text-align: center; color: rgb(255, 255, 255); font-weight: 300; padding-left: 18px; padding-right: 18px; background-color: rgb(50, 137, 199); background-clip: padding-box;" bgcolor="#3289c7">
+													<tbody>
+														<tr>
+															<td style="padding-left:18px; padding-right:18px;font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300;" width="auto" align="center" valign="middle" height="30">
+																 <span style="color: #ffffff; font-weight: 300;"> <a style="color: #ffffff; text-align:center;text-decoration: none;" href="localhost/local_documendz/home.html?em='.$encode_email.'" tabindex="-1"><span style="font-size: 8pt;">Lets go</span><span style="font-size: 8pt;">﻿</span><span style="font-size: 8pt;">!</span></a></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<!-- /button -->
+
+										<!-- Spacing -->
+
+										<tr>
+											<td width="100%" height="20">
+											</td>
+										</tr>
+										<!-- Spacing -->
+
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%" bgcolor="#f6f4f5" cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td width="100%">
+				<div class="innerbg">
+				</div>
+				<table width="580" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+					<tbody>
+						<!-- Spacing -->
+
+						<tr>
+							<td width="100%" height="5">
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+						<tr>
+							<td align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 10px;color: #999999">
+								<p>
+								</p>
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+						<tr>
+							<td width="100%" height="5">
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%" bgcolor="#f6f4f5" cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td>
+				<div class="innerbg">
+				</div>
+				<table bgcolor="#ffffff" width="580" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+					<tbody>
+						<!-- Spacing -->
+
+						<tr>
+							<td height="20">
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+						<tr>
+							<td>
+								<table width="540" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidthinner">
+									<tbody>
+										<tr>
+											<td>
+												<!-- start of text content table -->
+
+												<!-- mobile spacing -->
+
+												<!-- mobile spacing -->
+
+												<!-- start of right column -->
+
+												<table align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidthinner">
+													<tbody>
+														<!-- title -->
+
+														<tr>
+															<td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; text-align:left;line-height: 20px;">
+																<p>
+																	<span style="font-size: 14pt;">Documendz</span>
+																</p>
+															</td>
+														</tr>
+														<!-- end of title -->
+
+														<!-- Spacing -->
+
+														<tr>
+															<td width="100%" height="20">
+															</td>
+														</tr>
+														<!-- Spacing -->
+
+														<!-- content -->
+
+														<tr>
+															<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #95a5a6; text-align:left;line-height: 24px;">
+																<p>
+																	A cloud service which lets youcollaborate with your friends and colleagues to get your reports, articles, CVs, designs etc reviewed online in a hassle-free and secure manner. Just Upload. Share. Review. Collaborate
+																</p>
+																<p>
+																	All for <strong>free</strong> !!
+																</p>
+															</td>
+														</tr>
+														<!-- end of content -->
+
+														<!-- Spacing -->
+
+														<tr>
+															<td width="100%" height="10">
+															</td>
+														</tr>
+												
+
+													</tbody>
+												</table>
+												<!-- end of right column -->
+
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+						<tr>
+							<td height="20">
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%" bgcolor="#f6f4f5" cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td>
+				<div class="innerbg">
+				</div>
+				<table bgcolor="#ffffff" width="580" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+					<tbody>
+						<tr>
+							
+						</tr>
+						<tr>
+							<td>
+								<table width="540" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+									<tbody>
+										<tr>
+											<td>
+												<!-- col 1 -->
+
+												<table width="170" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+													<tbody>
+														<!-- image 2 -->
+
+														<tr>
+															<td width="170" height="128" align="center" class="devicewidth">
+																<div class="imgpop">
+																	<div class="uploader_wrap" style="width: 170px; margin-top: 44px; opacity: 0;">
+																		<div class="upload_buttons">
+																			<div class="img_link">
+																			</div>
+																			<div class="img_upload">
+																			</div>
+																			<div class="img_edit" style="visibility: visible;">
+																			</div>
+																		</div>
+																	</div><img src="https://stamplia.com/edit/7420_55w39c9l9sw08ggk8koww8c8kc0cocsocgskkwwwwwkockggo8_9063/img/b426c509d05942af930677836bb3b4ab.png" alt="" border="0" width="170" height="128" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
+																</div>
+															</td>
+														</tr>
+														<!-- end of image2 -->
+
+														<tr>
+															<td>
+																<!-- start of text content table -->
+
+																<table width="170" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidthinner">
+																	<tbody>
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		<!-- title2 -->
+
+																		<tr>
+																			<td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; text-align:left;line-height: 20px;">
+																				<p>
+																					<span style="font-size: 12pt;">Manage workgroups</span>
+																				</p>
+																			</td>
+																		</tr>
+																		<!-- end of title2 -->
+
+																	<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		<!-- content2 -->
+
+																		<tr>
+																			<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #95a5a6; text-align:left;line-height: 20px;">
+																				<p>
+																					Create and share Workgroups with your team for quick, seamless and secure collaboration
+																				</p>
+																			</td>
+																		</tr>
+																		<!-- end of content2 -->
+
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		
+
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+														<!-- end of text content table -->
+
+													</tbody>
+												</table>
+												<!-- spacing -->
+
+												<table width="15" align="left" border="0" cellpadding="0" cellspacing="0" class="removeMobile">
+													<tbody>
+														<tr>
+															<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<!-- end of spacing -->
+
+												<!-- col 2 -->
+
+												<table width="170" align="left" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+													<tbody>
+														<!-- image 2 -->
+
+														<tr>
+															<td width="170" height="128" align="center" class="devicewidth">
+																<div class="imgpop">
+																	<div class="uploader_wrap" style="width: 170px; margin-top: 44px; opacity: 0;">
+																		<div class="upload_buttons">
+																			<div class="img_link">
+																			</div>
+																			<div class="img_upload">
+																			</div>
+																			<div class="img_edit" style="visibility: visible;">
+																			</div>
+																		</div>
+																	</div><img src="https://stamplia.com/edit/7420_55w39c9l9sw08ggk8koww8c8kc0cocsocgskkwwwwwkockggo8_9063/img/00ee1d7d30f644fe916e80d23eafc6d9.png" alt="" border="0" width="170" height="128" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
+																</div>
+															</td>
+														</tr>
+														<!-- end of image2 -->
+
+														<tr>
+															<td>
+																<!-- start of text content table -->
+
+																<table width="170" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidthinner">
+																	<tbody>
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		<!-- title2 -->
+
+																		<tr>
+																			<td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; text-align:left;line-height: 20px;">
+																				<p>
+																					<span style="font-size: 12pt;">Collaborate &amp; discuss</span>
+																				</p>
+																			</td>
+																		</tr>
+																		<!-- end of title2 -->
+
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		<!-- content2 -->
+
+																		<tr>
+																			<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #95a5a6; text-align:left;line-height: 20px;">
+																				<p>
+																					Use rich annotation features and even chat (upcoming) with your collaborators for a lucid experience
+																				</p>
+																			</td>
+																		</tr>
+																		<!-- end of content2 -->
+
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- /Spacing -->
+
+																	
+
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+														<!-- end of text content table -->
+
+													</tbody>
+												</table>
+												<!-- end of col 2 -->
+
+												<!-- spacing -->
+
+												<table width="1" align="left" border="0" cellpadding="0" cellspacing="0" class="removeMobile">
+													<tbody>
+														<tr>
+															<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<!-- end of spacing -->
+
+												<!-- col 3 -->
+
+												<table width="170" align="right" border="0" cellpadding="0" cellspacing="0" class="devicewidth">
+													<tbody>
+														<!-- image3 -->
+
+														<tr>
+															<td width="170" height="128" align="center" class="devicewidth">
+																<div class="imgpop">
+																	<div class="uploader_wrap" style="width: 170px; margin-top: 44px; opacity: 0;">
+																		<div class="upload_buttons">
+																			<div class="img_link">
+																			</div>
+																			<div class="img_upload">
+																			</div>
+																			<div class="img_edit" style="visibility: visible;">
+																			</div>
+																		</div>
+																	</div><img src="https://stamplia.com/edit/7420_55w39c9l9sw08ggk8koww8c8kc0cocsocgskkwwwwwkockggo8_9063/img/925a5139cee04a39b0bb266849c99646.png" alt="" width="170" height="128" border="0" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
+																</div>
+															</td>
+														</tr>
+														<!-- end of image3 -->
+
+														<tr>
+															<td>
+																<!-- start of text content table -->
+
+																<table width="170" align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidthinner">
+																	<tbody>
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		<!-- title -->
+
+																		<tr>
+																			<td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; color: #333333; text-align:left;line-height: 20px;">
+																				<p>
+																					<span style="font-size: 12pt;">Realtime reviews</span>
+																				</p>
+																			</td>
+																		</tr>
+																		<!-- end of title -->
+
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+																		<!-- content -->
+
+																		<tr>
+																			<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #95a5a6; text-align:left;line-height: 20px;">
+																				<p>
+																					Work with reviewers in realtime.Get their reviews and provide immediate feedback
+																				</p>
+																			</td>
+																		</tr>
+																		<!-- end of content -->
+
+																		<!-- Spacing -->
+
+																		<tr>
+																			<td width="100%" height="15" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">
+																			</td>
+																		</tr>
+																		<!-- Spacing -->
+
+
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+														<!-- end of text content table -->
+
+													</tbody>
+												</table>
+											</td>
+											<!-- spacing -->
+
+											<!-- end of spacing -->
+
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td width="100%" height="20">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table width="100%" bgcolor="#f6f4f5" cellpadding="0" cellspacing="0" border="0">
+	<tbody>
+		<tr>
+			<td width="100%">
+				<div class="innerbg">
+				</div>
+				<table width="580" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+					<tbody>
+						<!-- Spacing -->
+
+						<tr>
+							<td width="100%" height="5">
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+						<tr>
+							<td align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 10px;color: #999999">
+								<p>
+								</p>
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+						<tr>
+							<td width="100%" height="5">
+							</td>
+						</tr>
+						<!-- Spacing -->
+
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table></body>
 </html>','text/html');
 
-$message->setFrom("no-reply@documendz.com", $senders_name);
+$message->setFrom("no-reply@documendz.com", "Documendz");
 
 // Send the email
 $mailer = Swift_Mailer::newInstance($transport);
