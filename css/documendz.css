@@ -250,6 +250,8 @@ overflow: hidden;
 .comment-text{
 	font-size: 12px;
 color: #3D3C3C;
+	
+word-break: break-word;
 	}
 	
 .delete-comment{

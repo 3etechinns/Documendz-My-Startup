@@ -780,6 +780,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	        $scope.progressValue = 0;
 	        $scope.stopSpin = 0;
 
+	         $scope.wa = 1;
 
 	        if (file != "") {
 
@@ -822,6 +823,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                    console.log('file is uploaded successfully. Response: ' + data);
 	                    $scope.stopSpin = 1;
 	                    $scope.fileName = "";
+	                     $scope.wa = 0;
 
 	                    if (data == 999) {
 	                        $scope.filetype_msg = {
