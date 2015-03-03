@@ -26,8 +26,8 @@ $db = $m ->$dbname;
 
 
 $s3 = S3Client::factory(array(
-     'key' => "AKIAJQPVOOQRLNHZ4UEA",
-   'secret' => "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",
+     'key' => "AKIAJDPJXX4TZK42PTAA",
+   'secret' => "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",
    'region' => "ap-southeast-1"
 ));
 

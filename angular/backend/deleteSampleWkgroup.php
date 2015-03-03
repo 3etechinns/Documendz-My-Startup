@@ -19,11 +19,7 @@ $dbname = "annotationStorage";
 $m = new MongoClient();
 $db = $m ->$dbname; 
 
-$s3 = S3Client::factory(array(
-     'key' => "AKIAJQPVOOQRLNHZ4UEA",
-   'secret' => "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",
-   'region' => "ap-southeast-1"
-));
+
 
 // delete from s3 - html,thumbnail and original
 

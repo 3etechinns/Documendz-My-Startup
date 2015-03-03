@@ -262,9 +262,10 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
 
 ///////multipart uploader to s3 in parallel for speed//////////
 
- $s3 = S3Client::factory(array(
-   'key' => "AKIAJD2CWX4IQ6USEPGA",
-   'secret' => "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",
+ 
+$s3 = S3Client::factory(array(
+     'key' => "AKIAJDPJXX4TZK42PTAA",
+   'secret' => "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",
    'region' => "ap-southeast-1"
 ));
 
