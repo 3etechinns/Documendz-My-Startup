@@ -81,7 +81,7 @@
               </span>
             </div>
         
-            <div class="panel-body" style="padding-top:35px;">
+            <div class="panel-body" >
               <div class="row">
                 
              
@@ -90,13 +90,22 @@
 
     
 <div class="modal-body center">
-    <input id="oldPass" type="password" ng-model="abc.oldPass" name="oldPass" placeholder="Current Passowrd" ng-minlength="6" required /></br>
+    <input style="height: 40px;
+width: 300px;
+border: 1px solid rgb(209,209,209);
+border-radius: 5px;
+padding: 10px;
+margin-bottom: 11px;" id="oldPass" type="password" ng-model="abc.oldPass" name="oldPass" placeholder="Current Passowrd" ng-minlength="6" required /></br>
 
-     <input id="newPass" type="password" ng-model="abc.newPass" name="newPass"  placeholder="New Password(min 6 characters)" ng-minlength="6" required /> 
+     <input style="height: 40px;
+width: 300px;
+border: 1px solid rgb(209,209,209);
+border-radius: 5px;
+padding: 10px;" id="newPass" type="password" ng-model="abc.newPass" name="newPass"  placeholder="New Password(min 6 characters)" ng-minlength="6" required /> 
 </div>
 
   <div style="
-text-align: center;">
+text-align: center;margin-bottom:12px">
 <div class="btn btn-primary btn-large" ng-click= "changePassword()" tabindex="120" ng-disabled = "changePass.$invalid">Submit</div>
 
 </div>
