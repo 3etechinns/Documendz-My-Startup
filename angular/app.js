@@ -801,7 +801,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	            };
 
 
-	            if (extCheck[file[0].type] != undefined)
+	            if (extCheck[file[0].type] != undefined && file[0].size < 4096)
 
 	            {
 
@@ -861,7 +861,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 
 	            	$scope.wa = 0;
 	                $scope.filetype_msg = {
-	                    content: 'We currently support .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+	                    content: 'We currently support .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types all upto 4MB.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
 	                    options: {
 	                        ttl: 8000,
 	                        type: 'danger',
