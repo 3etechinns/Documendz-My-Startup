@@ -859,9 +859,9 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 
 	            } else {
 
-
+	            	$scope.wa = 0;
 	                $scope.filetype_msg = {
-	                    content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+	                    content: 'We currently support .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
 	                    options: {
 	                        ttl: 8000,
 	                        type: 'danger',

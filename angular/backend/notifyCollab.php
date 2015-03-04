@@ -337,7 +337,7 @@ $message->setBody(
 														<tr>
 															<td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #95a5a6; text-align:left;line-height: 24px;">
 																<p>
-																	A cloud service which lets youcollaborate with your friends and colleagues to get your reports, articles, CVs, designs etc reviewed online in a hassle-free and secure manner. Just Upload. Share. Review. Collaborate
+																	A cloud service which lets you collaborate with your friends and colleagues to get your reports, articles, CVs, designs etc reviewed online in a hassle-free and secure manner. Just Upload. Share. Review. Collaborate
 																</p>
 																<p>
 																	All for <strong>free</strong> !!
