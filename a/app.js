@@ -256,6 +256,8 @@ scotchApp.directive('confirmation', function () {  // for asking confirmation
 	    // userData.setData('14','age');
 	    // console.log(userData.getData());
 
+$window.ga('send', 'pageview', { page: "Workgroup" }); 
+
   $http.get("backend/checkLoggedIn.php")
 	        .success(function(res) {
 
@@ -471,9 +473,11 @@ $scope.fiToggle = false;
 
 
 
-	scotchApp.controller('accountController', function(Page, $scope, userData, $http) {
+	scotchApp.controller('accountController', function($window,Page, $scope, userData, $http) {
 		
 		Page.setTitle('Account Details - Documendz');
+
+$window.ga('send', 'pageview', { page: "MyAccount" }); 
 
 		$scope.accountInfo = {
 				Username: $scope.userData[0].username,
@@ -525,10 +529,12 @@ $scope.fiToggle = false;
 
 
 
-	scotchApp.controller('filesController', function(templateName, Page, filesDataFunctions,$scope,$rootScope, $http, $routeParams, userData,$modal,$upload, $cookies, $timeout,$location,inform) {
+	scotchApp.controller('filesController', function($window,templateName, Page, filesDataFunctions,$scope,$rootScope, $http, $routeParams, userData,$modal,$upload, $cookies, $timeout,$location,inform) {
 
 // check permissions to the wkgroup: either the author or is a collab
 	    	    Page.setTitle('Files - Documendz');
+
+$window.ga('send', 'pageview', { page: "Files" }); 
 
         $http({
 	            method: 'POST',
@@ -916,8 +922,11 @@ templateName.setData(name);
 	});
 
 
-	scotchApp.controller('templateController', function(templateName, Page, $scope,usables,socket,$routeParams,$rootScope,$route,$location,$http) {
+	scotchApp.controller('templateController', function($window,templateName, Page, $scope,usables,socket,$routeParams,$rootScope,$route,$location,$http) {
+
 		Page.setTitle('Document - Documendz');
+
+$window.ga('send', 'pageview', { page: "Template" }); 
 
 $http.get("backend/getSession.php")
 	        .success(function(res) {
@@ -989,9 +998,11 @@ $http.get("backend/getSession.php")
 
 
 
-	scotchApp.controller('activityController', function(Page, $scope,$routeParams,filesDataFunctions,$http) {
+	scotchApp.controller('activityController', function($window,Page, $scope,$routeParams,filesDataFunctions,$http) {
 
 		Page.setTitle('Acivity Log - Documendz');
+
+		$window.ga('send', 'pageview', { page: "Activity" }); 
 
 $scope.selFile = $routeParams.fileId;
 			// console.log($scope.wgData); //works
@@ -1070,9 +1081,10 @@ changeFile($scope.selFile);
 	});
 
 
-scotchApp.controller('faqController', function(Page) {
+scotchApp.controller('faqController', function($window,Page) {
 
 		Page.setTitle('FAQs - Documendz');
+		$window.ga('send', 'pageview', { page: "FAQs" }); 
 
 	});
 
@@ -1080,6 +1092,7 @@ scotchApp.controller('faqController', function(Page) {
 scotchApp.controller('logoutController',function(Page, $http,$window){
 
 		Page.setTitle('Logout - Documendz');
+		$window.ga('send', 'pageview', { page: "Logout" }); 
 
  $http({
 	            method: 'POST',
