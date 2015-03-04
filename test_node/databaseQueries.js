@@ -5,14 +5,14 @@ var globalDb = '',
     MongoClient = require('mongodb').MongoClient;
 MongoClient.connect('mongodb://127.0.0.1:27017/annotationStorage', function(err, db) {
     if (err) {
-        console.log("mongo db unconnected");
+     //   console.log("mongo db unconnected");
         console.log(err);
         //throw err; 
     } else {
         globalDb = db;
         annotationDataCollection = db.collection('annotationData');
         annotationHistoryCollection = db.collection('annotationHistory');
-        console.log("Connected to MongoDb");
+       // console.log("Connected to MongoDb");
     }
 });
 
@@ -44,7 +44,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
         case "remove-highlight":
 
-            console.log("Removing HighLight");
+        //    console.log("Removing HighLight");
 
             annotationDataCollection.update({
                 "shareId": shareId
@@ -77,7 +77,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
         case "remove-strikeout":
 
-            console.log("Removing Strike Out");
+         //   console.log("Removing Strike Out");
             //console.log(data);
             annotationDataCollection.update({
                 "shareId": shareId
@@ -108,7 +108,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
         case "remove-draw":
 
-            console.log("Removing Draw");
+          //  console.log("Removing Draw");
             // console.log(data);
 
             annotationDataCollection.update({
@@ -144,7 +144,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
         case "delete-textbox":
 
-            console.log("Removing TextBox");
+           // console.log("Removing TextBox");
             // console.log(data);
 
             annotationDataCollection.update({
@@ -163,8 +163,8 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
         case "textbox-position-update":
 
-        console.log("changing Position");
-        console.log(data);
+      //  console.log("changing Position");
+      //  console.log(data);
 
         annotationDataCollection.update({"shareId":shareId,"textBoxComment.uniqueClass":data.uniqueClass},{"$set":{"textBoxComment.$.x":data.x,"textBoxComment.$.y":data.y}},callBackHandler("Updated X and Y positions : " + data.uniqueClass));
 
@@ -201,7 +201,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log("Pushed New pinComment Data to Array for shareId : " + shareId);
+                        //    console.log("Pushed New pinComment Data to Array for shareId : " + shareId);
                             pushComments(comment, data, shareId);
                         }
                     });
@@ -221,9 +221,9 @@ exports.fireQuery = function(data, type, userId, shareId) {
                         }
                     }, function(err, added) {
                         if (err) {
-                            console.log(err);
+                      //      console.log(err);
                         } else {
-                            console.log("Pushed New highlightComment Data to Array for shareId : " + shareId);
+                         //   console.log("Pushed New highlightComment Data to Array for shareId : " + shareId);
                             pushComments(comment, data, shareId);
                         }
                     });
@@ -273,7 +273,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
                    
                         if(results.length === 0) {
-                            console.log("No such Comment Box");
+                      //      console.log("No such Comment Box");
                             pullHistory(data.uniqueClass, shareId);
                         }
                     else if (results[0].pinComment[0].comments.length > 1) {
@@ -311,7 +311,7 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
             case "drag":
 
-            console.log(data.uniqueClass);
+         //   console.log(data.uniqueClass);
 
              annotationDataCollection.find({
                 "shareId": shareId,
@@ -387,14 +387,14 @@ exports.fireQuery = function(data, type, userId, shareId) {
 
         case "update-history":
 
-            console.log(data);
+         //   console.log(data);
 
             break;
 
             case "remove-comment-ul":
 
-            console.log("Removing Comment Ul");
-            console.log(data);
+           // console.log("Removing Comment Ul");
+          //  console.log(data);
 
             annotationDataCollection.update({"shareId":shareId}, {"$pull":{"highlightComment":{"uniqueClass":data.uniqueClass}}}, callBackHandler("Removed Comment Box Ul :"+ data.uniqueClass));
 
@@ -413,7 +413,7 @@ exports.checkDocumentExist = function(shareId) {
     }).toArray(function(err, results) {
         //console.log(results);
         if (results.length > 0) {
-            console.log("Document Exist shareid " + shareId);
+         //   console.log("Document Exist shareid " + shareId);
 
         } else {
 
@@ -429,10 +429,10 @@ exports.checkDocumentExist = function(shareId) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("Annotation Document Creatred for shareId : " + shareId)
+              //      console.log("Annotation Document Creatred for shareId : " + shareId)
                 }
             });
-            console.log("Creating New Annotation and History Document for shareid : " + shareId);
+         //   console.log("Creating New Annotation and History Document for shareid : " + shareId);
 
 
             annotationHistoryCollection.insert({
@@ -442,7 +442,7 @@ exports.checkDocumentExist = function(shareId) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(" History Document Creatred for shareId : " + shareId)
+             //       console.log(" History Document Creatred for shareId : " + shareId)
                 }
             });
         }
@@ -459,7 +459,7 @@ exports.pullAnnotationData = function(req, res) {
             console.log(err);
             res.send({error:true});
         } else {
-        console.log("API called");
+      //  console.log("API called");
        // console.log(results);
         res.send({error:false,data:results});    
         }     
@@ -473,7 +473,7 @@ exports.pullAnnotationData = function(req, res) {
             console.log(err);
              res.send({error:true});
         } else {
-        console.log("History API called");
+     //   console.log("History API called");
        // console.log(results);
          res.send({error:false,data:results});    
         }     
@@ -521,7 +521,7 @@ function pushComments(comment, data, shareId) {
 
 function pullHistory(uniqueClass, shareId) {
 
-    console.log("Removing History : " + uniqueClass)
+  //  console.log("Removing History : " + uniqueClass)
 
     annotationHistoryCollection.update({
         "shareId": shareId
@@ -543,9 +543,9 @@ function callBackHandler(type) {
         if (err) {
             console.log(err);
         } else if (!results) {
-            console.log("Error " + type);
+      //      console.log("Error " + type);
         } else {
-            console.log("SucessfUll in " + type);
+     //       console.log("SucessfUll in " + type);
         }
     }
 

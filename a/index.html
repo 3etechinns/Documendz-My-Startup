@@ -1,54 +1,47 @@
-
-
 <!DOCTYPE html>
-<html>
+
+<!-- define angular app -->
+<html ng-app="scotchApp" ng-controller="mainController">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="pdf2htmlEX">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- SCROLLS -->
+<title ng-bind="Page.title()">Loading...</title>
 
-   <link rel="stylesheet" href="a/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="a/css/files.css" />
-<link rel="stylesheet" href="a/css/inform.min.css" />
-   <link rel="stylesheet" type="text/css" href="css/contextmenu.css">
-    <link rel="stylesheet" type="text/css" href="css/documendz.css?var=30122014">
-    <link rel="stylesheet" type="text/css" href="css/perfect-scrollbar.min.css">
-    <link rel="stylesheet" href="css/introjs.min.css">
+<link rel="stylesheet" href="css/files.css" />
+<link rel="stylesheet" href="css/inform.min.css" />
   <!-- SPELLS -->
 
-  <script src="javascripts/1.7.2.jquery.min.js"></script>
-<script type="text/javascript" src="javascripts/core.js"></script>
-    <script type="text/javascript" src="javascripts/rangy-position.js"></script>
-  <script type="text/javascript" src="javascripts/core.js"></script>
-    <script type="text/javascript" src="javascripts/rangy-position.js"></script>
-    <script type="text/javascript" src="javascripts/raphael.js"></script>
+  <script src="../javascripts/1.7.2.jquery.min.js"></script>
+<script type="text/javascript" src="../javascripts/core.js"></script>
+    <script type="text/javascript" src="../javascripts/rangy-position.js"></script>
+  <script type="text/javascript" src="../javascripts/core.js"></script>
+    <script type="text/javascript" src="../javascripts/rangy-position.js"></script>
+    <script type="text/javascript" src="../javascripts/raphael.js"></script>
     <!--<script type= "text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.min.js"></script>-->
-    <script type="text/javascript" src="javascripts/raphael.sketchpad.js?var=20102014"></script>
-    <script type="text/javascript" src="javascripts/highlighter.js"></script>
-    <script type="text/javascript" src="javascripts/jquery.ba-resize.js"></script>
-    <script type="text/javascript" src="javascripts/jquery_1.10.4_ui.js"></script>
+    <script type="text/javascript" src="../javascripts/raphael.sketchpad.js?var=20102014"></script>
+    <script type="text/javascript" src="../javascripts/highlighter.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.ba-resize.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery_1.10.4_ui.js"></script>
 
     <!-- <script type="text/javascript" src="../../javascripts/log4javascript.js"></script> -->
   
-    <script type="text/javascript" src="javascripts/contextmenu.js"></script>
-    <script type="text/javascript" src="javascripts/contextmenu.position.js"></script>
-    <script type="text/javascript" src="javascripts/scrollTo.js"></script>
-    <script type="text/javascript" src="javascripts/perfect-scrollbar.min.js"></script>
-    <script type="text/javascript" src="javascripts/perfect-scrollbar.with-mousewheel.min.js"></script>
-    <script type="text/javascript" src="javascripts/intro.min.original.js"></script>
-    
-
+    <script type="text/javascript" src="../javascripts/contextmenu.js"></script>
+    <script type="text/javascript" src="../javascripts/contextmenu.position.js"></script>
+    <script type="text/javascript" src="../javascripts/scrollTo.js"></script>
+    <script type="text/javascript" src="../javascripts/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="../javascripts/perfect-scrollbar.with-mousewheel.min.js"></script>
+    <script type="text/javascript" src="../javascripts/intro.min.original.js"></script>
 
     <script type="text/javascript"> 
       
 
 
-
-
         var comm_del = 0;
 
+        window.shared_id = "<?php echo 140 ?>";
+        window.user = "<?php session_start(); echo $_SESSION['Username']; ?>";
 
        
 
@@ -232,6 +225,7 @@ console.log("text is:" + text);
 
             // console.log("update " + update_class);
 
+            sendChangeData(updateHistoryObject, "update-history");
 
             if (update_text != undefined) {
 
@@ -313,6 +307,7 @@ console.log("text is:" + text);
                 time: time
             };
 
+            sendChangeData(addHistoryObject, "add-history");
 
 
             $("#history").append('<li class="' + append_class + '">' +
@@ -320,7 +315,7 @@ console.log("text is:" + text);
                 '<div id="anno_type" style="text-align:right;color:#218221;opacity:0.6;font-size:8pt;line-height:23px;width:73px;height:20px;float:left"><b>' + anno_type + '</b></div>' +
                 '<div id="other1" style="line-height:17px;float:left;color:#B2B2B2;top:20px;left:40px; height:15px;width:40px;font-size: 8pt">Page:' + page_no + ' </div>' +
                 '<div id="other2" style="line-height:17px;float:left;color:#B2B2B2;top:20px;height:15px;width:65px;font-size:8pt">' + time + ' </div>' +
-                '<div id="other3" style="line-height:17px;color:#B2B2B2;float:left;top:20px;height:15px;width:65px;font-size:8pt; overflow:hidden">You</div></li>');
+                '<div id="other3" style="line-height:17px;color:#B2B2B2;float:left;top:20px;height:15px;width:65px;font-size:8pt; overflow:hidden">' + user + '</div></li>');
 
         };
 
@@ -515,6 +510,8 @@ console.log("text is:" + text);
 
 
 
+                                            sendChangeData($(this).attr('class').split(' ')[1], "remove-highlight");
+
 
                                             $("#svg_id > " + elem).remove();
                                             $("#connector-svg > " + elem).remove();
@@ -537,6 +534,7 @@ console.log("text is:" + text);
 
                                             $("#history > " + str).remove();
 
+                                            sendChangeData($(this).parent().attr('class').split(' ')[1], "remove-strikeout");
 
                                             break;
                                     }
@@ -559,6 +557,7 @@ console.log("text is:" + text);
                                     $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
 
                                     // Vipul Sodha ~ to send Changed data ! Currently sending serialized highlights
+                                    sendChangeData($(this).attr('class').split(' ')[1], "remove-highlight");
 
                                     removeCommentUl($(this).attr('class').split(' ')[1]);
 
@@ -602,6 +601,8 @@ console.log("text is:" + text);
                                             var str = "." + $(this).attr('class').split(' ')[1];
 
 
+                                            sendChangeData($(this).attr('class').split(' ')[1], "remove-strikeout");
+
 
 
                                             $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
@@ -611,6 +612,8 @@ console.log("text is:" + text);
                                             break;
                                         case "remove-highlight":
                                             var elem = "." + $(this).parent().attr('class').split(' ')[1];
+
+                                            sendChangeData($(this).parent().attr('class').split(' ')[1], "remove-highlight");
 
                                             removeCommentUl($(this).parent().attr('class').split(' ')[1]);
 
@@ -649,6 +652,7 @@ console.log("text is:" + text);
                                     $('#svg-container').getHighlighter().removeHighlights("." + $(this).attr('class').split(' ')[1], $(this).attr('class').split(' ')[1]);
                                     $("#history > " + str).remove();
 
+                                    sendChangeData($(this).attr('class').split(' ')[1], "remove-strikeout");
 
                                 },
                                 items: {
@@ -683,6 +687,7 @@ console.log("text is:" + text);
                         var removeDraw = {
                             pathClass: path_elem
                         };
+                        sendChangeData(removeDraw, "remove-draw");
                     },
                     items: {
                         "remove-draw": {
@@ -811,6 +816,7 @@ console.log("text is:" + text);
             }
         }, '#history > li');
 
+
   $(document).on({
 
             click: function() {
@@ -832,21 +838,18 @@ console.log("text is:" + text);
         },'.collapseComments');
 
 
-  
         $(document).on({
-  
-  
   
             mouseover: function() {
 console.log("ok");
                 if ($('#draw').is(':checked') == true) {
                     $(this).css({
-                        "cursor": "url(images/right-click.cur),default"
+                        "cursor": "url(../images/right-click.cur),default"
                     });
                 } else {
 
                     $(this).css({
-                        "cursor": "url(images/textbox.cur),default"
+                        "cursor": "url(../images/textbox.cur),default"
                     });
                 }
 
@@ -878,7 +881,6 @@ console.log("ok");
         $(document).on({
 
             click: function() {
-
 
 
             
@@ -918,18 +920,17 @@ console.log("ok");
 
                     }
 
-                 
+            
 
-
-
-
+                    sendChangeData(dropCommentObject, "new-drop-comment");
 
                 } else {
-                
+                  
                     //console.log( $("#"+ dropCommentObject.newLiId).prev().attr('id'));
                     dropCommentObject.afterLiId = $("#" + dropCommentObject.newLiId).prev().attr('id');
                     dropCommentObject.cords = commentBoxCords[par_class];
                     //console.log(dropCommentObject);
+                    sendChangeData(dropCommentObject, "update-drop-comment");
                 }
                 // console.log(commentBoxCords);
 
@@ -946,7 +947,7 @@ console.log("ok");
 
                 $(this).addClass('new-comm-inactive').removeClass('new-comm-active');
 
-                $(this).before('<li id = ' + rnd_comm_id + '><span class="critic_name" contenteditable="false">You:</span><span class="trash-comment"><img src="images/trash.png"></span><textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea></li>');
+                $(this).before('<li id = ' + rnd_comm_id + '><span class="critic_name" contenteditable="false">' + user + ':</span><span class="trash-comment"><img src="../images/trash.png"></span><textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea></li>');
 
                 $("#" + rnd_comm_id).find('textarea').focus();
                 // console.log($("#"+rnd_comm_id).find('textarea'));
@@ -980,6 +981,7 @@ console.log("ok");
                 };
 
                 dropCommentObject.type = commentBoxCords[dropCommentObject.uniqueClass].type;
+                sendChangeData(dropCommentObject, "delete-drop-comment");
 
 
 
@@ -1148,7 +1150,7 @@ console.log("ok");
         function textbox_events() {
 
 
-            svg_cont_style("url(images/textbox.cur),default");
+            svg_cont_style("url(../images/textbox.cur),default");
 
             $('.box').attr('contenteditable', 'true');
             $('.handle').removeClass('unselectable');
@@ -1178,15 +1180,15 @@ console.log("ok");
                 },
                 mousedown: function() {
 
-                    $(this).css('cursor', 'url(images/closedhand.cur),auto');
+                    $(this).css('cursor', 'url(../images/closedhand.cur),auto');
 
                 },
                 mouseup: function() {
 
-                    $(this).css('cursor', 'url(images/openhand.cur),auto');
+                    $(this).css('cursor', 'url(../images/openhand.cur),auto');
                 },
                 mouseover: function() {
-                    $(this).css('cursor', 'url(images/openhand.cur),auto');
+                    $(this).css('cursor', 'url(../images/openhand.cur),auto');
                     $(this).draggable({
                         containment: 'parent',
                         stop: function() {
@@ -1204,7 +1206,8 @@ console.log("ok");
                                 y: position.top,
                                 uniqueClass: $(this).attr('class').split(' ')[2]
                             };
-                            
+                            sendChangeData(textBoxObject, "textbox-position-update");
+
                         }
                     });
                 }
@@ -1250,7 +1253,7 @@ console.log("ok");
                         textBoxObject = {
                             uniqueClass: $(this).parent().attr('class').split(' ')[2]
                         };
-
+                        sendChangeData(textBoxObject, "delete-textbox");
 
                     } else {}
 
@@ -1450,12 +1453,12 @@ console.log("ok");
                                         // constructTextBox(rnd_class, x, y, "", true);
                                         $("#svg-container")
                                             .append(
-                                                '<div class="handle bar ' + rnd_class + '"' + ' style="margin:8px;z-index:3;cursor:url(images/openhand.cur) 7.5 7.5,default;height:auto; width:auto;overflow:visible;outline: 1px solid #33CCFF;color:red;text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;' + 'position:absolute;padding:6px;background:transparent;top:' + y + 'px;left:' + x + 'px">'
+                                                '<div class="handle bar ' + rnd_class + '"' + ' style="margin:8px;z-index:3;cursor:url(../images/openhand.cur) 7.5 7.5,default;height:auto; width:auto;overflow:visible;outline: 1px solid #33CCFF;color:red;text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;' + 'position:absolute;padding:6px;background:transparent;top:' + y + 'px;left:' + x + 'px">'
                                                 //cursor has 'default' .. don't know        what it means
 
                                                 + '<div class="box lim" ' + 'style="vertical-align:baseline;background:transparent;float:left;border:1px;solid;padding:1px;outline:none"' + ' contenteditable="true" spellcheck="false">' + '</div>'
 
-                                                + '<div class="delete-text-box" style="position:absolute;top:-9px;right:-9px;float:right;background-image:url(images/delete16x16.png);background-repeat:no-repeat;background-position:center center;' + 'border: none;cursor: default;height: 16px;width: 16px;outline: none;opacity:0.4"></div>'
+                                                + '<div class="delete-text-box" style="position:absolute;top:-9px;right:-9px;float:right;background-image:url(../images/delete16x16.png);background-repeat:no-repeat;background-position:center center;' + 'border: none;cursor: default;height: 16px;width: 16px;outline: none;opacity:0.4"></div>'
 
                                                 + '</div>');
                                         $(".box").focus();
@@ -1491,6 +1494,7 @@ console.log("ok");
                                                     //console.log(focussed_class);
 
                                                     //console.log("update Called 1");
+                                                    sendChangeData(textBoxObject, "textbox-update");
 
                                                     // console.log(textBoxObject);
                                                 }
@@ -1513,6 +1517,7 @@ console.log("ok");
 
                                                 //box - > old box
                                                 console.log("add called 1 : Box-> old Box");
+                                                sendChangeData(textBoxObject, "textbox-new");
                                             }
 
 
@@ -1539,6 +1544,7 @@ console.log("ok");
 
                                                 // Box -> window
                                                 //console.log("add called 2 Box-> Window");
+                                                sendChangeData(textBoxObject, "textbox-new");
 
                                             } else {
 
@@ -1560,6 +1566,7 @@ console.log("ok");
                                                     textBoxObject.content = text;
 
                                                     //console.log("update called 2 !  Edit -> window");
+                                                    sendChangeData(textBoxObject, "textbox-update");
                                                 }
                                             }
 
@@ -1598,10 +1605,10 @@ console.log("ok");
                         document.getElementById("svg_id").style.pointerEvents = "none";
                         $('.clickable').unbind();
 
-                        svg_cont_style("url(images/red.cur),default");
+                        svg_cont_style("url(../images/red.cur),default");
 
 
-                        /*               $("#svg-container").css({"cursor":"url(../images/red.cur),default"}); */
+                        /*               $("#svg-container").css({"cursor":"url(../../images/red.cur),default"}); */
                         $('#svg-container').textHighlighter({
 
                             onAfterHighlight: function(highlights, range) {
@@ -1615,6 +1622,7 @@ console.log("ok");
                                     serializeData: json_str,
                                     uniqueClass: par_class
                                 };
+                                sendChangeData(highlightObject, "highlight");
 
 
 
@@ -1648,7 +1656,7 @@ console.log("ok");
                         $('.draw_colors').css('display', 'none');
 
                         change_sketchpads(0);
-                        svg_cont_style("url(images/strike.cur),default");
+                        svg_cont_style("url(../images/strike.cur),default");
 
 
                         document.getElementById("svg_id").style.pointerEvents = "none";
@@ -1667,6 +1675,7 @@ console.log("ok");
                                     serializeData: json_str,
                                     uniqueClass: par_class
                                 };
+                                sendChangeData(strikeObject, "strikeout");
 
                                 add_history($(highlights[0]).attr('class').split(' ')[1], range, $($(highlights[0]).closest(".pf")[0]).index() + 1, "Strike");
 
@@ -1684,7 +1693,7 @@ console.log("ok");
 
                         $("#highlight_blue, #highlight_green, #highlight_yellow,").prop('checked', false);
                         $('#svg-container').css({
-                            "cursor": "url(images/red.cur),default"
+                            "cursor": "url(../images/red.cur),default"
                         });
                         /* document.getElementById("strike").checked = false;
                          document.getElementById("highlight_blue").checked = false;
@@ -1702,7 +1711,7 @@ console.log("ok");
 
                         $("#highlight_red, #highlight_green, #highlight_yellow").prop('checked', false);
                         $('#svg-container').css({
-                            "cursor": "url(images/blue.cur),default"
+                            "cursor": "url(../images/blue.cur),default"
                         });
                         change_sketchpads(0);
 
@@ -1721,7 +1730,7 @@ console.log("ok");
                         $("#highlight_blue, #highlight_red,#highlight_yellow").prop('checked', false);
                         change_sketchpads(0);
                         $('#svg-container').css({
-                            "cursor": "url(images/green.cur),default"
+                            "cursor": "url(../images/green.cur),default"
                         });
 
                         $('#svg-container').getHighlighter().setStrike('');
@@ -1733,7 +1742,7 @@ console.log("ok");
                         $("#highlight_blue, #highlight_red, #highlight_green").prop('checked', false);
                         change_sketchpads(0);
                         $('#svg-container').css({
-                            "cursor": "url(images/yellow.cur),default"
+                            "cursor": "url(../images/yellow.cur),default"
                         });
                         $('#svg-container').getHighlighter().setStrike('');
                         $('#svg-container').getHighlighter().setColor('#Fefe58');
@@ -1758,10 +1767,10 @@ console.log("ok");
 
 
 
-                        /*  $('#svg-container').css({"cursor":"url(../images/draw_black.cur),default"}); */
+                        /*  $('#svg-container').css({"cursor":"url(../../images/draw_black.cur),default"}); */
                         change_draw_color('#000000');
                         draw_state = 1;
-                        svg_cont_style("url(images/draw_black.cur),default");
+                        svg_cont_style("url(../images/draw_black.cur),default");
                         draw_contextmenu();
                         break;
 
@@ -1772,7 +1781,7 @@ console.log("ok");
                         $("#draw_red, #draw_green, #draw_blue").prop('checked', false);
 
                         $('#svg-container').css({
-                            "cursor": "url(images/draw_black.cur),default"
+                            "cursor": "url(../images/draw_black.cur),default"
                         });
                         change_draw_color('#000000');
                         //                                    change_sketchpads(1,'#000000');
@@ -1784,7 +1793,7 @@ console.log("ok");
                         //                                      $('.highlight_colors').css('display', 'none');  
                         $("#draw_black, #draw_red,#draw_blue").prop('checked', false);
                         $('#svg-container').css({
-                            "cursor": "url(images/draw_green.cur),default"
+                            "cursor": "url(../images/draw_green.cur),default"
                         });
                         change_draw_color('#33CC33');
                         draw_state = 1;
@@ -1794,7 +1803,7 @@ console.log("ok");
                         //to destroy the highlighter, it should be set then destroyed
                         //                                      $('.highlight_colors').css('display', 'none');
                         $('#svg-container').css({
-                            "cursor": "url(images/draw_red.cur),default"
+                            "cursor": "url(../images/draw_red.cur),default"
                         });
                         $("#draw_black,#draw_green, #draw_blue").prop('checked', false);
                         document.getElementById("highlight").checked = false;
@@ -1811,7 +1820,7 @@ console.log("ok");
                         //                                      $('.highlight_colors').css('display', 'none');    
                         $("#draw_black, #draw_red, #draw_green").prop('checked', false);
                         $('#svg-container').css({
-                            "cursor": "url(images/draw_blue.cur),default"
+                            "cursor": "url(../images/draw_blue.cur),default"
                         });
                         change_draw_color('#3366FF');
                         draw_state = 1;
@@ -1914,7 +1923,7 @@ console.log("ok");
                         $("#draw, #strike, #highlight, #drop-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue, #textbox").prop('checked', false);
                         change_sketchpads(0);
 
-                        svg_cont_style("url(images/drag.cur),default");
+                        svg_cont_style("url(../images/drag.cur),default");
 
 
                         function create_drag_comment(y_drag, drag_highlight_class) {
@@ -1923,7 +1932,7 @@ console.log("ok");
 
                             check_empty_commentbox();
 
-                            /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("after"),'cursor':'url(../images/drag.cur),default'}); */
+                            /* $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("after"),'cursor':'url(../../images/drag.cur),default'}); */
                             $('#comment-container').css('display', 'block');
                             /*  $('#svg-container').css('left', '30.1015px'); */
 
@@ -2060,29 +2069,27 @@ console.log("ok");
                                 $("#comment-container").append('<ul class="comment-box ' + drag_highlight_class + '" id="' + commentBoxId + '"' +
                                     ' style="top:' + comment_box_y_coord + 'px;">' +
                                     '<li id = ' + rndLiId + '>' +
-                                    '<span class="critic_name" contenteditable="false">You:</span>' +
-                                    '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                                    '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                                     '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
                                     '</li>' +
 
                                     '<a class="new-comment new-comm-inactive">new comment</a>' +
                                     '<a class="submit-comment submit-inactive">submit</a>' +
                                      '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
-
                                     '</ul>');
                             } else if (result[2] == undefined) {
 
                                 $("#comment-container").prepend('<ul class="comment-box ' + drag_highlight_class + '" id="' + commentBoxId + '"' +
                                     ' style="top:' + comment_box_y_coord + 'px;">' +
                                     '<li id = ' + rndLiId + '>' +
-                                    '<span class="critic_name" contenteditable="false">You:</span>' +
-                                    '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                                    '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                                     '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
                                     '</li>' +
-
+                                     '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
                                     '<a class="new-comment new-comm-inactive">new comment</a>' +
                                     '<a class="submit-comment submit-inactive">submit</a>' +
-                                     '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
 
                                     '</ul>');
                             } else {
@@ -2091,15 +2098,14 @@ console.log("ok");
                                 $("#comment-container #" + result[2]).after('<ul class="comment-box ' + drag_highlight_class + '" id="' + commentBoxId + '"' +
                                     'style="top:' + comment_box_y_coord + 'px;">' +
                                     '<li id = ' + rndLiId + '>' +
-                                    '<span class="critic_name" contenteditable="false">You:</span>' +
-                                    '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                                    '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                                     '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
                                     '</li>' +
 
                                     '<a class="new-comment new-comm-inactive">new comment</a>' +
                                     '<a class="submit-comment submit-inactive">submit</a>' +
                                      '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
-
                                     '</ul>');
 
 
@@ -2125,7 +2131,7 @@ console.log("ok");
 
                     case "drop-comment":
 
-                        remove_textbox_styles("url(images/drop_comment.cur),default");
+                        remove_textbox_styles("url(../images/drop_comment.cur),default");
                         $.contextMenu('destroy');
                         // drop_contextmenu();
                         $('#svg-container').unbind();
@@ -2142,10 +2148,10 @@ console.log("ok");
                         $("#draw, #strike, #highlight, #drag-comment, #highlight_blue, #highlight_red, #highlight_green, #highlight_yellow, #draw_black, #draw_red, #draw_green, #draw_blue, #textbox").prop('checked', false);
                         change_sketchpads(0);
 
-                        svg_cont_style("url(images/drop_comment.cur),default");
+                        svg_cont_style("url(../images/drop_comment.cur),default");
 
                         document.getElementById("svg_id").style.pointerEvents = "none";
-                        /*  $("#svg-container").css('cursor','url(../images/openhand.cur) 3 12 , url(../images/openhand.cur), text '); */
+                        /*  $("#svg-container").css('cursor','url(../../images/openhand.cur) 3 12 , url(../../images/openhand.cur), text '); */
 
 
 
@@ -2162,7 +2168,7 @@ console.log("ok");
 
                                     $('#comment-container').css('display', 'block');
                                     /* $('#svg-container').css('left', '30.1015px'); */
-                                    /*  $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("after"),'cursor':'url(../images/drop_comment.cur),default'}); */
+                                    /*  $('#svg-container').css({'position':'absolute','height':'auto','left': svg_left("after"),'cursor':'url(../../images/drop_comment.cur),default'}); */
 
 
                                     function checkCoords(y) {
@@ -2267,7 +2273,7 @@ console.log("ok");
 
 
 
-                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='images/drop_pin.cur'>");
+                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
 
                                         comment_lines((e.pageX - offset.left), (e.pageY - offset.top), 800, (e.pageY - offset.top), rnd_drop);
                                         connector_lines((e.pageY - offset.top), comment_box_y_coord, rnd_drop);
@@ -2279,7 +2285,7 @@ console.log("ok");
 
 
 
-                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='images/drop_pin.cur'>")
+                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>")
 
                                         comment_lines((e.pageX - offset.left), (e.pageY - offset.top), 800, (e.pageY - offset.top), rnd_drop);
                                         connector_lines((e.pageY - offset.top), comment_box_y_coord, rnd_drop);
@@ -2319,16 +2325,14 @@ console.log("ok");
                                         $("#comment-container").append('<ul class="comment-box ' + rnd_drop + '" id="' + commentBoxId + '"' +
                                             ' style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li id = ' + rnd_comm_id + '>' +
-                                            '<span class="critic_name" contenteditable="false">You:</span>' +
-                                            '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                                            '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                                             '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
                                             '</li>' +
 
                                             '<a class="new-comment new-comm-inactive">new comment</a>' +
                                             '<a class="submit-comment submit-inactive">submit</a>' +
-
-                                    '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
-
+                                             '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
                                             '</ul>');
 
                                     } else if (result[2] == undefined) { // a box is  not present at needed y position
@@ -2336,14 +2340,13 @@ console.log("ok");
                                         $("#comment-container").prepend('<ul class="comment-box ' + rnd_drop + '" id="' + commentBoxId + '"' +
                                             ' style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li id = ' + rnd_comm_id + '>' +
-                                            '<span class="critic_name" contenteditable="false">You:</span>' +
-                                            '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                                            '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                                             '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
                                             '</li>' +
                                             '<a class="new-comment new-comm-inactive">new comment</a>' +
                                             '<a class="submit-comment submit-inactive">submit</a>' +
                                              '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
-
                                             '</ul>');
 
                                     } else { // a box is  already present at needed y position
@@ -2352,15 +2355,14 @@ console.log("ok");
                                         $("#comment-container #" + result[2]).after('<ul class="comment-box ' + rnd_drop + '" id="' + commentBoxId + '"' +
                                             'style="top:' + comment_box_y_coord + 'px;">' +
                                             '<li id = ' + rnd_comm_id + '>' +
-                                            '<span class="critic_name" contenteditable="false">You:</span>' +
-                                            '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                                            '<span class="critic_name" contenteditable="false">' + user + ':</span>' +
+                                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                                             '<textarea class="active-comment autoExpand" rows="3" data-min-rows="3" spellcheck="false" autofocus></textarea>' +
                                             '</li>' +
 
                                             '<a class="new-comment new-comm-inactive">new comment</a>' +
                                             '<a class="submit-comment submit-inactive">submit</a>' +
                                              '<span class="collapseComments"><i class="fa fa-minus"></i></span>' +
-
                                             '</ul>');
 
                                     }
@@ -2502,7 +2504,26 @@ console.log("ok");
 
             });
 
-       
+            $("#display-history").click(function() {
+                if ($('#history').children().length > 0) {
+                    $("#history").toggle("fast", function() {
+
+                        if ($("#history").css('display') == "block") {
+
+                            $("#up-pull").css("display", "block");
+                            $("#down-drop").css("display", "none");
+                        } else if ($("#history").css('display') == "none") {
+
+                            $("#up-pull").css('display', 'none');
+                            $("#down-drop").css('display', 'block');
+                        }
+
+                    });
+
+
+                }
+
+            });
 
 
 
@@ -2674,6 +2695,7 @@ console.log("ok");
 
                 };
                 //console.log(drawObject);
+                sendChangeData(drawObject, "draw-create");
 
 
                 var xmlns = "http://www.w3.org/2000/svg";
@@ -2729,7 +2751,7 @@ console.log("ok");
                 'position': 'absolute',
                 'height': 'auto',
                 'left': svg_left("after"),
-                'cursor': 'url(images/drag.cur),default'
+                'cursor': 'url(../images/drag.cur),default'
             });
             $('#connector-container').css({
                 'position': 'absolute',
@@ -2858,7 +2880,7 @@ console.log("ok");
 
                             // console.log("case Drop");
 
-                            $("#image-container").append("<img class='drop-comment " + temp.uniqueClass + "' style='z-index:100;position:absolute;top:" + (temp.cords.pageY - temp.cords.offsetTop - 24) + "px;left:" + (temp.cords.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='images/drop_pin.cur'>");
+                            $("#image-container").append("<img class='drop-comment " + temp.uniqueClass + "' style='z-index:100;position:absolute;top:" + (temp.cords.pageY - temp.cords.offsetTop - 24) + "px;left:" + (temp.cords.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
 
 
 
@@ -2908,7 +2930,7 @@ console.log("ok");
                             ' style="top:' + temp.cords.boxY + 'px;">' +
                             '<li id = ' + temp.newLiId + '>' +
                             '<span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span>' +
-                            '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                             '<div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div>' +
                             '</li>' +
                             '<a class="new-comment new-comm-active">new comment</a>' +
@@ -2921,7 +2943,7 @@ console.log("ok");
                             ' style="top:' + temp.cords.boxY + 'px;">' +
                             '<li id = ' + temp.newLiId + '>' +
                             '<span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span>' +
-                            '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                             '<div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content +
                             '</div>' +
                             '</li>' +
@@ -2937,7 +2959,7 @@ console.log("ok");
                             'style="top:' + temp.cords.boxY + 'px;">' +
                             '<li id = ' + temp.newLiId + '>' +
                             '<span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span>' +
-                            '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                            '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                             '<div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div>' +
                             '</li>' +
 
@@ -2969,7 +2991,7 @@ console.log("ok");
 
                     var temp = changeData.data;
 
-                    $("#" + temp.afterLiId).after('<li id = ' + temp.newLiId + '><span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span><span class="trash-comment"><img src="images/trash.png"></span><div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div></li>');
+                    $("#" + temp.afterLiId).after('<li id = ' + temp.newLiId + '><span class="critic_name" contenteditable="false">' + changeData.data.userName + ':</span><span class="trash-comment"><img src="../images/trash.png"></span><div class="comment-text" contenteditable="true" spellcheck=false>' + temp.content + '</div></li>');
 
 
 
@@ -3017,6 +3039,17 @@ console.log("ok");
 
 
 
+        function sendChangeData(data, type) {
+
+            // console.log(data);
+            // console.log(type);
+            socket.emit('sendChangeData', {
+                data: data,
+                type: type
+            });
+
+        }
+
         function highlightedSeries(json_str, unique_class) {
             json_str = JSON.parse(json_str);
 
@@ -3062,13 +3095,13 @@ console.log("ok");
             //      console.log(uniqueClass);
 
             $("#svg-container").append(
-                '<div class="handle bar ' + uniqueClass + ' unselectable"' + ' style="margin:8px;z-index:3;cursor:url(images/openhand.cur) 7.5 7.5,default;height:auto; width:auto;overflow:visible;color:red;text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;' + 'position:absolute;padding:6px;background:transparent;top:' + y + 'px;left:' + x + 'px">'
+                '<div class="handle bar ' + uniqueClass + ' unselectable"' + ' style="margin:8px;z-index:3;cursor:url(../images/openhand.cur) 7.5 7.5,default;height:auto; width:auto;overflow:visible;color:red;text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;' + 'position:absolute;padding:6px;background:transparent;top:' + y + 'px;left:' + x + 'px">'
                 //cursor has 'default' .. don't know what it means
 
                 + '<div class="box lim" ' + 'style="vertical-align:baseline;background:transparent;float:left;border:1px;solid;padding:1px;outline:none"' + ' contenteditable=' + contenteditable + ' spellcheck="false">' +
                 content + '</div>'
 
-                + '<div class="delete-text-box" style="position:absolute;top:-9px;right:-9px;float:right;background-image:url(images/delete16x16.png);background-repeat:no-repeat;background-position:center center;' + 'border: none;cursor: default;height: 16px;width: 16px;outline: none;opacity:0"></div>'
+                + '<div class="delete-text-box" style="position:absolute;top:-9px;right:-9px;float:right;background-image:url(../images/delete16x16.png);background-repeat:no-repeat;background-position:center center;' + 'border: none;cursor: default;height: 16px;width: 16px;outline: none;opacity:0"></div>'
 
                 + '</div>');
 
@@ -3113,7 +3146,7 @@ console.log("ok");
                 switch (value.cords.type) {
 
                     case "drop":
-                        $("#image-container").append("<img class='drop-comment " + value.uniqueClass + "' style='z-index:100;position:absolute;top:" + (value.cords.pageY - value.cords.offsetTop - 24) + "px;left:" + (value.cords.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='images/drop_pin.cur'>");
+                        $("#image-container").append("<img class='drop-comment " + value.uniqueClass + "' style='z-index:100;position:absolute;top:" + (value.cords.pageY - value.cords.offsetTop - 24) + "px;left:" + (value.cords.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
                         break;
 
                     case "drag":
@@ -3179,7 +3212,7 @@ console.log("ok");
                 //console.log(value);
                 $("#comment-container ." + data.uniqueClass).prepend('<li id = ' + value.liId + '>' +
                     '<span class="critic_name" contenteditable="false">' + value.userName + ':</span>' +
-                    '<span class="trash-comment"><img src="images/trash.png"></span>' +
+                    '<span class="trash-comment"><img src="../images/trash.png"></span>' +
                     '<div class="comment-text" contenteditable="false" spellcheck=false>' + value.content + '</div>' +
                     '</li>');
 
@@ -3225,6 +3258,7 @@ console.log("ok");
                 var removeUlObject = {
                     uniqueClass: uniqueClass
                 };
+                sendChangeData(removeUlObject, "remove-comment-ul");
 
                 // console.log("Removing Ul");
                 // console.log(removeUlObject);
@@ -3232,768 +3266,119 @@ console.log("ok");
         }
 
     </script>
+    
+  <script> var socket; var usables; </script>
+ 
+  <script type="text/javascript" src="../javascripts/socket.io.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+
+  
+
+  <script src="ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+  <script src="services.js"></script>
+
+  <script src="xeditable.min.js"></script>
+  <script src="angularFileUpload.js"></script>
+  <script src="ng-showdown.min.js"></script>
+  <script src="cookies.js"></script>
+  <script src="app.js"></script>
+
+<script type="text/ng-template" id="feedback.html">
+      
+<div class="modal-header center">
+<a ng-click="cancel()" class="close">x</a>
+<h4>We love feedbacks. If you have any suggestions or complaints, feel free to write to us.</h4>
+</div>
+
+
+
+<form name="feedback" >
+    
+<div class="modal-body center">
+    
+
+     <textarea id="feedback" style="width: 350px;
+height: 150px;
+border-radius: 5px;
+outline: none;
+padding: 10px;" ng-model="fb.feedbackMessage" name="feedback"  placeholder="Your feedback" /> 
+</div>
+
+  <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+<div class="btn btn-primary btn-large" ng-click= "sendFeedback()" tabindex="120" ng-disabled = "feedback.$invalid"  >Submit</div>
+
+</div>
+</form> 
 
 
 
 
-   <style type="text/css">
-        /* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=css: */
-        /*! 
- * Base CSS for pdf2htmlEX
- * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com> 
- * https://github.com/coolwanglu/pdf2htmlEX/blob/master/share/LICENSE
- */
-        /* Part 1: Web Page Layout: Free to modify, except for a few of them which are required by pdf2htmlEX.js, see the comments */
-        
-        #sidebar {
-            /* Sidebar */
-            
-            position: absolute;
-            top: 35px;
-            left: 0;
-            bottom: 0;
-            width: 200px;
-            padding: 0;
-            margin: 0px;
-            overflow: hidden;
-        }
-        #page-container {
-            /* PDF container */
-            
-            position: absolute;
-            /* required for calulating relative positions of pages in pdf2htmlEX.js */
-            
-            top: 35px;
-            left: 0px;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            /* required for lazy page loading in pdf2htmlEX.js (page visibility test) */
-        }
-        @media screen {
-            /* for sidebar */
-            
-            #sidebar.opened + #page-container {
-                left: 200px;
-            }
-            #page-container {
-                /* `bottom' and `right' are required for lazy page loading in pdf2htmlEX.js (page visibility test)
-     * alternatively you may set width and height
-     */
-                
-                bottom: 0;
-                right: 0;
-                overflow: auto;
-            }
-            .loading-indicator {
-                display: none;
-            }
-            .loading-indicator.active {
-                display: block;
-                position: absolute;
-                width: 64px;
-                height: 64px;
-                top: 50%;
-                left: 50%;
-                margin-top: -32px;
-                margin-left: -32px;
-            }
-            .loading-indicator img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-            }
-        }
-        @media print {
-            @page {
-                margin: 0;
-            }
-            html {
-                margin: 0;
-            }
-            body {
-                margin: 0;
-                -webkit-print-color-adjust: exact;
-                /* enable printing background images for WebKit */
-            }
-            #sidebar {
-                display: none;
-            }
-            #page-container {
-                width: auto;
-                height: auto;
-                overflow: visible;
-                background-color: transparent;
-            }
-            .d {
-                display: none;
-            }
-        }
-        /* Part 2: Page Elements: Modify with caution
- * The followings are base classes, some of which are meant to be override by PDF specific classes
- * So do not increase the specificity (e.g. ".classname" -> "#page-container .classname")
- */
-        
-        .pf {
-            /* page */
-            
-            position: relative;
-            background-color: white;
-            overflow: hidden;
-            margin: 0;
-            border: 0;
-            /* required by pdf2htmlEX.js for page visibility test */
-        }
-        .pc {
-            /* content of a page */
-            
-            position: absolute;
-            border: 0;
-            padding: 0;
-            margin: 0;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            display: block;
-            /* set transform-origin for scaling */
-            
-            transform-origin: 0% 0%;
-            -ms-transform-origin: 0% 0%;
-            -webkit-transform-origin: 0% 0%;
-        }
-        .pc.opened {
-            /* used by pdf2htmlEX.js, to show/hide pages */
-            
-            display: block;
-        }
-        .bf {
-            /* images that occupies the whole page */
-            
-            position: absolute;
-            border: 0;
-            margin: 0;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            -ms-user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        .bi {
-            /* images that cover only a part of the page */
-            
-            position: absolute;
-            border: 0;
-            margin: 0;
-            -ms-user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        @media print {
-            .pf {
-                margin: 0;
-                box-shadow: none;
-                page-break-after: always;
-                page-break-inside: avoid;
-            }
-            @-moz-document url-prefix() {
-                /* fix page truncation for FireFox */
-                
-                .pf {
-                    overflow: visible;
-                    border: 1px solid #FFFFFF;
-                }
-                .pc {
-                    overflow: visible;
-                }
-            }
-        }
-        .c {
-            /* clip box */
-            
-            position: absolute;
-            border: 0;
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
-            display: block;
-        }
-        .t {
-            /* text line */
-            
-            position: absolute;
-            white-space: pre;
-            font-size: 1px;
-            transform-origin: 0% 100%;
-            -ms-transform-origin: 0% 100%;
-            -webkit-transform-origin: 0% 100%;
-            unicode-bidi: bidi-override;
-            /* For rtl lanauges, e.g. Hebrew, we don't want the default Unicode behaviour */
-            
-            -moz-font-feature-settings: "liga" 0;
-            /* We don't want Firefox to recognize ligatures */
-        }
-        span {
-            /* text blocks within a line */
-            
-            position: relative;
-            vertical-align: baseline;
-            /* _<id> for spaces may need display:inline, which will override this */
-            
-            display: inline-block;
-            unicode-bidi: bidi-override;
-            /* For rtl lanauges, e.g. Hebrew, we don't want the default Unicode behaviour */
-        }
-        ._ {
-            /* text shift */
-            
-            color: transparent;
-            z-index: -1;
-        }
-        /* selection background should not be opaque, for fallback mode */
-        
-        ::selection {
-            background: rgba(127, 255, 255, 0.4);
-        }
-        ::-moz-selection {
-            background: rgba(127, 255, 255, 0.4);
-        }
-        .pi {
-            /* info for Javascript */
-            
-            display: none;
-        }
-        .l {
-            /* annotation links */
-        }
-        /* transparent color - WebKit */
-        
-        .d {
-            /* css drawing */
-            
-            position: absolute;
-            transform-origin: 0% 100%;
-            -ms-transform-origin: 0% 100%;
-            -webkit-transform-origin: 0% 100%;
-        }
-        /* Base CSS END */
-    </style>
-    <style type="text/css">
-        /* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab filetype=css: */
-        /*! 
- * Fancy styles for pdf2htmlEX
- * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com> 
- * https://github.com/coolwanglu/pdf2htmlEX/blob/master/share/LICENSE
- */
-        
-        @keyframes fadein {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @-webkit-keyframes fadein {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes swing {
-            0% {
-                transform: rotate(0deg);
-            }
-            10% {
-                transform: rotate(0deg);
-            }
-            90% {
-                transform: rotate(720deg);
-            }
-            100% {
-                transform: rotate(720deg);
-            }
-        }
-        @-webkit-keyframes swing {
-            0% {
-                -webkit-transform: rotate(0deg);
-            }
-            10% {
-                -webkit-transform: rotate(0deg);
-            }
-            90% {
-                -webkit-transform: rotate(720deg);
-            }
-            100% {
-                -webkit-transform: rotate(720deg);
-            }
-        }
-        @media screen {
-            #sidebar {
-                background-color: white;
-                /* modified from http://philbit.com/svgpatterns/#crossstripes */
-            }
-            #outline {
-                font-family: Georgia, Times, "Times New Roman", serif;
-                font-size: 13px;
-                margin: 2em 1em;
-            }
-            #outline ul {
-                padding: 0;
-            }
-            #outline li {
-                list-style-type: none;
-                margin: 1em 0;
-            }
-            #outline li > ul {
-                margin-left: 1em;
-            }
-            #outline a,
-            #outline a:visited,
-            #outline a:hover,
-            #outline a:active {
-                line-height: 1.2;
-                color: #e8e8e8;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                text-decoration: none;
-                display: block;
-                overflow: hidden;
-                outline: 0;
-            }
-            #outline a:hover {
-                color: rgb(0, 204, 255);
-            }
-            #page-container {
-                background-color: #ede9e9;
-                /* http://philbit.com/svgpatterns/#thinstripes */
-                
-                -webkit-transition: left 500ms;
-                transition: left 500ms;
-            }
-            .pf {
-                margin: 13px auto;
-                box-shadow: 1px 1px 3px 1px #333;
-                /* Needed by IE to make box-shadow works * https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
-                
-                border-collapse: separate;
-            }
-            .pc.opened {
-                /* used by pdf2htmlEX.js, to show/hide pages */
-                
-                -webkit-animation: fadein 100ms;
-                animation: fadein 100ms;
-            }
-            .loading-indicator.active {
-                /* 
-     * use 0.01s instead of 0s,
-     * since YUI Compressor will change 0s to 0,
-     * which is not recognized by Firefox
-     */
-                
-                -webkit-animation: swing 1.5s ease-in-out 0.01s infinite alternate none;
-                animation: swing 1.5s ease-in-out 0.01s infinite alternate none;
-            }
-        }
-        /* Fancy CSS END */
-    </style>
-
-    <script>
-        /*
-                         Copyright 2012 Mozilla Foundation 
-                         Copyright 2013 Lu Wang <coolwanglu@gmail.com>
-                         Apachine License Version 2.0 
-                        */
-        (function() {
-            function b(a, b, e, f) {
-                var c = (a.className || "").split(/fs+/g);
-                "" === c[0] && c.shift();
-                var d = c.indexOf(b);
-                0 > d && e && c.push(b);
-                0 <= d && f && c.splice(d, 1);
-                a.className = c.join(" ");
-                return 0 <= d
-            }
-            if (!("classList" in document.createElement("div"))) {
-                var e = {
-                    add: function(a) {
-                        b(this.element, a, !0, !1)
-                    },
-                    contains: function(a) {
-                        return b(this.element, a, !1, !1)
-                    },
-                    remove: function(a) {
-                        b(this.element, a, !1, !0)
-                    },
-                    toggle: function(a) {
-                        b(this.element, a, !0, !0)
-                    }
-                };
-                Object.defineProperty(HTMLElement.prototype, "classList", {
-                    get: function() {
-                        if (this._classList) return this._classList;
-                        var a = Object.create(e, {
-                            element: {
-                                value: this,
-                                writable: !1,
-                                enumerable: !0
-                            }
-                        });
-                        Object.defineProperty(this, "_classList", {
-                            value: a,
-                            writable: !1,
-                            enumerable: !1
-                        });
-                        return a
-                    },
-                    enumerable: !0
-                })
-            }
-        })();
-    </script>
-   
-    <script>
-        try {
-            pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
-        } catch (e) {}
-    </script>
+    </script> 
 
 
-    <title></title>
 </head>
 
-<body>
 
- 
-<nav class="navbar navbar-default" role="navigation" style="position:fixed;width:100%;z-index:1000;margin-bottom:0px;background-color: white;padding: 2px 0px;">
-        <div class="container-fluid" style=";margin:auto;">
-         
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-             <a href="http://192.168.0.102/local_ang/"><img style="width:175px; padding-top: 5px;" src="images/logo1.gif"></a> 
-         </div>
-      
-            <div id="navbar" class="navbar-collapse collapse">
-             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://www.documendz.com">Home</a></li>
-                
-              <li><a href="http://localhost/local_documendz/faq.html">FAQs</a></li>
-              
-                 
-             </ul>
-        </div> 
+<!-- define angular controller -->
+<body class="layout" >
 
-        </div>
-  
-        </nav>
-    <div id="loading" >
-
-        <img id="loading-image" src="images/ajax-loader.gif" alt="Loading..." />
-    </div>
-
-    <div id="template-attributes" style="position: fixed;
-top: 55px;
-background: white;
-height: 40px;
-padding: 10px 20px;
+  <nav style="margin-bottom:0px; background: #02394B;position: fixed;
+left: 0;
+top: 0;
 width: 100%;
-z-index: 2;">
+z-index: 500;" class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#/workgroups" style="padding:0px;margin-left:-40px">
+          <img width="145px" src="../css/images/logo_black.gif"></img>
+        </a>
+      </div>
 
-<div id = "filenameInTemplate">SampleDocument.pdf</div>
+      <ul class="nav navbar-nav navbar-right">
+     
+        <li><a style="color:white;" href="#/workgroups"><i class="fa fa-reorder"></i> Workgroups</a></li>
+        
+        <li><a style="color:white;cursor:pointer;" ng-click="askFeedback()"><i class="fa fa-comment"></i> Feedback</a></li>
+        <li>
+          <div  dropdown is-open="status.isopen1" class="profile-drop">
+      <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        {{ut}} <span class="caret"></span>
+      </span>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#/account/{{pt}}">Account</a></li>
+        <li><a href="#/faq">FAQs</a></li>
+        <li><a href="#/logout" ng-click="predicate = 'authid'; reverse=false">Logout</a></li>
+    
+        
+      </ul>
+    </div>
+        </li>
+
+    </div>
+  </nav>
 
 </div>
 
 
-    <div id="tools-container" style="position: fixed;
-top: 95px;
-background: white;
-height: auto;
-padding: 5px 20px;
-width: 100%;
-z-index: 20;
-box-shadow: 3px 6px 8px #888;
-">
+  <div id="main">
+  
+    <!-- angular templating -->
+        <!-- this is where content will be injected -->
+    <div ng-view ></div>
 
-        <div class="tool-type">
-            <input type="checkbox" id="strike" name="chk" onclick="check_value('strike')">
-            <label for="strike"><i class="fa fa-strikethrough" style="float:left"></i>
-                <div style="float:left;font-weight:200">&nbsp;Strike</div>
-            </label>
-
-        </div>
-        <div class="tool-type">
-            <input type="checkbox" id="highlight" onclick="check_value('highlight')">
-            <label for="highlight"><i class="fa fa-paint-brush" style="float:left"></i>
-                <div style="float:left;font-weight:200">&nbsp;Highlight</div>
-            </label>
-        </div>
-        <div class="tool-type">
-            <input type="checkbox" id="draw" onclick="check_value('draw')">
-            <label for="draw"><i class="fa fa-pencil" style="float:left"></i>
-                <div class="unselectable" style="float:left;font-weight:200">&nbsp;Draw</div>
-            </label>
-        </div>
-        <div class="tool-type">
-            <input type="checkbox" id="textbox" onclick="check_value('textbox')">
-            <label for="textbox"><i class="fa fa-pencil-square-o" style="float:left"></i>
-                <div style="float:left;font-weight:200">&nbsp;Text box</div>
-            </label>
-        </div>
-        <div class="tool-type">
-            <input type="checkbox" id="drop-comment" onclick="check_value('drop-comment')">
-            <label for="drop-comment"><i class="fa fa-thumb-tack" style="float:left"></i>
-                <div style="float:left;font-weight:200">&nbsp;Pin comment</div>
-            </label>
-        </div>
-        <div class="tool-type">
-            <input type="checkbox" id="drag-comment" onclick="check_value('drag-comment')">
-            <label for="drag-comment"><i class="fa fa-comment" style="float:left"></i>
-                <div style="float:left;font-weight:200;">&nbsp;Text comment</div>
-            </label>
-        </div>
-
-        
-
-    </div>
-    <div id="title" style="display:none;position:fixed;top:0px;left:0px;width:100%;height:35px;background-color: black; z-index:20 ;text-align:left;line-height: 35px;color:white;">
-
-        <div id="del-info">
-            <button class="close_info" type="button">
-                <span>×</span>
-                <span class="close_area">Close</span>
-            </button>
-            To delete an annotation: Select its type from tools, then right-click on the annotation
-        </div>
-
-        <div id="doc_name" style="text-align:center;font-size:14px;font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;"><img style="display: inline-block; vertical-align: sub;" src="images/doc_name.png">
-          
-        </div>
-        <div id="page-text" style="position:absolute;top:0px;left:205px; color: white; -webkit-user-select: text;font-size:14px;font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;">Page:</div>
-        <input id="page_no" type="text" onkeypress="return isNumber(event)" name="fname" style="margin-top: 6px;
-width: 30px;
-height: 12px;
-font-size: 9pt;
-position: absolute;
-top: 5px;
--webkit-user-select: text;
-left: 243px;
-outline: none;
-background-color: rgba(203, 198, 198, 0.8);
-text-align: center;
-border-radius: 4px;
-opacity: 0.;
-border: none;
-color: white;
-font-weight:bold;
-font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;">
-
-
-        <img id="page-up" style="position:absolute;top:11px;left:276px;cursor: pointer; -webkit-user-select: text;" src="images/up15.png">
-        </td>
-        <img id="page-down" style="position:absolute;top:11px;left:294px;cursor: pointer; -webkit-user-select: text;" src="images/down15.png">
-
-
-       
-        <div class="header-panel-btn" id="clear-all-history" style="position:absolute; top:4px; right: 94px; height:25px; width:68px;" onclick="if(confirm('Are you sure you want to delete all your annotations?')) clear_all_history(); else return false">Clear All</div>
-        <div class="header-panel-btn" id="tour" style="position:absolute; top:4px; right: 170px; height:25px; width:68px;" onclick="javascript:introJs().start();">Tour</div>
-
-
-    </div>
-
-
-   <!--  <div id="sidebar" class="opened">
-
-        
-     </div>
- -->
-
-       
-
-            <div class="highlight_colors" style="display:none;
-                                                position: absolute;
-                                                top: 137px;
-                                                left: 90px;
-                                                z-index: 20;
-                                                padding: 4px 4px;
-                                                background: white;
-                                                border: 1px solid grey;">
-                <input type="radio" id="highlight_red" onclick="check_value('highlight_red')">
-                <label for="highlight_red">
-                    <div id="red_circle">
-                            <i class="fa fa-check"></i>
-                    </div>
-                </label>
-                <input type="radio" id="highlight_blue" onclick="check_value('highlight_blue')">
-                <label for="highlight_blue">
-                    <div id="blue_circle">
-                            <i class="fa fa-check"></i>
-                    </div>
-                </label>
-                <input type="radio" id="highlight_green" onclick="check_value('highlight_green')">
-                <label for="highlight_green">
-                    <div id="green_circle">
-                                <i class="fa fa-check"></i>
-                    </div>
-                </label>
-                <input type="radio" id="highlight_yellow" onclick="check_value('highlight_yellow')">
-                <label for="highlight_yellow">
-                    <div id="yellow_circle">
-                                <i class="fa fa-check"></i>
-                    </div>
-                </label>
-            </div>
-
-           
-
-            <div class="draw_colors" style="display: none;
-                                            position: absolute;
-                                            top: 137px;
-                                            left: 177px;
-                                            z-index: 20;
-                                            padding: 4px;
-                                            border: 1px solid grey;
-                                            background: white;">
-                <input type="radio" id="draw_black" onclick="check_value('draw_black')">
-                <label for="draw_black">
-                    <div id="black_draw">
-                                 <i class="fa fa-check"></i>
-                    </div>
-                </label>
-                <input type="radio" id="draw_red" onclick="check_value('draw_red')">
-                <label for="draw_red">
-                    <div id="red_draw">
-                                 <i class="fa fa-check"></i>
-                    </div>
-                </label>
-                <input type="radio" id="draw_green" onclick="check_value('draw_green')">
-                <label for="draw_green">
-                    <div id="green_draw">
-                                 <i class="fa fa-check"></i>
-                    </div>
-                </label>
-                <input type="radio" id="draw_blue" onclick="check_value('draw_blue')">
-                <label for="draw_blue">
-                    <div id="blue_draw">
-                                 <i class="fa fa-check"></i>
-                    </div>
-                </label>
-            </div>
-
-
-
-
-    <div id="page-container" style="margin-top: 100px;" >
-        <div id="image-container" style="position:absolute;left:0px;width:100%;height:100%"></div>
-        <div id="svg-container" class="clickable">
-
-
-
-        </div>
-
-        <div id="connector-container">
-            <svg id="connector-svg" style="overflow:visible" height="100%" width="100%">
-
-
-            </svg>
-        </div>
-        <div id="comment-container">
-        </div>
-    </div>
- 
-    <div id="intro-modal" onclick="hideintro();"></div>
-
-
-     <!-- <script type="text/javascript" src="../javascripts/socket.io.js"></script> -->
     
 
 
-    <script language="javascript" type="text/javascript">
+  </div>
+  
 
-         // var socket;
-
-         // socket.disconnect();
-
-      // $(window).load(function(){     //Without this working fine 7th Jan 2015
-
-            
-        
-
-        // socket = io.connect("http://192.168.0.104:9000");
-// });
-
-
-        // socket.on("connect", socketConnected);
-        // socket.on("getChangeData", getChangeData);
-
-
-$(document).ready(function() {
- // executes when complete page is fully loaded, including all frames, objects and images
-
-setTimeout(function(){ // a 500ms timeout given so that it lands on the page then pulls the data
-
-        var request = $.ajax({
-            url: "https://s3-ap-southeast-1.amazonaws.com/documendz-ent/demo/sample12.html",
-            type: "GET",	
-            cache: true,
-            async: false
-        });
-
-
-        request.done(function(data) {
-
- 
-
-            $("#svg-container").ready(function() {
-
-
-                $("#svg-container").html(data);
-                  align_page();
-
-                console.log("jdhd");
-
-
-
-				
-
-            });
-
-
-        });
-
-        request.fail(function() {
-
-            console.log("error Pulling File");
-        });
-
-$("#loading").css('display','none');
-
-
-
-
-        //history REady ! pull History From server
-
-
-
-},500);
-   
-});     
-    </script>
-<script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55292613-2', 'auto'); ga('send', 'pageview'); </script>
+  
 </body>
 
 </html>
-

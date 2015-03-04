@@ -496,8 +496,8 @@ return ret;
 				var m = JSON.parse(message);
 					if(m['notif'].trim().localeCompare("login-success") == 0){
 						
-						console.log(m['id']);
-						window.location.href = "angular/#/workgroups";
+					//	console.log(m['id']);
+						window.location.href = "a/#/workgroups";
 						
 					}
 					else{
@@ -1227,8 +1227,7 @@ var helper = (function() {
         
         var profile = res.result;
 
-        console.log(profile.displayName);
-        console.log(profile.emails[0].value);
+
         
 
        window.location.href = "https://www.documendz.com/gsignup.php?n="+profile.displayName+"&e="+profile.emails[0].value;

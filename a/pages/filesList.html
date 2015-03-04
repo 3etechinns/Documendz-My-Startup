@@ -1,0 +1,245 @@
+
+
+<div>
+<script type="text/ng-template" id="collabLimitReached.html">
+
+
+
+        <div class="modal-header center">
+            <a ng-click="cancel()" class="close">×</a>
+
+        </div>
+
+        <div class="modal-body center">
+          Looks like you have reached the maximum limit of 3 collaborators.<br>
+Let us know if you would like to have more !
+
+        </div>
+
+        <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+
+
+ <div class="btn btn-warning" ng-click="increaseLimit('Collaborators')">let us know </div>
+
+        </div>
+  
+
+    </script>
+<div id="activity-container">
+
+	<div class="view-toggle">
+	
+	<a class="btn btn-default btn-sm"  href= "#/workgroups/{{wg}}"><i class="fa fa-th"></i></a>
+	<a class="btn btn-default btn-sm active"><i class="fa fa-th-list"></i></a>
+    </div>
+
+  <div class="btn-group sort-button" dropdown is-open="status.isopen3">
+      <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Sort by <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="" ng-click="predicate = 'uploadtime'; reverse=true" >Upload time</a></li>
+        <li><a href="" ng-click="predicate = 'authid'; reverse=false">Authors</a></li>
+        <li><a href="" ng-click="predicate = ''; reverse=false">File types</a></li>
+        
+      </ul>
+    </div>
+<div class="input-group" style="float:right;margin-right:10px">
+    <input ng-model = "query" type="text" class="form-control" placeholder="Search by filename or author" aria-describedby="basic-addon1">
+  </div>
+
+	<div class="wkName">{{wname}}</div>
+
+
+
+
+
+</div>
+<div id="upload-container" class="vcenter" >
+
+<div>
+
+		<div class="up-buttons">
+		<button ng-file-select="" 
+    ng-disabled='allFiles.length >= flimit || wa == 1'
+		ng-model="files" 
+		class="btn btn-new ng-isolate-scope ng-pristine ng-valid"  
+		ng-file-change="uploadFile(files)" 
+		ng-multiple="false" 
+		ng-accept="'*'" tabindex="0" 
+		accept="*" 
+
+		style="overflow:hidden"><i class="fa fa-upload"></i> &nbspUpload
+		<input type="file" name="file" accept="*" tabindex="-1" ng-file-generated-elem="true" style="width: 1px; height: 1px; opacity: 0; position: absolute; padding: 0px; margin: 0px; overflow: hidden;"></button><br>
+
+	</div> 
+<div id="progress-attributes">
+<span id="upload-filename">{{fileName}}</span>
+
+<div  class="progress" ng-if="progressValue != 100 && showProgress == 1 "> 
+      <div class="progress-bar" style="width:{{progressValue}}%"></div>
+</div>
+
+<div  class="spinner"  ng-if="progressValue == 100 && stopSpin != 1">
+<i class="fa fa-spinner fa-pulse fa-lg"></i> Processing
+</div>
+</div>
+	</div>
+
+<div id= "upload-limit-message" ng-if   ='allFiles.length >= flimit'> 
+Currently, a maximum of 10 files can be uploaded in a workgroup
+</div>
+
+	</div>
+
+<div inform class="inform-animate inform-fixed inform-shadow"></div>
+<div id="sidebar-right" style="width:24%;position:absolute;right:0;min-height:300px;margin-top:20px">
+
+
+
+
+<div>
+
+
+				<div ng-controller="ModalDemoCtrl">
+				    <script type="text/ng-template" id="invite.html">
+				      
+			     <div class="modal-header center">
+        <a ng-click="cancel()" class="close">×</a>
+        <h2>Add collaborators</h2>
+        </div>
+
+        <div class="center">
+        <form name="addCollaborator">
+        <input class= "collabNameInput" id="projectname" type="email" ng-model="newCollab.email" name="collaboratorEmail" inv-autofocus="" tabindex="101" placeholder="Collaborator Email Id" required />
+        </div>
+          <div class="modal-footer" >
+          <div class="btn btn-primary" tabindex="120" ng-click = "addCollab()" ng-disabled = "addCollaborator.$invalid">Invite</div>
+
+        </div>
+
+
+        <p ng-show="errorMessage" ng-bind="errorMessage"></p>
+        <p ng-show="successMessage" ng-bind="successMessage"></p>
+
+
+        </form>
+
+				    </script>
+
+				
+				    
+				    
+				</div>
+
+</div>
+
+ <ul class="collaborator-list">
+       <li >
+       	
+       	<p>Collaborators</p>
+
+<button tooltip-placement="top" tooltip="Add people" class="btn btn-warning" ng-valid ng-click="inviteCollab()"><i class="fa fa-user-plus"></i></button>
+       </li>
+       
+        <li>
+       <span>
+       {{wkgroupAuthName}} (Workgroup owner)<br>
+       </span>
+       </li>
+
+       <li ng-repeat="collabs in collabData">
+       	<span>
+
+
+
+       	<i class="fa fa-times" ng-if="collabs.authId == pt" ng-click="removeCollaborator(collabs.collabEmail,collabs.wkUniqueId)" confirmation="Are you sure you want to remove the collaborator?"></i>
+       	{{collabs.collabName}}<br>
+       	</span>
+       </li>
+       </ul>
+
+
+
+
+</div>
+		
+
+
+	
+	
+
+<div class="" style="width:76%; padding: 20px;">
+ 
+    <div class="panel-body">
+      <ul class="list-group">
+                    <li ng-repeat = "files in allFiles | orderBy:predicate:reverse |filter:search " class="list-group-item files-list show-animator">
+                        <div class="row">
+                          <a ng-if = "files.sample == 0" href="#/workgroups/{{files.workgroupid}}/{{files.authid}}{{files.uniqueFilename}}" ng-click="setName(files.filename)">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{files.authid}}/thumbnails/{{files.uniqueFilename}}.jpg" class="img-responsive" alt="" /></div>
+                            <div class="col-md-8">
+                                <div class ="caption-list-cont"> 
+                                    
+                                    <span class="list-caption">{{files.filename}}</span>
+                                    
+                                </div>
+                              <div class="list-author-time">
+                                        <div><b>{{files.authname}}:</b> {{files.uploadtime |  date:"MMM d',' h:mma"}}</div>
+
+                                    </div>
+                               </div>
+                               </a>
+
+                               <a ng-if = "files.sample != 0" href="#/workgroups/sample/{{files.workgroupid}}/sample{{files.sample}}/{{files.uniqueFilename}}" ng-click="setName(files.filename)">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/sample/thumbnails/sample{{files.sample}}.jpg" class="img-responsive" alt="" /></div>
+                            <div class="col-md-8">
+                                <div class ="caption-list-cont"> 
+                                    
+                                    <span class="list-caption">{{files.filename}}</span>
+                                    
+                                </div>
+                              <div class="list-author-time">
+                                        <div><b>{{files.authname}}:</b> {{files.uploadtime |  date:"MMM d',' h:mma"}}</div>
+
+                                    </div>
+                               </div>
+                               </a>
+                               <div id="list-actions">
+                             
+
+                                <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement="bottom" tooltip="Delete file" ng-click="deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o list-works"></i>
+                                  
+                                 <a class = "list-works" href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+
+                             
+                              
+                              <a class= "list-works" href="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{wkgroupAuthId}}/original/{{files.uniqueFilename}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+                         </div>
+                        </div>
+                    </li>
+           </ul>
+    </div>
+
+<div ng-if = "allFiles.length == 0" style="text-align: center;
+font-size: 1.2em;
+color: #888;
+padding-top: 80px;
+font-style: italic;">
+
+
+You are just a step away from collaborating ! <br> 
+Why not upload files and get there ...
+
+</div>
+
+
+</div>
+</div>
+
+</div>

@@ -1,8 +1,8 @@
 <?php
 
-require_once 'angular/backend/functions.php';
+require_once 'a/backend/functions.php';
 require_once 'unique_random_alphanumeric.php';
-include 'angular/backend/connect.php';
+include 'a/backend/connect.php';
 
 session_start();
 	
@@ -72,7 +72,7 @@ $my_date = date("Y-m-d H:i:s");
 	$_SESSION['userid'] =  $new_register_user_id['userid']; // Will take the userid of the registered user
 	$_SESSION['email'] = $email;
 
-     echo "<script>window.location.href ='https://www.zofler.com/enterprise/angular/#/workgroups'</script>";
+     echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups'</script>";
 	
 	// echo $_SESSION['Username'];
 	// echo $_SESSION['userid'];

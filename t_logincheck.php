@@ -36,7 +36,7 @@ while ($row = mysql_fetch_array($result)) {
 	$m['id'] = $row['userid'];
 
 		 echo json_encode($m);
-			//redirect_to("http://localhost/local_ang/angular/#/profile/".$row['userid']);
+			//redirect_to("http://localhost/local_ang/a/#/profile/".$row['userid']);
 
 		}
 		else {

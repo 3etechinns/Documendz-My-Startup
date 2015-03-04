@@ -1,11 +1,11 @@
 <?php
 
-require_once 'angular/backend/functions.php';
+require_once 'a/backend/functions.php';
 require_once 'unique_random_alphanumeric.php';
 
   session_start();
 
-include 'angular/backend/connect.php';
+include 'a/backend/connect.php';
 
 function email($recipient_email_id,$senders_name,$un){
 
@@ -585,7 +585,7 @@ if($x > 0 ){
 		$_SESSION['userid'] = $z['userid'];
 
 
-		 echo "<script>window.location.href ='http://www.documendz.com/angular/#/workgroups'</script>";
+		 echo "<script>window.location.href ='http://www.documendz.com/a/#/workgroups'</script>";
 }
 
 else if( $x == 0){
@@ -625,7 +625,7 @@ $my_date = date("Y-m-d H:i:s");
 		$_SESSION['email'] = $email;
 		$_SESSION['userid'] = $i['userid'];
 
-echo "<script>window.location.href ='https://www.documendz.com/angular/#/workgroups'</script>";
+echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups'</script>";
 email($email,"Documendz",$i['username']);
 
 }
