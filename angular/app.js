@@ -801,7 +801,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	            };
 
 
-	            if (extCheck[file[0].type] != undefined && file[0].size < 4096)
+	            if (extCheck[file[0].type] != undefined && file[0].size < 4096000)
 
 	            {
 
