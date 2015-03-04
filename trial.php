@@ -94,6 +94,6 @@ catch(S3Exception $e){
 
 unlink($filepath1);
 unlink('uploaded/uploaded_files_'. $usId.'_original/'. $unique_filename.'.pdf');
-
+unlink('uploaded/jhg76'.$usId.'kd84/'. $unique_filename.'.html');
 
 ?>
