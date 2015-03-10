@@ -243,7 +243,7 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
                             <div><b>{{files.authname}}:</b> {{files.uploadtime | date:'MMM d, h:mm a'}}</div>
                         </div>
              <div class="key-holder" >
-               <a href="https://d28kungomln1xp.cloudfront.net/samples/original/sample{{files.sample}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+               <a href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files.sample}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
                <a href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
                <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
              </div>
