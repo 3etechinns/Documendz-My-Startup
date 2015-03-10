@@ -184,7 +184,7 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
               
                 <img ng-if="tr + files.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{files.authid}}/thumbnails/{{files.uniqueFilename}}.jpg" err-src="{{errSrc}}" alt="" />
 
-                <img ng-if="tr + files.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif" alt="" />
+                <img ng-if="tr + files.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://d28kungomln1xp.cloudfront.net/images/fileThumbnailLoading.png" alt="" />
 
             </div>
 
@@ -201,7 +201,7 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
             <div class=" thumbnail">
 
               
-                <img ng-if="tr + files.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/sample/thumbnails/sample{{files.sample}}.jpg" err-src="{{errSrc}}" alt="" />
+                <img ng-if="tr + files.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://d28kungomln1xp.cloudfront.net/sample/thumbnails/sample{{files.sample}}.jpg" err-src="{{errSrc}}" alt="" />
 
                 <img ng-if="tr + files.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif" alt="" />
 
@@ -215,7 +215,7 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
 
                     </a>
         
-        <div id="file-functions">
+        <div ng-if=="files.sample == 0" id="file-functions">
               <div class="file-author-time">
                             <div><b>{{files.authname}}:</b> {{files.uploadtime | date:'MMM d, h:mm a'}}</div>
                         </div>
@@ -236,6 +236,31 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
             </div>
                 </div> -->
          </div>
+
+
+ <div ng-if=="files.sample != 0" id="file-functions">
+              <div class="file-author-time">
+                            <div><b>{{files.authname}}:</b> {{files.uploadtime | date:'MMM d, h:mm a'}}</div>
+                        </div>
+             <div class="key-holder" >
+               <a href="https://d28kungomln1xp.cloudfront.net/samples/original/{{files.uniqueFilename}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+               <a href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+               <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
+             </div>
+                  <!--   <div class="file-functions">
+              
+               <div class="btn-group workgroup-functions-item " dropdown is-open="status.isopen">
+              <i class="fa fa-user fa-lg dropdown-toggle" dropdown-toggle ng-disabled="disabled"></i>
+           <i class="fa fa-copy fa-lg workgroup-functions-item "></i>
+                  <i class="fa fa-archive fa-lg workgroup-functions-item "></i>
+                   <i ng-if="wg.auth_id == pt" ng-click="deleteWkgroup(wg.uniqueId)" class="fa fa-trash-o fa-lg workgroup-functions-item "></i>
+
+
+            </div>
+                </div> -->
+         </div>
+
+
      </div>
  </div>
 

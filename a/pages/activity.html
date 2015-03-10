@@ -10,7 +10,10 @@
             </span>
 
             <li  ng-repeat="files in activityFiles | filter: {workgroupid : wg.uniqueId}" ng-class="files.uniqueFilename == '{{selFile}}' ? 'active-list' : 'inactive-list'"  ng-click="selectionFile(files.uniqueFilename)">
-                <p rel="tooltip" data-placement="right" data-original-title="Dashboard" href="index.html"> 
+                <p rel="tooltip" data-placement="right" data-original-title="Dashboard" href="index.html" style="width: 196px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;"> 
                     <span class="activity-files">{{files.filename}}</span>
                     <i class="fa fa-check" style="float: right;"></i>
                 </p>
@@ -97,7 +100,10 @@
                 File </h2>
             <ul class="cards list-group" style="margin-bottom:0px;border:none;">
                 <li ng-repeat = "files in activityFiles  | filter:{uniqueFilename:selFile}" class="list-group-item">
-                    <p class="title">{{files.filename}}</p>
+                    <p class="title" style="width: 220px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;">{{files.filename}}</p>
                     
                     <p class="info-text">Type:pdf</p>
                        <p class="info-text">Added on: {{files.uploadtime | date:'MMM d, h:mm a'}}</p></p>
