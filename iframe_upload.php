@@ -3,7 +3,7 @@
 <?php
 
 require_once 'functions.php';
-require_once 'email.php';
+
 
 session_start();
 include 'connect.php';
