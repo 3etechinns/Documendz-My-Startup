@@ -660,7 +660,7 @@ mysql_query("INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_S
 
 
 
-case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+case "application/msword":
     
     
     move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.doc');
