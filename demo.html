@@ -750,57 +750,6 @@ console.log("text is:" + text);
 
 
 
-        $(document).on({
-
-            click: function() {
-
-                $("#page-container").scrollTo("#svg-container ." + $(this).attr('class'), 0, {
-                    offset: -25
-                });
-                $(".tool").prop("checked", false);
-
-                switch ($('.' + $(this).attr('class') + ' > #anno_type > b')[0].innerHTML) {
-
-                    case "Strike":
-                        $("#strike").prop("checked", true);
-                        check_value("strike");
-                        break;
-
-                    case "Highlight":
-                        $("#highlight").prop("checked", true);
-                        check_value("highlight");
-                        break;
-
-                    case "Draw":
-                        $("#draw").prop("checked", true);
-                        check_value("draw");
-                        break;
-
-                    case "Text box":
-                        $("#textbox").prop("checked", true);
-                        check_value("textbox");
-                        break;
-
-                    case "Pin comment":
-                        $("#drop-comment").prop("checked", true);
-                        check_value("drop-comment");
-                        break;
-
-                    case "Text comment":
-                        $("#drag-comment").prop("checked", true);
-                        check_value("drag-comment");
-                        break;
-
-
-
-
-                }
-
-                ;
-
-
-            }
-        }, '#history > li');
 
   $(document).on({
 
@@ -2527,25 +2476,7 @@ console.log("ok");
                     $("#count-history").html($('#history').children().length - 1);
                 }
             });
-            $("#page-up").click(function() {
-
-                if (page_scroll_no_latest > 1) {
-
-                    $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + (page_scroll_no_latest - 1) + ")")[0].id);
-
-                }
-
-            })
-
-            $("#page-down").click(function() {
-
-                if (page_scroll_no_latest < total_pages) {
-
-                    $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + (page_scroll_no_latest + 1) + ")")[0].id);
-
-                }
-
-            })
+        
 
 
 
@@ -2572,35 +2503,12 @@ console.log("ok");
             });
 
 
-            $("#page_no").keypress(function(e) {
-                if (e.keyCode == 13) {
-                    var page_no = $(this)[0].value;
-
-                    if (page_no <= total_pages && page_no > 0) {
-
-                        $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + page_no + ")").attr('id'));
-                        page_scroll_no_latest = $("#page_no")[0].value;
-
-                    } else if (page_no > total_pages) {
-
-                        $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(" + total_pages + ")").attr('id'));
-                        $("#page_no")[0].value = total_pages;
-                        page_scroll_no_latest = total_pages;
-
-                    } else if (page_no == 0) {
-                        $("#page-container").scrollTo("#" + $("#svg-container > div:nth-child(1)").attr('id'));
-                        $("#page_no")[0].value = 1;
-                        page_scroll_no_latest = 1;
-
-                    }
-                }
-            });
+    
 
 
 
 
-
-            $("#page-container").scrollTo('first_pg_id');
+     
             $("#page_no")[0].value = "1";
 
 
