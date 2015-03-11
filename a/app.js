@@ -807,7 +807,8 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                "image/jpeg": "jpg",
 	                "image/bmp": "bmp",
 	                "application/pdf": "pdf",
-	                "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx"
+	                "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
+	                "application/msword": "doc"
 
 	            };
 

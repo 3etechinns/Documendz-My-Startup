@@ -82,7 +82,7 @@ use Aws\S3\Model\MultipartUpload\UploadBuilder;
             $unique_filename =getToken(15);
             $file_name_html = $unique_filename . ".html"; //appending html extension to the uploaded file
           
-	  $allowed_files = array("image/png"  ,  "image/svg+xml" , "application/x-shockwave-flash" , "image/jpeg" , "image/bmp" , "application/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+	  $allowed_files = array("image/png"  ,  "image/svg+xml" , "application/x-shockwave-flash" , "image/jpeg" , "image/bmp" , "application/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/msword");
             
 	    
 	    
@@ -658,6 +658,37 @@ mysql_query("INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_S
  
     break;
 
+
+
+case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+    
+    
+    move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.doc');
+    
+    //////////////  cloud conversion initiated   /////////////////
+    
+
+
+
+$physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/';
+	
+	
+	$uploadedFile = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.doc' ;
+	
+	$apiKey = 293619483;
+	
+	chmod($uploadedFile,0755);
+	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
+
+	$name = mysql_real_escape_string($file);
+
+pdf2html($html_file_dest,$unique_filename,$name,"800","doc");
+
+$my_date = date("Y-m-d H:i:s");
+mysql_query("INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_SESSION[userid]','$my_date','$file_ext',0)"); //When $_SESSION is used inside a
+
+ 
+    break;
 
     
 default: 
