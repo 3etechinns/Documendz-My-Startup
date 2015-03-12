@@ -520,17 +520,17 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 	                })
 	                .success(function(res) {
 
-	                    alert(res);
+	                    
 	                    $scope.abc.oldPass = "";
 	                    $scope.abc.newPass = "";
 
 	                    if(res == 0){
-
+	                    	alert(res);
 	                    	inform.add($scope.failuremsg.content, $scope.failuremsg.options);
 
 	                    }
 	                    else{
-
+alert(res);
 	                    	inform.add($scope.successmsg.content, $scope.successmsg.options);
 
 	                    }
