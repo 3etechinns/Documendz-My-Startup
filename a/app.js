@@ -473,7 +473,7 @@ $scope.fiToggle = false;
 
 
 
-	scotchApp.controller('accountController', function($window,Page, $scope, userData, $http) {
+	scotchApp.controller('accountController', function($window,Page, $scope, userData, $http, inform) {
 		
 		Page.setTitle('Account Details - Documendz');
 
