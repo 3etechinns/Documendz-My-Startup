@@ -520,7 +520,7 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 	                })
 	                .success(function(res) {
 
-	                    
+	                    alert(res);
 	                    $scope.abc.oldPass = "";
 	                    $scope.abc.newPass = "";
 
