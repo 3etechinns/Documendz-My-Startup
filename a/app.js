@@ -486,23 +486,10 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 
 		};
 	    
-	    $scope.successmsg = {
-    content: 'Password changed succesfully!',
-    options: {
-      ttl: 6000,
-      type: 'success',
-      html: true
-    }
+	    
   }
 
-   $scope.failuremsg = {
-    content: 'Oops! Current password entered is incorrect. Please try again.',
-    options: {
-      ttl: 6000,
-      type: 'warning',
-      html: true
-    }
-  }
+   
     
 	    
 	    $scope.workgroupscount = $scope.wgData.length;
@@ -525,12 +512,25 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 	                    $scope.abc.newPass = "";
 
 	                    if(res == 0){
-	                    	alert(res);
+	                    	$scope.failuremsg = {
+    content: 'Oops! Current password entered is incorrect. Please try again.',
+    options: {
+      ttl: 6000,
+      type: 'warning',
+      html: true
+    }
+  }
 	                    	inform.add($scope.failuremsg.content, $scope.failuremsg.options);
 
 	                    }
 	                    else{
-alert(res);
+	                    	$scope.successmsg = {
+    content: 'Password changed succesfully!',
+    options: {
+      ttl: 6000,
+      type: 'success',
+      html: true
+    }
 	                    	inform.add($scope.successmsg.content, $scope.successmsg.options);
 
 	                    }
