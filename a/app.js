@@ -520,7 +520,8 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
       html: true
     }
   }
-  
+  alert("hi");
+
 	                    	inform.add($scope.failuremsg.content, $scope.failuremsg.options);
 
 	                    }
