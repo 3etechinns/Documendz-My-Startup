@@ -19,7 +19,7 @@ if(strcmp($row['password'],md5($x."kubrv653nerf")) == 0){
   
   mysqli_query($dbhandle, "UPDATE signup SET password='$hashed_new_pass' WHERE userid=".$_SESSION['userid']);
   
-  echo "Password changed succesfully!";  
+  echo "1";  
 
   // Trigger email if needed
     
@@ -27,7 +27,7 @@ if(strcmp($row['password'],md5($x."kubrv653nerf")) == 0){
 
 else {
     
-    echo "Oops! Current password entered is incorrect. Please try again.";
+    echo "0";
     
 }
 
