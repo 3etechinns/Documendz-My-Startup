@@ -487,7 +487,6 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 		};
 	    
 	    
-  }
 
    
     
@@ -512,6 +511,7 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 	                    $scope.abc.newPass = "";
 
 	                    if(res == 0){
+
 	                    	$scope.failuremsg = {
     content: 'Oops! Current password entered is incorrect. Please try again.',
     options: {
@@ -520,10 +520,12 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
       html: true
     }
   }
+  
 	                    	inform.add($scope.failuremsg.content, $scope.failuremsg.options);
 
 	                    }
 	                    else{
+
 	                    	$scope.successmsg = {
     content: 'Password changed succesfully!',
     options: {
@@ -531,6 +533,8 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
       type: 'success',
       html: true
     }
+  }
+
 	                    	inform.add($scope.successmsg.content, $scope.successmsg.options);
 
 	                    }
