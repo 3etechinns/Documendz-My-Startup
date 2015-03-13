@@ -115,7 +115,8 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
 
         <div class="center">
         <form name="addCollaborator">
-        <input class= "collabNameInput" id="projectname" type="email" ng-model="newCollab.email" name="collaboratorEmail" inv-autofocus="" tabindex="101" placeholder="Collaborator Email Id" required />
+        <input class="collabNameInput" id="projectname" type="email" typeahead="state for state in states | filter:$viewValue | limitTo:8"  ng-model="newCollab.email" name="collaboratorEmail" inv-autofocus="" tabindex="101" placeholder="Collaborator Email Id" required />
+
         </div>
           <div class="modal-footer" >
           <div class="btn btn-primary" tabindex="120" ng-click = "addCollab()" ng-disabled = "addCollaborator.$invalid">Invite</div>

@@ -153,6 +153,12 @@ scotchApp.directive('confirmation', function () {  // for asking confirmation
 	    $scope.newProj = {};
 	    $scope.newCollab = {};
 
+$scope.states=[''];
+
+if(userData.getData().emailList){
+$scope.states = userData.getData().emailList;
+}
+
 	    $scope.cancel = function() {
 
 	        $modalInstance.close();
@@ -360,7 +366,23 @@ $scope.fiToggle = false;
 	            //error
 	        });
 
+ $http.get('https://www.google.com/m8/feeds/contacts/default/full?v=3.0&access_token='+localStorage.getItem("dcz_tkn")+'&max-results=1000&v=3.0&alt=json')
+.success(function(data,status){
 
+
+$scope.states = [];
+angular.forEach(data.feed.entry, function(value, key) {
+
+  if(value.gd$email)	{
+  
+$scope.states.push(value.gd$email[0].address);
+  // console.log(value.gd$email[0].address);
+}
+});
+
+userData.setData($scope.states,"emailList");
+
+});
 
 
 	    $scope.addWorkgGroup = function() {
