@@ -51,8 +51,8 @@ $new_register_user_id = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT userid
 /// 2 sample wkgroups ///
 
 	mysqli_query($dbhandle,"INSERT INTO workgroups (uniqueId,wname,wdesc,auth_id,auth_name,sample) 
-                        VALUES ('".$r1."','Documents (Sample)','This is where you can add a short description for your workgroup to let your collaborators know a few details about the files, deadlines, tasks that you need to complete. ',". $i['userid'].",'".$i['username']."',1),
-                               ('".$r2."','Designs (Sample)','Example: Let us get the final draft for these designs by 18th Dec. Add your designs and revisions here.',". $i['userid'].",'".$i['username']."',1)");
+                        VALUES ('".$r1."','Documents (Sample)','This is where you can add a short description for your workgroup to let your collaborators know a few details about the files, deadlines, tasks that you need to complete. ',". $new_register_user_id['userid'].",'".$new_register_user_id['username']."',1),
+                               ('".$r2."','Designs (Sample)','Example: Let us get the final draft for these designs by 18th Dec. Add your designs and revisions here.',". $new_register_user_id['userid'].",'".$new_register_user_id['username']."',1)");
 	
 $my_date = date("Y-m-d H:i:s");
 
