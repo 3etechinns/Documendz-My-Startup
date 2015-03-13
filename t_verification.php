@@ -56,10 +56,10 @@ $new_register_user_id = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT userid
 	
 $my_date = date("Y-m-d H:i:s");
 
-	mysqli_query($dbhandle,"INSERT INTO files VALUES('','".$s1."','Legal document.pdf','".$r1."',".$i['userid'].",'$my_date','pdf',11),
-	                                                ('','".$s2."','Research paper.pdf','".$r1."',".$i['userid'].",'$my_date','pdf',12),
-						                            ('','".$s3."','Creative design.jpg','".$r2."',".$i['userid'].",'$my_date','pdf',21),
-						                            ('','".$s4."','Floor plan.jpg','".$r2."',".$i['userid'].",'$my_date','pdf',22)");
+	mysqli_query($dbhandle,"INSERT INTO files VALUES('','".$s1."','Legal document.pdf','".$r1."',".$new_register_user_id['userid'].",'$my_date','pdf',11),
+	                                                ('','".$s2."','Research paper.pdf','".$r1."',".$new_register_user_id['userid'].",'$my_date','pdf',12),
+						                            ('','".$s3."','Creative design.jpg','".$r2."',".$new_register_user_id['userid'].",'$my_date','pdf',21),
+						                            ('','".$s4."','Floor plan.jpg','".$r2."',".$new_register_user_id['userid'].",'$my_date','pdf',22)");
     
 
 	mkdir('uploaded/uploaded_files_'.$new_register_user_id['userid'].'_original');
