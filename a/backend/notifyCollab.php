@@ -413,7 +413,7 @@ $message->setBody(
 																			<div class="img_edit" style="visibility: visible;">
 																			</div>
 																		</div>
-																	</div><img src="https://stamplia.com/edit/7420_55w39c9l9sw08ggk8koww8c8kc0cocsocgskkwwwwwkockggo8_9063/img/b426c509d05942af930677836bb3b4ab.png" alt="" border="0" width="170" height="128" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
+																	</div><img src="https://s3-ap-southeast-1.amazonaws.com/documendz-static/email-images/addcollab1.png" alt="" border="0" width="170" height="128" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
 																</div>
 															</td>
 														</tr>
@@ -509,7 +509,7 @@ $message->setBody(
 																			<div class="img_edit" style="visibility: visible;">
 																			</div>
 																		</div>
-																	</div><img src="https://stamplia.com/edit/7420_55w39c9l9sw08ggk8koww8c8kc0cocsocgskkwwwwwkockggo8_9063/img/00ee1d7d30f644fe916e80d23eafc6d9.png" alt="" border="0" width="170" height="128" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
+																	</div><img src="https://s3-ap-southeast-1.amazonaws.com/documendz-static/email-images/addcollab2.png" alt="" border="0" width="170" height="128" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
 																</div>
 															</td>
 														</tr>
@@ -609,7 +609,7 @@ $message->setBody(
 																			<div class="img_edit" style="visibility: visible;">
 																			</div>
 																		</div>
-																	</div><img src="https://stamplia.com/edit/7420_55w39c9l9sw08ggk8koww8c8kc0cocsocgskkwwwwwkockggo8_9063/img/925a5139cee04a39b0bb266849c99646.png" alt="" width="170" height="128" border="0" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
+																	</div><img src="https://s3-ap-southeast-1.amazonaws.com/documendz-static/email-images/addcollab3.png" alt="" width="170" height="128" border="0" style="display:block; border:none; outline:none; text-decoration:none;" class="col3img" />
 																</div>
 															</td>
 														</tr>
