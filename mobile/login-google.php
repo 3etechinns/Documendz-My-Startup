@@ -2,7 +2,7 @@
   header('Content-Type: text/javascript');
 
   require "connect.php";
-  require_once '../../unique_random_alphanumeric.php';
+  require_once '../unique_random_alphanumeric.php';
 
   if(isset($_GET['e'])) {
 
@@ -70,7 +70,8 @@ echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $i['userid
 
 
    else{
-echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $skey . "'}" . ')';   }
+echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $skey . "'}" . ')'; 
+  }
 }
   
  ?>

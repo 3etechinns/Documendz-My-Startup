@@ -2,7 +2,7 @@
   header('Content-Type: text/javascript');
 
   require "connect.php";
-  require_once '../../unique_random_alphanumeric.php';
+  require_once '../unique_random_alphanumeric.php';
   if(isset($_GET['e']) && isset($_GET['p'])) {
 
   $email = trim($_GET['e']);   //dunno y trim is used 
