@@ -297,16 +297,39 @@ if (!$mailer) {
 	}
 }			
 		
+		
 $w = $_POST['w'];
 $f= $_POST['f'];
 
 $cDistribArray = array();
-$result = mysqli_query($dbhandle, "SELECT collabEmail FROM collaborators WHERE  wkUniqueId = '".$w."'");	
+
 $wn = mysqli_fetch_assoc(mysqli_query($dbhandle, "SELECT wname FROM workgroups WHERE  uniqueId = '".$w."'"));
 
+$chk_auth = mysqli_fetch_assoc(mysqli_query($dbhandle,"SELECT DISTINCT(authId) as authId FROM collaborators WHERE wkUniqueId = '".$w."'"));
 
-while($rowEmail = mysqli_fetch_assoc($result)) {
-    $cDistribArray[] = $rowEmail['collabEmail'];
+if($chk_auth['authId'] == $_SESSION['userid']){
+
+		$result = mysqli_query($dbhandle, "SELECT collabEmail FROM collaborators WHERE  wkUniqueId = '".$w."'");	
+
+		while($rowEmail = mysqli_fetch_assoc($result)) {
+		    $cDistribArray[] = $rowEmail['collabEmail'];
+		}
+
+
+}
+
+else{
+
+		$result = mysqli_query($dbhandle, "SELECT collabEmail FROM collaborators WHERE  wkUniqueId = '".$w."' AND collabEmail <>'".$_SESSION['email']."'");	
+
+
+		while($rowEmail = mysqli_fetch_assoc($result)) {
+		    $cDistribArray[] = $rowEmail['collabEmail'];
+		}
+
+		$auth = mysqli_fetch_assoc(mysqli_query($dbhandle,"SELECT emailid FROM signup WHERE userid = ".$chk_auth['authId']));
+
+		array_push($cDistribArray,$auth['emailid']);
 }
 
 
