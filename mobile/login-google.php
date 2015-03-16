@@ -1,12 +1,13 @@
- <?php 
+<?php 
   header('Content-Type: text/javascript');
 
   require "connect.php";
   require_once '../../unique_random_alphanumeric.php';
-  
+
   if(isset($_GET['e'])) {
 
   $email = trim($_GET['e']);   //dunno y trim is used 
+  $name = trim($_GET['n']);
   $temp = 0;
 $skey = '';
 $result = mysql_query("SELECT emailid, userid FROM signup") or die(mysql_error());
@@ -25,6 +26,7 @@ $skey = $row['userid'];
 } 
  
 if($temp == 0){  // New user
+
 
 
 mysql_query("INSERT INTO signup (username, password, emailid,verified,gsign, workgroups, files, collaborators) VALUES('$name','$password','$email',1,1,3,10,3)");
@@ -54,24 +56,21 @@ $my_date = date("Y-m-d H:i:s");
                                         ('','".$s4."','Floor plan.jpg','".$r2."',".$i['userid'].",'$my_date','pdf',22)");
     
 
-  mkdir('uploaded/uploaded_files_'.$i["userid"].'_original');
-  mkdir('uploaded/jhg76'.$i["userid"].'kd84');
+  mkdir('../uploaded/uploaded_files_'.$i["userid"].'_original');
+  mkdir('../uploaded/jhg76'.$i["userid"].'kd84');
   
 
-  
+  // Drop an email
 
+echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $i['userid'] . "'}" . ')'; 
 
-echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $i["userid"] . "'}" . ')'; 
 
   
   }
 
 
    else{
-echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $skey . "'}" . ')';   
+echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $skey . "'}" . ')';   }
 }
   
-  }
  ?>
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-

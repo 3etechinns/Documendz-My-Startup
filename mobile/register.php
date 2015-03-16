@@ -58,8 +58,8 @@ $my_date = date("Y-m-d H:i:s");
                                         ('','".$s4."','Floor plan.jpg','".$r2."',".$i['userid'].",'$my_date','pdf',22)");
     
 
-  mkdir('uploaded/uploaded_files_'.$i["userid"].'_original');
-  mkdir('uploaded/jhg76'.$i["userid"].'kd84');
+  mkdir('../uploaded/uploaded_files_'.$i["userid"].'_original');
+  mkdir('../uploaded/jhg76'.$i["userid"].'kd84');
   
 
   
