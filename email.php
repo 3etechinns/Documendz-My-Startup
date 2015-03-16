@@ -17,7 +17,7 @@ $transport = Swift_SmtpTransport::newInstance('smtpout.secureserver.net',80)
 
 // Create the message
 $message = Swift_Message::newInstance(Subject);
-$message->setTo(array(
+$message->setBcc(array(
 "dave.hardik30@gmail.com"
 ));
 
@@ -1370,7 +1370,7 @@ $mailer->send($message);
 
 }
 
-email();
+//email();
 
 echo "done";
 ?>

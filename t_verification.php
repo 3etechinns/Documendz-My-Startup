@@ -19,7 +19,7 @@ if (MD5($email.$secret) == $hashcode){
 	
 $email = mysqli_real_escape_string($dbhandle,$email);
 	
-$check_ver = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT verified FROM signup WHERE emailid = '".$email."'"),MYSQLI_ASSOC);
+$check_ver = mysqli_fetch_assoc(mysqli_query($dbhandle,"SELECT verified FROM signup WHERE emailid = '".$email."'"));
 
 if ($check_ver['verified'] == 0){
  
