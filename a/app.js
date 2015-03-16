@@ -1050,6 +1050,18 @@ $http.get("backend/getSession.php")
 
 
 	    });
+$scope.send_update = function(){
+
+	   		 	 $http({
+	                    method: 'POST',
+	                    url: 'backend/send_update.php',
+	                    data: "w=" + $routeParams.wgId + "&f="+ $scope.templateFilename, // pass in data as strings
+	                    headers: {
+	                        'Content-Type': 'application/x-www-form-urlencoded'
+	                    }
+	                })
+	    };
+	    
 	});
 
 
