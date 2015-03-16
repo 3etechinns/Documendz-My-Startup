@@ -68,7 +68,7 @@ echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $i["userid
 
 
    else{
-echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $skey . "'}" . ')';   }
+echo  $_GET['callback'] . '(' . "{'status' : '0', 'sessionkey' : '" . $i["userid"] . "'}" . ')';   }
 }
   
  ?>
