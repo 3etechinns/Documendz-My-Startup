@@ -29,7 +29,7 @@ if($temp == 0){  // New user
 
 
 
-mysql_query("INSERT INTO signup (username, password, emailid,verified,gsign, workgroups, files, collaborators) VALUES('$name','$password','$email',1,1,3,10,3)");
+mysql_query("INSERT INTO signup (username, password, emailid,verified,gsign, workgroups, files, collaborators) VALUES('$name','','$email',1,1,3,10,3)");
 
  $i = mysql_fetch_assoc(mysql_query("SELECT userid,username FROM signup WHERE emailid ='".$email."'"));
   // Drop an email
