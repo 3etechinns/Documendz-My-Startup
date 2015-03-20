@@ -7,7 +7,7 @@
   if(isset($_GET['e'])) {
 
   $email = trim($_GET['e']);   //dunno y trim is used 
-  $name = trim($_GET['n']);
+  $name = urldecode(trim($_GET['n']));
   $temp = 0;
 $skey = '';
 $result = mysql_query("SELECT emailid, userid FROM signup") or die(mysql_error());

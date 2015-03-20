@@ -41,28 +41,28 @@
 <script type="text/javascript">
 
 
-// $.ajax({
-// 	        type:"POST",
-// 	        cache:false,
-// 		async: false,
-// 	        url:"already_logged_in.php",
-// 		data: {token:"jh67jb"},
-// 	        datatype: "text",
+$.ajax({
+	        type:"POST",
+	        cache:false,
+		async: false,
+	        url:"already_logged_in.php",
+		data: {token:"jh67jb"},
+	        datatype: "text",
 	        
-// 			success: function(response){
+			success: function(response){
 				
-// 				if (parseInt(response) == 1) {
-// 					window.location = "https://www.documendz.com/profile_page.php";
-// 				}
-// 				else{
-// 					// Run normal
-// 				}
+				if (parseInt(response) == 1) {
+					window.location = "a/#/workgroups";
+				}
+				else{
+					// Run normal
+				}
 				
-// 				},
-// 			error: function(){
-// 					alert("Oops! Something went wrong");
-// 					}
-// 		    });
+				},
+			error: function(){
+					alert("Oops! Something went wrong");
+					}
+		    });
 
 		    
 		    
