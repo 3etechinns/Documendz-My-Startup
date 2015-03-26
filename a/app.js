@@ -875,6 +875,11 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 
 	                $scope.fileName = file[0].name;
 
+angular.element( document.querySelector('.uploader-file-name').innerHTML = $scope.fileName);
+angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "block";
+
+angular.element( document.querySelector('.prog-event').innerHTML = "Uploading");
+
 	                $upload.upload({
 	                    url: "../iframe_upload.php",
 	                    method: 'POST',
@@ -886,12 +891,24 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 
 	                    $scope.showProgress = 1;
 	                    $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
+
+angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.progressValue+ "%";
+
+if($scope.progressValue == 100){
+ angular.element( document.querySelector('.prog-event').innerHTML = "Processing");
+}
+
 	                }).success(function(data, status, headers, config) {
 	                    // file is uploaded successfully
 	                   
 	                    $scope.stopSpin = 1;
 	                    $scope.fileName = "";
 	                     $scope.wa = 0;
+
+
+angular.element( document.querySelector('.prog-event').innerHTML = "Done");
+angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+
 
 	                    if (data == 999) {
 	                        $scope.filetype_msg = {

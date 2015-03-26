@@ -3375,10 +3375,46 @@ z-index: 500;" class="navbar navbar-default">
         <!-- this is where content will be injected -->
     <div ng-view ></div>
 
-    
-
-
   </div>
+        
+<div class="progress-holder" 
+style="position: fixed;
+bottom: 17px;
+display: none;
+right: 17px;
+margin: 0px;
+padding: 10px;
+width: 207px;
+z-index: 5;
+border: 1px solid rgb(229, 229, 229);
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+-webkit-animation: fadeout 1.6s;
+background: rgb(255, 255, 255);">
+
+      <div class="progress" style="line-height: 15px;" >
+             <div  class="progress-bar"></div>
+      </div>
+    
+      <span class="uploader-file-name" 
+      style="float: left;
+font-size: 12px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+width: 100%;
+margin-top: 6px;"></span>
+
+      <span class="prog-event" 
+      style="float: left;
+color: green;
+line-height: 8px;
+font-size: 12px;
+margin-top: 6px;">Uploading</span>          
+    
+</div>
   
 
   

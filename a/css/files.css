@@ -85,19 +85,18 @@ text-decoration: none;
 }
 
 
+
+
 .progress {
-    width: 400px;
-    height: 14px;
-  padding: 4px;
-  background: rgba(black, .25);
-  border-radius: 6px;
-  @include box-shadow(inset 0 1px 2px rgba(black, .25),
-                      0 1px rgba(white, .08));
+width: 100%;
+height: 7px;
+border-radius: 6px;
+margin-bottom: 0px;
 }
 
 .progress-bar {
   position: relative;
-  height: 8px;
+  height: 7px;
   border-radius: 4px;
   @include transition(.4s linear);
   @include transition-property(width, background-color);
@@ -733,4 +732,90 @@ border: 1px solid rgb(85, 78, 78);
 border-radius: 5px;
 padding: 10px;
 
+}
+
+#startup {
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          z-index:100;
+          top:140px;
+          background-color: #eeeeee;
+          z-index:100;
+          -moz-user-select: none;
+          -webkit-user-select: none;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          display: -webkit-box;
+          display: -webkit-flex;
+          -webkit-align-items: center;
+          -webkit-justify-content: center;
+      }
+
+.spinner-container {
+  
+  -webkit-animation: rotate 2s linear infinite;
+  animation: rotate 2s linear infinite;
+}
+
+.spinner-container .path {
+  stroke-dasharray: 1,150;
+  stroke-dashoffset: 0;
+  stroke: rgba(213, 133, 18, 0.83);
+  stroke-linecap: round;
+  -webkit-animation: dash 1.5s ease-in-out infinite;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1,150;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dashoffset: -35;
+  }
+
+  50%,100% {
+    stroke-dasharray: 90,150;
+  }
+
+  100% {
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,150;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dashoffset: -35;
+  }
+
+  50%,100% {
+    stroke-dasharray: 90,150;
+  }
+
+  100% {
+    stroke-dashoffset: -124;
+  }
 }

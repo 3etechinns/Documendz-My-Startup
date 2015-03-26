@@ -104,18 +104,7 @@ border-radius: 0 0 8px 8px;">
     <input type="file" name="file" accept="*" tabindex="-1" ng-file-generated-elem="true" style="width: 1px; height: 1px; opacity: 0; position: absolute; padding: 0px; margin: 0px; overflow: hidden;"></button><br>
 
   </div> 
-<div id="progress-attributes">
-<span id="upload-filename">{{fileName}}</span>
 
-
-<div  class="progress" ng-if="progressValue != 100 && showProgress == 1 "> 
-      <div class="progress-bar" style="width:{{progressValue}}%"></div>
-</div>
-
-<div  class="spinner"  ng-if="progressValue == 100 && stopSpin != 1">
-<i class="fa fa-spinner fa-pulse fa-lg"></i> Processing
-</div>
-</div>
   </div>
 
 <div id= "upload-limit-message" ng-if   ='allFiles.length >= flimit'> 

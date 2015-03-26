@@ -1356,11 +1356,12 @@
 
 <body>
 
-    <div id="loading" >
 
-        <img id="loading-image" src="../images/ajax-loader.gif" alt="Loading..." />
-
-    </div>
+   <div id="startup">
+<svg class="spinner-container" width="65px" height="65px" viewBox="0 0 52 52">
+      <circle class="path" cx="26px" cy="26px" r="20px" fill="none" stroke-width="4px"></circle>
+    </svg>
+</div>
 
     <div id="template-attributes" style="position: fixed;
 top: 55px;
@@ -1680,7 +1681,8 @@ setTimeout(function(){ // a 500ms timeout given so that it lands on the page the
 
            
              align_page();
-$('#loading').css({display:"none"});
+    
+    $('#startup').css({display:"none"});
             
             if (data.error) {
                 console.log("Server Error Pulling data");
