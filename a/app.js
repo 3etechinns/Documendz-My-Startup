@@ -43,6 +43,13 @@
 
 	    })
 
+	         .when('/workgroups/:wgId/version/:fileId', {
+	        templateUrl: 'versionTemplate.html',
+	        controller: 'templateController'
+
+
+	    })
+
 	      .when('/workgroups/:wgId/:fileId/activity', {
 	        templateUrl: 'pages/activity.html',
 	        controller: 'activityController'
@@ -330,6 +337,7 @@ $scope.fiToggle = false;
 	            $scope.ut = data[0].username;
 	               $scope.flimit = data[0].files;
 	            $scope.wlimit = data[0].workgroups;
+	            $scope.ver = data[0].versions;
 	            $scope.climit = data[0].collaborators;
 	         
 
@@ -651,16 +659,27 @@ $scope.search = function (item){
 	        .success(function(data) {
 	            
 	            $scope.allFiles = data;
-	          //  console.log(data);
-	            
-	            
-	            
-	            // $scope.isDisabled = ($scope.allFiles.length >= 4) ? "true" : "false";
-				
-				
+	    
 
 	        });
 
+
+    var frv = $http({
+			        method: 'POST',
+			        url: 'backend/fetchFileRevisions.php',
+			        data: "wid=" + $routeParams.wgId, // pass in data as string
+			        headers: {
+			            'Content-Type': 'application/x-www-form-urlencoded'
+			        }
+    				});
+				    frv.success(function(data) {
+				        $scope.revisions = data;
+				        console.log("versions are:");
+				        console.log(data);
+				        // $scope.isDisabled = ($scope.allFiles.length >= 4) ? "true" : "false";
+
+				        console.log( $scope.revisions);
+				    });
 
 
 	            
@@ -748,6 +767,26 @@ $scope.search = function (item){
 	    };
 
 
+$scope.deleteVersion = function(uniqueVerId,file_ext){
+
+                    var e = $scope.revisions.map(function(x) {
+	                    return x.verUniqueFilename;
+	                }).indexOf(uniqueVerId);
+	                var objectFound = $scope.revisions[e];
+	                var idx = $scope.revisions.indexOf(objectFound);
+	                
+	                $scope.revisions.splice(idx, 1);
+
+	                 $http({
+	                            method: 'POST',
+	                            url: 'backend/deleteRevisionFile.php',
+	                            data: "v=" + uniqueVerId +'&ext ='+ file_ext, // pass in data as strings
+	                            headers: {
+	                                'Content-Type': 'application/x-www-form-urlencoded'
+	                            }
+	                        })
+
+	            	};
 
 
 	    $scope.inviteCollab = function() {
@@ -959,7 +998,99 @@ angular.element( document.querySelector( '.progress-holder' ))[0].style.display 
 
 	        }
 	    }
-	
+	 $scope.uploadFileRevision = function(file, fid) {
+    console.log("fid is ");
+    console.log(fid);
+   
+    $scope.stopSpin = 0;
+
+    if (file != "") {
+        console.log(file[0]);
+        var extCheck = {
+            "image/png": "png",
+            "image/svg+xml": "svg",
+            "application/x-shockwave-flash": "swf",
+            "image/jpeg": "jpg",
+            "image/bmp": "bmp",
+            "application/pdf": "pdf",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx"
+        };
+
+        if (extCheck[file[0].type] != undefined)
+        {
+            $scope.fileName = file[0].name;
+
+angular.element( document.querySelector('.uploader-file-name').innerHTML = $scope.fileName);
+angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "block";
+
+         var prm =  $upload.upload({
+                url: "../revision_upload.php",
+                method: 'POST',
+                file: file[0],
+                data: {
+                    wgId: $routeParams.wgId,
+                    ogFile: fid.trim()
+                },
+            });
+         prm.progress(function(evt) {
+                $scope.showProgress = 1;
+                $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
+
+angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.progressValue+ "100px";
+if($scope.progressValue > 80){
+ angular.element( document.querySelector('.prog-event').innerHTML = "Processing");
+
+}                
+
+            }).success(function(data, status, headers, config) {
+                // file is uploaded successfully
+                alert('file revision is uploaded successfully.');
+                $scope.stopSpin = 1;
+                $scope.fileName = "";
+
+angular.element( document.querySelector('.prog-event').innerHTML = "Done");
+angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+                
+                if (data == 999) {
+                    $scope.filetype_msg = {
+                        content: 'Oops! Something seems to have gone wrong.',
+                        options: {
+                            ttl: 8000,
+                            type: 'danger',
+                            html: true
+                        }
+                    }
+                    inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+
+                } else {
+
+                    $scope.revisions.push({
+                        ver_authid: userData.getData().userid,
+                        verFid: "0",
+                        filename: file[0].name,
+                        verUniqueFilename: data,
+                        parentUniqueFilename: fid,
+                        authname: $scope.userData[0].username,
+                        verUploadtime: new Date(),
+                        verExtension: extCheck[file[0].type]
+                    });
+                }
+            });
+
+        } else {
+            $scope.filetype_msg = {
+                content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+                options: {
+                    ttl: 8000,
+                    type: 'danger',
+                    html: true
+                }
+            }
+            inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+        }
+    }
+}
+		
 	
  $scope.increaseFileLimit = function(){
 

@@ -223,7 +223,67 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
                              
                               
                               <a class= "list-works" href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files.sample}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+
+
+
+                              <div ng-if="ver == 1" style="float: left; display: initial;">
+                                <button style="border: 1px solid rgba(2, 57, 75, 0.6);
+                            border-top-left-radius: 4px;
+                            border-top-right-radius: 4px;
+                            border-bottom-right-radius: 4px;
+                            border-bottom-left-radius: 4px;
+                            padding: 2px;
+                            color: rgba(2, 57, 75, 0.6);
+                            background-color: white;
+                            font-size: 11px;"
+                             ng-file-select="" ng-disabled='allFiles.length >= 10' ng-model="files" class="addversion ng-isolate-scope ng-pristine ng-valid" ng-file-change="uploadFileRevision(files,files1.uniqueFilename)" ng-multiple="false" tabindex="0" accept="*" style="overflow:hidden">Add version <input type="file" name="file" accept="image/*,application/pdf" tabindex="-1" ng-file-generated-elem="true" style="width: 1px; height: 1px; opacity: 0; position: absolute; padding: 0px; margin: 0px; overflow: hidden;">
+                                   
+                                </button>
+                            </div>
+
                          </div>
+
+
+ <div class="col-sm-4" style="margin-bottom: 4px;
+float: right;
+text-align: right;
+margin-top: -20px;
+width: 26.533333%;">
+
+<span style="color:white">.</span>
+   <div class="version-circle" style="float:left;" ng-repeat="revision in revisions | filter:{parentUniqueFilename:files1.uniqueFilename}" ng-if="files1.uniqueFilename == revision.parentUniqueFilename" >
+
+
+
+    <span> <a href = "#/workgroups/{{files1.workgroupid}}/version/{{revision.ver_authid}}{{revision.verUniqueFilename}}" style="border-radius: 50%;
+background: white;
+padding: 5px;
+border: 1px solid cornflowerblue;
+margin-right: 3px;
+color: cornflowerblue;
+cursor:pointer;
+font-size:11px;"
+ ng-if="$index <= 3" tooltip-placement="bottom" tooltip="By {{revision.authname}}">v{{$index+1}}</a></span>
+
+
+</div>
+
+    <span class="dropdown" dropdown on-toggle="toggled(open)" style="text-decoration: underline;" > 
+      <a style="font-size: 10px; padding-right: 1px;" href class="dropdown-toggle" dropdown-toggle >Manage all</a>
+      <ul class="dropdown-menu">
+        <li style="padding: 3px 0px;" ng-repeat="l_revision in revisions | filter:{parentUniqueFilename:files1.uniqueFilename}">
+            <div style="padding: 2px 10px;text-align:left" class="version-holder">
+          <a style="color: rgba(2, 57, 75, 0.8);" href="#/workgroups/{{files1.workgroupid}}/version/{{l_revision.ver_authid}}{{l_revision.verUniqueFilename}}" tooltip=" By {{l_revision.authname}}" tooltip-placement="left">version {{$index+1}}</a>
+            <i ng-if = "pt == l_revision.ver_authid || pt == wkgroupAuthId" ng-click="deleteVersion(l_revision.verUniqueFilename,l_revision.verExtension)" class="fa fa-trash-o" style="line-height: 1.5em; float:right;cursor:pointer"></i>
+
+          
+          </div>
+        </li>
+      </ul>
+    </span>
+
+
+                 </div>
 
                         </div>
                     </li>

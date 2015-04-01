@@ -66,6 +66,47 @@ catch(S3Exception $e){
 
 }
 
+//delete versions of the file
+
+$result1 = mysqli_query($dbhandle, "SELECT verUniqueFilename,verExtension,ver_authid FROM versions WHERE parentUniqueFilename = '".$f."'");
+
+
+while($row = mysqli_fetch_assoc($result1))
+ {
+  
+
+    try{
+
+    
+    
+    $del1 = $s3 -> deleteObject(array(
+       
+        'Bucket' => 'documendz-ent',
+        'Key' => "uploaded/user_".$row['ver_authid'].'/versions/'.$row['verUniqueFilename'].'.html'                                           
+                                                  
+    ));
+    
+    $del2 = $s3 -> deleteObject(array(
+       
+        'Bucket' => 'docimendz-ent',
+        'Key' =>  "uploaded/user_".$row['ver_authid'].'/thumbnails/'.$row['verUniqueFilename'].'.jpg'                                        
+                                                  
+    ));
+   
+     $del3 = $s3 -> deleteObject(array(
+       
+        'Bucket' => 'documendz-ent',
+        'Key' => "uploaded/user_".$row['ver_authid'].'/original/'.$row['verUniqueFilename'].'.'.$row['verExtension']                                         
+                                                  
+    ));
+        }
+
+catch(S3Exception $e){
+   
+                      }
+
+  }
+
 echo $keyname.'original/'.$f.'.'.$e ;
 
-?> 
+?>  
