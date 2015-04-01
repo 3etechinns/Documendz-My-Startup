@@ -946,9 +946,10 @@ if($scope.progressValue == 100){
 
 
 angular.element( document.querySelector('.prog-event').innerHTML = "Done");
+
 $timeout(function(){
 	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
-},3000);
+},4000);
 
 
 
