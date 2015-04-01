@@ -168,61 +168,61 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
  
     <div class="panel-body">
       <ul class="list-group">
-                    <li ng-repeat = "files in allFiles | orderBy:predicate:reverse |filter:search " class="list-group-item files-list show-animator">
+                    <li ng-repeat = "files1 in allFiles | orderBy:predicate:reverse |filter:search " class="list-group-item files-list show-animator">
                         <div class="row">
-                          <a ng-if = "files.sample == 0" href="#/workgroups/{{files.workgroupid}}/{{files.authid}}{{files.uniqueFilename}}" ng-click="setName(files.filename)">
+                          <a ng-if = "files1.sample == 0" href="#/workgroups/{{files1.workgroupid}}/{{files1.authid}}{{files1.uniqueFilename}}" ng-click="setName(files1.filename)">
                             <div class="col-xs-2 col-md-1">
-                                <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{files.authid}}/thumbnails/{{files.uniqueFilename}}.jpg" class="img-responsive" alt="" /></div>
+                                <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{files1.authid}}/thumbnails/{{files1.uniqueFilename}}.jpg" class="img-responsive" alt="" /></div>
                             <div class="col-md-8">
                                 <div class ="caption-list-cont"> 
                                     
-                                    <span class="list-caption">{{files.filename}}</span>
+                                    <span class="list-caption">{{files1.filename}}</span>
                                     
                                 </div>
                               <div class="list-author-time">
-                                        <div><b>{{files.authname}}:</b> {{files.uploadtime |  date:"MMM d',' h:mma"}}</div>
+                                        <div><b>{{files1.authname}}:</b> {{files1.uploadtime |  date:"MMM d',' h:mma"}}</div>
 
                                     </div>
                                </div>
                                </a>
 
-                               <a ng-if = "files.sample != 0" href="#/workgroups/sample/{{files.workgroupid}}/sample{{files.sample}}/{{files.uniqueFilename}}" ng-click="setName(files.filename)">
+                               <a ng-if = "files1.sample != 0" href="#/workgroups/sample/{{files1.workgroupid}}/sample{{files1.sample}}/{{files1.uniqueFilename}}" ng-click="setName(files1.filename)">
                             <div class="col-xs-2 col-md-1">
-                                <img src="https://d28kungomln1xp.cloudfront.net/sample/thumbnails/sample{{files.sample}}.jpg" class="img-responsive" alt="" /></div>
+                                <img src="https://d28kungomln1xp.cloudfront.net/sample/thumbnails/sample{{files1.sample}}.jpg" class="img-responsive" alt="" /></div>
                             <div class="col-md-8">
                                 <div class ="caption-list-cont"> 
                                     
-                                    <span class="list-caption">{{files.filename}}</span>
+                                    <span class="list-caption">{{files1.filename}}</span>
                                     
                                 </div>
                               <div class="list-author-time">
-                                        <div><b>{{files.authname}}:</b> {{files.uploadtime |  date:"MMM d',' h:mma"}}</div>
+                                        <div><b>{{files1.authname}}:</b> {{files1.uploadtime |  date:"MMM d',' h:mma"}}</div>
 
                                     </div>
                                </div>
                                </a>
-                               <div ng-if="files.sample == 0" id="list-actions">
+                               <div ng-if="files1.sample == 0" id="list-actions">
                              
 
-                                <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement="bottom" tooltip="Delete file" ng-click="deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o list-works"></i>
+                                <i ng-if = "pt == files1.authid || pt == wkgroupAuthId" tooltip-placement="bottom" tooltip="Delete file" ng-click="deletefile(files1.uniqueFilename,files1.extension,files1.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o list-works"></i>
                                   
-                                 <a class = "list-works" href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+                                 <a class = "list-works" href="#/workgroups/{{files1.workgroupid}}/{{files1.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
 
                              
                               
-                              <a class= "list-works" href="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{wkgroupAuthId}}/original/{{files.uniqueFilename}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+                              <a class= "list-works" href="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{wkgroupAuthId}}/original/{{files1.uniqueFilename}}.{{files1.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
                          </div>
 
-                          <div ng-if="files.sample != 0" id="list-actions">
+                          <div ng-if="files1.sample != 0" id="list-actions">
                              
 
-                                <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement="bottom" tooltip="Delete file" ng-click="deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o list-works"></i>
+                                <i ng-if = "pt == files1.authid || pt == wkgroupAuthId" tooltip-placement="bottom" tooltip="Delete file" ng-click="deletefile(files1.uniqueFilename,files1.extension,files1.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o list-works"></i>
                                   
-                                 <a class = "list-works" href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+                                 <a class = "list-works" href="#/workgroups/{{files1.workgroupid}}/{{files1.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
 
                              
                               
-                              <a class= "list-works" href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files.sample}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+                              <a class= "list-works" href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files1.sample}}.{{files1.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
 
 
 

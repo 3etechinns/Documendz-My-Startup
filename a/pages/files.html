@@ -163,51 +163,51 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
 <div class="" style="width:76%; padding: 20px;">
  
     <div id="products" class="row list-group">
-        <div ng-repeat = "files in allFiles | orderBy:predicate:reverse |filter:search " class="item  col-md-3 holder">
+        <div ng-repeat = "files1 in allFiles | orderBy:predicate:reverse |filter:search " class="item  col-md-3 holder">
       <div id="file-container" class="show-animator">   
         
        
-                    <a ng-if = "files.sample == 0" href="#/workgroups/{{files.workgroupid}}/{{files.authid}}{{files.uniqueFilename}}" ng-click="setName(files.filename)">
+                    <a ng-if = "files1.sample == 0" href="#/workgroups/{{files1.workgroupid}}/{{files1.authid}}{{files1.uniqueFilename}}" ng-click="setName(files1.filename)">
                         <span class="group inner list-group-item-heading">
             <div class=" thumbnail">
 
               
-                <img ng-if="tr + files.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{files.authid}}/thumbnails/{{files.uniqueFilename}}.jpg" err-src="{{errSrc}}" alt="" />
+                <img ng-if="tr + files1.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{files1.authid}}/thumbnails/{{files1.uniqueFilename}}.jpg" err-src="{{errSrc}}" alt="" />
 
-                <img ng-if="tr + files.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://d28kungomln1xp.cloudfront.net/images/fileThumbnailLoading.png" alt="" />
+                <img ng-if="tr + files1.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://d28kungomln1xp.cloudfront.net/images/fileThumbnailLoading.png" alt="" />
 
             </div>
 
              <div class="caption">
-                  {{files.filename}}
+                  {{files1.filename}}
                 </div>
 
             </span>
 
                     </a>
 
-<a ng-if = "files.sample != 0" href="#/workgroups/sample/{{files.workgroupid}}/sample{{files.sample}}/{{files.uniqueFilename}}" ng-click="setName(files.filename)">
+<a ng-if = "files1.sample != 0" href="#/workgroups/sample/{{files1.workgroupid}}/sample{{files1.sample}}/{{files1.uniqueFilename}}" ng-click="setName(files1.filename)">
                         <span class="group inner list-group-item-heading">
             <div class=" thumbnail">
 
               
-                <img ng-if="tr + files.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://d28kungomln1xp.cloudfront.net/sample/thumbnails/sample{{files.sample}}.jpg" err-src="{{errSrc}}" alt="" />
+                <img ng-if="tr + files1.fid != 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://d28kungomln1xp.cloudfront.net/sample/thumbnails/sample{{files1.sample}}.jpg" err-src="{{errSrc}}" alt="" />
 
-                <img ng-if="tr + files.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif" alt="" />
+                <img ng-if="tr + files1.fid == 0" class="group list-group-image" style="width:400px;height:180px" ng-src="https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif" alt="" />
 
             </div>
 
              <div class="caption">
-                    {{files.filename}}
+                    {{files1.filename}}
                 </div>
 
             </span>
 
                     </a>
         
-        <div ng-if = "files.sample == 0" id="file-functions">
+        <div ng-if = "files1.sample == 0" id="file-functions">
               <div class="file-author-time">
-                            <div><b>{{files.authname}}:</b> {{files.uploadtime | date:'MMM d, h:mm a'}}</div>
+                            <div><b>{{files1.authname}}:</b> {{files1.uploadtime | date:'MMM d, h:mm a'}}</div>
                         </div>
 
             <div class="file-author-time" style="margin-bottom:4px">
@@ -251,9 +251,9 @@ text-decoration: underline;" >
                  </div>
 
              <div class="key-holder" >
-               <a href="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{wkgroupAuthId}}/original/{{files.uniqueFilename}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
-               <a href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
-               <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
+               <a href="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{wkgroupAuthId}}/original/{{files1.uniqueFilename}}.{{files1.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+               <a href="#/workgroups/{{files1.workgroupid}}/{{files1.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+               <i ng-if = "pt == files1.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files1.uniqueFilename,files1.extension,files1.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
 
                <div ng-if="ver == 1" style="float: left; display: initial;">
                 <button style="border: 1px solid rgba(2, 57, 75, 0.6);
@@ -284,14 +284,14 @@ text-decoration: underline;" >
          </div>
 
 
- <div ng-if ="files.sample != 0" id="file-functions">
+ <div ng-if ="files1.sample != 0" id="file-functions">
               <div class="file-author-time">
-                            <div><b>{{files.authname}}:</b> {{files.uploadtime | date:'MMM d, h:mm a'}}</div>
+                            <div><b>{{files1.authname}}:</b> {{files1.uploadtime | date:'MMM d, h:mm a'}}</div>
                         </div>
              <div class="key-holder" >
-               <a href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files.sample}}.{{files.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
-               <a href="#/workgroups/{{files.workgroupid}}/{{files.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
-               <i ng-if = "pt == files.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files.uniqueFilename,files.extension,files.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
+               <a href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files1.sample}}.{{files1.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
+               <a href="#/workgroups/{{files1.workgroupid}}/{{files1.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+               <i ng-if = "pt == files1.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files1.uniqueFilename,files1.extension,files1.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
              </div>
                   <!--   <div class="file-functions">
               
