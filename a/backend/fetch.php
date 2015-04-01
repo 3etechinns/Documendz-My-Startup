@@ -5,7 +5,7 @@ session_start();
 
 $connect = mysqli_connect("localhost","root", "Zofler6991", "project");
  
-$result = mysqli_query($connect, "SELECT userid, emailid, username, password, gsign, subscribed, verified, flag, workgroups, files, collaborators, UNIX_TIMESTAMP(start)*1000 as start from signup where userid = ".$_SESSION['userid']);
+$result = mysqli_query($connect, "SELECT userid, emailid, username, password, gsign, subscribed, verified, flag, workgroups, files, collaborators,versions, UNIX_TIMESTAMP(start)*1000 as start from signup where userid = ".$_SESSION['userid']);
  
 $data = array();
  
