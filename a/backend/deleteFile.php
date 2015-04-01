@@ -107,6 +107,7 @@ catch(S3Exception $e){
 
   }
 
+$result = mysqli_query($dbhandle, "DELETE FROM versions where parentUniqueFilename = '".$f."'");
 echo $keyname.'original/'.$f.'.'.$e ;
 
 ?>  

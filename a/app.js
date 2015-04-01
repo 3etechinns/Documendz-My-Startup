@@ -946,7 +946,10 @@ if($scope.progressValue == 100){
 
 
 angular.element( document.querySelector('.prog-event').innerHTML = "Done");
-angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+$timeout(function(){
+	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+},3000);
+
 
 
 	                    if (data == 999) {
@@ -1044,7 +1047,7 @@ if($scope.progressValue > 80){
 
             }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
-                alert('file revision is uploaded successfully.');
+                
                 $scope.stopSpin = 1;
                 $scope.fileName = "";
 
