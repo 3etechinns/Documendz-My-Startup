@@ -1053,7 +1053,9 @@ if($scope.progressValue > 80){
                 $scope.fileName = "";
 
 angular.element( document.querySelector('.prog-event').innerHTML = "Done");
-angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+$timeout(function(){
+	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+},4000);
                 
                 if (data == 999) {
                     $scope.filetype_msg = {
