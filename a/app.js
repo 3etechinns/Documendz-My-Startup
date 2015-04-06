@@ -36,6 +36,12 @@
 
 
 	    })
+	    .when('/workgroups/:g/:wgId/:fileId', {
+	        templateUrl: 'template.html',
+	        controller: 'templateController'
+
+
+	    })
 
 	    .when('/workgroups/sample/:wgId/:s/:fileId', {
 	        templateUrl: 'sampleTemplate.html',
