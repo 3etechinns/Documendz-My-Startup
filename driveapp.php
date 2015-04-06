@@ -1,10 +1,10 @@
 <?php
 
-require_once 'angular/backend/functions.php';
+require_once 'a/backend/functions.php';
 
 include 'unique_random_alphanumeric.php';
 
-include 'angular/backend/connect.php';
+include 'a/backend/connect.php';
 
 require 'vendor/autoload.php';
 
@@ -374,7 +374,7 @@ echo "I am here";
     $my_date = date("Y-m-d H:i:s");
     
   mysqli_query($dbhandle,"INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_SESSION[userid]','$my_date','$file_ext',0)"); //When $_SESSION is used inside a
-echo "<script>window.location.href ='https://www.documendz.com/angular/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
+echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
 
 }
 
@@ -387,7 +387,7 @@ echo "<script>window.location.href ='https://www.documendz.com/angular/#/workgro
     
   mysqli_query($dbhandle, "INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_SESSION[userid]','$my_date','$file_ext',0)"); //When $_SESSION is used inside a
 
- echo "<script>window.location.href ='https://www.documendz.com/angular/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
+ echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
 }
 
 }
