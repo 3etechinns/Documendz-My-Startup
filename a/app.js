@@ -56,7 +56,7 @@
 
 	    })
 
-	      .when('/workgroups/activity/:wgId/:fileId', {
+	      .when('/workgroups//:wgId/:fileId/user/files/activity', {
 	        templateUrl: 'pages/activity.html',
 	        controller: 'activityController'
 
