@@ -99,8 +99,8 @@ if ($client->getAccessToken()) {
             $user = $about->getUser();
             $email = $user['emailAddress'];
             $name = $user['displayName'];
-            print "<h1>" .$email. "</h1>";
-            print "<h1>" .$name. "</h1>";
+            print "<h3>Loading... </h3>";
+            
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
             $z = mysqli_fetch_array($y);
             $x = mysqli_num_rows($y);
@@ -193,9 +193,9 @@ function printFile($service, $fileId, $type, $file) {
     $ext = $file->getFileExtension();
     $title = $file->getTitle();
     $mime = $file->getMimeType();
-    print "Title: " . $title;
-    print "Description: " . $file->getDescription();
-    print "MIME type: " . $mime;
+    // print "Title: " . $title;
+    // print "Description: " . $file->getDescription();
+    // print "MIME type: " . $mime;
     //print "MIME type: " . $file->getWebContentLink();
 
     // if($file->getFileSize() > 10240) {
@@ -214,7 +214,7 @@ if($ext == "docx" || $ext == "doc" || $ext == "ppt" || $ext == "pptx" || $ext ==
   try {
     $newfile =  $service->files->copy($fileId, $copiedFile, $arr); //make a copy of the file and get the file object
     $newId = $newfile->getId(); //get the new file's ID which will be used to fetch the converted file and then delete it
-    print "new id is:" . $newId;
+    
     downloadFile($newfile, $service, $flag,$mime, $title);
     $service->files->delete($newId);
   } catch (Exception $e) {
@@ -268,16 +268,16 @@ function downloadFile($file, $service, $flag,$mime, $title) {
           );
 
 
-    print "<h1>".$ext_check[$mime]."</h1>";
+   
         
        //if a convertable file, export it as PDF
        if ($flag == "c") {
         $fileId = $file->getId();
-        print "<br>  :  ".$fileId;
+      
         $exportLinks = $file->getExportLinks();
         $downloadUrl = $exportLinks['application/pdf'];
 
-        echo "kjkjvb:   ".$downloadUrl;
+       // echo "kjkjvb:   ".$downloadUrl;
     }
 
        //else get the original native file
@@ -334,7 +334,7 @@ function convert($name,$unique_filename,$file_ext, $mimetype)
 
 if($mimetype == "image/bmp" || $mimetype == "image/png" || $mimetype == "image/jpeg" || $mimetype == "image/svg+xml"){
 
-echo "I am here";
+//echo "I am here";
   /* the image file */
     $image = __DIR__.'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' .$unique_filename.'.'.$file_ext;
   

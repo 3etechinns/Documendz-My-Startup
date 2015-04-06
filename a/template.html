@@ -1645,6 +1645,16 @@ setTimeout(function(){ // a 500ms timeout given so that it lands on the page the
                 $("#svg-container").html(data);
                
 
+                for(var k = 0; k<=14; k++){   //setting a few disturbed/overlapping texts
+                    
+                    if(parseInt($("._"+k).css('margin-left')) < 0){
+
+                           
+                            $("._"+ k).css('margin-left','0px');
+                    }
+
+                }
+
               //  console.log("jdhd");
 
 
