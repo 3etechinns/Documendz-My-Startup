@@ -252,7 +252,7 @@ text-decoration: underline;" >
 
              <div class="key-holder" >
                <a href="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{wkgroupAuthId}}/original/{{files1.uniqueFilename}}.{{files1.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
-               <a href="#/workgroups/{{files1.workgroupid}}/{{files1.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+               <a href="#/workgroups/activity/{{files1.workgroupid}}/{{files1.uniqueFilename}}"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
                <i ng-if = "pt == files1.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files1.uniqueFilename,files1.extension,files1.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
 
                <div ng-if="ver == 1" style="float: left; display: initial;">
@@ -290,7 +290,7 @@ text-decoration: underline;" >
                         </div>
              <div class="key-holder" >
                <a href="https://d28kungomln1xp.cloudfront.net/sample/original/sample{{files1.sample}}.{{files1.extension}}" target="_self" download="aa.pdf"><i tooltip-placement="bottom" tooltip="Download original" class="fa fa-download file-function-items"></i></a>
-               <a href="#/workgroups/{{files1.workgroupid}}/{{files1.uniqueFilename}}/activity"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
+               <a href="#/workgroups/activity/{{files1.workgroupid}}/{{files1.uniqueFilename}}"><i tooltip-placement="bottom" tooltip="File activity" class="fa fa-bar-chart-o file-function-items" ></i></a>
                <i ng-if = "pt == files1.authid || pt == wkgroupAuthId" tooltip-placement ="bottom"         tooltip = "Delete file" ng-click = "deletefile(files1.uniqueFilename,files1.extension,files1.sample)" confirmation="Are you sure you want to delete the file?" class="fa fa-trash-o file-function-items "></i>
              </div>
                   <!--   <div class="file-functions">
