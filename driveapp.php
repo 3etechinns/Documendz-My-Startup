@@ -31,7 +31,7 @@ require_once 'google-api-php-client/src/Google/autoload.php';
   the redirect URI is to this page, e.g:
   http://localhost:8080/fileupload.php
  ************************************************/
-  
+
 $client_id = '12504660612-jkfaqlf2dloo7eccnr5kjq9mfdi2m6g0.apps.googleusercontent.com';
 $client_secret = 'UotuGH9qR0ERK1gSKLrOlTaE';
 $redirect_uri = 'https://documendz.com/driveapp.php';
@@ -120,7 +120,7 @@ if ($client->getAccessToken()) {
               // echo "no found";
                 $w1 = getToken(20);
                 mysqli_query($dbhandle,"INSERT INTO workgroups (uniqueId,wname,wdesc,auth_id,auth_name,webapp) 
-                                VALUES ('".$w1."','My Files','The files which you imported from your Google account.',". $_SESSION['userid'].",'".$_SESSION['Username']."',1)");
+                                VALUES ('".$w1."','My Files','It contains all files that you have opened directly from Gmail or Google drive.',". $_SESSION['userid'].",'".$_SESSION['Username']."',1)");
 
             }
             else {
