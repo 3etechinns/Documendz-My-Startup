@@ -49,7 +49,7 @@
 
 	    })
 
-	         .when('/workgroups/:wgId/version/:fileId', {
+	         .when('/workgroups/revisions/:wgId/version/:fileId', {
 	        templateUrl: 'versionTemplate.html',
 	        controller: 'templateController'
 
