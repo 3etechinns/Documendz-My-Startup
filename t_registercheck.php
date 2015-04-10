@@ -21,7 +21,7 @@ $em = mysql_real_escape_string($em);
 	
 $sql = "INSERT INTO signup ".
 		"(username, password, emailid, workgroups, files, collaborators) ".
-		"VALUES('$un','$pw','$em',3,10,3)";
+		"VALUES('$un','$pw','$em',5,10,3)";
 		
 		
 
