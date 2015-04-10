@@ -131,9 +131,9 @@ if ($client->getAccessToken()) {
         else if($x == 0){
 
             // echo "im in";
-            mysql_query("INSERT INTO signup (username) VALUES('hello')");    
+            
 
-      mysqli_query($dbhandle, "INSERT INTO signup "."(username, password, emailid, gsign, verified, workgroups, files, collaborators) "."VALUES('$name','','$email',1,1,3,10,3)");    
+      mysqli_query($dbhandle, "INSERT INTO signup "."(username, password, emailid, gsign, verified, workgroups, files, collaborators) "."VALUES('$name','','$email',1,1,5,10,3)");    
         $i = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT userid,username FROM signup WHERE emailid ='".$email."'"));
       // echo "query: ".$pp;
         /////  make user folder  ////
