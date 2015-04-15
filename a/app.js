@@ -710,7 +710,7 @@ var au = {
 	              $scope.collabData = data;
 	            $scope.collabData.push(au);
 
-	            currentCollabs.setData(data, "colls");
+	            currentCollabs.setData($scope.collabData, "colls");
 
 
 	        });
@@ -1201,6 +1201,7 @@ $http.get("backend/getSession.php")
 	    $scope.wg = $routeParams.wgId;
 	    $scope.templateFilename = templateName.getData().name;
 	    $scope.curr_colls = currentCollabs.getData("colls").colls;
+	    console.log($scope.curr_colls);
 
         function socketConnected() {
 
