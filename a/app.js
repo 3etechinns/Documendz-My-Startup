@@ -332,8 +332,9 @@ $scope.fiToggle = false;
 
 
 
-	    $http.get("backend/fetch.php")
-	        .success(function(data) {
+	 var mc1=   $http.get("backend/fetch.php");
+	        
+	        mc1.success(function(data) {
 
 	            userData.setData(data[0].userid, 'userid');
 
@@ -348,14 +349,15 @@ $scope.fiToggle = false;
 	         
 
 
-	        })
-	        .error(function() {
+	        });
+
+	        mc1.error(function() {
 	            $scope.data = "error in fetching data";
 	        });
 
 
-	    $http.get("backend/fetch_workgroups.php")
-	        .success(function(data) {
+	  var mc2 =  $http.get("backend/fetch_workgroups.php");
+	        mc2..success(function(data) {
 
           if(!data['wg']){
                 $scope.workgroupParams.count = 0;
@@ -375,8 +377,9 @@ $scope.fiToggle = false;
 
 	        //    console.log("Total workgroups: " + $scope.workgroupParams.count);
 	          }
-	        })
-	        .error(function() {
+	        });
+
+	        mc2..error(function() {
 	            //error
 	        });
 
@@ -420,8 +423,9 @@ userData.setData($scope.states,"emailList");
 	    }
 
 
-	    $http.get("backend/fetch.php")
-	        .success(function(data) {
+	   var mc3 = $http.get("backend/fetch.php");
+	        
+	        mc3.success(function(data) {
 
 	            userData.setData(data[0].userid, 'userid');
 
@@ -430,8 +434,9 @@ userData.setData($scope.states,"emailList");
 	            $scope.pt = data[0].userid;
 
 
-	        })
-	        .error(function() {
+	        });
+	        
+	        mc3.error(function() {
 	            $scope.data = "error in fetching data";
 	        });
 
@@ -678,6 +683,7 @@ $scope.search = function (item){
 			            'Content-Type': 'application/x-www-form-urlencoded'
 			        }
     				});
+
 				    frv.success(function(data) {
 				        $scope.revisions = data;
 				        console.log("versions are:");
