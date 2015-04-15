@@ -277,8 +277,9 @@ $scope.states = userData.getData().emailList;
 
 $window.ga('send', 'pageview', { page: "Workgroup" }); 
 
-  $http.get("backend/checkLoggedIn.php")
-	        .success(function(res) {
+ var mc0 = $http.get("backend/checkLoggedIn.php");
+	        
+	     mc0.success(function(res) {
 
 	            if (res != 1) {
 	            	
@@ -287,8 +288,8 @@ $window.ga('send', 'pageview', { page: "Workgroup" });
 	                $window.location.href = "https://www.documendz.com";
 
 	            }
-	        })
-	        .error(function() {
+	        });
+	        mc0.error(function() {
 
 	        });
 
