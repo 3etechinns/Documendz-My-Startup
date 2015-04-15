@@ -715,9 +715,10 @@ var au = {
 	        .success(function(data) {
 
 	              $scope.collabData = data;
-	            $scope.collabData.push(au);
 
-	            currentCollabs.setData($scope.collabData, "colls");
+	            data.push(au);
+
+	            currentCollabs.setData(data, "colls");
 
 
 	        });
