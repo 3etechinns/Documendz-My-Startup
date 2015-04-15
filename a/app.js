@@ -357,7 +357,7 @@ $scope.fiToggle = false;
 
 
 	  var mc2 =  $http.get("backend/fetch_workgroups.php");
-	        mc2..success(function(data) {
+	        mc2.success(function(data) {
 
           if(!data['wg']){
                 $scope.workgroupParams.count = 0;
