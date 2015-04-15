@@ -1,5 +1,5 @@
 	// create the module and name it scotchApp
-	var scotchApp = angular.module('scotchApp', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'helperModule', 'angularFileUpload', 'xeditable','inform']);
+	var scotchApp = angular.module('scotchApp', ['cgBusy','ngRoute', 'ngCookies', 'ui.bootstrap', 'helperModule', 'angularFileUpload', 'xeditable','inform']);
 
 
 
