@@ -1148,7 +1148,7 @@ templateName.setData(name);
 	});
 
 
-	scotchApp.controller('templateController', function(currentCollabs,$window,templateName, Page, $scope,usables,socket,$routeParams,$rootScope,$route,$location,$http) {
+	scotchApp.controller('templateController', function(userData,currentCollabs,$window,templateName, Page, $scope,usables,socket,$routeParams,$rootScope,$route,$location,$http) {
 
 		Page.setTitle('Document - Documendz');
 
