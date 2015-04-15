@@ -341,7 +341,7 @@ $scope.fiToggle = false;
 	            $scope.userData = data;
 	            $scope.pt = data[0].userid;
 	            $scope.ut = data[0].username;
-	               $scope.flimit = data[0].files;
+	            $scope.flimit = data[0].files;
 	            $scope.wlimit = data[0].workgroups;
 	            $scope.ver = data[0].versions;
 	            $scope.climit = data[0].collaborators;
@@ -599,7 +599,7 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 
 
 
-	scotchApp.controller('filesController', function($window,templateName, Page, filesDataFunctions,$scope,$rootScope, $http, $routeParams, userData,$modal,$upload, $cookies, $timeout,$location,inform) {
+	scotchApp.controller('filesController', function(currentCollabs,$window,templateName, Page, filesDataFunctions,$scope,$rootScope, $http, $routeParams, userData,$modal,$upload, $cookies, $timeout,$location,inform) {
 
 // check permissions to the wkgroup: either the author or is a collab
 	    	    Page.setTitle('Files - Documendz');
@@ -687,7 +687,12 @@ $scope.search = function (item){
 				        console.log( $scope.revisions);
 				    });
 
+var au = {
 
+	userid: $scope.wkgroupAuthId,
+	collabName: $scope.wkgroupAuthName
+
+}
 	            
 
 	    // fetch collaborators
@@ -702,7 +707,10 @@ $scope.search = function (item){
 	        })
 	        .success(function(data) {
 
-	            $scope.collabData = data;
+	              $scope.collabData = data;
+	            $scope.collabData.push(au);
+
+	            currentCollabs.setData(data, "colls");
 
 
 	        });
@@ -710,7 +718,8 @@ $scope.search = function (item){
 	    $scope.$on('updateCollaborators', function(event, data) {
 	        //push into scope for collabData
 
-	        $scope.collabData.push(data);
+	       $scope.collabData.push(data);
+	        currentCollabs.setData(data, "colls");
 
 	    });
 
@@ -1139,7 +1148,7 @@ templateName.setData(name);
 	});
 
 
-	scotchApp.controller('templateController', function($window,templateName, Page, $scope,usables,socket,$routeParams,$rootScope,$route,$location,$http) {
+	scotchApp.controller('templateController', function(currentCollabs,$window,templateName, Page, $scope,usables,socket,$routeParams,$rootScope,$route,$location,$http) {
 
 		Page.setTitle('Document - Documendz');
 
@@ -1191,18 +1200,20 @@ $http.get("backend/getSession.php")
 	    $scope.uniqueFilename = $routeParams.fileId.slice(-15);
 	    $scope.wg = $routeParams.wgId;
 	    $scope.templateFilename = templateName.getData().name;
+	    $scope.curr_colls = currentCollabs.getData("colls").colls;
 
         function socketConnected() {
 
             socket.emit("documentInfo", {
                 shareId: shareId,
-                userId: userId,
+                userId: userData.getData().userid,
                 name: user
             });
         };
 
     socket.on("connect", socketConnected);
 	    socket.on("getChangeData", getChangeData);
+	        socket.on("sendUserMap", sendUserMap); // keval chat
 
 
 	    $scope.$on("$destroy", function() {

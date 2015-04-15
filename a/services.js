@@ -56,6 +56,23 @@ return {
 });
 
 
+a.factory('currentCollabs', function(){
+
+var currentCollabs = {};
+
+return {
+
+    getData : function() {
+      return currentCollabs;
+    },
+    setData: function(data, type) {
+      currentCollabs[type] = data;
+    }
+
+
+};
+
+});
 
 a.factory('workGroupFunctions', function($rootScope,$http) {
 

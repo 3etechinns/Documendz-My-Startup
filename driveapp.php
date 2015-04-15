@@ -395,6 +395,7 @@ echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/
 function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
       
      $u = $_SESSION['userid'];    
+     
      shell_exec('/usr/bin/php trial.php '.$unique_filename.' '.$u.' '.$ext.' > uploaded/tt.txt 2>&1 &');    
         
           header('Content-Type: text/HTML; charset=utf-8');

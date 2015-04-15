@@ -115,7 +115,9 @@ function getDocumentInfo(data) {
       //  console.log("New User Connected: " + data.userId + " Creating User map" + " Share Id :" + data.shareId);
 
         userMap[data.userId][this.id] = {
-            shareId: data.shareId
+               shareId: data.shareId,
+            name: data.name,
+            userId: data.userId
         };
 
 
@@ -123,7 +125,9 @@ function getDocumentInfo(data) {
 
     //    console.log("Adding New User Socket to User Map" + data.userId + " Share Id " + data.shareId);
         userMap[data.userId][this.id] = {
-            shareId: data.shareId
+             shareId: data.shareId,
+             name: data.name,
+            userId: data.userId
         };
 
     }
@@ -135,12 +139,29 @@ function getDocumentInfo(data) {
     };
 
 
+      var onlineUsers = {};
+    var count = 0;
+    for (var i in userMap) {
+        // console.log("first: " + i);
+        for (var j in userMap[i]) {
+            //console.log(j);
+            //console.log(userMap[i][j].shareId);
+            if (userMap[i][j].shareId === data.shareId) {
+                count++;
+                onlineUsers[userMap[i][j].userId] = userMap[i][j].name;
+                console.log("here it is: "+userMap[i][j].name);
+            }
+
+        }
+    }  // keval chat
+
     this.join(data.shareId, userRoomJoined(this.documentInfo.shareId));
     //socket_id = this.id;
     //console.log(userMap);
     //Number of sockets present of current user
   //  console.log("Number of sockets present of current user : " + Object.keys(userMap[this.documentInfo.userId]).length);
     //console.log(userMap[data.userId]);
+     io.sockets.in(this.documentInfo.shareId).emit("sendUserMap", onlineUsers, count); // keval chat
 
     dbQueries.checkDocumentExist(data.shareId);
 
@@ -172,5 +193,21 @@ function clientDisconnected() {
     }
 
     // console.log("Current User Map : " + userMap);
+     var onlineUsers = {};
+    var count = 0;
+    for (var i in userMap) {
+        // console.log("first: " + i);
+        for (var j in userMap[i]) {
+            //console.log(j);
+            //console.log(userMap[i][j].shareId);
+            if (userMap[i][j].shareId === this.documentInfo.shareId) {
+                count++;
+                onlineUsers[userMap[i][j].userId] = userMap[i][j].name;
+                console.log("here it is: "+userMap[i][j].name);
+            }
+
+        }
+    }  // keval chat
+       io.sockets.in(this.documentInfo.shareId).emit("sendUserMap", onlineUsers, count); // keval chat
 
 }

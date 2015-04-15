@@ -7,7 +7,8 @@ include 'connect.php';
 
 $w = $_POST['wid'];
  
-$result = mysqli_query($dbhandle, "SELECT * FROM collaborators WHERE wkUniqueId = '".$w."'");	
+ 
+$result = mysqli_query($dbhandle, "SELECT c.*,s.userid FROM collaborators as c LEFT JOIN signup as s on c.collabEmail = s.emailid  WHERE c.wkUniqueId = '".$w."'");	
  
  
 $data = array();

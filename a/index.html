@@ -48,6 +48,32 @@
 
        
 
+          function sendUserMap(data, count) {
+  var cc = 0;   
+
+
+    $(".onlineColls").ready(function(){
+
+
+       
+       
+        $(".onlineColls > div").css("background-color","#CECECE");
+        
+        $.each(data, function(index, value) {
+
+         $("#"+index).css("background-color","#56BB3F");
+         cc++;
+
+}); 
+
+
+    });
+    
+   $(".online-count").html(cc); 
+
+      
+   }
+
         function escapeHtml(text) {
             var map = {
                 '&': '&amp;',
