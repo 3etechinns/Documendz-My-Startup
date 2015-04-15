@@ -379,7 +379,7 @@ $scope.fiToggle = false;
 	          }
 	        });
 
-	        mc2..error(function() {
+	        mc2.error(function() {
 	            //error
 	        });
 
