@@ -385,7 +385,7 @@ $scope.fiToggle = false;
 	        });
 
  var fd = $http.get('https://www.google.com/m8/feeds/contacts/default/full?v=3.0&access_token='+localStorage.getItem("dcz_tkn")+'&max-results=1000&v=3.0&alt=json');
-fc.success(function(data,status){
+fd.success(function(data,status){
 
 
 $scope.states = [];
