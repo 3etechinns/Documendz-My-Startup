@@ -357,8 +357,8 @@ $scope.fiToggle = false;
 	        });
 
 
-	  var mc2 =  $http.get("backend/fetch_workgroups.php");
-	        mc2.success(function(data) {
+	  $scope.mc2 =  $http.get("backend/fetch_workgroups.php");
+	        $scope.mc2.success(function(data) {
 
           if(!data['wg']){
                 $scope.workgroupParams.count = 0;
@@ -378,9 +378,8 @@ $scope.fiToggle = false;
 
 	        //    console.log("Total workgroups: " + $scope.workgroupParams.count);
 	          }
-	        });
-
-	        mc2.error(function() {
+	        })
+	        .error(function() {
 	            //error
 	        });
 
