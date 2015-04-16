@@ -31,6 +31,41 @@ require_once 'google-api-php-client/src/Google/autoload.php';
   the redirect URI is to this page, e.g:
   http://localhost:8080/fileupload.php
  ************************************************/
+function getDp($id,$im){
+
+
+$im1 = file_get_contents($im);
+
+$s3 = S3Client::factory(array(
+   'key' => "AKIAJDPJXX4TZK42PTAA",
+   'secret' => "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",
+   'region' => "ap-southeast-1"
+));
+
+
+$bucket= "documendz-ent";
+$keyname = 'uploaded/user_'.$id.'/profile_image/dp.jpg';
+            
+try {
+    // Upload data.
+    $result = $s3->putObject(array(
+        'Bucket' => $bucket,
+        'Key'    => $keyname,
+        'ContentType'  => 'image/jpeg',
+        'Body'   => $im1
+       
+    ));
+
+    
+
+} catch (S3Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+
+
+}
+
 
 $client_id = '12504660612-jkfaqlf2dloo7eccnr5kjq9mfdi2m6g0.apps.googleusercontent.com';
 $client_secret = 'UotuGH9qR0ERK1gSKLrOlTaE';
@@ -99,6 +134,7 @@ if ($client->getAccessToken()) {
             $user = $about->getUser();
             $email = $user['emailAddress'];
             $name = $user['displayName'];
+            $im = $user['picture'];
             print "<h3>Loading... </h3>";
             
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
@@ -126,6 +162,8 @@ if ($client->getAccessToken()) {
             else {
                 $w1 = $w['uniqueId'];
               }
+
+               getDp($z['userid'],$im['url']);
         }
 
         else if($x == 0){

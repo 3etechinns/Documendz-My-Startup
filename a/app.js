@@ -529,7 +529,8 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 	    
 	    
 
-   
+   $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
+
     
 	    
 	    $scope.workgroupscount = $scope.wgData.length;
