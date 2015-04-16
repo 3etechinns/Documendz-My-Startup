@@ -164,6 +164,7 @@ if ($client->getAccessToken()) {
               }
 
                getDp($z['userid'],$im['url']);
+               echo $im['url'];
         }
 
         else if($x == 0){
