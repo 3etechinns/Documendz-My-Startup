@@ -139,15 +139,26 @@ Currently, a maximum of 10 files can be uploaded in a workgroup
        
      
 
+       
        <li ng-repeat="collabs in collabData">
-       	<span>
+                    <span>
 
 
 
-       	<i class="fa fa-times" ng-if="collabs.authId == pt" ng-click="removeCollaborator(collabs.collabEmail,collabs.wkUniqueId)" confirmation="Are you sure you want to remove the collaborator?"></i>
-       	{{collabs.collabName}}<br>
-       	</span>
-       </li>
+        <i class="fa fa-times" ng-if="collabs.authId == pt" ng-click="removeCollaborator(collabs.collabEmail,collabs.wkUniqueId)"></i>
+        
+            <img style="width: 1.8em; height: 1.8em; background-size: cover; display: block; border-radius: 50%; margin-top: -1.9px;float: left;margin-right: 5px;" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{collabs.userid}}/profile_image/dp.jpg" err-src="{{defDp}}"> </img>
+        
+        <p style="
+            text-transform: capitalize;
+            text-overflow: ellipsis;
+            width: 71%;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0px;
+            ">{{collabs.collabName}}</p>
+        </span>
+                </li>
        </ul>
 
 

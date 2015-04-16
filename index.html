@@ -679,7 +679,7 @@ var helper = (function() {
 
        localStorage.setItem("dcz_tkn",gapi.auth.getToken().access_token);  
 
-       window.location.href = "https://www.documendz.com/gsignup.php?n="+profile.displayName+"&e="+profile.emails[0].value;
+       window.location.href = "https://www.documendz.com/gsignup.php?n="+profile.displayName+"&e="+profile.emails[0].value+"&usimg="+ profile.image.url;
 
         // $('#profile').empty();
         // $('#profile').append(

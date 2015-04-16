@@ -3376,15 +3376,16 @@ z-index: 500;" class="navbar navbar-default">
         <li><a style="color:white;" href="#/workgroups"><i class="fa fa-reorder"></i> Workgroups</a></li>
         
         <li><a style="color:white;cursor:pointer;" ng-click="askFeedback()"><i class="fa fa-comment"></i> Feedback</a></li>
-        <li>
-          <div  dropdown is-open="status.isopen1" class="profile-drop">
+       <li>
+          <div  dropdown is-open="status.isopen1" class="profile-drop" style="padding:0px !important">
       <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-        {{ut}} <span class="caret"></span>
+        <span style="height: 40px; display: table-cell; vertical-align: middle; float:left;padding-top:7%;margin-right:5px">{{aa}}</span>
+        <img style="width: 2em; height: 2em; margin-top:3px; background-size: cover; display: table-cell; border-radius: 50%; vertical-align:middle" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{pt}}/profile_image/dp.jpg" err-src="{{defDp}}"></img>
       </span>
       <ul class="dropdown-menu" role="menu">
         <li><a href="#/account/{{pt}}">Account</a></li>
         <li><a href="#/faq">FAQs</a></li>
-        <li><a href="#/logout" ng-click="predicate = 'authid'; reverse=false">Logout</a></li>
+        <li><a href="#/logout">Logout</a></li>
     
         
       </ul>

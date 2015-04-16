@@ -3,6 +3,17 @@
 require_once 'a/backend/functions.php';
 require_once 'unique_random_alphanumeric.php';
 
+
+require 'vendor/autoload.php';
+
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
+
+use Aws\Common\Exception\MultipartUploadException;   //for multipart upload
+use Aws\S3\Model\MultipartUpload\UploadBuilder;
+
+use Guzzle\Http\EntityBody;
+
   session_start();
 
 include 'a/backend/connect.php';
@@ -578,13 +589,48 @@ $x = mysqli_num_rows($y);
 echo "Loading ...";
 
 
+function getDp($id){
+
+$usimg = $_GET['usimg'];
+$im = file_get_contents($usimg."&sz=200");
+
+$s3 = S3Client::factory(array(
+   'key' => "AKIAJDPJXX4TZK42PTAA",
+   'secret' => "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",
+   'region' => "ap-southeast-1"
+));
+
+
+$bucket= "documendz-ent";
+$keyname = 'uploaded/user_'.$id.'/profile_image/dp.jpg';
+						
+try {
+    // Upload data.
+    $result = $s3->putObject(array(
+        'Bucket' => $bucket,
+        'Key'    => $keyname,
+        'ContentType'  => 'image/jpeg',
+        'Body'   => $im
+       
+    ));
+
+    
+
+} catch (S3Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+
+
+}
+
 if($x > 0 ){
 
         $_SESSION['Username'] = $z['username'];
 		$_SESSION['email'] = $email;
 		$_SESSION['userid'] = $z['userid'];
 
-
+getDp($z['userid']);
 		 echo "<script>window.location.href ='http://www.documendz.com/a/#/workgroups'</script>";
 }
 
@@ -624,6 +670,8 @@ $my_date = date("Y-m-d H:i:s");
         $_SESSION['Username'] = $i['username'];
 		$_SESSION['email'] = $email;
 		$_SESSION['userid'] = $i['userid'];
+
+getDp($i['userid']);
 
 echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups'</script>";
 email($email,"Documendz",$i['username']);

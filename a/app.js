@@ -298,6 +298,8 @@ $window.ga('send', 'pageview', { page: "Workgroup" });
  $scope.inform = inform;
   $scope.Page = Page;
 
+ $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
+
 $scope.$on('$routeChangeStart', function() { 
 Page.setTitle('Workgroups - Documendz');   
  });
@@ -609,6 +611,8 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 
 // check permissions to the wkgroup: either the author or is a collab
 	    	    Page.setTitle('Files - Documendz');
+
+ $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
 
 $window.ga('send', 'pageview', { page: "Files" }); 
 
