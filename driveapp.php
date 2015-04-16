@@ -163,8 +163,8 @@ if ($client->getAccessToken()) {
                 $w1 = $w['uniqueId'];
               }
 
-               getDp($z['userid'],$im['url']);
-               echo $im['url'];
+               
+
         }
 
         else if($x == 0){
@@ -210,6 +210,8 @@ if ($client->getAccessToken()) {
             $_SESSION['Username'] = $i['username'];
             $_SESSION['email'] = $email;
             $_SESSION['userid'] = $i['userid'];
+
+            getDp($i['userid'],$im['url']);
        
       }
         
