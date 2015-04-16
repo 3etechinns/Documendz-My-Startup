@@ -33,8 +33,8 @@ require_once 'google-api-php-client/src/Google/autoload.php';
  ************************************************/
 function getDp($id,$im){
 
-
-$im1 = file_get_contents($im);
+$r = str_replace("/s64/", "/s200/", $im );
+$im1 = file_get_contents($r);
 
 $s3 = S3Client::factory(array(
    'key' => "AKIAJDPJXX4TZK42PTAA",
