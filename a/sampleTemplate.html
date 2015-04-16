@@ -1452,11 +1452,12 @@ box-shadow: 3px 6px 8px #888;
         <span class="badge online-count">0</span>
         
       </button>
-      <ul class="online-list dropdown-menu" role="menu" style="border-radius:0px;">
+          <ul class="online-list dropdown-menu" role="menu" style="min-width: 200px;left: -15px;top:115%">
         
  
 
-        <li class="onlineColls" ng-repeat="c in curr_colls" style="padding:6px 8px;">
+        <li class="onlineColls" ng-repeat="c in curr_colls" style="padding:10px 9px;">
+             <img style="width: 1.8em; height: 1.8em; background-size: cover; display: block; border-radius: 50%; margin-top: -1.9px;float: left;margin-right: 7px;" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{c.userid}}/profile_image/dp.jpg" err-src="{{defDp}}">
             <div id="{{c.userid}}" style="height:9px;
             width: 9px;
             border: none;
