@@ -658,7 +658,7 @@ if (!$mailer) {
 		echo "Mailer Error: " . $mailer->ErrorInfo;
 		
 	} else {
-		echo "You have registered successfully. A verification link has been sent to your email id (Check Spam folder if you are not able to find it)";
+		echo "You have registered successfully. A verification link has been sent to your email id (Check Spam folder if you are not able to find it). <br/><a href=# onclick = resendEmail('".$recipient_email_id."','".$un."')>Resend me a verification email.</a>";
 		/* session_start();
 		$_SESSION['uname']=$uname;
 		echo "<script>setTimeout(\"location.href = '$path';\",2000);</script>"; */

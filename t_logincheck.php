@@ -40,8 +40,10 @@ while ($row = mysql_fetch_array($result)) {
 
 		}
 		else {
-			$m['notif'] = "Please verify your account";
+			$r_un = $row['username'];
+		$m['notif'] = "Please verify your account. <a href=# onclick = resendEmail('".$email."','".$r_un."')>Resend me a verification email.</a>";
 			echo json_encode($m);
+
 			
 		}
 	}

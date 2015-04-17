@@ -211,6 +211,29 @@ function checkstrength(pass)
 	/* document.getElementById("ps").innerHTML = "<strong>Password Strength: "+ps+"</strong>"; */
 }
 
+//Resend Email after register
+
+function resendEmail(r_emailid, r_un) {
+	$.ajax({
+	        type:"POST",
+	        cache:false,
+		async: false,
+	        url:"t_resend.php",
+		data: { uname: r_un, email: r_emailid },
+	        datatype: "text",
+	        
+			success: function(response){
+				
+				alert(response);
+				
+				
+				},
+			error: function(){
+					alert("Oops! Something went wrong");
+					}
+		    });
+}
+
 
 
 $(document).on({
