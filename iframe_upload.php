@@ -286,6 +286,7 @@ try {
     echo "Upload failed.\n";
 }
 
+unlink($html_file_dest.'/'.$unique_filename.'.html');
 ///////////////////////////////////////////////
 //////// stream upload ///////////
 
