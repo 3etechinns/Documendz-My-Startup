@@ -259,7 +259,29 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
         		if ($prog_value !== $base) {   // will be called everytime the process runs after conversion
         	
        			
+function gzCompressFile($source,$gzdest,$level = 9){ 
+    $dest = $gzdest; 
+    $mode = 'wb' . $level; 
+    $error = false; 
+    if ($fp_out = gzopen($dest, $mode)) { 
+        if ($fp_in = fopen($source,'rb')) { 
+            while (!feof($fp_in)) 
+                gzwrite($fp_out, fread($fp_in, 1024 * 512)); 
+            fclose($fp_in); 
+        } else {
+            $error = true; 
+        }
+        gzclose($fp_out); 
+    } else {
+        $error = true; 
+    }
+    if ($error)
+        return false; 
+    else
+        return $dest; 
+} 
 
+gzCompressFile($html_file_dest.'/'.$unique_filename.'.html',$html_file_dest.'/'.$unique_filename.'_gz.html');
 ///////multipart uploader to s3 in parallel for speed//////////
 
  
@@ -271,9 +293,10 @@ $s3 = S3Client::factory(array(
 
 $uploader = UploadBuilder::newInstance()
     ->setClient($s3)
-    ->setSource($html_file_dest.'/'.$unique_filename.'.html')
+    ->setSource($html_file_dest.'/'.$unique_filename.'_gz.html')
     ->setBucket('documendz-ent')
     ->setKey('uploaded/user_'. $_SESSION["userid"].'/converts/'.$unique_filename.'.html')
+    ->setHeaders(array('Content-Encoding'=>'gzip'))
     ->setConcurrency(4)
     ->build();
 
@@ -287,6 +310,8 @@ try {
 }
 
 unlink($html_file_dest.'/'.$unique_filename.'.html');
+unlink($html_file_dest.'/'.$unique_filename.'_gz.html');
+
 ///////////////////////////////////////////////
 //////// stream upload ///////////
 
