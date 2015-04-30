@@ -1259,7 +1259,7 @@ $scope.send_update = function(){
 $window.ga('send', 'pageview', { page: "Activity" }); 
 	       
 
- $scope.defDp = "https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/unknown_dp.jpg";
+ 
 	    $scope.fileToggle = false;   
 	        $scope.wkToggle = false;   
 	            // ------------ All workgroups ------------//
@@ -1335,7 +1335,7 @@ $window.ga('send', 'pageview', { page: "Activity" });
 
 	                            $scope.activityCollab = data;
 	                            $scope.collabs_count = data.length;
-	                       	
+	                       		$scope.defDp = "https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/unknown_dp.jpg";
 
 
 	                        });
