@@ -1253,83 +1253,157 @@ $scope.send_update = function(){
 
 	scotchApp.controller('activityController', function($window,Page, $scope,$routeParams,filesDataFunctions,$http) {
 
+	
 		Page.setTitle('Acivity Log - Documendz');
 
-		$window.ga('send', 'pageview', { page: "Activity" }); 
-
-$scope.selFile = $routeParams.fileId;
-			// console.log($scope.wgData); //works
+$window.ga('send', 'pageview', { page: "Activity" }); 
+	       
 
 
-function changeFile(ufilename){
-	$scope.noData = 0;
-$scope.activityWg = $scope.wgData;		
-filesDataFunctions.get().then(function(promise){
+	    $scope.fileToggle = false;   
+	        $scope.wkToggle = false;   
+	            // ------------ All workgroups ------------//
 
- 
+	            $scope.activityWg = $scope.wgData;
+	             console.log($scope.wgData);
+	             $scope.filenameSelected = "";
+	              $scope.activityHistory = "";
+	           
 
-$scope.activityFiles = promise.data;
+	           function wkgroup_main(wid){
+	            	
+	                    var elementPos = $scope.activityWg.map(function(x) {
+	                        return x.uniqueId;
+	                    }).indexOf(wid);
 
-  var elementPos = $scope.activityFiles.map(function(x) {
-	            return x.uniqueFilename;
-	        }).indexOf($scope.selFile);
+	                    $scope.wgName = $scope.activityWg[elementPos].wname;
 
-  var i = $scope.activityFiles[elementPos].workgroupid;
+	                    $scope.wgtime =  $scope.activityWg[elementPos].time;
+	                    $scope.wgAuth = {
+	                    		name: $scope.activityWg[elementPos].auth_name,
+	                    		id: $scope.activityWg[elementPos].auth_id	
+	                    }
 
-   $http({
-	            method: 'POST',
-	            url: 'backend/fetchCollaborators.php',
-	            data: "wid=" + i, // pass in data as strings
-	            headers: {
-	                'Content-Type': 'application/x-www-form-urlencoded'
+	                    
+
+	             }
+				// -------------files pull------------ //
+	            
+	            function filesPull_main(wid){
+             
+	            
+	            $scope.a1 = $http({
+	                method: 'POST',
+	                url: 'backend/fetchFiles.php',
+	                data: "wid=" + wid, // pass in data as string
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                }
+	            });
+
+
+	            $scope.a1.success(function(data) {
+
+	                
+	               
+	                $scope.files_count = data.length; //files count in a particular wgroup
+	               
+	                var filePos = data.map(function(x) {
+	                        return x.uniqueFilename;
+	                    }).indexOf($routeParams.fileId);
+
+	                    
+	                $scope.filenameSelected = data[filePos].filename;
+	            });
+
+
 	            }
-	        })
-	        .success(function(data) {
-
-	            $scope.activityCollab = data;
-	        
 
 
-	        });
+	            // -------collabs pull ---------//
+	            function collabs_main(wid){
+	            	
+	                $http({
+	                            method: 'POST',
+	                            url: 'backend/fetchCollaborators.php',
+	                            data: "wid=" + wid, // pass in data as strings
+	                            headers: {
+	                                'Content-Type': 'application/x-www-form-urlencoded'
+	                            }
+	                        })
+	                        .success(function(data) {
+
+	                            $scope.activityCollab = data;
+	                            $scope.collabs_count = data.length;
+	                       	
 
 
-});
-	
+	                        });
 
- var pullHistoryRequest = $.ajax({
-                url: "https://documendz.com:9000/pulldata/historydata/"+ $scope.selFile,
-                type: "GET",
-                cache: false,
-            });
+	             }           
 
-            pullHistoryRequest.done(function(data) {
-                if (data.error) {
+	            // --------anno pull -------------//
 
-                    console.log("Server Error Pulling data")
-                } else if (data.data.length === 0) {
-                    console.log("No Data");
-                    $scope.activityHistory = "";
-                    $scope.noData = 1;
-                } else {
+	            function anno_main(fid){
 
-          
-                  $scope.activityHistory = data.data[0].history;
-                }
+	            
 
-            });
+				     var pullHistoryRequest = $.ajax({
+	                    url: "https://documendz.com:9000/pulldata/historydata/" + fid,
+	                    type: "GET",
+	                    cache: false,
+	                });
 
-            pullHistoryRequest.fail(function() {
+	                pullHistoryRequest.done(function(data) {
+	            
+	                    if (data.error) {
 
-                console.log("Error Pulling History");
-            });
-}
-$scope.selectionFile = function(ufilename){
+	                     
+	                    } else if (data.data[0] == undefined || data.data[0].history.length == 0 ) {
+	                   
+	                        
+	                        $scope.dt = 0;
+	                        
+	                    } else {
+	                    	$scope.dt = 1;
+	                       
+	                        $scope.activityHistory = data.data[0].history;
+	                       
+	                    }
 
-	$scope.selFile = ufilename;
-		changeFile($scope.selFile);
-}
-   
-changeFile($scope.selFile);
+	                });
+
+	                pullHistoryRequest.fail(function() {
+
+	                   
+	                });
+
+	            }
+
+	             // $scope.wkgroup_change = function(wid){
+
+	             // 	wkgroup_main(wid);
+	             
+	             // 	collabs_main(wid);
+	             // 	// filesPull_main(wid);
+	             	
+
+	             // }
+
+	             // $scope.file_change = function(fid,filename){
+	             	
+	             // 	anno_main(fid);
+	             	
+	             // 	$scope.filenameSelected = filename;
+
+	             // }
+
+	            
+	                wkgroup_main($routeParams.wgId);
+	             	filesPull_main($routeParams.wgId);
+	             	collabs_main($routeParams.wgId);
+	             	anno_main($routeParams.fileId)
+	             	
 
 	});
 

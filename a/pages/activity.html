@@ -1,142 +1,287 @@
 <html>
 
 
-<div style="margin-top:50px">
-<div id="activity-sidebar-nav" class="hidden-xs" >
-        
-        <ul id="dashboard-menu" class="nav nav-list" ng-repeat="wg in activityWg" >
-             <span class="list-group-item-heading activity-wkgroup-name">
-                {{wg.wname}}
-            </span>
+<div style="margin-top:50px" >
 
-            <li  ng-repeat="files in activityFiles | filter: {workgroupid : wg.uniqueId}" ng-class="files.uniqueFilename == '{{selFile}}' ? 'active-list' : 'inactive-list'"  ng-click="selectionFile(files.uniqueFilename)">
-                <p rel="tooltip" data-placement="right" data-original-title="Dashboard" href="index.html" style="width: 196px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;"> 
-                    <span class="activity-files">{{files.filename}}</span>
-                    <i class="fa fa-check" style="float: right;"></i>
-                </p>
-            </li>
-            
-         
-            
-            
-        </ul>
+<div class="activity-content" style="margin-left:0px;
+background: #eee;
+padding: 18px 20px 24px;">
 
-        
-</div>
+
+    <div class="page-body">            
+
+<div class="row">
 
 
 
-<div class="activity-content">
 
+<div class="page-header position-relative" style="z-index:100   ">
+                    <div class="header-title">
+                        <h1>
+                           {{wgName}}
+                        </h1>
+                    </div>
+                     <!--   <span class="dropdown" dropdown="" on-toggle="toggled(open)" style="position: relative;
+                                                                display: inline-block;
+                                                                vertical-align: middle;
+                                                                margin: 0;
+                                                                padding:10px;
+                                                                float:right;
+                                                                color: #555;">
+                                                                      <a href="" class="dropdown-toggle" dropdown-toggle="" style="color:#888" aria-haspopup="true" aria-expanded="false">
+                                                                        <span>Select Workgroup &nbsp;
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </span>
+                                                                      </a>
+                                                                      <ul class="dropdown-menu" style="left:-6px">
+                                                                        <li ng-repeat="w in activityWg" ng-click="wkgroup_change(w.uniqueId)">
+                                                                          <a href="" style="padding:3px 2px">{{w.wname}}</a>
+                                                                        </li>
+                                                                      </ul>
+                                                                    </span> -->
+                    
+<!--  <div class="btn-group" dropdown is-open="wkToggle">
+      <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Select file <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-repeat="w in activityWg" ><span ng-click="wkgroup_change(w.uniqueId)">{{w.wname}}</span></li>
+       
+      </ul>
+    </div> -->
+
+                    <!--Header Buttons-->
+                    
+                    <!--Header Buttons End-->
+                </div>
+<div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox bg-white radius-bordered">
+                                        <div class="databox-left bg-themesecondary">
+                                            <div class="databox-piechart">
+                                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)" style="width: 47px; height: 47px; line-height: 47px;">
+                                                    <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/Page_icon.png" style="width: 40%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <span class="databox-number themesecondary">{{files_count}}</span>
+                                            <div class="databox-text darkgray">FILES</div>
+                                            <div class="databox-stat themesecondary radius-bordered">
+                                                <i class="stat-icon icon-lg fa fa-tasks"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox bg-white radius-bordered">
+                                        <div class="databox-left bg-themesecondary">
+                                            <div class="databox-piechart">
+                                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)" style="width: 47px; height: 47px; line-height: 47px;">
+                                                    <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/User_icon.png" style="width: 40%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <span class="databox-number themesecondary">{{collabs_count}}</span>
+                                            <div class="databox-text darkgray">COLLABORATORS</div>
+                                            <div class="databox-stat themesecondary radius-bordered">
+                                                <i class="stat-icon icon-lg fa fa-tasks"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox bg-white radius-bordered">
+                                        <div class="databox-left bg-themesecondary">
+                                            <div class="databox-piechart">
+                                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)" style="width: 47px; height: 47px; line-height: 47px;">
+                                                    <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/Time_icon.png" style="width: 40%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="databox-right">
+                                            <span class="databox-number themesecondary">{{wgtime | date:'MMM d, h:mm a'}}</span>
+                                            <div class="databox-text darkgray">CREATED</div>
+                                            <div class="databox-stat themesecondary radius-bordered">
+                                                <i class="stat-icon icon-lg fa fa-tasks"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="databox bg-white radius-bordered">
+                                        <div class="databox-left no-padding">
+                                            <img src="https://s3-ap-southeast-1.amazonaws.com/docs-ent/uploaded/user_{{wgAuth.id}}/profile_image/dp.jpg" style="width:65px; height:65px;">
+                                        </div>
+                                        <div class="databox-right padding-top-20">
+                                            <div class="databox-stat palegreen">
+                                                <i class="stat-icon icon-xlg fa fa-phone"></i>
+                                            </div>
+                                            <span style="text-transform:capitalize " class="databox-number themesecondary ng-binding">{{wgAuth.name}}</span>
+                                            <div class="databox-text darkgray">WORKGROUP OWNER</div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+<!-- section two feeds -->
+
+
+<div class="col-lg-9 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-header bordered-bottom bordered-themeprimary">
+                                    <i class="widget-icon fa fa-tasks "></i>
+                                    <span class="widget-caption ">{{filenameSelected}}</span>
+                                    
+                                   <!--    <span class="dropdown" dropdown="" on-toggle="toggled(open)" style="position: relative;
+                                                                display: inline-block;
+                                                                vertical-align: middle;
+                                                                margin: 0;
+
+                                                                padding:10px;
+                                                                float:right;
+                                                                color: #555;">
+                                                                      <a href="" class="dropdown-toggle" dropdown-toggle="" style="color:#888" aria-haspopup="true" aria-expanded="false">
+                                                                        <span>Select file &nbsp;
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </span>
+                                                                      </a>
+                                                                      <ul class="dropdown-menu" style="left:-6px;text-align:left">
+                                                                        <li ng-click="file_change(f.uniqueFilename,f.filename)" ng-repeat="f in filesList">
+                                                                          <span style="padding:3px 2px">
+                                                                            
+                                                                          </span>
+                                                                        <div class="ticket-state bg-palegreen">
+                                                                      <i class="fa fa-check"></i>
+                                                                       </div>
+                                                                        </li>
+                                                                      </ul>
+                                                                    </span> -->
+
+
+
+                                </div><!--Widget Header-->
+                                <div class="widget-body no-padding">
+                                    <div class="task-container">
+                                       
+                                        <ul class="tasks-list" style="margin-bottom:0px">
+                                           
+                                            <li ng-if="dt == 0" class="task-item ng-scope" style="height:133px; color:#888">
+                                                
+                                                <div class="task-body ng-binding ng-scope" >
+                                                   No activities on this file
+                                                        
+                                                    </div>
+                                            </li>
+
+                                            <li ng-repeat="history in activityHistory" class="task-item">
+                                                
+                                                <div class="task-state">
+                                                    <span class="label label-orange" style="border: 1px solid #fb6e52; color: #fb6e52;background-color:#fff">
+                                                        {{history.anno_type}}
+                                                    </span>
+                                                </div>
+                                                <div class="task-time">{{history.time | date:'MMM d'}}</div>
+                                                
+                                                 <div class="task-body" ng-if="history.anno_type == 'Highlight'" class="info" style="color:#676767">
+                                                   {{history.userName}} highlighted some text on page {{history.page_no}}
+                                                        
+                                                    </div>
+                                                    
+                                                    <div class="task-body" ng-if="history.anno_type == 'Strike'" class="info">
+                                                        {{history.userName}} striked out some text on page {{history.page_no}}
+                                                        
+                                                    </div>
+
+
+                                                    <div class="task-body" ng-if="history.anno_type == 'Draw'" class="info">
+                                                       {{history.userName}} sketched a line on page {{history.page_no}}
+                                                        
+                                                    </div>
+
+
+                                                    <div class="task-body" ng-if="history.anno_type == 'Pin comment'" class="info">
+                                                        {{history.userName}} pinned a comment box on page {{history.page_no}}
+                                                        
+                                                    </div>
+
+                                                    <div class="task-body" ng-if="history.anno_type == 'Text comment'" class="info">
+                                                       {{history.userName}} commented for some text on page {{history.page_no}}
+                                                        
+                                                    </div>
+
+
+                                                    <div class="task-body" ng-if="history.anno_type == 'Text box'" class="info">
+                                                        {{history.userName}} added a textbox with &#34 <i>{{history.append_text}}</i> &#34 on page {{history.page_no}}
+                                                        
+                                                    </div>
+
+                                                <div class="task-creator"><a href="">{{history.userName}}</a></div>
+                                                
+                                            </li>
+                                           
+                                        </ul>
+                                    </div>
+                                </div><!--Widget Body-->
+                            </div>
+
+                        </div>
+
+<!-- Collaborations section -->
+
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="orders-container">
+                                <div class="orders-header" style="border-color: #04b8a8 !important;
+border-bottom: 1px solid #fff;
+background-color: #fff;
+-webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);
+-moz-box-shadow: 0 0 4px rgba(0,0,0,.3);
+box-shadow: 0 0 4px rgba(0,0,0,.3);">
+                                    <h6>Collaborators</h6>
+                                </div>
+                                <ul class="orders-list">
+                                    <li class="order-item ng-scope" ng-if = "collabs_count == 0">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 item-left">
+                                                <div class="item-booker ng-binding">No collaborators added</div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                       
+                                    </li>
+                                    <li class="order-item" ng-repeat="c in activityCollab">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 item-left">
+                                                <div class="item-booker" style="text-transform:capitalize">{{c.collabName}}</div>
+                                                <div class="item-time">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span>{{c.collabEmail}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 item-right">
+                                        
+                                                    <img src="https://s3-ap-southeast-1.amazonaws.com/docs-ent/uploaded/user_{{c.userid}}/profile_image/dp.jpg" style="width: 50px; height: 50px;">
+                                              
+                                            </div>
+                                        </div>
+                                       
+                                    </li>
+                                   
+                                </ul>
+                                
+                            </div>
+                        </div>
+
+                    </div>
  
-            <div class="row">
-    <div class="col-sm-8 main-content">
-
-            <h2 style="color: #41414c;font-size: 1.25em;font-weight: normal;margin-bottom:25px">
-                File Activity
-                
-            </h2>
-            <ul class="item-summary" ng-if="noData == 0">
-            
-
-            
-                <li ng-repeat="history in activityHistory | orderBy:'':'true'">
-                    <div class="overview">
-                        <p class="main-detail">{{history.time | date:'MMM d'}}</p>
-                        
-                        <span class="label label-success">{{history.anno_type}}</span>
-                    </div>
-                    <div ng-if="history.anno_type == 'Highlight'" class="info">
-                        <p>{{history.userName}} highlighted some text on page {{history.page_no}}</p>
-                        
-                    </div>
-                    
-                    <div ng-if="history.anno_type == 'Strike'" class="info">
-                        <p>{{history.userName}} striked out some text on page {{history.page_no}}</p>
-                        
-                    </div>
-
-
-                    <div ng-if="history.anno_type == 'Draw'" class="info">
-                        <p>{{history.userName}} sketched a line on page {{history.page_no}}</p>
-                        
-                    </div>
-
-
-                    <div ng-if="history.anno_type == 'Pin comment'" class="info">
-                        <p>{{history.userName}} pinned a comment box on page {{history.page_no}}</p>
-                        
-                    </div>
-
-                    <div ng-if="history.anno_type == 'Text comment'" class="info">
-                        <p>{{history.userName}} commented for some text on page {{history.page_no}}</p>
-                        
-                    </div>
-
-
-                    <div ng-if="history.anno_type == 'Text box'" class="info">
-                        <p>{{history.userName}} added a textbox with &#34 <i>{{history.append_text}}</i> &#34 on page {{history.page_no}}</p>
-                        
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-            
-            </ul>
-<div ng-if="noData == 1">
-
-    No activities on this file
-
-        </div>
-
-        </div>
-
-    <div class="col-sm-4 sidebar">
-        
-        <div class="widget">
-            <h2 style="color: #41414c;font-size: 1em;font-weight: normal">
-                File </h2>
-            <ul class="cards list-group" style="margin-bottom:0px;border:none;">
-                <li ng-repeat = "files in activityFiles  | filter:{uniqueFilename:selFile}" class="list-group-item">
-                    <p class="title" style="width: 220px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;">{{files.filename}}</p>
-                    
-                    <p class="info-text">Type:pdf</p>
-                       <p class="info-text">Added on: {{files.uploadtime | date:'MMM d, h:mm a'}}</p></p>
-                    <p class="info-text">Author:{{files.authname}}</p>
-                   
-                </li>
-                
-              
-            </ul>
-        </div>
-
-        <div class="widget">
-            <h2 style="color: #41414c;font-size: 1em;font-weight: normal">
-                Collaborators </h2>
-            <ul class="cards list-group" style="margin-bottom:0px;border:none;">
-                <li class="list-group-item" ng-repeat="collabs in activityCollab">
-                    <p class="title">{{collabs.collabName}}</p>
-                    
-                    <p class="info-text">Email: {{collabs.collabEmail}}</p>
-                    
-                   
-                </li>
-                
-              
-            </ul>
-        </div>
-      
-    </div>
 </div>
-<footer>
-            <hr>
-         
-        </footer>
-
 </div>
 </html>
