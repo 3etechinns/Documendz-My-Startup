@@ -1259,7 +1259,7 @@ $scope.send_update = function(){
 $window.ga('send', 'pageview', { page: "Activity" }); 
 	       
 
-
+ $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
 	    $scope.fileToggle = false;   
 	        $scope.wkToggle = false;   
 	            // ------------ All workgroups ------------//
