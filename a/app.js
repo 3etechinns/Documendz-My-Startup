@@ -295,10 +295,10 @@ $window.ga('send', 'pageview', { page: "Workgroup" });
 
 
 
- $scope.inform = inform;
+  $scope.inform = inform;
   $scope.Page = Page;
 
- $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
+  $scope.defDp = "https://d28kungomln1xp.cloudfront.net/images/unknown_dp.jpg";
 
 $scope.$on('$routeChangeStart', function() { 
 Page.setTitle('Workgroups - Documendz');   
@@ -531,7 +531,7 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 	    
 	    
 
-   $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
+   $scope.defDp = "https://d28kungomln1xp.cloudfront.net/images/unknown_dp.jpg";
 
     
 	    
@@ -612,7 +612,7 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 // check permissions to the wkgroup: either the author or is a collab
 	    	    Page.setTitle('Files - Documendz');
 
- $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
+ $scope.defDp = "https://d28kungomln1xp.cloudfront.net/images/unknown_dp.jpg";
 
 $window.ga('send', 'pageview', { page: "Files" }); 
 
@@ -1259,7 +1259,7 @@ $scope.send_update = function(){
 $window.ga('send', 'pageview', { page: "Activity" }); 
 	       
 
- $scope.defDp = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100";
+ $scope.defDp = "https://d28kungomln1xp.cloudfront.net/images/unknown_dp.jpg";
 	    $scope.fileToggle = false;   
 	        $scope.wkToggle = false;   
 	            // ------------ All workgroups ------------//
