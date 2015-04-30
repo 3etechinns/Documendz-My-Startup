@@ -1259,7 +1259,7 @@ $scope.send_update = function(){
 $window.ga('send', 'pageview', { page: "Activity" }); 
 	       
 
- $scope.defDp = "https://d28kungomln1xp.cloudfront.net/images/unknown_dp.jpg";
+ $scope.defDp = "https://s3-ap-southeast-1.amazonaws.com/documendz-ent/images/unknown_dp.jpg";
 	    $scope.fileToggle = false;   
 	        $scope.wkToggle = false;   
 	            // ------------ All workgroups ------------//
