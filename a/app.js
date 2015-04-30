@@ -1268,7 +1268,18 @@ $window.ga('send', 'pageview', { page: "Activity" });
 	             console.log($scope.wgData);
 	             $scope.filenameSelected = "";
 	              $scope.activityHistory = "";
-	           
+	      
+  var hi_loc = [];
+
+    $rootScope.$on('$routeChangeSuccess', function() {
+        hi_loc.push($location.$$path);
+    });
+
+    $rootScope.back = function () {
+        var prevUrl = hi_loc.length > 1 ? hi_loc.splice(-2)[0] : "/";
+        $location.path(prevUrl);
+    };
+
 
 	           function wkgroup_main(wid){
 	            	
