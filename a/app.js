@@ -1251,7 +1251,7 @@ $scope.send_update = function(){
 
 
 
-	scotchApp.controller('activityController', function($window,Page, $scope,$routeParams,filesDataFunctions,$http) {
+	scotchApp.controller('activityController', function($rootScope,$window,Page, $scope,$routeParams,filesDataFunctions,$http) {
 
 	
 		Page.setTitle('Acivity Log - Documendz');
