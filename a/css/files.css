@@ -923,7 +923,6 @@ font-size: 17px;
 line-height: 26px;
 margin: 2px;
 position: relative;
-font-family: 'Roboto','Lucida Sans','trebuchet MS',Arial,Helvetica;
 }
 
 
@@ -1110,7 +1109,7 @@ margin-bottom: 30px;
 
 .orders-container .orders-header {
 position: relative;
-height: 43px;
+height: 41px;
 padding: 14px 10px;
 border-bottom: 1px solid #e5e5e5;
 background-color: #fbfbfb;

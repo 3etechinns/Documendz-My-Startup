@@ -355,7 +355,6 @@ $scope.fiToggle = false;
 	            $scope.pt = data[0].userid;
 	            $scope.ut = data[0].username;
 	            $scope.flimit = data[0].files;
-	            $scope.wlimit = data[0].workgroups;
 	            $scope.ver = data[0].versions;
 	            $scope.climit = data[0].collaborators;
 	         
@@ -415,7 +414,6 @@ userData.setData($scope.states,"emailList");
 
 	    $scope.addWorkgGroup = function() {
 
-	        if ($scope.myWorkgroupCount < $scope.wlimit) {
 
 	            $modal.open({
 	                templateUrl: 'myModalContent.html',
@@ -423,14 +421,7 @@ userData.setData($scope.states,"emailList");
 	                size: '',
 	            });
 
-	        } else if ($scope.myWorkgroupCount >= $scope.wlimit) {
-	            $modal.open({
-	                templateUrl: 'limitReached.html',
-	                controller: 'ModalInstanceCtrl',
-	                size: '',
-	            });
-	        }
-
+	        
 	    }
 
 
@@ -597,20 +588,19 @@ $window.ga('send', 'pageview', { page: "MyAccount" });
 
 	    };
 
- // ---------- pull old files --------------  //
+ 
+$http.get("backend/countAllFiles.php")
+	        .success(function(res) {
 
-       $http({
-	                    method: 'POST',
-	                    url: 'backend/fetchOldFiles.php',
-	                    headers: {
-	                        'Content-Type': 'application/x-www-form-urlencoded'
-	                    }
-	                })
-	                .success(function(res) {
+	        		$scope.totalFileCount = parseInt(res);
 
-	                	$scope.oldFiles = res;
+	            // alert("current used:"+res);
+	            // console.log(typeof($scope.totalFileCount));
+	        })
+	        .error(function() {
 
-	                })
+	        });
+       
 
 	});
 
@@ -644,7 +634,28 @@ $window.ga('send', 'pageview', { page: "Files" });
 
 	        });
 
-		
+			    $scope.totalFileCount = 0;
+
+      function updateFileCount(){
+
+      	$http.get("backend/countAllFiles.php")
+	        .success(function(res) {
+
+	        		$scope.totalFileCount = parseInt(res);
+
+	            // alert("current used:"+res);
+	            // console.log(typeof($scope.totalFileCount));
+	        })
+	        .error(function() {
+
+	        });
+
+
+}
+
+updateFileCount();
+
+
 $scope.search = function (item){
 	
     // if (item.filename.indexOf($scope.query)!=-1 || item.authname.indexOf($scope.query)!=-1) {
@@ -799,7 +810,7 @@ var au = {
 
 
 	            // })
-
+updateFileCount();
 	    };
 
 
@@ -1018,6 +1029,8 @@ $timeout(function(){
 	                        //$scope.run = data;
 	                        poll(data);
 	                    }
+	                     updateFileCount();
+
 	                });
 
 

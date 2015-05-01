@@ -69,7 +69,7 @@ margin-right: 6px;margin-bottom: 4px;" src="https://d28kungomln1xp.cloudfront.ne
 
 		<div class="up-buttons">
 		<button ng-file-select="" 
-    ng-disabled='allFiles.length >= flimit || wa == 1'
+    ng-disabled='totalFileCount >= flimit'
 		ng-model="files" 
 		class="btn btn-new ng-isolate-scope ng-pristine ng-valid"  
 		ng-file-change="uploadFile(files)" 
@@ -84,8 +84,10 @@ margin-right: 6px;margin-bottom: 4px;" src="https://d28kungomln1xp.cloudfront.ne
 
 	</div>
 
-<div id= "upload-limit-message" ng-if   ='allFiles.length >= flimit'> 
-Currently, a maximum of 10 files can be uploaded in a workgroup
+<div id= "upload-limit-message" ng-if   ='totalFileCount >= flimit'> 
+Currently, you have reached your upload limit of 50 files. Let us know if you would like to have more
+
+ <div class="btn btn-warning" ng-click="increaseFileLimit()">Let us know </div>
 </div>
 
 	</div>
