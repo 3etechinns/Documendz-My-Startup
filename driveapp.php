@@ -1,7 +1,7 @@
 <body>
   <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">
     <div id="bar2" style="display: none;">
-      <span id="bar3" ></span>
+      <span id="bar3" style="width:0%" ></span>
     </div>
   </div>
 </body>
@@ -608,7 +608,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
                 $value = substr(preg_replace('/\s+/', '', $f), $work_pos + 1, $base_pos - $work_pos - 1);
                 $prog_val = ceil($increment + ($value * ($base - $increment)) / $base);
                 
-                echo '<script>document.getElementById("bar3").style.width ="'.$prog_value.'%";</script>'; //loading and progress bar
+                echo '<script>document.getElementById("bar3").style.width ="'.$prog_val.'%";</script>'; //loading and progress bar
 
                 ob_flush();
                 flush();
