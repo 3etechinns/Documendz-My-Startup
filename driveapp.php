@@ -1,6 +1,107 @@
 <body>
-  <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><div id="bar2" style="display: none;"><span style="width:0%;"></span></div></div>
+  <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><div id="bar2" style="display: none;"><span id="bar3" style="width:0%;"></span></div></div>
 </body>
+
+<style type="text/css">
+  div#bar2{
+  width: 400px;
+  height: 8px;
+  background:rgb(0, 18, 17);
+  margin: 20px 0 0 20px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  border-top: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  padding: 4px 5px 5px;
+  display: inline-block;
+}
+
+div#bar2 span{
+  height: 100%;
+  display: block;
+  background: #1DBFB1;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-animation: pulse1 .6s infinite, grow .5s ease-out;
+  -moz-animation: pulse1 .6s infinite, grow .5s ease-out;
+  -ms-animation: pulse1 .6s infinite, grow .5s ease-out;
+  -o-animation: pulse1 .6s infinite, grow .5s ease-out;
+  animation: pulse1 .6s infinite, grow .5s ease-out;
+}
+
+div#bar2 span{
+  background: #1DBFB1;
+  -webkit-animation:pulse2 .6s infinite, grow .5s ease-out;
+  -moz-animation:pulse2 .6s infinite, grow .5s ease-out;
+  -ms-animation:pulse2 .6s infinite, grow .5s ease-out;
+  -o-animation:pulse2 .6s infinite, grow .5s ease-out;
+  animation:pulse2 .6s infinite, grow .5s ease-out;
+}
+
+
+@-webkit-keyframes pulse2 {
+  0% {  box-shadow: white 0px 0px 8px; }
+  50% {  box-shadow: white 0px 0px 4px; }
+  100% {  box-shadow: white 0px 0px 8px; }
+}
+
+@-webkit-keyframes grow {
+  0% {width: 0;}
+}
+
+@-moz-keyframes pulse1 {
+  0% {  box-shadow: #ddd1ff 0px 0px 8px;  }
+  50% {  box-shadow: #ddd1ff 0px 0px 4px; }
+  100% {  box-shadow: #ddd1ff 0px 0px 8px; }
+} 
+
+@-moz-keyframes pulse2 {
+  0% {  box-shadow: white 0px 0px 8px; }
+  50% {  box-shadow: white 0px 0px 4px; }
+  100% {  box-shadow: white 0px 0px 8px; }
+}
+
+@-moz-keyframes grow {
+  0% {width: 0;}
+}
+
+
+
+@-ms-keyframes pulse2 {
+  0% {  box-shadow: #8aff51 0px 0px 8px; }
+  50% {  box-shadow: #8aff51 0px 0px 4px; }
+  100% {  box-shadow: #8aff51 0px 0px 8px; }
+}
+
+@-ms-keyframes grow {
+  0% {width: 0;}
+}
+
+@-o-keyframes pulse2 {
+  0% {  box-shadow: #8aff51 0px 0px 8px; }
+  50% {  box-shadow: #8aff51 0px 0px 4px; }
+  100% {  box-shadow: #8aff51 0px 0px 8px; }
+}
+
+@-o-keyframes grow {
+  0% {width: 0;}
+}
+
+
+
+@keyframes pulse2 {
+  0% {  box-shadow: #8aff51 0px 0px 8px; }
+  50% {  box-shadow: #8aff51 0px 0px 4px; }
+  100% {  box-shadow: #8aff51 0px 0px 8px; }
+}
+
+@keyframes grow {
+  0% {width: 0;}
+}
+</style>
+
 <?php
 
 require_once 'a/backend/functions.php';
@@ -458,7 +559,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
           //__DIR__ will set CWD
                     
 
-          // echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
+           echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
 
           if (is_resource($process)) {
 
@@ -503,7 +604,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
                 $value = substr(preg_replace('/\s+/', '', $f), $work_pos + 1, $base_pos - $work_pos - 1);
                 $prog_val = ceil($increment + ($value * ($base - $increment)) / $base);
                 
-                echo '<script>document.getElementById("bar2").style.display="block"; document.getElementById("bar2").style.width ="'.$prog_value.'%";</script>'; //loading and progress bar
+                echo '<script>document.getElementById("bar2").style.display="block"; document.getElementById("bar3").style.width ="'.$prog_value.'%";</script>'; //loading and progress bar
 
                 ob_flush();
                 flush();
@@ -581,102 +682,3 @@ $uploaded_file_id = mysql_fetch_array($uploaded_file_id, MYSQL_NUM);
         }
   
 ?>
-<style type="text/css">
-  div#bar2{
-  width: 400px;
-  height: 8px;
-  background:rgb(0, 18, 17);
-  margin: 20px 0 0 20px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  border-top: 1px solid rgba(0,0,0,.5);
-  border-bottom: 1px solid rgba(255,255,255,.2);
-  padding: 4px 5px 5px;
-  display: inline-block;
-}
-
-div#bar2 span{
-  height: 100%;
-  display: block;
-  background: #1DBFB1;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  -webkit-animation: pulse1 .6s infinite, grow .5s ease-out;
-  -moz-animation: pulse1 .6s infinite, grow .5s ease-out;
-  -ms-animation: pulse1 .6s infinite, grow .5s ease-out;
-  -o-animation: pulse1 .6s infinite, grow .5s ease-out;
-  animation: pulse1 .6s infinite, grow .5s ease-out;
-}
-
-div#bar2 span{
-  background: #1DBFB1;
-  -webkit-animation:pulse2 .6s infinite, grow .5s ease-out;
-  -moz-animation:pulse2 .6s infinite, grow .5s ease-out;
-  -ms-animation:pulse2 .6s infinite, grow .5s ease-out;
-  -o-animation:pulse2 .6s infinite, grow .5s ease-out;
-  animation:pulse2 .6s infinite, grow .5s ease-out;
-}
-
-
-@-webkit-keyframes pulse2 {
-  0% {  box-shadow: white 0px 0px 8px; }
-  50% {  box-shadow: white 0px 0px 4px; }
-  100% {  box-shadow: white 0px 0px 8px; }
-}
-
-@-webkit-keyframes grow {
-  0% {width: 0;}
-}
-
-@-moz-keyframes pulse1 {
-  0% {  box-shadow: #ddd1ff 0px 0px 8px;  }
-  50% {  box-shadow: #ddd1ff 0px 0px 4px; }
-  100% {  box-shadow: #ddd1ff 0px 0px 8px; }
-} 
-
-@-moz-keyframes pulse2 {
-  0% {  box-shadow: white 0px 0px 8px; }
-  50% {  box-shadow: white 0px 0px 4px; }
-  100% {  box-shadow: white 0px 0px 8px; }
-}
-
-@-moz-keyframes grow {
-  0% {width: 0;}
-}
-
-
-
-@-ms-keyframes pulse2 {
-  0% {  box-shadow: #8aff51 0px 0px 8px; }
-  50% {  box-shadow: #8aff51 0px 0px 4px; }
-  100% {  box-shadow: #8aff51 0px 0px 8px; }
-}
-
-@-ms-keyframes grow {
-  0% {width: 0;}
-}
-
-@-o-keyframes pulse2 {
-  0% {  box-shadow: #8aff51 0px 0px 8px; }
-  50% {  box-shadow: #8aff51 0px 0px 4px; }
-  100% {  box-shadow: #8aff51 0px 0px 8px; }
-}
-
-@-o-keyframes grow {
-  0% {width: 0;}
-}
-
-
-
-@keyframes pulse2 {
-  0% {  box-shadow: #8aff51 0px 0px 8px; }
-  50% {  box-shadow: #8aff51 0px 0px 4px; }
-  100% {  box-shadow: #8aff51 0px 0px 8px; }
-}
-
-@keyframes grow {
-  0% {width: 0;}
-}
-</style>
