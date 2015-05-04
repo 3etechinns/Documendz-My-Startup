@@ -564,7 +564,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
                     
 
            echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
-           echo 'document.getElementById("bar2").style.display="block";';
+           echo '<script>document.getElementById("bar2").style.display="block";</script>';
           if (is_resource($process)) {
 
 
