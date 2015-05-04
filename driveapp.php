@@ -1,7 +1,7 @@
 <body>
   <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">
     <div id="bar2" style="display: none;">
-      <span id="bar3" style="width:0%;"></span>
+      <span id="bar3" ></span>
     </div>
   </div>
 </body>
