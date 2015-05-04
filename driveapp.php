@@ -1,5 +1,9 @@
 <body>
-  <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><div id="bar2" style="display: none;"><span id="bar3" style="width:0%;"></span></div></div>
+  <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">
+    <div id="bar2" style="display: none;">
+      <span id="bar3" style="width:0%;"></span>
+    </div>
+  </div>
 </body>
 
 <style type="text/css">
@@ -236,7 +240,7 @@ if ($client->getAccessToken()) {
             $email = $user['emailAddress'];
             $name = $user['displayName'];
             $im = $user['picture'];
-            echo '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><img style="width: 80px;" src="http://www.buildingcentre.co.uk/images/loading.gif">Processing</div>'; //loading and progress bar
+            echo '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">Processing</div>'; //loading and progress bar
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
             $z = mysqli_fetch_array($y);
             $x = mysqli_num_rows($y);
@@ -560,7 +564,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
                     
 
            echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
-
+           echo 'document.getElementById("bar2").style.display="block";';
           if (is_resource($process)) {
 
 
@@ -604,7 +608,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
                 $value = substr(preg_replace('/\s+/', '', $f), $work_pos + 1, $base_pos - $work_pos - 1);
                 $prog_val = ceil($increment + ($value * ($base - $increment)) / $base);
                 
-                echo '<script>document.getElementById("bar2").style.display="block"; document.getElementById("bar3").style.width ="'.$prog_value.'%";</script>'; //loading and progress bar
+                echo '<script>document.getElementById("bar3").style.width ="'.$prog_value.'%";</script>'; //loading and progress bar
 
                 ob_flush();
                 flush();
