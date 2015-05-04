@@ -61,9 +61,6 @@ try {
 } catch (S3Exception $e) {
     echo $e->getMessage() . "\n";
 }
-
-
-
 }
 
 
@@ -135,8 +132,7 @@ if ($client->getAccessToken()) {
             $email = $user['emailAddress'];
             $name = $user['displayName'];
             $im = $user['picture'];
-            print "<h3>Loading... </h3>";
-            
+            print '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><img style="width: 80px;" src="http://www.buildingcentre.co.uk/images/loading.gif">Processing</div>'; //loading and progress bar
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
             $z = mysqli_fetch_array($y);
             $x = mysqli_num_rows($y);
@@ -144,7 +140,7 @@ if ($client->getAccessToken()) {
       //   echo "Loading ...";
 
       // echo $x ."issssssssssssss";
-        if($x > 0 ){
+        if($x > 0 ){  //if user exists
 
                 $_SESSION['Username'] = $z['username'];
             $_SESSION['email'] = $email;
@@ -167,7 +163,7 @@ if ($client->getAccessToken()) {
 
         }
 
-        else if($x == 0){
+        else if($x == 0){ //if a new user
 
             // echo "im in";
             
@@ -457,7 +453,10 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
         
           $process = proc_open($cmd, $descriptorspec, $pipes, __DIR__);  //runs the pdf2html commmand as in cmd prompt
           //__DIR__ will set CWD
-      
+                    
+
+          echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
+
           if (is_resource($process)) {
 
 
@@ -494,14 +493,14 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
 
 
               }
-        
+
 
               if ($work_pos !== false && $base_pos !== false && ($base_pos > $work_pos)) {
                 $work_pos = strrpos(preg_replace('/\s+/', '', $f), 'Working:') + 7; //to get end position of 'Working:'
                 $value = substr(preg_replace('/\s+/', '', $f), $work_pos + 1, $base_pos - $work_pos - 1);
                 $prog_val = ceil($increment + ($value * ($base - $increment)) / $base);
                 
-                
+                echo '<div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><div id="bar2"><span style="width: '.$prog_value.'%;"></span></div></div>'; //loading and progress bar
 
                 ob_flush();
                 flush();
@@ -561,6 +560,7 @@ try {
 
 unlink($html_file_dest.'/'.$unique_filename.'.html');
 unlink($html_file_dest.'/'.$unique_filename.'_gz.html');
+              
 
             };
             
@@ -578,3 +578,102 @@ $uploaded_file_id = mysql_fetch_array($uploaded_file_id, MYSQL_NUM);
         }
   
 ?>
+<style type="text/css">
+  div#bar2{
+  width: 400px;
+  height: 8px;
+  background:rgb(0, 18, 17);
+  margin: 20px 0 0 20px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  border-top: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  padding: 4px 5px 5px;
+  display: inline-block;
+}
+
+div#bar2 span{
+  height: 100%;
+  display: block;
+  background: #1DBFB1;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-animation: pulse1 .6s infinite, grow .5s ease-out;
+  -moz-animation: pulse1 .6s infinite, grow .5s ease-out;
+  -ms-animation: pulse1 .6s infinite, grow .5s ease-out;
+  -o-animation: pulse1 .6s infinite, grow .5s ease-out;
+  animation: pulse1 .6s infinite, grow .5s ease-out;
+}
+
+div#bar2 span{
+  background: #1DBFB1;
+  -webkit-animation:pulse2 .6s infinite, grow .5s ease-out;
+  -moz-animation:pulse2 .6s infinite, grow .5s ease-out;
+  -ms-animation:pulse2 .6s infinite, grow .5s ease-out;
+  -o-animation:pulse2 .6s infinite, grow .5s ease-out;
+  animation:pulse2 .6s infinite, grow .5s ease-out;
+}
+
+
+@-webkit-keyframes pulse2 {
+  0% {  box-shadow: white 0px 0px 8px; }
+  50% {  box-shadow: white 0px 0px 4px; }
+  100% {  box-shadow: white 0px 0px 8px; }
+}
+
+@-webkit-keyframes grow {
+  0% {width: 0;}
+}
+
+@-moz-keyframes pulse1 {
+  0% {  box-shadow: #ddd1ff 0px 0px 8px;  }
+  50% {  box-shadow: #ddd1ff 0px 0px 4px; }
+  100% {  box-shadow: #ddd1ff 0px 0px 8px; }
+} 
+
+@-moz-keyframes pulse2 {
+  0% {  box-shadow: white 0px 0px 8px; }
+  50% {  box-shadow: white 0px 0px 4px; }
+  100% {  box-shadow: white 0px 0px 8px; }
+}
+
+@-moz-keyframes grow {
+  0% {width: 0;}
+}
+
+
+
+@-ms-keyframes pulse2 {
+  0% {  box-shadow: #8aff51 0px 0px 8px; }
+  50% {  box-shadow: #8aff51 0px 0px 4px; }
+  100% {  box-shadow: #8aff51 0px 0px 8px; }
+}
+
+@-ms-keyframes grow {
+  0% {width: 0;}
+}
+
+@-o-keyframes pulse2 {
+  0% {  box-shadow: #8aff51 0px 0px 8px; }
+  50% {  box-shadow: #8aff51 0px 0px 4px; }
+  100% {  box-shadow: #8aff51 0px 0px 8px; }
+}
+
+@-o-keyframes grow {
+  0% {width: 0;}
+}
+
+
+
+@keyframes pulse2 {
+  0% {  box-shadow: #8aff51 0px 0px 8px; }
+  50% {  box-shadow: #8aff51 0px 0px 4px; }
+  100% {  box-shadow: #8aff51 0px 0px 8px; }
+}
+
+@keyframes grow {
+  0% {width: 0;}
+}
+</style>
