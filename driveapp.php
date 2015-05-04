@@ -1,3 +1,6 @@
+<body>
+  <div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><div id="bar2" style="display: none;"><span style="width:0%;"></span></div></div>
+</body>
 <?php
 
 require_once 'a/backend/functions.php';
@@ -132,7 +135,7 @@ if ($client->getAccessToken()) {
             $email = $user['emailAddress'];
             $name = $user['displayName'];
             $im = $user['picture'];
-            echo '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">Processing</div>'; //loading and progress bar
+            echo '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><img style="width: 80px;" src="http://www.buildingcentre.co.uk/images/loading.gif">Processing</div>'; //loading and progress bar
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
             $z = mysqli_fetch_array($y);
             $x = mysqli_num_rows($y);
@@ -455,7 +458,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
           //__DIR__ will set CWD
                     
 
-          echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
+          // echo '<script>document.getElementById("processingWrapper").style.display = "none";</script>'; //loading and progress bar
 
           if (is_resource($process)) {
 
@@ -499,8 +502,8 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
                 $work_pos = strrpos(preg_replace('/\s+/', '', $f), 'Working:') + 7; //to get end position of 'Working:'
                 $value = substr(preg_replace('/\s+/', '', $f), $work_pos + 1, $base_pos - $work_pos - 1);
                 $prog_val = ceil($increment + ($value * ($base - $increment)) / $base);
-                echo $prog_val;
-                echo '<div style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;"><div id="bar2"><span style="width: '.$prog_value.'%;"></span></div></div>'; //loading and progress bar
+                
+                echo '<script>document.getElementById("bar2").style.display=block; document.getElementById("bar2").style.width='.$prog_value.'%;</script>'; //loading and progress bar
 
                 ob_flush();
                 flush();
