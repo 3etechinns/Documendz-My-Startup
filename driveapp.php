@@ -245,29 +245,37 @@ if ($client->getAccessToken()) {
             $z = mysqli_fetch_array($y);
             $x = mysqli_num_rows($y);
 
-      //   echo "Loading ...";
-
-      // echo $x ."issssssssssssss";
-        if($x > 0 ){  //if user exists
+            if($x > 0 ){  //if user exists
 
                 $_SESSION['Username'] = $z['username'];
-            $_SESSION['email'] = $email;
-            $_SESSION['userid'] = $z['userid'];
-            $wr1 = mysqli_query($dbhandle,"SELECT uniqueId FROM workgroups WHERE auth_id =".$_SESSION['userid']." AND webapp=1");
-            $w = mysqli_fetch_array($wr1);
+              $_SESSION['email'] = $email;
+              $_SESSION['userid'] = $z['userid'];
+              
+              $fc =  mysqli_query($dbhandle,"SELECT count(*) as total from files where authid=".$_SESSION['userid']);
+              $count = mysqli_fetch_assoc($fc);
+            if($count['total']<$z['files']) {            
+              $wr1 = mysqli_query($dbhandle,"SELECT uniqueId FROM workgroups WHERE auth_id =".$_SESSION['userid']." AND webapp=1");
+              $w = mysqli_fetch_array($wr1);
 
-            if(mysqli_num_rows($wr1) == 0) {
-              // echo "no found";
-                $w1 = getToken(20);
-                mysqli_query($dbhandle,"INSERT INTO workgroups (uniqueId,wname,wdesc,auth_id,auth_name,webapp) 
-                                VALUES ('".$w1."','My Files','It contains all files that you have opened directly from Gmail or Google drive.',". $_SESSION['userid'].",'".$_SESSION['Username']."',1)");
+              if(mysqli_num_rows($wr1) == 0) {
+                // echo "no found";
+                  $w1 = getToken(20);
+                  mysqli_query($dbhandle,"INSERT INTO workgroups (uniqueId,wname,wdesc,auth_id,auth_name,webapp) 
+                                  VALUES ('".$w1."','My Files','It contains all files that you have opened directly from Gmail or Google drive.',". $_SESSION['userid'].",'".$_SESSION['Username']."',1)");
 
+              }
+              else {
+                  $w1 = $w['uniqueId'];
+                }
+
+                getDp($z['userid'],$im['url']);
+                printFile($service, $fileId[0], $type, $file1);
             }
             else {
-                $w1 = $w['uniqueId'];
-              }
+                echo '<div style="background-color: #eee; text-align:center; width:100%; height:100%"><h1></h1><p style="padding-top: 21px;font-size: 21px;font-weight: 200;">You have reached the maximum file limit on your account.</p></div>';
 
-               getDp($z['userid'],$im['url']); 
+            }
+ 
 
         }
 
@@ -278,7 +286,6 @@ if ($client->getAccessToken()) {
 
       mysqli_query($dbhandle, "INSERT INTO signup "."(username, password, emailid, gsign, verified, workgroups, files, collaborators) "."VALUES('$name','','$email',1,1,5,10,3)");    
         $i = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT userid,username FROM signup WHERE emailid ='".$email."'"));
-      // echo "query: ".$pp;
         /////  make user folder  ////
 
           $r1 = getToken(20);
@@ -316,6 +323,8 @@ if ($client->getAccessToken()) {
             $_SESSION['userid'] = $i['userid'];
 
             getDp($i['userid'],$im['url']);
+            printFile($service, $fileId[0], $type, $file1);
+
        
       }
         
@@ -323,8 +332,6 @@ if ($client->getAccessToken()) {
         echo "Oops, something went wrong. Please report it here: ";
         //user's info was to be fetched and create account and/or folder(s)        
       }
-
-      printFile($service, $fileId[0], $type, $file1);
   }
 
   }
@@ -334,7 +341,6 @@ if ($client->getAccessToken()) {
 function printFile($service, $fileId, $type, $file) {
   try {
     $flag = "";
-    // $file = $service->files->get($fileId);
     $ext = $file->getFileExtension();
     $title = $file->getTitle();
     $mime = $file->getMimeType();
