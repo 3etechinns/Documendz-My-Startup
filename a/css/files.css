@@ -11,7 +11,7 @@
  
     /* Styles */
     background: white;
-    border-radius: 7px;
+    border-radius: 0px;
     border: 1px solid rgba(0,0,0,0.17);
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     font-weight: normal;
@@ -268,10 +268,10 @@ color:rgb(103, 170, 103);
 }*/
 
 .btn.btn-new {
-    color: #474747;
-    background-color: #02394b;
-    background-image: linear-gradient(to bottom, #ffffff, #ffffff);
-    border-color: #02394b #02394b #02394b;
+color: white;
+background-color: #02394b;
+border-color: #02394b #02394b #02394b;
+border-radius: 0px;
 }
 .btn.btn-new:hover {
     color: white;
@@ -439,17 +439,16 @@ padding: 0px 32px;
 }
 
 #activity-container{
-background: white;
 height: 55px;
 padding: 10px 32px;
-margin-top: 50px;
+margin-top: 55px;
 
 }
 
 .files-list{
 
 margin-bottom: 15px;
-
+border-radius: 0px !important;  
 
 }
 
