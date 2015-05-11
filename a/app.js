@@ -431,7 +431,9 @@ $scope.getNotif = function(val){
 
 
 
-$http.get("backend/getNotification.php?v="+val).success(function(data){
+var not = $http.get("backend/getNotification.php?v="+val);
+
+not.success(function(data){
 
 	$scope.notifs = data;
 $scope.unreadcount = 0;
