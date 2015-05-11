@@ -427,6 +427,42 @@ $scope.fiToggle = false;
 	            //error
 	        });
 
+$scope.getNotif = function(val){
+
+
+
+$http.get("backend/getNotification.php?v="+val).success(function(data){
+
+	$scope.notifs = data;
+$scope.unreadcount = 0;
+
+var pagesShown = 1;
+    var pageSize = 4;
+    
+    $scope.itemsLimit = function() {
+        return pageSize * pagesShown;
+    };
+    $scope.hasMoreItemsToShow = function() {
+        return pagesShown < ($scope.notifs.length / pageSize);
+    };
+    $scope.showMoreItems = function() {
+        pagesShown = pagesShown + 1;         
+    };
+
+	console.log(data);
+
+	angular.forEach(data, function(value, key) {
+		if(value.read == 0) {
+			$scope.unreadcount += 1;
+		}
+	});
+
+})
+
+
+};
+	$scope.getNotif('0');
+
  var fd = $http.get('https://www.google.com/m8/feeds/contacts/default/full?v=3.0&access_token='+localStorage.getItem("dcz_tkn")+'&max-results=1000&v=3.0&alt=json');
 fd.success(function(data,status){
 
