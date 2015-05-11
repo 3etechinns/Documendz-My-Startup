@@ -1329,3 +1329,149 @@ font-size: 90%;
 .white {
 color: #fff !important;
 }
+
+/*************  notifications dropdown *********************/
+
+.noti-icon {
+display: block;
+color: #fff;
+font-size: 16px;
+text-align: center;
+-webkit-transition: line-height .3s ease;
+-moz-transition: line-height .3s ease;
+-o-transition: line-height .3s ease;
+transition: line-height .3s ease;
+}
+
+.noti-badge{
+
+position: absolute !important;
+top: 6px !important;
+left: -4px;
+padding: 2px;
+cursor: pointer;
+background-color: transparent !important;
+border: 1px solid #fff;
+width: 18px;
+height: 18px;
+
+-webkit-transition: top .3s ease;
+-moz-transition: top .3s ease;
+-o-transition: top .3s ease;
+transition: top .3s ease; 
+font-size: 11px !important;
+font-weight: 300;
+text-align: center;
+background-color: #ccc;
+height: 18px;
+padding: 3px 6px 3px 6px;
+-webkit-border-radius: 12px !important;
+-webkit-background-clip: padding-box !important;
+-moz-border-radius: 12px !important;
+-moz-background-clip: padding !important;
+border-radius: 12px !important;
+background-clip: padding-box !important;
+-webkit-text-shadow: none !important;
+text-shadow: none !important;
+vertical-align: middle;
+display: inline-block;
+font-weight: 300;
+-webkit-text-shadow: none !important;
+text-shadow: none !important
+
+}
+
+.dropdown-menu.dropdown-messages {
+width: 300px;
+padding-top: 10px;
+margin-top: 0;
+right: 0;
+border: 0 !important;
+}
+
+.dropdown-menu.pull-right {
+left: auto;
+right: 0;
+padding: 0;
+min-width: 240px;
+-webkit-animation-name: dropdownSlideInDown;
+-moz-animation-name: dropdownSlideInDown;
+-o-animation-name: dropdownSlideInDown;
+animation-name: dropdownSlideInDown;
+-webkit-animation-duration: .3s;
+-moz-animation-duration: .3s;
+-o-animation-duration: .3s;
+animation-duration: .3s;
+-webkit-border-radius: 0 !important;
+-webkit-background-clip: padding-box !important;
+-moz-border-radius: 0 !important;
+-moz-background-clip: padding !important;
+border-radius: 0 !important;
+background-clip: padding-box !important;
+}
+
+ .dropdown-menu.dropdown-messages li {
+border-bottom: 1px solid #f3f3f3;
+background-color: #fff;
+border: 0;
+padding: 0 8px;
+}
+
+ .dropdown-menu.dropdown-messages li a {
+margin: 0;
+font-size: 12px;
+line-height: 16px;
+padding: 10px 2px;
+}
+
+ .dropdown-menu.dropdown-messages li a:hover {
+cursor:auto;
+}
+
+.dropdown-menu.dropdown-messages li .message-avatar {
+max-width: 42px;
+margin-right: 6px;
+margin-top: 5px;
+vertical-align: top;
+}
+
+ .dropdown-menu.dropdown-messages li .message {
+display: inline-block;
+position: relative;
+width: 225px;
+}
+
+.message-sender {
+display:block;
+font-size: 13px;
+}
+.message-sender:hover {
+color: #262626 !important;
+}
+
+.message-time {
+display:block;
+color: #03b3b2;
+position: absolute;
+top: 0;
+right: 10px;
+font-size: 11px;
+font-weight: 400;
+color: #2dc3e8;
+}
+
+.message-time:hover {
+
+color: #2dc3e8 !important;
+}
+
+ .message-subject {
+display:block;
+margin-top: 5px;
+white-space: normal !important;
+margin-right: 10px;
+}
+
+.message-subject:hover {
+ color: #262626 !important; 
+}

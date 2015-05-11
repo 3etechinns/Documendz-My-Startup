@@ -9,7 +9,7 @@
 <meta name="ROBOTS" content = "NOINDEX, NOFOLLOW">
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/files.css?var=06052015" />
+<link rel="stylesheet" href="css/files.css?var=11052015" />
 <link rel="stylesheet" href="css/inform.min.css" />
 <link rel="stylesheet" href="angular-busy.min.css" />
   <!-- SPELLS -->
@@ -3307,14 +3307,14 @@ console.log("ok");
   
 
   <script src="ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-  <script src="services.js?var=15042015"></script>
+  <script src="services.js?var=11052015"></script>
 
   <script src="https://d28kungomln1xp.cloudfront.net/javascripts/xeditable.min.js"></script>
   <script src="https://d28kungomln1xp.cloudfront.net/javascripts/angularFileUpload.js"></script>
   <script src="https://d28kungomln1xp.cloudfront.net/javascripts/ng-showdown.min.js"></script>
   <script src="https://d28kungomln1xp.cloudfront.net/javascripts/cookies.js"></script>
   <script src="angular-busy.min.js"></script>
-  <script src="app.js?var=01052015"></script>
+  <script src="app.js?var=11052015"></script>
 
 <script type="text/ng-template" id="feedback.html">
       
@@ -3376,7 +3376,46 @@ z-index: 500;" class="navbar navbar-default">
 
       <ul class="nav navbar-nav navbar-right">
      
-        <li><a style="color:white;" href="#/workgroups"><i class="fa fa-reorder"></i> Workgroups</a></li>
+        <li>
+          <div  dropdown is-open="status.isopen5" class="profile-drop" ng-click="getNotif('1')">
+      <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+           <img ng-src="https://d28kungomln1xp.cloudfront.net/images/bell_icon.png" style="height: 18px;margin-top: -3px;">
+            <span class="badge noti-badge">{{unreadcount}}</span>
+      </span>
+      <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages" style="max-height: 340px;overflow: hidden;overflow-y: auto;" ng-click="$event.stopPropagation()">
+                                    <li ng-repeat="n in notifs | limitTo: itemsLimit()">
+                                        <a href="" style="cursor:auto !important">
+                                            <img src="https://s3-ap-southeast-1.amazonaws.com/docs-ent/uploaded/user_{{n.actor_id}}/profile_image/dp.jpg" class="message-avatar">
+                                            <div class="message">
+                                                <span class="message-sender">
+                                                    {{n.username}}
+                                                </span>
+                                                <span class="message-time">
+                                                    {{n.time | date:'MMM d, h:mm a'}}
+                                                </span>
+                                                <span ng-if="n.type_id == 1" class="message-subject">
+                                                    Added {{n.name}} to {{n.wname}}
+                                                </span>
+                                               <span ng-if="n.type_id == 2" class="message-subject">
+                                                    Deleted the file {{n.name}} from {{n.wname}}
+                                                </span>
+                                                <span ng-if="n.type_id == 3" class="message-subject">
+                                                    Added {{n.name}} as a collaborator to {{n.wname}}
+                                                </span>
+                                                <span ng-if="n.type_id == 4" class="message-subject">
+                                                    Removed {{n.name}} from {{n.wname}}
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li style="text-align:center;cursor:pointer;color:#02394b;margin-bottom:4px">
+                                        <a type="button" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()" style="cursor:pointer">Show more</a> 
+                                    </li>
+                                </ul>
+    </div>
+        </li>
+
+        <li tooltip-placement="bottom" tooltip="Workgroups"><a style="color:white;" href="#/workgroups"><img ng-src="https://d28kungomln1xp.cloudfront.net/images/folder_icon.png" style="height: 18px;margin-top: -3px;"></a></li>
         
        
        <li>

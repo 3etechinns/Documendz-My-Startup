@@ -252,3 +252,10 @@ a.factory('Page', function() {
    };
 });
 
+a.factory('CidList', function(){
+  var clist = '';
+  return {
+    setList: function (data) { clist = data;},
+    getList: function() {return clist;}
+  };
+});

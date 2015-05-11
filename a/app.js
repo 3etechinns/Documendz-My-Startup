@@ -171,7 +171,7 @@ scotchApp.directive('confirmation', function () {  // for asking confirmation
 	});
 
 
-	scotchApp.controller('ModalInstanceCtrl', function(userData, $scope, $routeParams, $modalInstance, workGroupFunctions, $http, commonFunctions, collaboratorFunctions) {
+	scotchApp.controller('ModalInstanceCtrl', function(CidList,userData, $scope, $routeParams, $modalInstance, workGroupFunctions, $http, commonFunctions, collaboratorFunctions) {
 	    $scope.newProj = {};
 	    $scope.newCollab = {};
 
@@ -180,6 +180,36 @@ $scope.states=[''];
 if(userData.getData().emailList){
 $scope.states = userData.getData().emailList;
 }
+
+function add_notif(wid,type,cid,name){
+
+
+var dataObj = {
+				wid : wid,
+				type : type,
+				cid : cid,
+				name: name
+		};	
+
+$http({
+    method: 'POST',
+    url: 'backend/addNotification.php',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj)
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        return str.join("&");
+    },
+    data: dataObj
+}).success(function(res){
+
+	console.log(res);
+});
+
+
+		
+ }
 
 	    $scope.cancel = function() {
 
@@ -268,6 +298,9 @@ $scope.states = userData.getData().emailList;
 	            }
 	        });
 
+	        var cx = CidList.getList();
+	        add_notif($routeParams.wgId,3,JSON.stringify(cx),a);
+
 	        $scope.newCollab.email = ""; // Empty the input field
 	        $modalInstance.close();
 	    };
@@ -334,6 +367,7 @@ Page.setTitle('Workgroups - Documendz');
 	        isopen1: false,
 	        isopen2: false,
 	        isopen3: false,
+	        isopen5: false
 	        
 	    };
 
@@ -606,7 +640,7 @@ $http.get("backend/countAllFiles.php")
 
 
 
-	scotchApp.controller('filesController', function(currentCollabs,$window,templateName, Page, filesDataFunctions,$scope,$rootScope, $http, $routeParams, userData,$modal,$upload, $cookies, $timeout,$location,inform) {
+	scotchApp.controller('filesController', function(CidList,currentCollabs,$window,templateName, Page, filesDataFunctions,$scope,$rootScope, $http, $routeParams, userData,$modal,$upload, $cookies, $timeout,$location,inform) {
 
 // check permissions to the wkgroup: either the author or is a collab
 	    	    Page.setTitle('Files - Documendz');
@@ -655,6 +689,32 @@ $window.ga('send', 'pageview', { page: "Files" });
 
 updateFileCount();
 
+function add_notif(wid,type,cid,name){
+
+
+var dataObj = {
+				wid : wid,
+				type : type,
+				cid : cid,
+				name: name
+		};	
+
+$http({
+    method: 'POST',
+    url: 'backend/addNotification.php',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj)
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        return str.join("&");
+    },
+    data: dataObj
+});
+
+//bhcf
+		
+ }
 
 $scope.search = function (item){
 	
@@ -727,6 +787,7 @@ var au = {
 	            
 
 	    // fetch collaborators
+var cid = [];
 
 	    $http({
 	            method: 'POST',
@@ -744,6 +805,12 @@ var au = {
 
 	            currentCollabs.setData($scope.collabData, "colls");
 
+	            		angular.forEach($scope.collabData, function(value, key) {					  
+					if (value.userid != $scope.pt) {
+					cid.push(value.userid);
+					  }
+			    });
+			    CidList.setList(cid);
 
 	        });
 
@@ -780,6 +847,7 @@ var au = {
 	            .success(function(res) {
 
 	                // alert("done");
+	                add_notif($routeParams.wgId,4,JSON.stringify(cid),collabEmail);
 
 	            })
 
@@ -807,7 +875,7 @@ var au = {
 	            })
 	            // .success(function(res) {
 
-
+	           add_notif($routeParams.wgId,2,JSON.stringify(cid),filename);
 
 	            // })
 updateFileCount();
@@ -1030,6 +1098,7 @@ $timeout(function(){
 	                        poll(data);
 	                    }
 	                     updateFileCount();
+	                      add_notif($routeParams.wgId,1,JSON.stringify(cid),file[0].name);
 
 	                });
 
@@ -1130,6 +1199,8 @@ $timeout(function(){
                         verExtension: extCheck[file[0].type]
                     });
                 }
+
+
             });
 
         } else {
