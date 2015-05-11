@@ -861,6 +861,9 @@ var cid = [];
 	        }).indexOf(file_unique);
 	        var objectFound = $scope.allFiles[elementPos];
 	        var idx = $scope.allFiles.indexOf(objectFound);
+	       
+	        var filename = $scope.allFiles[idx].filename; //name to be taken before splice
+
 	        $scope.allFiles.splice(idx, 1);
 
 
