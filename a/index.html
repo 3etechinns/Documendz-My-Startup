@@ -3379,13 +3379,13 @@ z-index: 500;" class="navbar navbar-default">
         <li>
           <div  dropdown is-open="status.isopen5" class="profile-drop" ng-click="getNotif('1')">
       <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-           <img ng-src="https://d28kungomln1xp.cloudfront.net/images/bell_icon.png" style="height: 18px;margin-top: -3px;">
+           <img ng-src="https://d28kungomln1xp.cloudfront.net/images/bell_icon.png" style="height: 18px;margin-top: 2px;">
             <span class="badge noti-badge">{{unreadcount}}</span>
       </span>
       <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages" style="max-height: 340px;overflow: hidden;overflow-y: auto;" ng-click="$event.stopPropagation()">
                                     <li ng-repeat="n in notifs | limitTo: itemsLimit()">
                                         <a href="" style="cursor:default !important">
-                                            <img src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{n.actor_id}}/profile_image/dp.jpg" class="message-avatar">
+                                            <img ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{n.actor_id}}/profile_image/dp.jpg"  err-src="{{defDp}}" class="message-avatar">
                                             <div class="message">
                                                 <span class="message-sender">
                                                     {{n.username}}
