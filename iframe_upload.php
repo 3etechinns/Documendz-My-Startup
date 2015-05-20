@@ -604,7 +604,7 @@ $physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['useri
 	
 	$uploadedFile = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.docx' ;
 	
-	$apiKey = 293619483;
+	$apiKey = 182458582;
 	
 	chmod($uploadedFile,0755);
 	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
@@ -701,7 +701,7 @@ $physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['useri
 	
 	$uploadedFile = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.doc' ;
 	
-	$apiKey = 293619483;
+	$apiKey = 182458582;
 	
 	chmod($uploadedFile,0755);
 	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
