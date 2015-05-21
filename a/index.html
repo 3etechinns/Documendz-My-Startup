@@ -25,7 +25,7 @@
  
     <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/raphael.js"></script>
     <!--<script type= "text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.min.js"></script>-->
-    <script type="text/javascript" src="../javascripts/raphael.sketchpad.js?var=20102014"></script>
+    <script type="text/javascript" src="../javascripts/raphael.sketchpad.js?var=21052015"></script>
     <script type="text/javascript" src="../javascripts/highlighter.js"></script>
     <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/jquery.ba-resize.js"></script>
     <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/jquery_1.10.4_ui.min.js"></script>
@@ -47,7 +47,29 @@
         window.shared_id = "<?php echo 140 ?>";
         window.user = "<?php session_start(); echo $_SESSION['Username']; ?>";
 
-       
+        drawZoom = 1;
+
+       function zoomIn(){
+        console.log("zoomin");
+
+     if(drawZoom < 1.3){
+        drawZoom = drawZoom + 0.05;
+        $("#page-container").css("zoom",drawZoom);
+        var zv = Math.round(drawZoom*100);
+        $(".zoomValue").html(zv+"%");
+    }
+    };
+
+function zoomOut(){
+
+        console.log("zoomout");
+        if(drawZoom > 0.7){
+        drawZoom = drawZoom - 0.05;
+        $("#page-container").css("zoom",drawZoom);
+        var zv = Math.round(drawZoom*100);
+        $(".zoomValue").html(zv+"%");
+    }
+    };   
 
           function sendUserMap(data, count) {
   var cc = 0;   
@@ -1467,8 +1489,9 @@ console.log("ok");
 
 
                                         var offset = $div.offset();
-                                        var x = ev.clientX - offset.left;
-                                        var y = ev.clientY - offset.top;
+
+                                   var x = (ev.clientX/drawZoom) - offset.left;
+                                        var y = (ev.clientY/drawZoom) - offset.top;
 
                                         $('.handle').css('outline', 'none');
 
@@ -2290,8 +2313,7 @@ console.log("ok");
 
 
                                     var offset = $(this).offset();
-                                    var comment_box_y_coord = checkCoords(e.pageY - offset.top);
-
+                                     var comment_box_y_coord = checkCoords((e.pageY/drawZoom) - offset.top);
 
 
 
@@ -2302,11 +2324,10 @@ console.log("ok");
 
 
 
+      $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + ((e.pageY/drawZoom) - offset.top - 24) + "px;left:" + ((e.pageX/drawZoom) - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
 
-                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
-
-                                        comment_lines((e.pageX - offset.left), (e.pageY - offset.top), 800, (e.pageY - offset.top), rnd_drop);
-                                        connector_lines((e.pageY - offset.top), comment_box_y_coord, rnd_drop);
+                                        comment_lines(((e.pageX/drawZoom) - offset.left), ((e.pageY/drawZoom) - offset.top), 800, ((e.pageY/drawZoom) - offset.top), rnd_drop);
+                                        connector_lines(((e.pageY/drawZoom) - offset.top), comment_box_y_coord, rnd_drop);
 
 
 
@@ -2315,22 +2336,22 @@ console.log("ok");
 
 
 
-                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + (e.pageY - offset.top - 24) + "px;left:" + (e.pageX - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>")
+                                    
+                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + ((e.pageY/drawZoom) - offset.top - 24) + "px;left:" + ((e.pageX/drawZoom) - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>")
 
-                                        comment_lines((e.pageX - offset.left), (e.pageY - offset.top), 800, (e.pageY - offset.top), rnd_drop);
-                                        connector_lines((e.pageY - offset.top), comment_box_y_coord, rnd_drop);
-
+                                        comment_lines(((e.pageX/drawZoom) - offset.left), ((e.pageY/drawZoom) - offset.top), 800, ((e.pageY/drawZoom) - offset.top), rnd_drop);
+                                        connector_lines(((e.pageY/drawZoom) - offset.top), comment_box_y_coord, rnd_drop);
 
                                     }
 
 
                                     // console.log(comment_box_y_coord);
                                     commentBoxCords[rnd_drop] = {
-                                        pageX: e.pageX,
-                                        pageY: e.pageY,
+                                        pageX: e.pageX/drawZoom,
+                                        pageY: e.pageY/drawZoom,
                                         offsetTop: offset.top,
                                         offsetLeft: offset.left,
-                                        boxY: e.pageY - offset.top,
+                                        boxY: (e.pageY/drawZoom) - offset.top,
                                         type: "drop"
                                     };
 

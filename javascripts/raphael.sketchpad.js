@@ -36,6 +36,9 @@
  * We use this wrapper to control global variables.
  * The only global variable we expose is Raphael.sketchpad.
  */
+
+ var drawZoom;
+ 
 (function(Raphael) {
 	
 	/**
@@ -647,8 +650,10 @@
 
 			_offset = $(sketchpad.container()).offset();
 			
-			var x = e.pageX - _offset.left,
-				y = e.pageY - _offset.top;
+			
+			var x = ((e.pageX/drawZoom) - _offset.left),
+				y = ((e.pageY/drawZoom) - _offset.top);
+
 			_points.push([x, y]);
 
 			_c = sketchpad.paper().path();
@@ -693,8 +698,9 @@
 			if (_drawing == true) {
 				
 			
-				var x = e.pageX - _offset.left,
-					y = e.pageY - _offset.top;		
+				var x = ((e.pageX/drawZoom) - _offset.left),
+					y = ((e.pageY/drawZoom) - _offset.top);		
+					
 			
 				_points.push([x, y]);
 				_c.attr({ path: points_to_svg() });
