@@ -142,6 +142,10 @@ require_once 'google-api-php-client/src/Google/autoload.php';
 function getDp($id,$im){
 
 $r = str_replace("/s64/", "/s200/", $im );
+
+echo $im."<br>";
+echo $r;
+
 $im1 = file_get_contents($r);
 
 $s3 = S3Client::factory(array(
@@ -322,7 +326,7 @@ if ($client->getAccessToken()) {
             $_SESSION['email'] = $email;
             $_SESSION['userid'] = $i['userid'];
 
-           // getDp($i['userid'],$im['url']);
+           getDp($i['userid'],$im['url']);
             printFile($service, $fileId[0], $type, $file1);
 
        
