@@ -140,11 +140,12 @@ require_once 'google-api-php-client/src/Google/autoload.php';
   http://localhost:8080/fileupload.php
  ************************************************/
 function getDp($id,$im){
+  if($im != NULL) {
 
 $r = str_replace("/s64/", "/s200/", $im );
 
-echo $im."<br>";
-echo $r;
+// echo $im."<br>";
+// echo $r;
 
 $im1 = file_get_contents($r);
 
@@ -172,6 +173,7 @@ try {
 
 } catch (S3Exception $e) {
     echo $e->getMessage() . "\n";
+}
 }
 }
 
