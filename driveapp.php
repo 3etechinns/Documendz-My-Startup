@@ -272,7 +272,7 @@ if ($client->getAccessToken()) {
                   $w1 = $w['uniqueId'];
                 }
 
-                getDp($z['userid'],$im['url']);
+               // getDp($z['userid'],$im['url']);
                 printFile($service, $fileId[0], $type, $file1);
             }
             else {
