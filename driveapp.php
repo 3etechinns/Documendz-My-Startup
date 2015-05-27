@@ -284,7 +284,7 @@ if ($client->getAccessToken()) {
             // echo "im in";
             
 
-      mysqli_query($dbhandle, "INSERT INTO signup "."(username, password, emailid, gsign, verified, workgroups, files, collaborators) "."VALUES('$name','','$email',1,1,5,50,3)");    
+      mysqli_query($dbhandle, "INSERT INTO signup (username, password, emailid, gsign, verified, workgroups, files, collaborators) VALUES('".$name."','','".$email."',1,1,5,50,3)");    
         $i = mysqli_fetch_array(mysqli_query($dbhandle,"SELECT userid,username FROM signup WHERE emailid ='".$email."'"));
         /////  make user folder  ////
 
