@@ -244,6 +244,9 @@ if ($client->getAccessToken()) {
             $email = $user['emailAddress'];
             $name = $user['displayName'];
             $im = $user['picture'];
+
+var_dump($im);
+
             echo '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">Processing</div>'; //loading and progress bar
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
             $z = mysqli_fetch_array($y);
@@ -326,7 +329,7 @@ if ($client->getAccessToken()) {
             $_SESSION['email'] = $email;
             $_SESSION['userid'] = $i['userid'];
 
-           getDp($i['userid'],$im['url']);
+          // getDp($i['userid'],$im['url']);
             printFile($service, $fileId[0], $type, $file1);
 
        
