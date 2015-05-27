@@ -322,7 +322,7 @@ if ($client->getAccessToken()) {
             $_SESSION['email'] = $email;
             $_SESSION['userid'] = $i['userid'];
 
-            getDp($i['userid'],$im['url']);
+           // getDp($i['userid'],$im['url']);
             printFile($service, $fileId[0], $type, $file1);
 
        
