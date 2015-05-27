@@ -245,7 +245,6 @@ if ($client->getAccessToken()) {
             $name = $user['displayName'];
             $im = $user['picture'];
 
-var_dump($user);
 
             echo '<div id="processingWrapper" style="right:50%;bottom:50%;transform:translate(50%,50%);position:absolute;">Processing</div>'; //loading and progress bar
             $y = mysqli_query($dbhandle,"SELECT * FROM signup WHERE emailid ='".$email."'");
@@ -275,7 +274,7 @@ var_dump($user);
                   $w1 = $w['uniqueId'];
                 }
 
-               // getDp($z['userid'],$im['url']);
+               getDp($z['userid'],$im['url']);
                 printFile($service, $fileId[0], $type, $file1);
             }
             else {
@@ -329,7 +328,7 @@ var_dump($user);
             $_SESSION['email'] = $email;
             $_SESSION['userid'] = $i['userid'];
 
-          // getDp($i['userid'],$im['url']);
+           getDp($i['userid'],$im['url']);
             printFile($service, $fileId[0], $type, $file1);
 
        
@@ -532,7 +531,7 @@ if($mimetype == "image/bmp" || $mimetype == "image/png" || $mimetype == "image/j
     $my_date = date("Y-m-d H:i:s");
     
   mysqli_query($dbhandle,"INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_SESSION[userid]','$my_date','$file_ext',0)"); //When $_SESSION is used inside a
-//echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
+echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
 
 }
 
@@ -545,7 +544,7 @@ if($mimetype == "image/bmp" || $mimetype == "image/png" || $mimetype == "image/j
     
   mysqli_query($dbhandle, "INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_SESSION[userid]','$my_date','$file_ext',0)"); //When $_SESSION is used inside a
 
- //echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
+ echo "<script>window.location.href ='https://www.documendz.com/a/#/workgroups/g/".$w1."/".$_SESSION['userid'].$unique_filename."'</script>";
 }
 
 }
