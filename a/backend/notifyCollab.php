@@ -4,7 +4,7 @@ session_start();
 function email($recipient_email_id, $senders_name){
 
 
-require_once 'mandrill/src/Mandrill.php';
+require_once '../../mandrill/src/Mandrill.php';
 
 
 $encode_email = urlencode($recipient_email_id);
