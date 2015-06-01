@@ -4,27 +4,15 @@ session_start();
 function email($recipient_email_id, $senders_name){
 
 
-require_once '../../swiftmailer/lib/swift_required.php';
+require_once 'mandrill/src/Mandrill.php';
 
-// Create the mail transport configuration
-$transport = Swift_SmtpTransport::newInstance('smtpout.secureserver.net',80)
- ->setUsername('no-reply@documendz.com')
- ->setPassword('no-replyZofler6991')
-        ;
 
 $encode_email = urlencode($recipient_email_id);
-// Create the message
-$message = Swift_Message::newInstance(Subject);
-$message->setTo(array(
- $recipient_email_id
-));
 
 $uname="$un";
 $url = $link;
 
-$message->setSubject("Added as a collaborator");
-$message->setBody(
-'<html>
+$content = '<html>
 <head>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Minty-Multipurpose Responsive Email Template</title><style type="text/css">
          /* Client-specific Styles */
          #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
@@ -732,26 +720,28 @@ $message->setBody(
 		</tr>
 	</tbody>
 </table></body>
-</html>','text/html');
+</html>';
+try{
+$mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
-$message->setFrom("no-reply@documendz.com", "Documendz");
+$message = new stdClass();
+$message->html = $content;
 
-// Send the email
-$mailer = Swift_Mailer::newInstance($transport);
-$mailer->send($message);
+$message->subject = "Added as a collaborator";
+$message->from_email = "no-reply@documendz.com";
+$message->from_name  = "Documendz";
+$message->to = array(array("email" => $recipient_email_id));
+$message->track_opens = true;
+$message->track_clicks = true;
+$message ->tags = array('Added collaborator');
+$message->signing_domain = "https://documendz.com";
+$response = $mandrill->messages->send($message);
 
-
-
-if (!$mailer) {
-		
-		
-	} else {
-		
-		/* session_start();
-		$_SESSION['uname']=$uname;
-		echo "<script>setTimeout(\"location.href = '$path';\",2000);</script>"; */
-	}
-}			
+} catch (Mandrill_error $e) {
+   echo "Something went wrong, please try again"; 
+}
+}
+	
 			
 
 			email($argv[1], $argv[2]);
