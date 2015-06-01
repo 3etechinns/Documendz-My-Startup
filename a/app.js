@@ -1430,7 +1430,7 @@ $scope.send_update = function(){
 	    	console.log(h_fid);
 	        var highlightArray = [];
 	        var pullHistoryRequest = $.ajax({
-	            url: "https://zofler.com:9000/pulldata/historydata/" + h_fid,
+	            url: "https://documendz.com:9000/pulldata/historydata/" + h_fid,
 	            type: "GET",
 	            cache: false,
 	        });
