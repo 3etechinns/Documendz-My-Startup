@@ -10,7 +10,7 @@ if($_POST['useremail'] != ""){
 function email($recipient_email_id,$senders_name,$pass,$un){
 
 
-require_once '../../mandrill/src/Mandrill.php';
+require_once 'mandrill/src/Mandrill.php';
 
 $salt = 'change me cause im not secure';
     $path = '/t_changepass.php';
