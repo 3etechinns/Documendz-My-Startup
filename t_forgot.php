@@ -10,20 +10,7 @@ if($_POST['useremail'] != ""){
 function email($recipient_email_id,$senders_name,$pass,$un){
 
 
-require_once 'swiftmailer/lib/swift_required.php';
-
-// Create the mail transport configuration
-$transport = Swift_SmtpTransport::newInstance('smtpout.secureserver.net',80)
- ->setUsername('no-reply@documendz.com')
- ->setPassword('no-replyZofler6991')
-        ;
-
-
-// Create the message
-$message = Swift_Message::newInstance(Subject);
-$message->setTo(array(
- $recipient_email_id
-));
+require_once '../../mandrill/src/Mandrill.php';
 
 $salt = 'change me cause im not secure';
     $path = '/t_changepass.php';
@@ -32,9 +19,8 @@ $salt = 'change me cause im not secure';
     $url = "https://www.documendz.com{$path}?a=url&b=0&s={$hash}&t={$timestamp}&em=".md5($recipient_email_id);
 
 
-$message->setSubject("Forgot password");
-$message->setBody(
-'<html>
+
+$content = '<html>
 <head>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Minty-Multipurpose Responsive Email Template</title><style type="text/css">
          /* Client-specific Styles */
          #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
@@ -297,12 +283,26 @@ $message->setBody(
 		</tr>
 	</tbody>
 </table></body>
-</html>','text/html');
-$message->setFrom("no-reply@documendz.com", $senders_name);
+</html>','text/html';
+try{
+$mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
-// Send the email
-$mailer = Swift_Mailer::newInstance($transport);
-$mailer->send($message);
+$message = new stdClass();
+$message->html = $content;
+
+$message->subject = "Reset password";
+$message->from_email = "no-reply@documendz.com";
+$message->from_name  = "Documendz";
+$message->to = array(array("email" => $recipient_email_id));
+$message->track_opens = true;
+$message->track_clicks = true;
+$message ->tags = array('Highlight-summary');
+$response = $mandrill->messages->send($message);
+echo "1";
+} catch (Mandrill_error $e) {
+   echo "Something went wrong, please try again"; 
+}
+
 
 
 

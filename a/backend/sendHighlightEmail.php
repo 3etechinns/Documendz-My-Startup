@@ -120,7 +120,7 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
                                           <!-- Title -->
                                           <tr>
                                              <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #343434; text-align:left; line-height: 30px;" st-title="fulltext-heading">
-                                                Hello,
+                                                Hey there,
                                              </td>
                                           </tr>
                                           <!-- End of Title -->
