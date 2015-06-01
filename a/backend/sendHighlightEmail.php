@@ -268,7 +268,7 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
    </body>
    </html>';
 try{
-$mandrill = new Mandrill("L6NsmnJBpL-IAeJuJWzA8g");
+$mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
 $message = new stdClass();
 $message->html = $content;

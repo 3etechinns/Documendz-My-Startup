@@ -1453,7 +1453,7 @@ $scope.send_update = function(){
 
 	        		$scope.loadingnow= false;
 	        		 $scope.errorMsg = {
-	                    content: 'There are no highlights on this docuement',
+	                    content: 'The document does not have any highlights',
 	                    options: {
 	                        ttl: 6000,
 	                        type: 'danger',
