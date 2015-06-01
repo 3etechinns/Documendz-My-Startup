@@ -283,7 +283,7 @@ $content = '<html>
 		</tr>
 	</tbody>
 </table></body>
-</html>','text/html';
+</html>';
 try{
 $mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
