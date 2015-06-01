@@ -1358,26 +1358,25 @@ padding: 2px !important;
 cursor: pointer;
 
 
-background-color: crimson !important;
+background-color: #04b8a8 !important;
 
 
-border: 1px solid crimson;
+border: 1px solid #04b8a8;
 
 
 width: 20px;
-height: 18px;
+height: 20px;
 
 -webkit-transition: top .8s ease;
 -moz-transition: top .8s ease;
 -o-transition: top .8s ease;
 transition: top .8s ease; 
 font-size: 11px !important;
-font-weight: 300;
+font-weight: 600;
 text-align: center;
 background-color: #ccc;
 
 
-height: 20px;
 padding: 3px 6px 3px 6px;
 -webkit-border-radius: 12px !important;
 -webkit-background-clip: padding-box !important;
