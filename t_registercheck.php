@@ -64,27 +64,12 @@ else
 function email($recipient_email_id,$senders_name,$un,$link){
 
 
-require_once 'swiftmailer/lib/swift_required.php';
-
-// Create the mail transport configuration
-$transport = Swift_SmtpTransport::newInstance('smtpout.secureserver.net',80)
- ->setUsername('no-reply@documendz.com')
- ->setPassword('no-replyZofler6991')
-        ;
-
-
-// Create the message
-$message = Swift_Message::newInstance(Subject);
-$message->setTo(array(
- $recipient_email_id
-));
+require_once 'mandrill/src/Mandrill.php';
 
 $uname="$un";
 $url = $link;
 
-$message->setSubject("Email verification");
-$message->setBody(
-'<html>
+$content = '<html>
 <head>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Minty-Multipurpose Responsive Email Template</title><style type="text/css">
          /* Client-specific Styles */
          #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
@@ -646,23 +631,27 @@ $message->setBody(
 		</tr>
 	</tbody>
 </table></body>
-</html>','text/html');
-$message->setFrom("no-reply@documendz.com", $senders_name);
+</html>';
+try{
+$mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
-// Send the email
-$mailer = Swift_Mailer::newInstance($transport);
-$mailer->send($message);
+$message = new stdClass();
+$message->html = $content;
 
+$message->subject = "Verify your email";
+$message->from_email = "no-reply@documendz.com";
+$message->from_name  = "Documendz";
+$message->to = array(array("email" => $recipient_email_id));
+$message->track_opens = true;
+$message->track_clicks = true;
+$message ->tags = array('Verify Email');
+$message->signing_domain = "https://documendz.com";
+$response = $mandrill->messages->send($message);
+echo "1";
+} catch (Mandrill_error $e) {
+   echo "You have registered successfully. A verification link has been sent to your email id (Check Spam folder if you are not able to find it). <br/><a href=# onclick = resendEmail('".$recipient_email_id."','".$un."')>Resend me a verification email.</a>"; 
+}
 
-if (!$mailer) {
-		echo "Mailer Error: " . $mailer->ErrorInfo;
-		
-	} else {
-		echo "You have registered successfully. A verification link has been sent to your email id (Check Spam folder if you are not able to find it). <br/><a href=# onclick = resendEmail('".$recipient_email_id."','".$un."')>Resend me a verification email.</a>";
-		/* session_start();
-		$_SESSION['uname']=$uname;
-		echo "<script>setTimeout(\"location.href = '$path';\",2000);</script>"; */
-	}
 }
 
 mysql_close($dbhandle); // closing database connection
