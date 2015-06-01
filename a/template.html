@@ -1450,6 +1450,11 @@ padding: 1px 2px;" id="zoom-plus">
         <a href="#/workgroups/{{wg}}/{{uniqueFilename}}/user/files/activity" class="btn btn-warning btn-small"><i class="fa fa-bar-chart"></i>&nbsp;View activity</a>
         </div>
 
+    <div ng-if="smm == 1" style="display:inline-block;float:right" tooltip="Summary of highlights">
+        <button ladda="loadingnow"  ng-click="sendHighlights()" class="btn btn-warning "><i class="fa fa-envelope-o"></i></button>
+        &nbsp;
+    </div>
+
         <div style="display:inline-block;float:right" tooltip="Notify collaborators about recent changes">
         <span  ng-click="send_update()" confirmation="This will send an email to all collaborators in this workgroup. Would you like to notify them about changes?"  class="btn btn-warning btn-small"><i class="fa fa-envelope-o"></i></span>
          &nbsp;

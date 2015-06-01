@@ -603,7 +603,12 @@ console.log(this.context);
                 var idx = null;
                 var node = self.context;
                 // console.log(node);
+//docz: Hardik - to get missing highlights on deserialization
 
+if(elIndex == undefined || elIndex == 0){
+
+    elIndex = 1;
+}
                 while ((idx = hlPath.shift()) !== undefined) {
                     node = node.childNodes[idx];
                 }

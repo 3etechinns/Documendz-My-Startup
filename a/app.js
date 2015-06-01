@@ -1,5 +1,5 @@
 	// create the module and name it scotchApp
-	var scotchApp = angular.module('scotchApp', ['cgBusy','ngRoute', 'ngCookies', 'ui.bootstrap', 'helperModule', 'angularFileUpload', 'xeditable','inform']);
+	var scotchApp = angular.module('scotchApp', ['cgBusy','ngRoute', 'angular-ladda', 'ngCookies', 'ui.bootstrap', 'helperModule', 'angularFileUpload', 'xeditable','inform']);
 
 
 
@@ -390,6 +390,7 @@ $scope.fiToggle = false;
 	            $scope.ut = data[0].username;
 	            $scope.flimit = data[0].files;
 	            $scope.ver = data[0].versions;
+	            $scope.smm = data[0].summary;
 	            $scope.climit = data[0].collaborators;
 	         
 
@@ -1379,6 +1380,94 @@ $scope.send_update = function(){
 	                    }
 	                })
 	    };
+
+	     function sendHighlightEmail(d) {
+	    	  var dataObj = {
+	                fname: $scope.templateFilename,
+	                highlights:  JSON.stringify(d),
+	               };
+	               console.log(dataObj);
+
+	            $http({
+	                method: 'POST',
+	                url: 'backend/sendHighlightEmail.php',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                transformRequest: function(obj) {
+	                    var str = [];
+	                    for (var p in obj)
+	                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	                    return str.join("&");
+	                },
+	                data: dataObj
+	            }).success(function(res) {
+
+	                console.log(res);
+	                $scope.loadingnow= false;
+	                if(res == 1){
+
+	                	 $scope.filetype_msg = {
+	                    content: 'A highlight summary has been sent to your email Id',
+	                    options: {
+	                        ttl: 6000,
+	                        type: 'success',
+	                        html: true
+	                    }
+	                }
+	                inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+	                }
+	            });
+	    }
+
+	    //send highlights via email
+
+
+	    $scope.sendHighlights = function() {
+	    $scope.loadingnow = true;	
+	    	var h_fid = $routeParams.fileId;
+	    	h_fid = h_fid.slice(-15);
+	    	console.log(h_fid);
+	        var highlightArray = [];
+	        var pullHistoryRequest = $.ajax({
+	            url: "https://zofler.com:9000/pulldata/historydata/" + h_fid,
+	            type: "GET",
+	            cache: false,
+	        });
+
+	        pullHistoryRequest.done(function(data) {
+	        	console.log(data);
+	        	console.log(data.data[0].history);
+
+	            angular.forEach(data.data[0].history, function(value, key) {
+	                if (value.anno_type === "Highlight") {
+	                    highlightArray.push(value.append_text);
+	                }
+	            });
+
+	            if(highlightArray.length > 0){
+	            sendHighlightEmail(highlightArray);
+
+	        	}
+	        	else{
+
+	        		$scope.loadingnow= false;
+	        		 $scope.errorMsg = {
+	                    content: 'There are no highlights on this docuement',
+	                    options: {
+	                        ttl: 6000,
+	                        type: 'danger',
+	                        html: true
+	                    }
+	                }
+	                inform.add($scope.errorMsg.content, $scope.errorMsg.options);
+	        	}
+
+	        });
+
+
+	    };
+
 	    
 	});
 
