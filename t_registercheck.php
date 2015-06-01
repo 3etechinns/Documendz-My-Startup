@@ -647,9 +647,9 @@ $message->track_clicks = true;
 $message ->tags = array('Verify Email');
 $message->signing_domain = "https://documendz.com";
 $response = $mandrill->messages->send($message);
-echo "1";
+echo "You have registered successfully. A verification link has been sent to your email id (Check Spam folder if you are not able to find it). <br/><a href=# onclick = resendEmail('".$recipient_email_id."','".$un."')>Resend me a verification email.</a>";
 } catch (Mandrill_error $e) {
-   echo "You have registered successfully. A verification link has been sent to your email id (Check Spam folder if you are not able to find it). <br/><a href=# onclick = resendEmail('".$recipient_email_id."','".$un."')>Resend me a verification email.</a>"; 
+   echo "Something seems to be wrong. Please try again later"; 
 }
 
 }
