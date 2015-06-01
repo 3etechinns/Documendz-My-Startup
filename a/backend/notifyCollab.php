@@ -1,16 +1,7 @@
 <?php
-session_start();
 
 function email($recipient_email_id, $senders_name){
 
-
-require_once '../../mandrill/src/Mandrill.php';
-
-
-$encode_email = urlencode($recipient_email_id);
-
-$uname="$un";
-$url = $link;
 
 $content = '<html>
 <head>    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Minty-Multipurpose Responsive Email Template</title><style type="text/css">
@@ -721,6 +712,10 @@ $content = '<html>
 	</tbody>
 </table></body>
 </html>';
+
+require_once 'mandrill/src/Mandrill.php';
+
+
 try{
 $mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
@@ -733,15 +728,16 @@ $message->from_name  = "Documendz";
 $message->to = array(array("email" => $recipient_email_id));
 $message->track_opens = true;
 $message->track_clicks = true;
-$message ->tags = array('Added collaborator');
+$message ->tags = array('Added collab');
 $message->signing_domain = "https://documendz.com";
 $response = $mandrill->messages->send($message);
 
 } catch (Mandrill_error $e) {
    echo "Something went wrong, please try again"; 
 }
-}
-	
+
+
+}			
 			
 
 			email($argv[1], $argv[2]);
