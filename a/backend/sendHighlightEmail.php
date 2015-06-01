@@ -280,6 +280,7 @@ $message->to = array(array("email" => $e));
 $message->track_opens = true;
 $message->track_clicks = true;
 $message ->tags = array('Highlight-summary');
+$message->signing_domain = "https://documendz.com";
 $response = $mandrill->messages->send($message);
 echo "1";
 } catch (Mandrill_error $e) {

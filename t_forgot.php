@@ -296,7 +296,8 @@ $message->from_name  = "Documendz";
 $message->to = array(array("email" => $recipient_email_id));
 $message->track_opens = true;
 $message->track_clicks = true;
-$message ->tags = array('Highlight-summary');
+$message ->tags = array('Forgot-password');
+$message->signing_domain = "https://documendz.com";
 $response = $mandrill->messages->send($message);
 echo "1";
 } catch (Mandrill_error $e) {
