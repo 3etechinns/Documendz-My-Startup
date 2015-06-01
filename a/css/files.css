@@ -1347,23 +1347,37 @@ transition: line-height .3s ease;
 
 position: absolute !important;
 top: 6px !important;
-left: -4px;
-padding: 2px;
+
+
+left: -6px;
+
+
+font-weight: bold !important;
+
+padding: 2px !important;
 cursor: pointer;
-background-color: transparent !important;
-border: 1px solid #fff;
-width: 18px;
+
+
+background-color: crimson !important;
+
+
+border: 1px solid crimson;
+
+
+width: 20px;
 height: 18px;
 
--webkit-transition: top .3s ease;
--moz-transition: top .3s ease;
--o-transition: top .3s ease;
-transition: top .3s ease; 
+-webkit-transition: top .8s ease;
+-moz-transition: top .8s ease;
+-o-transition: top .8s ease;
+transition: top .8s ease; 
 font-size: 11px !important;
 font-weight: 300;
 text-align: center;
 background-color: #ccc;
-height: 18px;
+
+
+height: 20px;
 padding: 3px 6px 3px 6px;
 -webkit-border-radius: 12px !important;
 -webkit-background-clip: padding-box !important;
@@ -1380,6 +1394,7 @@ font-weight: 300;
 text-shadow: none !important
 
 }
+
 
 .dropdown-menu.dropdown-messages {
 width: 300px;
