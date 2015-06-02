@@ -1347,9 +1347,34 @@ $http.get("backend/getSession.php")
 	    $scope.uniqueFilename = $routeParams.fileId.slice(-15);
 	    $scope.wg = $routeParams.wgId;
 	    $scope.templateFilename = templateName.getData().name;
-	    $scope.curr_colls = currentCollabs.getData("colls").colls;
-	    console.log($scope.curr_colls);
+	   
+	        if ($scope.templateFilename == undefined) {
+	      
+	        $http({
+	                method: 'POST',
+	                url: 'backend/getFilename.php',
+	                data: "fid=" + $scope.uniqueFilename, // pass in data as strings
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                }
+	            })
+	            .success(function(res) {
 
+	              
+	                $scope.templateFilename = res;
+	            })
+	            .error(function() {
+
+	            });
+
+	    } else {
+
+	        $scope.templateFilename = templateName.getData().name;
+
+	    }
+	    
+	    $scope.curr_colls = currentCollabs.getData("colls").colls;
+	   
         function socketConnected() {
 
             socket.emit("documentInfo", {
