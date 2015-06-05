@@ -1149,7 +1149,13 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 
 	                } else {
 
-
+	                	 if(i<gfile.length-1) {
+	                        uploadTrigger(i+1);
+	                        }
+	                        else {
+	                        	console.log("done");
+	                        }
+	                        
 	                    $scope.filetype_msg = {
 	                        content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
 	                        options: {
