@@ -1103,8 +1103,8 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                        console.log('file is uploaded successfully. Response: ' + data);
 	                        $scope.stopSpin = 1;
 
-	                        angular.element(document.querySelector('.pe'+i).innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;'></i>");
-	                      //  angular.element(document.querySelector('.progress-holder'))[0].style.display = "none";
+	                        angular.element(document.querySelector('.pe'+i).innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;margin-top:-5px'></i>");
+	                        angular.element(document.querySelector('.progress-holder'))[0].style.display = "none";
 
 	                        if (data == 999) {
 	                            $scope.filetype_msg = {
@@ -1183,7 +1183,7 @@ else {
 
 
 	    }
-	    
+
 	  
 	      	    $scope.uploadFile = function(file) {
 	        $scope.showProgress = 0;
