@@ -9,7 +9,7 @@
 <meta name="ROBOTS" content = "NOINDEX, NOFOLLOW">
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/files.css?var=0106201501" />
+<link rel="stylesheet" href="css/files.css?var=0506201501" />
 <link rel="stylesheet" href="css/inform.min.css" />
 <link rel="stylesheet" href="angular-busy.min.css" />
   <!-- SPELLS -->
@@ -3341,7 +3341,7 @@ console.log("ok");
     <script type="text/javascript" src="../javascripts/ladda.min.js"></script>
     <script type="text/javascript" src="../javascripts/angular-ladda.min.js"></script>
 
-  <script src="app.js?var=01062015"></script>
+  <script src="app.js?var=05062015"></script>
 
 <script type="text/ng-template" id="feedback.html">
       
@@ -3477,40 +3477,40 @@ z-index: 500;" class="navbar navbar-default">
         
 <div class="progress-holder" 
 style="position: fixed;
-bottom: 66px;
+bottom: 60px;
 display: none;
 right: 17px;
 margin: 0px;
-padding: 10px;
-width: 207px;
+padding: 1px;
+width: 270px;
 z-index: 5;
 border: 1px solid rgb(229, 229, 229);
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
-border-bottom-right-radius: 5px;
-border-bottom-left-radius: 5px;
 -webkit-animation: fadeout 1.6s;
-background: rgb(255, 255, 255);">
-
-      <div class="progress" style="line-height: 15px;" >
-             <div  class="progress-bar"></div>
-      </div>
-    
-      <span class="uploader-file-name" 
-      style="float: left;
+background: rgb(255, 255, 255);"> 
+<table class="table" style="margin-bottom:0px">
+ 
+  <tbody>
+    <tr ng-repeat = "f in gfiles">
+      <td><span class="uploader-file-name" style="float: left;
 font-size: 12px;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
-width: 100%;
-margin-top: 6px;"></span>
+width: 100px;
+margin-top: 6px;">{{f.name}}</span></td>
+      <td><div class="progress" style="line-height: 15px;">
+          <div class="progress-bar pb{{$index}}"></div>
+   </div></td>
 
-      <span class="prog-event" 
-      style="float: left;
-color: green;
+      <td><span class="prog-event pe{{$index}}" style="float: right;
+color: #54C705;
 line-height: 8px;
 font-size: 12px;
-margin-top: 6px;">Uploading</span>          
+margin-top: 10px;"></span></td>
+    </tr>
+    
+  </tbody>
+</table>
     
 </div>
   

@@ -316,7 +316,7 @@ $http({
 	    // console.log(userData.getData());
 	    // userData.setData('14','age');
 	    // console.log(userData.getData());
-
+  $rootScope.gfiles = "";
 $window.ga('send', 'pageview', { page: "Workgroup" }); 
 
  var mc0 = $http.get("backend/checkLoggedIn.php");
@@ -1037,6 +1037,153 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
         }, 3500);
     };
 
+
+  function uploadTrigger(i) {
+
+	        if (gfile != "") { 
+	        	var extCheck = {
+
+
+	                    "image/png": "png",
+	                    "image/svg+xml": "svg",
+	                    "application/x-shockwave-flash": "swf",
+	                    "image/jpeg": "jpg",
+	                    "image/bmp": "bmp",
+	                    "application/pdf": "pdf",
+	                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx"
+
+	                };
+	                console.log(gfile);
+
+
+
+	            	   $scope.showProgress = 0;
+				        $scope.progressValue = 0;
+				        $scope.stopSpin = 0;
+				        $scope.totalFileCount = 0;
+	                    var fileExt = gfile[i].type;
+
+
+
+	               
+
+	                if (extCheck[fileExt] != undefined)
+
+	                {
+
+	                    $scope.fileName = gfile[i].name;
+
+	                    // angular.element(document.querySelector('.uploader-file-name').innerHTML = $scope.fileName);
+	                    angular.element(document.querySelector('.progress-holder'))[0].style.display = "block";
+
+	                    console.log("ata");
+
+	                    $upload.upload({
+	                        url: "../iframe_upload.php",
+	                        method: 'POST',
+	                        file: gfile[i],
+	                        data: {
+	                            wgId: $routeParams.wgId
+	                        },
+	                    }).progress(function(evt) {
+
+	                        $scope.showProgress = 1;
+	                      	angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
+
+	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
+
+	                        angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
+
+	                        if ($scope.progressValue == 100) {
+	                            angular.element(document.querySelector('.pe'+i).innerHTML = "Processing");
+	                        }
+
+	                    }).success(function(data, status, headers, config) {
+	                        // file is uploaded successfully
+	                        console.log('file is uploaded successfully. Response: ' + data);
+	                        $scope.stopSpin = 1;
+
+	                        angular.element(document.querySelector('.pe'+i).innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;'></i>");
+	                      //  angular.element(document.querySelector('.progress-holder'))[0].style.display = "none";
+
+	                        if (data == 999) {
+	                            $scope.filetype_msg = {
+	                                content: 'Oops! Something seems to have gone wrong.',
+	                                options: {
+	                                    ttl: 8000,
+	                                    type: 'danger',
+	                                    html: true
+	                                }
+	                            }
+	                            inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+	                        } else {
+	                            $scope.allFiles.push({
+	                                authid: userData.getData().userid,
+	                                fid: "0",
+	                                filename: $scope.fileName,
+	                                uniqueFilename: data,
+	                                authname: $scope.userData[0].username,
+	                                uploadtime: new Date(),
+	                                workgroupid: $routeParams.wgId,
+	                                extension: extCheck[fileExt],
+	                                sample: 0
+	                            });
+	                            $scope.predicate = "uploadtime"; //for sort 
+	                            $scope.reverse = "false";
+	                            console.log($scope.allFiles);
+	                            //$scope.run = data;
+	                            poll(data);
+	                        }
+	                       	$scope.fileName = "";
+	                        updateFileCount();
+	                        console.log(JSON.stringify(cid));
+	                        add_notif($routeParams.wgId, 1, JSON.stringify(cid), $scope.fileName);
+	                        if(i<gfile.length-1) {
+	                        uploadTrigger(i+1);
+	                        }
+	                        else {
+	                        	console.log("done");
+	                        }
+	                    });
+
+
+	                } else {
+
+
+	                    $scope.filetype_msg = {
+	                        content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+	                        options: {
+	                            ttl: 8000,
+	                            type: 'danger',
+	                            html: true
+	                        }
+	                    }
+	                    inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+
+	                }
+
+	           
+	        } //if file != '' ends
+
+	    }
+
+	    var gfile;
+   $scope.uploadFile1 = function(file) {
+	     if($scope.totalFileCount + file.length <= $scope.flimit) {
+gfile = file;
+$rootScope.gfiles = file;
+// for(var i = 0; i<file.length; i++) {
+// }
+uploadTrigger(0);
+}
+else {
+	alert("You may only select x files");
+}
+
+
+
+	    }
+	    
 	  
 	      	    $scope.uploadFile = function(file) {
 	        $scope.showProgress = 0;
