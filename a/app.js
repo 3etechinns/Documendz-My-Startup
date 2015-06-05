@@ -1155,7 +1155,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                        else {
 	                        	console.log("done");
 	                        }
-	                        
+
 	                    $scope.filetype_msg = {
 	                        content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
 	                        options: {
@@ -1183,7 +1183,7 @@ $rootScope.gfiles = file;
 uploadTrigger(0);
 }
 else {
-	alert("You may only select x files");
+	alert("You cannot upload so many files as per your account limits");
 }
 
 
