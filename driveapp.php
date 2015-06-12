@@ -724,7 +724,7 @@ $m = 'Thank you for signing up for a free trial of Documendz.<br/>
       Co-Founder, Documendz<br/><br/>
 PS: I would love to know what made you sign up for Documendz. 
 Reply to this email or write to <a href="mailto:feedback@documendz.com" target="_blank">feedback@documendz.com</a> 
-Your feedback will help us make it better :)';
+Your feedback will help us serve you better :)';
 
 $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -903,7 +903,7 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
    </body>
    </html>';
 try{
-$mandrill = new Mandrill("L6NsmnJBpL-IAeJuJWzA8g");
+$mandrill = new Mandrill("MaTt7_WzRGIp4lTpdziLEA");
 
 $message = new stdClass();
 $message->html = $content;
