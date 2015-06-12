@@ -715,12 +715,13 @@ $m = 'Thank you for signing up for a free trial of Documendz.<br/>
         <li>Easily highlight, circle, underline or strike through text on legal documents and contracts</li>
         <li>Work on a proposal with your team member spread out in multiple locations in real time.</li>
       </ul><br/>
-      Click on the button below to sign in to your workspace. Start adding collaborators, 
+      Click on the lnk to sign in to your workspace. Start adding collaborators, 
       and upload documents to get started.
       <a href="https://documendz.com">Documendz</a><br/> 
-      Banish long email chains, save time, and avoid confusion.<br/>
+      Banish long email chains, save time, and avoid confusion.<br/><br/>
+      Cheers! </br></br>
       Sagar<br/>
-      Co-Founder, Documendz<br/>
+      Co-Founder, Documendz<br/></br>
 PS: I would love to know what made you sign up for Documendz. 
 Reply to this email or write to <a href="mailto:feedback@documendz.com" target="_blank">feedback@documendz.com</a> 
 Your feedback will help us make it better :)';
