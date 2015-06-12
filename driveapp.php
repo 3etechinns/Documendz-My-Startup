@@ -333,7 +333,7 @@ if ($client->getAccessToken()) {
            getDp($i['userid'],$im['url']);
 
               email($_SESSION['email'], $_SESSION['Username']);
-              
+
             printFile($service, $fileId[0], $type, $file1);
 
        
@@ -709,21 +709,21 @@ require_once 'mandrill/src/Mandrill.php';
 
 
 $s = "Collaborating on documents was never this easy";
-$m = 'Thank you for signing up for a free trial of Documendz.<br/><br/>
+$m = 'Thank you for signing up for a free trial of Documendz.<br/>
       With Documendz you can: <ul>
         <li>Provide feedback on resumes or documents. This will be instantly shared with your collaborators</li>
         <li>Easily highlight, circle, underline or strike through text on legal documents and contracts</li>
         <li>Work on a proposal with your team member spread out in multiple locations in real time.</li>
-      </ul><br/><br/>
+      </ul><br/>
       Click on the button below to sign in to your workspace. Start adding collaborators, 
       and upload documents to get started.
-      <a href="https://documendz.com">Documendz</a><br/><br/>   
-      Banish long email chains, save time, and avoid confusion.<br/><br/>
+      <a href="https://documendz.com">Documendz</a><br/> 
+      Banish long email chains, save time, and avoid confusion.<br/>
       Sagar<br/>
-      Co-Founder,Documendz<br/><br/>
-PS: I would love to know what problems are you facing that made you sign up for Documendz. 
+      Co-Founder, Documendz<br/>
+PS: I would love to know what made you sign up for Documendz. 
 Reply to this email or write to <a href="mailto:feedback@documendz.com" target="_blank">feedback@documendz.com</a> 
-Your feedback will help us make it better.';
+Your feedback will help us make it better :)';
 
 $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -833,11 +833,7 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
                                           </tr>
                                           <!-- End of spacing -->
                                           <!-- content -->
-                                          <tr>
-                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #343434; text-align:left; line-height: 30px;" st-content="fulltext-content">
-                                                Please find below the highlighted summary from <b>'.$f.'</b> :
-                                             </td>
-                                          </tr>
+                                         
                                           <!-- End of content -->
                                        </tbody>
                                     </table>
