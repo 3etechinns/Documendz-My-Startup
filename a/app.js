@@ -1088,14 +1088,14 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                    }).progress(function(evt) {
 
 	                        $scope.showProgress = 1;
-	                      	angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
+	                      	//angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
 
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
-	                        angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
+	                        //angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
 
 	                        if ($scope.progressValue == 100) {
-	                            angular.element(document.querySelector('.pe'+i).innerHTML = "Processing");
+	                           angular.element(document.querySelector('.pe'+i).innerHTML = "Processing");
 	                        }
 
 	                    }).success(function(data, status, headers, config) {
