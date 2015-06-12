@@ -1088,24 +1088,36 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                    }).progress(function(evt) {
 
 	                        $scope.showProgress = 1;
-	                      	//angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
+	                      	
 
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
-	                        //angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
+	                        try{
+	                        angular.element(document.querySelector('.pk'+i).innerHTML = "Uploading");
+	                        angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
+
 
 	                        if ($scope.progressValue == 100) {
 	                           angular.element(document.querySelector('.pe'+i).innerHTML = "Processing");
 	                        }
+
+	                        }
+	                        catch(e){}
+
 
 	                    }).success(function(data, status, headers, config) {
 	                        // file is uploaded successfully
 	                        console.log('file is uploaded successfully. Response: ' + data);
 	                        $scope.stopSpin = 1;
 
+	                        try{
 	                        angular.element(document.querySelector('.pe'+i).innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;margin-top:-5px'></i>");
 	                        angular.element(document.querySelector('.progress-holder'))[0].style.display = "none";
 
+	                       }
+	                       catch(e){
+
+	                       }
 	                        if (data == 999) {
 	                            $scope.filetype_msg = {
 	                                content: 'Oops! Something seems to have gone wrong.',
