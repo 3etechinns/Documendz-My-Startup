@@ -714,14 +714,14 @@ $m = 'Thank you for signing up for a free trial of Documendz.<br/>
         <li>Provide feedback on resumes or documents. This will be instantly shared with your collaborators</li>
         <li>Easily highlight, circle, underline or strike through text on legal documents and contracts</li>
         <li>Work on a proposal with your team member spread out in multiple locations in real time.</li>
-      </ul><br/>
+      </ul>
       Click on the lnk to sign in to your workspace. Start adding collaborators, 
       and upload documents to get started.
       <a href="https://documendz.com">Documendz</a><br/> 
       Banish long email chains, save time, and avoid confusion.<br/><br/>
-      Cheers! </br></br>
+      Cheers! <br/>
       Sagar<br/>
-      Co-Founder, Documendz<br/></br>
+      Co-Founder, Documendz<br/><br/>
 PS: I would love to know what made you sign up for Documendz. 
 Reply to this email or write to <a href="mailto:feedback@documendz.com" target="_blank">feedback@documendz.com</a> 
 Your feedback will help us make it better :)';
@@ -828,12 +828,8 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
                                              </td>
                                           </tr>
                                           <!-- End of Title -->
-                                          <!-- spacing -->
-                                          <tr>
-                                             <td width="100%" height="20" style="font-size:1px; line-height:1px; mso-line-height-rule: exactly;">&nbsp;</td>
-                                          </tr>
-                                          <!-- End of spacing -->
-                                          <!-- content -->
+                                  
+                  
                                          
                                           <!-- End of content -->
                                        </tbody>
