@@ -1093,7 +1093,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
 	                        try{
-	                        angular.element(document.querySelector('.pk'+i).innerHTML = "Uploading");
+	                        angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
 	                        angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
 
 
