@@ -171,9 +171,11 @@ scotchApp.directive('confirmation', function () {  // for asking confirmation
 	});
 
 
-	scotchApp.controller('ModalInstanceCtrl', function(CidList,userData, $scope, $routeParams, $modalInstance, workGroupFunctions, $http, commonFunctions, collaboratorFunctions) {
+	scotchApp.controller('ModalInstanceCtrl', function(data1, CidList,userData, $scope, $routeParams, $modalInstance, workGroupFunctions, $http, commonFunctions, collaboratorFunctions) {
 	    $scope.newProj = {};
 	    $scope.newCollab = {};
+
+	    $scope.fname = data1;
 
 $scope.states=[''];
 
@@ -530,6 +532,11 @@ userData.setData($scope.states,"emailList");
 	                templateUrl: 'myModalContent.html',
 	                controller: 'ModalInstanceCtrl',
 	                size: '',
+	                resolve: {
+	                data1: function() {
+	                    return null;
+	                   }
+	                 }
 	            });
 
 	        
@@ -618,6 +625,11 @@ userData.setData($scope.states,"emailList");
 	            templateUrl: 'feedback.html',
 	            controller: 'ModalInstanceCtrl',
 	            size: '',
+	            resolve: {
+	                data1: function() {
+	                    return null;
+	                   }
+	                 }
 	        });
 
 
@@ -994,6 +1006,11 @@ if ($scope.wkgroupAuthId == $scope.pt){
 	            templateUrl: 'collabLimitReached.html',
 	            controller: 'ModalInstanceCtrl',
 	            size: '',
+	            resolve: {
+	                data1: function() {
+	                    return null;
+	                   }
+	                 }
 	        });
 	        
 	        }
@@ -1003,6 +1020,12 @@ if ($scope.wkgroupAuthId == $scope.pt){
 	            templateUrl: 'invite.html',
 	            controller: 'ModalInstanceCtrl',
 	            size: '',
+	            resolve: {
+	                data1: function() {
+	                    return null;
+	                   }
+	                 }
+
 	        });
 
 
@@ -1717,16 +1740,9 @@ $scope.publicCreator = false;
 	            size: '',
 	            resolve: {
 	                data1: function() {
-	                    return null;
-	                },
-	                data2: function() {
-	                    return null;
-
-	                },
-	                data3: function() {
 	                    return data;
-
 	                }
+	               
 	            }
 
 	        });
