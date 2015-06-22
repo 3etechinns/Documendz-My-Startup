@@ -1,5 +1,5 @@
 	// create the module and name it scotchApp
-	var scotchApp = angular.module('scotchApp', ['cgBusy','ngRoute', 'angular-ladda', 'ngCookies', 'ui.bootstrap', 'helperModule', 'angularFileUpload', 'xeditable','inform']);
+	var scotchApp = angular.module('scotchApp', ['cgBusy','ngRoute', 'ngTagsInput', 'angular-ladda', 'ngCookies', 'ui.bootstrap', 'helperModule', 'angularFileUpload', 'xeditable','inform']);
 
 
 
@@ -305,6 +305,44 @@ $http({
 	        $modalInstance.close();
 	    };
 
+
+	     $scope.onTextClick = function ($event) {
+ 				   $event.target.select();
+		}
+
+		$scope.sendPublicLink= function(){
+
+			$scope.sendingPublic = true;
+			console.log($scope.emails);
+			console.log($scope.message);
+
+			   var dataObj = {
+	                emails:JSON.stringify($scope.emails),
+	                message: $scope.message,
+	                link:"https://documendz.com/share/#/public/"+$scope.fname
+	            };
+	            
+	         var s = $http({
+	                method: 'POST',
+	                url: 'backend/sendPubliclink.php',
+	                headers: {
+	                    'Content-Type': 'application/x-www-form-urlencoded'
+	                },
+	                transformRequest: function(obj) {
+	                    var str = [];
+	                    for (var p in obj)
+	                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	                    return str.join("&");
+	                },
+	                data: dataObj
+	            });
+	         s.success(function(res){
+
+	         	console.log(res);
+	         	$scope.sendingPublic = false;
+	         })
+
+		}
 
 	});
 
@@ -1657,6 +1695,45 @@ $scope.send_update = function(){
 
 
 	    };
+
+	    	       $scope.publicLink = function() {
+$scope.publicCreator = true;
+    var b = $http({
+	            method: 'POST',
+	            url: 'backend/createPublicLink.php',
+	            data: "fid=" + $scope.uniqueFilename, // pass in data as string
+	            headers: {
+	                'Content-Type': 'application/x-www-form-urlencoded'
+	            }
+	        });
+
+b.success(function(data){
+
+$scope.publicCreator = false;
+
+	        $modal.open({
+	            templateUrl: 'publicLink.html',
+	            controller: 'ModalInstanceCtrl',
+	            size: '',
+	            resolve: {
+	                data1: function() {
+	                    return null;
+	                },
+	                data2: function() {
+	                    return null;
+
+	                },
+	                data3: function() {
+	                    return data;
+
+	                }
+	            }
+
+	        });
+
+});
+
+	    }
 
 	    
 	});

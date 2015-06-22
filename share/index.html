@@ -1,60 +1,106 @@
+
+
 <!DOCTYPE html>
 
 <!-- define angular app -->
-<html ng-app="scotchApp" ng-controller="mainController">
+<html ng-app="scotchApp">
 
 <head>
   <!-- SCROLLS -->
 <title ng-bind="Page.title()">Loading...</title>
-<meta name="ROBOTS" content = "NOINDEX, NOFOLLOW">
-<link rel="stylesheet" href="css/bootstrap.min.css" />
+
+<link rel="stylesheet" href="../angular/css/bootstrap.min.css" />
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/files.css?var=22062015" />
-<link rel="stylesheet" href="css/inform.min.css" />
-<link rel="stylesheet" href="angular-busy.min.css" />
+<link rel="stylesheet" href="../angular/css/files.css?var=1234" />
+
+
+
   <!-- SPELLS -->
 
-<!-- Google Analytics -->
 
-<script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55292613-2', 'auto'); ga('send', 'pageview'); </script>
-
-
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/1.7.2.jquery.min.js"></script>
-<script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/core.js"></script>
-    <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/rangy-position.js"></script>
- 
-    <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/raphael.js"></script>
+  <script src="../javascripts/1.7.2.jquery.min.js"></script>
+<script type="text/javascript" src="../javascripts/core.js"></script>
+    <script type="text/javascript" src="../javascripts/rangy-position.js"></script>
+  <script type="text/javascript" src="../javascripts/core.js"></script>
+    <script type="text/javascript" src="../javascripts/rangy-position.js"></script>
+    <script type="text/javascript" src="../javascripts/raphael.js"></script>
     <!--<script type= "text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/json2/20130526/json2.min.js"></script>-->
-    <script type="text/javascript" src="../javascripts/raphael.sketchpad.js?var=21052015"></script>
-    <script type="text/javascript" src="../javascripts/highlighter.js?var=01062015"></script>
-    <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/jquery.ba-resize.js"></script>
-    <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/jquery_1.10.4_ui.min.js"></script>
+    <script type="text/javascript" src="../javascripts/raphael.sketchpad.js?var=20052014"></script>
+    <script type="text/javascript" src="../javascripts/highlighter.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.ba-resize.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery_1.10.4_ui.js"></script>
+
 
     <!-- <script type="text/javascript" src="../../javascripts/log4javascript.js"></script> -->
   
-    <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/contextmenu.js"></script>
-    <script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/contextmenu.position.js"></script>
+    <script type="text/javascript" src="../javascripts/contextmenu.js"></script>
+    <script type="text/javascript" src="../javascripts/contextmenu.position.js"></script>
     <script type="text/javascript" src="../javascripts/scrollTo.js"></script>
-
+    <script type="text/javascript" src="../javascripts/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="../javascripts/perfect-scrollbar.with-mousewheel.min.js"></script>
+    <script type="text/javascript" src="../javascripts/intro.min.original.js"></script>
  
+
+
+    
+
+<!-- Start of xexexwex Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","xexexwex.zendesk.com");/*]]>*/</script>
+<!-- End of xexexwex Zendesk Widget script -->
+
+<!-- Google analytics -->
+
+<script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55292613-1', 'auto'); ga('send', 'pageview'); </script>
+
+
+
+<!-- -for side push menu- -->
+
+
+    
+
+   
+     <?php
+
+     $cookie_name = "first_time";
+$cookie_value = "1";
+
+        if (!isset($_COOKIE[$cookie_name])) {
+    setcookie($cookie_name, $cookie_value, time()+157680000);  /* expire in 5 years */
+    echo "<div data-ng-init='opentour()'></div>";
+
+}
+    ?>
+
+
+
 
     <script type="text/javascript"> 
       
-
+    drawZoom = 1;
 
         var comm_del = 0;
 
         window.shared_id = "<?php echo 140 ?>";
-        window.user = "<?php session_start(); echo $_SESSION['Username']; ?>";
+        window.user = "You";
 
-        drawZoom = 1;
 
-       function zoomIn(){
+function newf(){
+
+    alert("new message");
+}
+
+
+    function zoomIn(){
         console.log("zoomin");
 
      if(drawZoom < 1.3){
         drawZoom = drawZoom + 0.05;
         $("#page-container").css("zoom",drawZoom);
+        $("#page-container").css("MozTransformOrigin","0 0");
+        $("#page-container").css('MozTransform','scale('+drawZoom+','+drawZoom+')');
+
+        
         var zv = Math.round(drawZoom*100);
         $(".zoomValue").html(zv+"%");
     }
@@ -66,15 +112,17 @@ function zoomOut(){
         if(drawZoom > 0.7){
         drawZoom = drawZoom - 0.05;
         $("#page-container").css("zoom",drawZoom);
+      $("#page-container").css("MozTransformOrigin","0 0");
+        $("#page-container").css('-moz-transform','scale('+drawZoom+')');
         var zv = Math.round(drawZoom*100);
         $(".zoomValue").html(zv+"%");
     }
-    };   
+    };
 
-          function sendUserMap(data, count) {
+  function sendUserMap(data, count) {
   var cc = 0;   
 
-
+  
     $(".onlineColls").ready(function(){
 
 
@@ -83,7 +131,7 @@ function zoomOut(){
         $(".onlineColls > div").css("background-color","#CECECE");
         
         $.each(data, function(index, value) {
-
+         console.log(index);
          $("#"+index).css("background-color","#56BB3F");
          cc++;
 
@@ -97,6 +145,10 @@ function zoomOut(){
       
    }
 
+
+
+
+
         function escapeHtml(text) {
             var map = {
                 '&': '&amp;',
@@ -106,7 +158,7 @@ function zoomOut(){
                 "'": '&#039;'
             };
 
-//console.log("text is:" + text);
+console.log("text is:" + text);
 
             return text.replace(/[&<>"']/g, function(m) {
                 return map[m];
@@ -977,7 +1029,7 @@ console.log("ok");
                     sendChangeData(dropCommentObject, "new-drop-comment");
 
                 } else {
-                  
+                    alert("two");
                     //console.log( $("#"+ dropCommentObject.newLiId).prev().attr('id'));
                     dropCommentObject.afterLiId = $("#" + dropCommentObject.newLiId).prev().attr('id');
                     dropCommentObject.cords = commentBoxCords[par_class];
@@ -1489,8 +1541,7 @@ console.log("ok");
 
 
                                         var offset = $div.offset();
-
-                                   var x = (ev.clientX/drawZoom) - offset.left;
+                                        var x = (ev.clientX/drawZoom) - offset.left;
                                         var y = (ev.clientY/drawZoom) - offset.top;
 
                                         $('.handle').css('outline', 'none');
@@ -2313,7 +2364,8 @@ console.log("ok");
 
 
                                     var offset = $(this).offset();
-                                     var comment_box_y_coord = checkCoords((e.pageY/drawZoom) - offset.top);
+                                    var comment_box_y_coord = checkCoords((e.pageY/drawZoom) - offset.top);
+
 
 
 
@@ -2324,7 +2376,8 @@ console.log("ok");
 
 
 
-      $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + ((e.pageY/drawZoom) - offset.top - 24) + "px;left:" + ((e.pageX/drawZoom) - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
+
+                                        $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + ((e.pageY/drawZoom) - offset.top - 24) + "px;left:" + ((e.pageX/drawZoom) - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>");
 
                                         comment_lines(((e.pageX/drawZoom) - offset.left), ((e.pageY/drawZoom) - offset.top), 800, ((e.pageY/drawZoom) - offset.top), rnd_drop);
                                         connector_lines(((e.pageY/drawZoom) - offset.top), comment_box_y_coord, rnd_drop);
@@ -2336,11 +2389,11 @@ console.log("ok");
 
 
 
-                                    
                                         $("#image-container").append("<img class='drop-comment " + rnd_drop + "' style='z-index:100;position:absolute;top:" + ((e.pageY/drawZoom) - offset.top - 24) + "px;left:" + ((e.pageX/drawZoom) - 19 + $("#page-container").scrollLeft()) + "px' src='../images/drop_pin.cur'>")
 
                                         comment_lines(((e.pageX/drawZoom) - offset.left), ((e.pageY/drawZoom) - offset.top), 800, ((e.pageY/drawZoom) - offset.top), rnd_drop);
                                         connector_lines(((e.pageY/drawZoom) - offset.top), comment_box_y_coord, rnd_drop);
+
 
                                     }
 
@@ -2578,7 +2631,7 @@ console.log("ok");
 
 
 
-          
+            $("#history-container").perfectScrollbar();
 
             $('#history').bind('DOMNodeInserted', function() {
 
@@ -3141,6 +3194,23 @@ console.log("ok");
 
         }
 
+
+        function drawUsername(x,y,name,pathclass) {
+
+          var xmlns = "http://www.w3.org/2000/svg";
+var txtElem = document.createElementNS(xmlns, "text");
+ 
+txtElem.setAttributeNS(null,"x",x);
+txtElem.setAttributeNS(null,"y",y);
+txtElem.setAttributeNS(null,"font-size",11);
+txtElem.setAttributeNS(null,"class",pathclass);
+txtElem.setAttributeNS(null,"fill","#888"); 
+var helloTxt = document.createTextNode(name);
+txtElem.appendChild(helloTxt)
+            $('#svg_id').prepend(txtElem);
+
+        }
+
         function constructTextBox(uniqueClass, x, y, content, contenteditable) {
 
             //      console.log(uniqueClass);
@@ -3278,6 +3348,8 @@ console.log("ok");
             $.each(data, function(index, value) {
                 drawPath(value.d, value.pathClass, "2", "1", value.color);
                 drawPath(value.d, value.pathClass, "20", "0", "#bbb000");
+                // drawUsername($("."+value.pathClass)[0].getBBox().x,$("."+value.pathClass )[0].getBBox().y,value.userName,value.pathClass);
+              //  console.log($("."+value.pathClass)[0].getBBox());
             });
         }
 
@@ -3317,31 +3389,27 @@ console.log("ok");
         }
 
     </script>
-    
-  <script> var socket; var usables; </script>
+
+
+  <script> var socket; var usables; var user; </script>
  
   <script type="text/javascript" src="../javascripts/socket.io.js"></script> 
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/angular_1.2.25.min.js"></script>
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/angular-route_1.2.25.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
 
 
   
 
-  <script src="ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
-  <script src="services.js?var=22062015"></script>
+  <script src="../angular/ui-bootstrap-custom-tpls-0.12.0.min.js"></script>
+  <script src="../angular/services.js"></script>
 
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/xeditable.min.js"></script>
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/angularFileUpload.js"></script>
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/ng-showdown.min.js"></script>
-  <script src="https://d28kungomln1xp.cloudfront.net/javascripts/cookies.js"></script>
-  <script src="angular-busy.min.js"></script>
 
-    <script type="text/javascript" src="../javascripts/ng-tags-input.min.js"></script>
+
     <script type="text/javascript" src="../javascripts/spin.min.js"></script>
     <script type="text/javascript" src="../javascripts/ladda.min.js"></script>
     <script type="text/javascript" src="../javascripts/angular-ladda.min.js"></script>
 
-  <script src="app.js?var=22052015"></script>
+  <script src="app.js"></script>
 
 <script type="text/ng-template" id="feedback.html">
       
@@ -3379,9 +3447,44 @@ border-radius: 0 0 8px 8px;">
 
     </script> 
 
-<!-- Start of documendz Zendesk Widget script -->
-<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","documendz.zendesk.com");/*]]>*/</script>
-<!-- End of documendz Zendesk Widget script -->
+
+<script type="text/ng-template" id="opentour.html">
+      
+<div class="modal-header center">
+<a ng-click="cancel()" class="close">x</a>
+<h4>this is tour page. modify accordingly</h4>
+</div>
+
+
+
+<form name="feedback" >
+    
+<div class="modal-body center">
+    
+
+     <textarea id="feedback" style="width: 350px;
+height: 150px;
+border-radius: 5px;
+outline: none;
+padding: 10px;" ng-model="fb.feedbackMessage" name="feedback"  placeholder="Your feedback" /> 
+</div>
+
+  <div class="modal-footer" style="border: 0;
+border-top: 0;
+text-align: center;
+padding: 20px 27px 24px;
+border-radius: 0 0 8px 8px;">
+<div class="btn btn-primary btn-large" ng-click= "sendFeedback()" tabindex="120" ng-disabled = "feedback.$invalid"  >Submit</div>
+
+</div>
+</form> 
+
+
+
+
+    </script> 
+
+
 
 </head>
 
@@ -3396,71 +3499,12 @@ width: 100%;
 z-index: 500;" class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#/workgroups" style="padding:0px;margin-left:-40px">
+        
+        <a class="navbar-brand" href="#/workgroups" style="padding:0px">
           <img width="145px" src="../css/images/logo_black.gif"></img>
         </a>
       </div>
-
-      <ul class="nav navbar-nav navbar-right">
      
-        <li>
-          <div  dropdown is-open="status.isopen5" class="profile-drop" ng-click="getNotif('1')">
-      <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-           <img ng-src="https://d28kungomln1xp.cloudfront.net/images/bell_icon.png" style="height: 18px;margin-top: -2px;">
-            <span ng-if="unreadcount > 0" class="badge noti-badge">{{unreadcount}}</span>
-      </span>
-      <ul class="pull-right dropdown-menu dropdown-arrow dropdown-messages" style="max-height: 340px;overflow: hidden;overflow-y: auto;" ng-click="$event.stopPropagation()">
-                                    <li ng-repeat="n in notifs | limitTo: itemsLimit()">
-                                        <a href="" style="cursor:default !important">
-                                            <img ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{n.actor_id}}/profile_image/dp.jpg"  err-src="{{defDp}}" class="message-avatar">
-                                            <div class="message">
-                                                <span class="message-sender">
-                                                    {{n.username}}
-                                                </span>
-                                                <span class="message-time">
-                                                    {{n.time | date:'MMM d, h:mm a'}}
-                                                </span>
-                                                <span ng-if="n.type_id == 1" class="message-subject">
-                                                    Added {{n.name}} to {{n.wname}}
-                                                </span>
-                                               <span ng-if="n.type_id == 2" class="message-subject">
-                                                    Deleted the file {{n.name}} from {{n.wname}}
-                                                </span>
-                                                <span ng-if="n.type_id == 3" class="message-subject">
-                                                    Added {{n.name}} as a collaborator to {{n.wname}}
-                                                </span>
-                                                <span ng-if="n.type_id == 4" class="message-subject">
-                                                    Removed {{n.name}} from {{n.wname}}
-                                                </span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li style="text-align:center;cursor:pointer;color:#02394b;margin-bottom:4px">
-                                        <a type="button" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()" style="cursor:pointer">Show more</a> 
-                                    </li>
-                                </ul>
-    </div>
-        </li>
-
-        <li tooltip-placement="bottom" tooltip="Workgroups"><a style="color:white;" href="#/workgroups"><img ng-src="https://d28kungomln1xp.cloudfront.net/images/folder_icon.png" style="height: 18px;margin-top: 3px;"></a></li>
-        
-       
-       <li>
-          <div  dropdown is-open="status.isopen1" class="profile-drop" style="padding:0px !important">
-      <span class="btn dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-        <span style="height: 40px; display: table-cell; vertical-align: middle; float:left;padding-top:11%;margin-right:5px">{{ut}}</span>
-        <img style="width: 2em; height: 2em; margin-top:3px; background-size: cover; display: table-cell; border-radius: 50%; vertical-align:middle" ng-src="https://s3-ap-southeast-1.amazonaws.com/documendz-ent/uploaded/user_{{pt}}/profile_image/dp.jpg" err-src="{{defDp}}"></img>
-      </span>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#/account/{{pt}}">Profile</a></li>
-        <li><a href="#/faq">FAQs</a></li>
-        <li><a href="#/logout">Logout</a></li>
-    
-        
-      </ul>
-    </div>
-        </li>
-
     </div>
   </nav>
 
@@ -3473,49 +3517,13 @@ z-index: 500;" class="navbar navbar-default">
         <!-- this is where content will be injected -->
     <div ng-view ></div>
 
+    
+
+
   </div>
-        
-<div class="progress-holder" 
-style="position: fixed;
-bottom: 60px;
-display: none;
-right: 17px;
-margin: 0px;
-padding: 1px;
-width: 270px;
-z-index: 5;
-border: 1px solid rgb(229, 229, 229);
--webkit-animation: fadeout 1.6s;
-background: rgb(255, 255, 255);"> 
-<table class="table" style="margin-bottom:0px">
- 
-  <tbody>
-    <tr ng-repeat = "f in gfiles">
-      <td><span class="uploader-file-name" style="float: left;
-font-size: 12px;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-width: 100px;
-margin-top: 6px;">{{f.name}}</span></td>
-      <td><div class="progress" style="line-height: 15px;">
-          <div class="progress-bar pb{{$index}}"></div>
-   </div></td>
-
-      <td><span class="prog-event pe{{$index}}" style="float: right;
-color: #54C705;
-line-height: 8px;
-font-size: 12px;
-margin-top: 10px;"></span></td>
-    </tr>
-    
-  </tbody>
-</table>
-    
-</div>
   
+      
 
-  
 </body>
 
 </html>

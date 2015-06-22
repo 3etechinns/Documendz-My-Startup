@@ -9,7 +9,53 @@
     <link rel="stylesheet" type="text/css" href="../css/contextmenu.css">
     <link rel="stylesheet" type="text/css" href="../css/documendz.css?var=30102014">
    
-    
+   <script type="text/ng-template" id="publicLink.html">
+        <div class="modal-header center">
+            <a ng-click="cancel()" class="close">×</a>
+        </div>
+        <div class="modal-body center">
+            <span style="float: left;margin-bottom: 15px;color: rgba(2, 57, 75, 0.7);">Link to public copy (<a target="_blank" href="https://www.zofler.com/enterprise/angular_public/#/public/{{fname}}">open</a>):</span>
+            <input ng-model="content" ng-click="onTextClick($event)" type="text" value="https://www.zofler.com/enterprise/angular_public/#/public/{{fname}}" readonly="readonly" style="
+    width: 100%;
+    font-size: 13px;
+    padding: 12px;
+    border: 1px solid #04b8a8;
+    cursor:text
+    "></input>
+            <div style="width:100%; text-align:left;margin-top:15px;margin-bottom:15px">
+                <span style="color: rgba(2, 57, 75, 0.7);">Email link to:</span>
+            </div>
+            <tags-input ng-model="emails" placeholder="Email" add-on-space="true" allowed-tags-pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"></tags-input>
+            <textarea ng-model="message" placeholder="Message" style="width: 100%;
+border: 1px solid #D2D2D2;
+border-top: none;
+margin-top: -6px;
+padding: 15px;
+color: rgba(2, 57, 75, 0.62);
+outline: none;
+height: 80px;"></textarea>
+
+<div class="row" style="
+    margin-top: 15px;
+    color: #888;
+">
+<div class="col-md-10" style="
+    text-align: left;
+    font-size: 10px;
+">
+  <span>This link will create a copy of your document</span><br>
+  <span>Anyone with this link can view and annotate the document</span>
+  </div>
+  <div class="col-md-2" style="
+    text-align: right;
+">
+<span><button ladda="sendingPublic" class="btn btn-new" ng-disabled="emails.length == 0" ng-click="sendPublicLink()" disabled="disabled">Send</button></span>
+
+  </div>
+</div> 
+        </div>
+
+    </script> 
 
 
 
@@ -1459,6 +1505,8 @@ padding: 1px 2px;" id="zoom-plus">
          &nbsp;
         </div>
 
+      
+
             <div style="display:inline-block;float:right" tooltip="Collaborators online now">
         <div class="btn-group" dropdown is-open="status.isopen">
       <button type="button" class="btn btn-warning dropdown-toggle" dropdown-toggle ng-disabled="disabled">
@@ -1497,6 +1545,12 @@ padding: 1px 2px;" id="zoom-plus">
         <button ladda="loadingnow" data-spinner-color="#dd0808"  ng-click="sendHighlights()" class="btn btn-link" style="padding-top: 0px;margin-top: -3px;margin-bottom: -7px;margin-right: -10px;"><img height="36px" ng-src="https://d28kungomln1xp.cloudfront.net/images/summary.png"></img></button>
         &nbsp;
     </div>
+
+  <div style="display:inline-block;float:right" tooltip="Create public link">
+            <button ladda="publicCreator" ng-click="publicLink()" class="btn btn-warning "><img ng-src="https://d28kungomln1xp.cloudfront.net/images/Link.png"></img></button>
+            &nbsp;
+        </div>
+
     </div>
     <div id="title" style="display:none;position:fixed;top:0px;left:0px;width:100%;height:35px;background-color: black; z-index:20 ;text-align:left;line-height: 35px;color:white;">
 
