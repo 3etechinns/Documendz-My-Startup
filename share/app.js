@@ -7,7 +7,7 @@
 	scotchApp.config(function($routeProvider) {
 	    $routeProvider
 
-  .when('/share/:newId', {
+  .when('/public/:newId', {
   			name: 'publicLink',
 	        templateUrl: 'publicTemplate.html',
 	        controller: 'publicTemplateController'
