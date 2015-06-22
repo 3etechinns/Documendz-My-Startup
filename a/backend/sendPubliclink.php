@@ -29,7 +29,7 @@ if(strlen(trim($m," ")) > 0 && $m != undefined){
                                           </tr>
             <tr>
                <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #888; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                     Message from '.$n.':<br>
+                     '.$n.' also has a message for you:<br>
                      <i style="color:black">'.$m.'</i>
                </td>
          </tr>';
@@ -149,12 +149,12 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
                                           <!-- content -->
                                           <tr>
                                              <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #888; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                <b>'.$n.'</b> has shared a document with you to review.
+                                                <b>'.$n.'</b> has shared a document with you for review.
                                              </td>
                                           </tr>
                                           <tr>
                                              <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #888; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                Click on the link below to view it. No signup required!
+                                                You are not required to sign up with Documendz.com to access or review this document
                                              </td>
                                           </tr>
                                           '.$m.'
