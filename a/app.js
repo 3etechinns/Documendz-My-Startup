@@ -171,7 +171,7 @@ scotchApp.directive('confirmation', function () {  // for asking confirmation
 	});
 
 
-	scotchApp.controller('ModalInstanceCtrl', function(data1, CidList,userData, $scope, $routeParams, $modalInstance, workGroupFunctions, $http, commonFunctions, collaboratorFunctions) {
+	scotchApp.controller('ModalInstanceCtrl', function(data1,$timeout, CidList,userData, $scope, $routeParams, $modalInstance, workGroupFunctions, $http, commonFunctions, collaboratorFunctions) {
 	    $scope.newProj = {};
 	    $scope.newCollab = {};
 
@@ -343,6 +343,11 @@ $http({
 	         	console.log(res);
 	         	$scope.sendingPublic = false;
 	         	$scope.cmplt = true;
+
+	         	$timeout(function() { 
+	         		$modalInstance.close(); 
+	         	}, 2000);
+
 	         })
 
 		}
