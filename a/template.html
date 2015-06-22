@@ -54,6 +54,15 @@ height: 80px;"></textarea>
 <span><button ladda="sendingPublic" class="btn btn-new" ng-disabled="emails.length == 0" ng-click="sendPublicLink()" disabled="disabled">Send</button></span>
 
   </div>
+  <div ng-if="{{cmplt}}" style="
+    margin-top: 15px;
+"><span style="
+    padding: 5px 45px;
+    background-color: rgb(173, 252, 255);
+    border: 1px solid rgb(3, 168, 167);
+    color: rgb(3, 168, 167);
+    font-size: 13px;
+">Sent!</span></div>
 </div> 
         </div>
 

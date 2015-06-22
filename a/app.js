@@ -313,7 +313,7 @@ $http({
 		}
 
 		$scope.sendPublicLink= function(){
-
+			$scope.cmplt = false;
 			$scope.sendingPublic = true;
 			console.log($scope.emails);
 			console.log($scope.message);
@@ -342,16 +342,7 @@ $http({
 
 	         	console.log(res);
 	         	$scope.sendingPublic = false;
-	         	
-	         	 $scope.msg = {
-	                content: 'The link has been sent!',
-	                options: {
-	                    ttl: 6000,
-	                    type: 'success',
-	                    html: true
-	                }
-	            }
-	            inform.add($scope.msg.content, $scope.msg.options);
+	         	$scope.cmplt = true;
 	         })
 
 		}
