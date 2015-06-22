@@ -342,6 +342,18 @@ $http({
 
 	         	console.log(res);
 	         	$scope.sendingPublic = false;
+
+	         	$modalInstance.close();
+	         	
+	         	 $scope.msg = {
+	                content: 'The link has been sent!',
+	                options: {
+	                    ttl: 6000,
+	                    type: 'success',
+	                    html: true
+	                }
+	            }
+	            inform.add($scope.msg.content, $scope.msg.options);
 	         })
 
 		}
