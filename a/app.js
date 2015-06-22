@@ -342,9 +342,7 @@ $http({
 
 	         	console.log(res);
 	         	$scope.sendingPublic = false;
-
 	         	$modalInstance.close();
-	         	
 	         	 $scope.msg = {
 	                content: 'The link has been sent!',
 	                options: {

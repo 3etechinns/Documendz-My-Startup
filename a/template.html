@@ -11,9 +11,11 @@
    
    <script type="text/ng-template" id="publicLink.html">
         <div class="modal-header center">
+            <div inform class="inform-animate inform-fixed inform-shadow"></div>
             <a ng-click="cancel()" class="close">×</a>
         </div>
         <div class="modal-body center">
+
             <span style="float: left;margin-bottom: 15px;color: rgba(2, 57, 75, 0.7);">Link to public copy (<a target="_blank" href="https://www.documendz.com/share/#/public/{{fname}}">open</a>):</span>
             <input ng-model="content" ng-click="onTextClick($event)" type="text" value="https://www.documendz.com/share/#/public/{{fname}}" readonly="readonly" style="
     width: 100%;
