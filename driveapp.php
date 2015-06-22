@@ -715,7 +715,7 @@ $m = 'Thank you for signing up for a free trial of Documendz.<br/>
         <li>Easily highlight, circle, underline or strike through text on legal documents and contracts</li>
         <li>Work on a proposal with your team member spread out in multiple locations in real time.</li>
       </ul>
-      Click on the lnk to sign in to your workspace. Start adding collaborators, 
+      Click on the link to sign in to your workspace. Start adding collaborators, 
       and upload documents to get started.
       <a href="https://documendz.com">Documendz</a><br/> 
       Banish long email chains, save time, and avoid confusion.<br/><br/>

@@ -1730,7 +1730,7 @@ setTimeout(function(){ // a 500ms timeout given so that it lands on the page the
 
 
         var pullRequest = $.ajax({
-            url: "https://documendz.com:9000/pulldata/annotationdata/" + shareId,
+            url: "https://documendz.com/connect/pulldata/annotationdata/" + shareId,
             type: "GET",
             cache: false
         });
@@ -1774,7 +1774,7 @@ setTimeout(function(){ // a 500ms timeout given so that it lands on the page the
         $("#display-history").ready(function() {
 
             var pullHistoryRequest = $.ajax({
-                url: "https://documendz.com:9000/pulldata/historydata/" + shareId,
+                url: "https://documendz.com/connect/pulldata/historydata/" + shareId,
                 type: "GET",
                 cache: false,
             });
