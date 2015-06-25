@@ -51,7 +51,7 @@ height: 80px;"></textarea>
   <div class="col-md-2" style="
     text-align: right;
 ">
-<span><button ladda="sendingPublic" class="btn btn-new" ng-disabled="emails.length == 0" ng-click="sendPublicLink()" disabled="disabled">Send</button></span>
+<span><button ladda="sendingPublic" class="btn btn-new" ng-disabled="emails.length == 0" ng-click="sendPublicLink()" disabled="disabled" >Send</button></span>
 
   </div>
   <div ng-if="cmplt == true" style="
@@ -68,6 +68,7 @@ height: 80px;"></textarea>
         </div>
 
     </script> 
+
 
 
 
@@ -1874,6 +1875,18 @@ setTimeout(function(){ // a 500ms timeout given so that it lands on the page the
    },500);
 
 });     
+
+var p = $("#publicLinkButton").position();
+   var t = p.top;
+   var l = p.left - 240;
+   $("#tools-container").append("<div id='show-notif' style='top:"+t+"px; left:"+l+"px; position:absolute;'><div class='error-label'>Share this document using a link and get it reviewed quickly!!<br><button id='close-notif' style='font-size:13px' class='close'>Close</button><div class='error-label-arrow'></div></div></div>");
+
+$("#close-notif").click(function(){
+
+    $("#show-notif").css({display: "none"});
+
+});
+
     </script>
 
 </body>

@@ -154,7 +154,7 @@ $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www
                                           </tr>
                                           <tr>
                                              <td style="font-family: Helvetica, arial, sans-serif; font-size: 16px; color: #888; text-align:center; line-height: 30px;" st-content="fulltext-content">
-                                                You are not required to sign up with Documendz.com to access or review this document
+                                                You are not required to sign up with documendz.com to access or review this document
                                              </td>
                                           </tr>
                                           '.$m.'

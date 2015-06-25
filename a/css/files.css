@@ -1695,3 +1695,30 @@ tags-input .autocomplete .suggestion-item em {
     color: #000;
     background-color: #fff
 }
+
+/**********  new feature pop **************/
+
+
+div.error-label{
+padding: 7px 10px 0 4px;
+color: #8a6d3b;
+background-color: #fcf8e3;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+font-size: 13px;
+border-radius: 5px;
+width: 175px;
+border: 1px solid #8a6d3b;
+box-shadow: 1px 1px 12px #D1D1D1;
+}
+
+div.error-label-arrow{
+position: relative;
+left: 170px;
+top: -60px;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;
+border-left: 10px solid #8a6d3b;
+height: 1px;
+margin-top: 3px;
+}
