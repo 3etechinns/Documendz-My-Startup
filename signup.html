@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+	<meta name="viewport" content = "width=device-width,initial-scale=1">
+	<meta name="description" content="Documendz is a cloud service providing secure and hassle-free way to edit, annotate or markup
+	 your articles, resumes, designs or any other document.">	
+	 <meta name="ROBOTS" content = "INDEX, FOLLOW">
+	 <meta name="google-site-verification" content="jfJC2jb1yijEDPfBtnh_vYQnpgJBZHh55t8KUle0byo" />
+	<title>SignUp</title>
+	
+<meta property="twitter:card" content="summary" /> 
+<meta property="twitter:title" content="Documendz - Realtime collaborative discussion on document over cloud" /> <meta property="twitter:description" content="Documendz is a cloud service providing secure and hassle-free way to edit, annotate or markup your articles, resumes, designs or any other document." />
+ <meta property="twitter:image" content="https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/documendz_logo.gif" />
+  <meta property="twitter:site" content="@documendz" />
+
+	<meta property="og:title" content="Documendz - Edit, annotate and markup files online " />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.documendz.com" />
+<meta property="og:image" content="https://s3-ap-southeast-1.amazonaws.com/documendz-static/images/documendz_logo.gif" />
+<meta property="og:description" content="Documendz is a cloud service providing secure and hassle-free way to edit, annotate or markup
+	 your articles, resumes, designs or any other document." />
+<meta property="og:site_name" content="Documendz">
+	
+
+<meta name='verify-v1' content='BcYTVMGdjp2oeUmgT913KLBp'/>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>	
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="icon" type="img/ico" href="/favicon.ico">
+	
+	<link type="text/css" rel="stylesheet" href="https://d28kungomln1xp.cloudfront.net/css/main_page_style.css"/>
+      	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+      	
+      	<link href='https://fonts.googleapis.com/css?family=Cabin:500|Muli' rel='stylesheet' type='text/css'>
+      	<link type="text/css" rel="stylesheet" href="css/custom.css"/>
+
+
+
+		
+		<script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/bootstrap.min.js"></script>
+		<script async type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/feedback_front.js"></script>
+		<link href="fonts/font-awesome/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+		<script>
+
+
+function check_empty_fields(un,em,pw,cpw)
+{
+	var cresponse = grecaptcha.getResponse(wid); 
+  if(un.value.length!=0 && pw.value.length!=0 && cpw.value.length!=0 && em.value.length!=0  && cresponse.length != 0){
+	return true;  
+  }
+  else{
+    if(cresponse == ""){
+
+      $("#alert-error").fadeIn();
+    $("#alert-error").html('Please verify the captcha');
+
+    }
+    else{
+	  $("#alert-error").fadeIn();
+	  $("#alert-error").html('Please fill all the fields');
+  }
+	  return false;
+	  
+  }
+  }
+function resendEmail(r_emailid, r_un) {
+  $.ajax({
+          type:"POST",
+          cache:false,
+    async: false,
+          url:"t_resend.php",
+    data: { uname: r_un, email: r_emailid },
+          datatype: "text",
+          
+      success: function(response){
+        
+        alert(response);
+        
+        
+        },
+      error: function(){
+          alert("Oops! Something went wrong");
+          }
+        });
+}
+
+
+function validate_email(em){
+
+	
+	var pattern =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(em.value.match(pattern)){
+    
+    	/* showUser(document.registration.email.value); */
+    	return true;
+    }
+    else{
+	 $("#alert-error").fadeIn();
+	$("#alert-error").html("Please enter a valid Email Id");
+    	
+    	return false;
+    }
+}
+
+function pass_validation(cpw,pw,mx)  
+{  
+var pw_len = pw.value.length;  
+if (pw_len < mx)  
+{
+	$("#alert-error").fadeIn();
+	$("#alert-error").html("Password should contain atleast "+mx+" characters");
+   
+	return false;  
+}
+if(pw.value!=cpw.value)
+{
+	
+	$("#alert-error").fadeIn();
+	$("#alert-error").html("Confirm password and Password do not match");
+    
+	return false;
+}
+return true;  
+}
+
+
+function email_exist(str1) {
+var ret = "" ;	
+	 $.ajax({
+	        type:"POST",
+	        cache:false,
+	        url:"t_checkexist.php?e="+str1,
+		data: {
+			check: "sadh675fdA"	
+		},
+	        datatype: "string",
+	        async:false,
+			success: function(exist_response){
+				
+					if(exist_response.trim().localeCompare("found") == 0){
+						
+						$("#alert-error").fadeIn();
+						$("#alert-error").html("Email id already registered");
+
+						 ret = false;
+						
+					}		
+					else {
+						
+						 ret = true;
+					}
+				},
+			error: function(){
+					alert("Something went wrong, please try again");
+					}
+		    });
+return ret;
+}	
+
+$(document).on({
+	submit:function(e){
+
+
+		var un = document.registration.uname;
+		var pw = document.registration.pwd;
+		var cpw = document.registration.pwdc;
+		var em = document.registration.email;
+	
+	
+	if(!check_empty_fields(un,em,pw,cpw)){
+		return false
+	}
+	
+	if(!validate_email(em)){
+		return false;
+	}
+	
+	if(!pass_validation(cpw,pw,6)){
+		return false;
+	}
+		
+	if(!email_exist(em.value)){
+		
+		return false;
+	}
+	
+		e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+		var post_data = $(this).serializeArray();
+		
+		
+		$('#sign-up-button').prop('disabled', true); // Disabling the sign-up button
+	        $('#sign-up-button').val("Wait...");
+		$("#alert-error").css('display','none');
+		
+	    $.ajax({
+	
+	        type:"POST",
+	        
+	        url:"t_registercheck.php",
+	        datatype: "text",
+	        data : post_data,
+			success: function(response){
+		
+					$("#alert-error").html(response);
+					$("#alert-error").css('display','block');
+					$("#alert-error").css('background','#D7F1D7');
+					$("#alert-error").css('border','1px solid green');
+					$('#sign-up-button').prop('disabled', false); // Enabling the sign-up button on success
+	                                $('#sign-up-button').val("Sign up");
+					
+				},
+			error: function(err){
+					
+					alert("Oops, something went wrong.");
+					
+					}
+		    });
+
+		}
+		
+	},'#registration-form');
+
+		</script>
+
+<script type="text/javascript">
+
+
+var helper = (function() {
+  var BASE_API_PATH = 'plus/v1/';
+
+  return {
+    /**
+     * Hides the sign in button and starts the post-authorization operations.
+     *
+     * @param {Object} authResult An Object which contains the access token and
+     *   other authentication information.
+     */
+    onSignInCallback: function(authResult) {
+
+
+
+      gapi.client.load('plus','v1').then(function() {
+    
+        // $('#authResult').html('Auth Result:<br/>');
+        // for (var field in authResult) {
+        //   $('#authResult').append(' ' + field + ': ' +
+        //       authResult[field] + '<br/>');
+        // }
+        if (authResult['g-oauth-window']) {
+           $('#authOps').show('slow');
+          $('#gConnect').hide();
+         // console.log(helper.profile());
+          //helper.people();
+          
+      gapi.client.plus.people.get({
+        'userId': 'me'
+      }).then(function(res) {
+        
+        var profile = res.result;
+
+        console.log(profile.displayName);
+        console.log(profile.emails[0].value);
+        
+     localStorage.setItem("dcz_tkn",gapi.auth.getToken().access_token);   
+
+       window.location.href = "https://www.zofler.com/enterprise/gsignup.php?n="+profile.displayName+"&e="+profile.emails[0].value+"&usimg="+ profile.image.url;
+
+        // $('#profile').empty();
+        // $('#profile').append(
+        //     $('<p><img src=\"' + profile.image.url + '\"></p>'));
+        // $('#profile').append(
+        //     $('<p>Hello ' + profile.displayName + '!<br />Tagline: ' +
+        //     profile.tagline + '<br />About: ' + profile.aboutMe + '</p>'));
+        // if (profile.cover && profile.coverPhoto) {
+        //   $('#profile').append(
+        //       $('<p><img src=\"' + profile.cover.coverPhoto.url + '\"></p>'));
+        // }
+      }, function(err) {
+        var error = err.result;
+        $('#profile').empty();
+        $('#profile').append(error.message);
+      });
+
+        } else if (authResult['error']) {
+          // There was an error, which means the user is not signed in.
+          // As an example, you can handle by writing to the console:
+          console.log('There was an error: ' + authResult['error']);
+          $('#authResult').append('Logged out');
+          $('#authOps').hide('slow');
+          $('#gConnect').show();
+        }
+        console.log('authResult', authResult);
+      });
+    },
+
+    /**
+     * Calls the OAuth2 endpoint to disconnect the app for the user.
+     */
+    disconnect: function() {
+      // Revoke the access token.
+      // $.ajax({
+      //   type: 'GET',
+      //   url: 'https://accounts.google.com/o/oauth2/revoke?token=' +
+      //       gapi.auth.getToken().access_token,
+      //   async: false,
+      //   contentType: 'application/json',
+      //   dataType: 'jsonp',
+      //   success: function(result) {
+      //     console.log('revoke response: ' + result);
+      //     $('#authOps').hide();
+      //     $('#profile').empty();
+      //     $('#visiblePeople').empty();
+      //     $('#authResult').empty();
+      //     $('#gConnect').show();
+      //   },
+      //   error: function(e) {
+      //     console.log(e);
+      //   }
+      // });
+
+  gapi.auth.signOut();
+    },
+
+    /**
+     * Gets and renders the list of people visible to this app.
+     */
+    people: function() {
+      gapi.client.plus.people.list({
+        'userId': 'me',
+        'collection': 'visible'
+      }).then(function(res) {
+        // var people = res.result;
+        // $('#visiblePeople').empty();
+        // $('#visiblePeople').append('Number of people visible to this app: ' +
+        //     people.totalItems + '<br/>');
+        // for (var personIndex in people.items) {
+        //   person = people.items[personIndex];
+        //   $('#visiblePeople').append('<img src="' + person.image.url + '">');
+        // }
+
+        return res.result;
+
+      });
+    },
+
+    /**
+     * Gets and renders the currently signed in user's profile data.
+     */
+    profile: function(){
+      gapi.client.plus.people.get({
+        'userId': 'me'
+      }).then(function(res) {
+        var profile = res.result;
+
+        console.log(profile);
+
+
+        // $('#profile').empty();
+        // $('#profile').append(
+        //     $('<p><img src=\"' + profile.image.url + '\"></p>'));
+        // $('#profile').append(
+        //     $('<p>Hello ' + profile.displayName + '!<br />Tagline: ' +
+        //     profile.tagline + '<br />About: ' + profile.aboutMe + '</p>'));
+        // if (profile.cover && profile.coverPhoto) {
+        //   $('#profile').append(
+        //       $('<p><img src=\"' + profile.cover.coverPhoto.url + '\"></p>'));
+        // }
+      }, function(err) {
+        var error = err.result;
+        $('#profile').empty();
+        $('#profile').append(error.message);
+      });
+
+  
+
+    }
+  };
+})();
+
+/**
+ * jQuery initialization
+ */
+$(document).ready(function() {
+  $('#disconnect').click(helper.disconnect);
+  $('#loaderror').hide();
+  if ($('[data-clientid="YOUR_CLIENT_ID"]').length > 0) {
+    alert('This sample requires your OAuth credentials (client ID) ' +
+        'from the Google APIs console:\n' +
+        '    https://code.google.com/apis/console/#:access\n\n' +
+        'Find and replace YOUR_CLIENT_ID with your client ID.'
+    );
+  }
+});
+
+/**
+ * Calls the helper method that handles the authentication flow.
+ *
+ * @param {Object} authResult An Object which contains the access token and
+ *   other authentication information.
+ */
+function onSignInCallback(authResult) {
+  helper.onSignInCallback(authResult);
+}
+
+
+
+</script>
+
+	</head>
+
+
+	<body id="bodyofsignup" >
+		
+    <nav id="navigationbar" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" id="logoimg" href="https://www.documendz.com/"><img src="https://d28kungomln1xp.cloudfront.net/images/brand.png" style=" width:180px" /></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li ><a href="index.html">Home</a></li>
+            
+            <li><a href="aboutus.html">About Us</a></li>
+           
+            <li><a href="faq.html">FAQs</a></li>
+            
+            <li><a href="signin.html" type="button" class="btn btn-default logins">SignIn</a></li>
+            <li><a href="signup.html" type="button" class="btn btn-default logins">SignUp</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </nav>
+
+    <div class="container">
+    <div class="row" id="section1Signup">
+      
+	 
+	  <div class="col-md-6" >
+	  	<form name="registration" id="registration-form" method="post" novalidate style="max-width: 300px;margin:0 auto;  margin-top: 40px;">
+			
+			<div style="margin-left:0px">
+			</div>
+					<h2 style="text-align:center;letter-spacing: 4px;color:#747D7E;margin-top:0px;margin-bottom:10px;"> SIGN UP </h2>
+						<input id="em" class="blank" type="text" name="email" placeholder="Email id" required/>
+						<input id="un" class="blank" type="text" name="uname" placeholder="Name" required/>
+						<input class="blank" id="password" type="password" name="pwd" placeholder="Password" required  />
+
+<!--                      password strength                         -->
+
+<div id="wrapper" style="height:10px; margin-bottom:10px">
+<!--  <div id="psd" style="height:7px"><p id="ps"></p></div> -->
+ <div id="psm" style="height:4px;overflow:hidden">
+  <div id="ps1" class="password-meter" style="background: #3276B1;opacity: 0.5; display: none;" ></div>
+  <div id="ps2" class="password-meter" style="background: #3276B1;opacity: 0.7; display: none;"></div>
+  <div id="ps3" class="password-meter" style="background: #3276B1;opacity: 0.8; display: none;"></div>
+  <div id="ps4" class="password-meter" style="background: #3276B1;opacity: 0.9; display: none;"></div>
+  <div id="ps5" class="password-meter" style="background: #3276B1;opacity: 1; display: none;"></div>
+ </div>
+</div>
+
+						<input class="blank" type="password" id="pwdc" name="pwdc" placeholder="Confirm password" required/>
+
+					
+<div id="recaptcha"></div>						
+
+					<div style="float:left">
+						<input id = "sign-up-button" style="height: 30px;width:300px;line-height: 10px;font-size:13px;margin-bottom:3px" type="submit" name="submit" value="Sign up"   class="btn btn-primary btn-sm"/>						
+					</div><br>
+
+				</form>
+        
+<div style="
+    max-width: 300px; margin: 0 auto; 
+    margin-top: 16px;
+">
+  <div style="font-size: 12px;color:#747D7E;text-align: center;padding: 2px 0px">OR</div>
+  <div id="gConnect" style="margin-bottom:0px ;align:center;">
+                <button style="background-color: #dd4b39;
+color: #fff;
+border-color: rgba(0,0,0,0.2);
+width: 300px;
+padding: 10px 12px;
+vertical-align: middle;
+cursor: pointer;
+border-radius: 4px;
+border: 1px solid #fff;
+line-height: 10px;
+font-size: 13px;" class="g-signin"
+        data-scope="https://www.googleapis.com/auth/plus.login email https://www.google.com/m8/feeds "
+        data-requestvisibleactions="http://schemas.google.com/AddActivity"
+        data-clientId="12504660612-vu6s77r5r4r7196r5qgpi75l055cnmhj.apps.googleusercontent.com"
+        data-callback="onSignInCallback"
+        data-theme="dark"
+        data-cookiepolicy="single_host_origin"
+        data-gapiscan="true" 
+        data-onload="true" 
+        data-gapiattached="true">
+                    Signup with Google
+                </button>
+              </div>
+  <div style="font-size: 9px;color:#747D7E;">By signing up, I agree to the <a href="https://www.documendz.com/legal/terms_of_service.html">terms of service</a> and <a href="https://www.documendz.com/legal/privacy_policy.html">privacy policy</a></div>
+</div>
+				<div id="alert-error" style="
+	width:300px;    
+    display: none;	
+    margin: 20px auto;
+    padding: 2px;
+    text-align: center;
+    font-size: 11px;
+    color: black;
+    border: 1px solid brown;
+    background: antiquewhite;
+    
+"></div>
+
+	  </div>
+
+	  <div class="col-md-6" style="margin-top:40px">
+	  <h2 style="text-align:center;letter-spacing: 4px;color:#747D7E;margin-top:0px;margin-bottom:10px;"> ALREADY A MEMBER? </h2>
+	  <div style="text-align:center">
+	  	<a href="signin.html" style=" background-color: #0A9ABC;width: 44%;margin-top: 54px;" class="btn btn-primary" role="button">Signin</a>
+	  </div>	
+
+	  		
+	  </div>
+	</div>
+     
+</div>
+
+
+
+
+	<div class="section4">
+  <div class="row" style="margin-bottom:15px; color:#04B8A8">
+      <div class="col-md-2" style="margin-right:110px"></div>
+      <div class="col-md-2" style="text-align:center"><a href="aboutus.html">Our Team</a></div>
+      <div class="col-md-2"style="text-align:center"><a href="contactus.html">Contact Us</a></div>
+      <div class="col-md-2"style="text-align:center"><a href="termsofservice.html">Terms of Service</a></div>
+      <div class="col-md-2"></div>
+    </div>
+    
+    <div class="row"style="margin-bottom:15px; color:#04B8A8">
+      <div class="col-md-2"style="margin-right:110px"></div>
+      <div class="col-md-2" style="text-align:center"><a href="careers.html">Careers</a></div>
+      <div class="col-md-2" style="text-align:center"><a href="faq.html">FAQs</a></div>
+      <div class="col-md-2" style="text-align:center"><a href="privacypolicy.html">Privacy Policy</a></div>
+      <div class="col-md-2"></div>
+    </div>
+
+
+    <div class="row"style="margin-bottom:15px; color:#04B8A8">
+      <div class="col-md-2"style="margin-right:110px"></div>
+      <div class="col-md-2" style="text-align:center"><a href="https://documendz.wordpress.com">Blog</a></div>
+      <div class="col-md-2"></div>
+    </div>
+
+
+    <div class="row"style="margin-bottom:35px; color:#04B8A8">
+      <div class="col-md-2"style="margin-right:110px"></div>
+      <div class="col-md-2" style="text-align:center"><a href="webapp.html">Chrome Web App</a></divs      <div class="col-md-2"></div>
+    </div>
+
+    <hr>
+
+    <div style="text-align:center">
+      <h5 style="margin-bottom:35px; color:#04B8A8;  margin-top: 30px;font-size:1.2em">Join us on</h5>
+      <ul id="ul1" style="padding-left: 0px;">
+        <li><a href="https://www.facebook.com/pages/Documendz/347727192061458">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-facebook fa-stack-1x"></i>
+          </span>
+          </a>
+        </li>
+
+        <li><a href="https://www.linkedin.com/company/documendz">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x"></i>
+          </span>
+          </a>
+        </li>
+
+        <li><a href="https://plus.google.com/102869781218367134908/about">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-google-plus fa-stack-1x"></i>
+          </span>
+          </a>
+        </li>
+
+        <li><a href="https://twitter.com/documendz">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-twitter fa-stack-1x"></i>
+          </span>
+          </a>
+        </li>
+
+        <li><a href="https://www.youtube.com/watch?v=uAJW0GtbNwo">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-youtube-play fa-stack-1x"></i>
+          </span>
+          </a>
+        </li>
+
+
+      </ul>
+    </div>
+    <div id="copyright" >
+       &copy;Documendz
+      </div>
+  </div>
+
+
+
+
+    <script>
+    	$(window).scroll(function() {
+			if ($(this).scrollTop() > 100){  
+			    $('#navigationbar').addClass("makeitwhite");
+			  }
+			  else{
+			    $('#navigationbar').removeClass("makeitwhite");
+			  }
+			});
+    </script>
+    <script>
+    	$(window).scroll(function() {
+			if ($(this).scrollTop() > 100){  
+			    $('#logoimg').addClass("padit");
+			  }
+			  else{
+			    $('#logoimg').removeClass("padit");
+			  }
+			});
+    </script>
+
+    <script>
+    var wid;
+
+  var onloadCallback = function() {
+	wid = grecaptcha.render('recaptcha', {
+  	'sitekey' : '6Ldz1wUTAAAAAESxMr-FhNvuIZwPy9q5vay88zLq'
+  	});
+  };
+    </script>
+	</body>
+</html>

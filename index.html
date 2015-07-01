@@ -23,22 +23,48 @@
 <meta property="og:description" content="Documendz is a cloud service providing secure and hassle-free way to edit, annotate or markup
 	 your articles, resumes, designs or any other document." />
 <meta property="og:site_name" content="Documendz">
-	
+			
 
 <meta name='verify-v1' content='BcYTVMGdjp2oeUmgT913KLBp'/>
+<style>
+			.activetab{
+				background-color: #04B8A8 ;
+				border:none;
+				box-shadow: none;
+				color: #fff;
+			}
+		</style>
 
+<!-- Start of xexexwex Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","xexexwex.zendesk.com");/*]]>*/</script>
+<!-- End of xexexwex Zendesk Widget script -->
+		
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 	
 	<link rel="icon" type="img/ico" href="/favicon.ico">
 	
 	<link type="text/css" rel="stylesheet" href="https://d28kungomln1xp.cloudfront.net/css/main_page_style.css"/>
       	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+      	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      	<!-- <link href='https://fonts.googleapis.com/css?family=Cabin:500|Muli' rel='stylesheet' type='text/css'> -->
+      	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+      	<link type="text/css" rel="stylesheet" href="css/custom.css?var=27062019"/>
+
+
+
 		
 		<script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/bootstrap.min.js"></script>
 		<script async type="text/javascript" src="https://d28kungomln1xp.cloudfront.net/javascripts/feedback_front.js"></script>
-		
-<script type="text/javascript">
+		<link href="fonts/font-awesome/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="javascripts/wow.min.js"></script> <!-- Newly added docz:Hardik -->
+
+<script>	
+
+ new WOW().init();
+
 
 
 $.ajax({
@@ -52,7 +78,7 @@ $.ajax({
 			success: function(response){
 				
 				if (parseInt(response) == 1) {
-					window.location = "a/#/workgroups";
+					window.location = "angular/#/workgroups";
 				}
 				else{
 					// Run normal
@@ -64,389 +90,13 @@ $.ajax({
 					}
 		    });
 
-		    
-		    
-		    
 function empty_modal(){
 	$('#display-result').css('display','none');
 	$('#useremail').val('');
 	
 	}
- //if user is in pending take his email from the url itself
- 
 
-
-///////////////////////////////////////////////////////////////
-///////////// signup form structure is below////////////////////////////////////
-///////////////////////////////////////////////////////////////
-
-
-function bodyload()
-{
-	/* document.getElementById("psd").style.display = "none"; */
-	document.getElementById("ps1").style.display = "none";
-	document.getElementById("ps2").style.display = "none";
-	document.getElementById("ps3").style.display = "none";
-	document.getElementById("ps4").style.display = "none";
-	document.getElementById("ps5").style.display = "none";
-	
-	
-	
-}
-
-function scorePassword(pass) {
-    var score = 0;
-    if (!pass)
-        return score;
-
-    // award every unique letter until 5 repetitions
-    var letters = new Object();
-    for (var i=0; i<pass.length; i++) {
-        letters[pass[i]] = (letters[pass[i]] || 0) + 1;
-        score += 5.0 / letters[pass[i]];
-    }
-
-    // bonus points for mixing it up
-    var variations = {
-        digits: /\d/.test(pass),
-        lower: /[a-z]/.test(pass),
-        upper: /[A-Z]/.test(pass),
-        nonWords: /\W/.test(pass),
-    }
-
-    variationCount = 0;
-    for (var check in variations) {
-        variationCount += (variations[check] == true) ? 1 : 0;
-    }
-    score += (variationCount - 1) * 10;
-
-    return parseInt(score);
-}
-
-function checkPassStrength(pass) {
-    var score = scorePassword(pass);
-    if(document.getElementById("password").value.length!=0)
-    {
-    if (score >= 90)
-        return "Secure";
-    if (score >= 75)
-        return "Strong";
-    if (score >= 50)
-        return "Good";
-    if (score >= 25)
-        return "Average";
-    if (score >= 0)
-        return "Weak";
-
-    return "";
-    }
-    else
-    	{
-    	 /* document.getElementById("psd").style.display = "none"; --commentout for now */
-    	 return "empty";
-    	}
-} 
-
-function checkstrength(pass)
-{
-	
-	
-	/* document.getElementById("wrapper").style.display = "block"; */
-	/* document.getElementById("psd").style.display = "block";  */
-	var ps = checkPassStrength(pass);
-	if(ps=="Weak")
-	{
-		document.getElementById("ps1").style.display = "block";
-		
-		document.getElementById("ps2").style.display = "none";
-		 document.getElementById("ps3").style.display = "none";
-		document.getElementById("ps4").style.display = "none";
-		document.getElementById("ps5").style.display = "none"
-	}
-	else if(ps=="Average")
-	{
-		 document.getElementById("ps1").style.display = "block"; 
-		document.getElementById("ps2").style.display = "block";
-		
-		document.getElementById("ps3").style.display = "none";
-		 document.getElementById("ps4").style.display = "none";
-		document.getElementById("ps5").style.display = "none"; 
-	}
-	else if(ps=="Good")
-	{
-		 document.getElementById("ps1").style.display = "block";
-		document.getElementById("ps2").style.display = "block"; 
-		document.getElementById("ps3").style.display = "block";
-		
-		document.getElementById("ps4").style.display = "none";
-		 document.getElementById("ps5").style.display = "none"; 
-	}
-	else if(ps=="Strong")
-	{
-		 document.getElementById("ps1").style.display = "block";
-		document.getElementById("ps2").style.display = "block";
-		document.getElementById("ps3").style.display = "block"; 
-		document.getElementById("ps4").style.display = "block";
-		
-		document.getElementById("ps5").style.display = "none";
-	}
-	else if(ps=="Secure")
-	{
-		 document.getElementById("ps1").style.display = "block";
-		document.getElementById("ps2").style.display = "block";
-		document.getElementById("ps3").style.display = "block";
-		document.getElementById("ps4").style.display = "block"; 
-		document.getElementById("ps5").style.display = "block";
-		
-	}
-	else // input is empty
-	{
-	
-		document.getElementById("ps1").style.display = "none";
-		document.getElementById("ps2").style.display = "none";
-		document.getElementById("ps3").style.display = "none";
-		document.getElementById("ps4").style.display = "none";
-		document.getElementById("ps5").style.display = "none";
-	}
-	/* document.getElementById("ps").innerHTML = "<strong>Password Strength: "+ps+"</strong>"; */
-}
-
-//Resend Email after register
-
-function resendEmail(r_emailid, r_un) {
-	$.ajax({
-	        type:"POST",
-	        cache:false,
-		async: false,
-	        url:"t_resend.php",
-		data: { uname: r_un, email: r_emailid },
-	        datatype: "text",
-	        
-			success: function(response){
-				
-				alert(response);
-				
-				
-				},
-			error: function(){
-					alert("Oops! Something went wrong");
-					}
-		    });
-}
-
-
-
-$(document).on({
-	submit:function(e){
-
-		var un = document.registration.uname;
-		var pw = document.registration.pwd;
-		var cpw = document.registration.pwdc;
-		var em = document.registration.email;
-	
-	
-	if(!check_empty_fields(un,em,pw,cpw)){
-		return false
-	}
-	
-	if(!validate_email(em)){
-		return false;
-	}
-	
-	if(!pass_validation(cpw,pw,6)){
-		return false;
-	}
-		
-	if(!email_exist(em.value)){
-		
-		return false;
-	}
-	
-		e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
-		var post_data = $(this).serializeArray();
-		
-		
-		$('#sign-up-button').prop('disabled', true); // Disabling the sign-up button
-	        $('#sign-up-button').val("Wait...");
-		$("#alert-error").css('display','none');
-		
-	    $.ajax({
-		
-		
-	
-	
-	        type:"POST",
-	        
-	        url:"t_registercheck.php",
-	        datatype: "text",
-	        data : post_data,
-			success: function(response){
-					$("#alert-error").html(response);
-					$("#alert-error").css('display','block');
-					$("#alert-error").css('background','#D7F1D7');
-					$("#alert-error").css('border','1px solid green');
-					$('#sign-up-button').prop('disabled', false); // Enabling the sign-up button on success
-	                                $('#sign-up-button').val("Sign up");
-					
-				},
-			error: function(err){
-					
-					alert("Oops, something went wrong.");
-					
-					}
-		    });
-
-		}
-		
-	},'#registration-form');
-
-
-
-$(document).on({
-	submit:function(e){
-		
-		$('#contact-us-button').prop("disabled", true);
-		$('#contact-us-button').text("Sending...");
-		setTimeout(function()
-			   {
-				
-		$('#contact-us-button').prop("disabled", false);
-		$('#contact-us-button').text("Thanks, we'll get back to you !");
-		            }
-		
-			   , 2000);
-		
-		
-		
-		var name=$.trim($("#contact-us-name").val());
-                var email = $.trim($("#contact-us-email").val());
-		
-		var message=$.trim($("#contact-us-message").val());
-                
-		e.preventDefault(); // This is very imp. It prevents the default functionality of submit form
-		$.ajax(
-				{
-					type:'POST',
-					url:'contact_us.php',
-					cache:false,
-					data:{
-                                            field1:name,
-                                            field2:email,
-					    field3:message,
-                                            field4:"dfvh3fd5"
-                                            },
-					datatype:"text",	
-					success: function(){
-$('#contact-us-button').text("Send");
-		
-		$("#contact-us-name").val('');
-              $("#contact-us-email").val('');
-		
-		$("#contact-us-message").val('');
-		
-					}
-						
-
-				}
-
-			)
-	}
-		
-	},'#contact-us-form');
-
-
-function check_empty_fields(un,em,pw,cpw)
-{
-  if(un.value.length!=0 && pw.value.length!=0 && cpw.value.length!=0 && em.value.length!=0){
-	return true;  
-  }
-  else{
-	  $("#alert-error").fadeIn();
-	  $("#alert-error").html('Please fill all the fields');
-	  return false;
-	  
-  }
-  }
-
-function validate_email(em){
-
-	
-	var pattern =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(em.value.match(pattern)){
-    
-    	/* showUser(document.registration.email.value); */
-    	return true;
-    }
-    else{
-	 $("#alert-error").fadeIn();
-	$("#alert-error").html("Please enter a valid Email Id");
-    	
-    	return false;
-    }
-}
-
-
-function pass_validation(cpw,pw,mx)  
-{  
-var pw_len = pw.value.length;  
-if (pw_len < mx)  
-{
-	$("#alert-error").fadeIn();
-	$("#alert-error").html("Password should contain atleast "+mx+" characters");
-   
-	return false;  
-}
-if(pw.value!=cpw.value)
-{
-	
-	$("#alert-error").fadeIn();
-	$("#alert-error").html("Confirm password and Password do not match");
-    
-	return false;
-}
-return true;  
-}
-
-
-function email_exist(str1) {
-var ret = "" ;	
-	 $.ajax({
-	        type:"POST",
-	        cache:false,
-	        url:"t_checkexist.php?e="+str1,
-		data: {
-			check: "sadh675fdA"	
-		},
-	        datatype: "string",
-	        async:false,
-			success: function(exist_response){
-				
-					if(exist_response.trim().localeCompare("found") == 0){
-						
-						$("#alert-error").fadeIn();
-						$("#alert-error").html("Email id already registered");
-
-						 ret = false;
-						
-					}		
-					else {
-						
-						 ret = true;
-					}
-				},
-			error: function(){
-					alert("Something went wrong, please try again");
-					}
-		    });
-return ret;
-}	
-	
-	
-///////////////////////////////////////////////////////////////////////////////// 
-////////////////////////     Forgot ajax call and functions    ////////////////// 
-/////////////////////////////////////////////////////////////////////////////////
-
- $(document).on({
+	$(document).on({
 		submit:function(e){
 		
 		 
@@ -484,14 +134,11 @@ return ret;
 			
 		},"#forgot-pass-form");
 
- 
-//////////////////////////////////////////////////
-///////////////// sign in form ///////////////////
-////////////////////////////////////////////////// 
- 
- $(document).on({
+
+	 $(document).on({
 	submit:function(e){
-	
+
+
 		var un = document.login.email;
 		var pw = document.login.pwd;
 			 if(un.value.length == 0) // email field not empty
@@ -526,8 +173,7 @@ return ret;
 				var m = JSON.parse(message);
 					if(m['notif'].trim().localeCompare("login-success") == 0){
 						
-					//	console.log(m['id']);
-						window.location.href = "a/#/workgroups";
+			window.location.href = "https://documendz.com/a/#/workgroups";
 						
 					}
 					else{
@@ -545,124 +191,48 @@ return ret;
 		}
 		
 	},'#signin-form');
-  
  
+ $(document).on({
+		submit:function(e){
+		
+		 
+	        $('#forgot-submit-button').text("Sending..");
+		$('#forgot-submit-button').prop('disabled', true);
+	var ue = document.forgot.useremail;	
+	if(ue.value.length==0) //if empty just exit 
+	 {
+	
+		return false;
+		
+	 }
+	e.preventDefault(); //stops default submit action... (doesnt show page submit at top)
+			var post_data = $(this).serializeArray();
+			
+		    $.ajax({
+		        type:"POST",
+		        
+		        url:"t_forgot.php",
+		        datatype: "text",
+		        data : post_data,
+				success: function(forgot_resp){
+					$("#display-result").html(forgot_resp);
+					$("#display-result").fadeIn();
+					$('#forgot-submit-button').prop('disabled', false); // Disabling the sign-up button
+	        $('#forgot-submit-button').text("Submit");
+					
+					},
+				error: function(){
+						alert("Oops! Something went wrong");
+						}
+			    });
+
+			}
+			
+		},"#forgot-pass-form");
  
-	$(document).ready(function()
-	{
-		
 
 
-
-		$("#one img").data('img_src', $("#one img").attr('src') );
-                        $("#one img").attr('src',  $("#one img").data('gif-src') );
-                        $("#three img").attr('src',  $("#three img").data('img_src') );
-                        $("#two img").attr('src',  $("#two img").data('img_src') );
-
-    var start = $('#carousel-963250').find('.active').attr('data-interval');
-    t = setTimeout("$('#carousel-963250').carousel({interval: 3000});", start-1000);
-    
-    $('#carousel-963250').on('slid.bs.carousel', function () {   
-        
-        clearTimeout(t);  
-         var duration = $(this).find('.active').attr('data-interval');
-         
-
-         $('#carousel-963250').carousel('pause');
-         t = setTimeout("$('#carousel-963250').carousel();", duration-1000);
-         switch(duration){
-            case "2600":
-                        $("#one img").data('img_src', $("#one img").attr('src') );
-                        $("#one img").attr('src',  $("#one img").data('gif-src') );
-                        $("#three img").attr('src',  $("#three img").data('img_src') );
-                        $("#two img").attr('src',  $("#two img").data('img_src') );
-
-
-                        break;
-            case "3000":
-                        $("#two img").data('img_src', $("#two img").attr('src') );
-                        $("#two img").attr('src',  $("#two img").data('gif-src') );
-                        $("#one img").attr('src',  $("#one img").data('img_src') );
-                         $("#three img").attr('src',  $("#three img").data('img_src') );
-                        
-                        break;
-            case "13600": 
-                        $("#three img").data('img_src', $("#three img").attr('src') );
-                        $("#three img").attr('src',  $("#three img").data('gif-src') );
-                        $("#one img").attr('src',  $("#one img").data('img_src') );
-                         $("#two img").attr('src',  $("#two img").data('img_src') );
-                        
-                        break;
-         }
-
-    });
-
-
-
-
-
-		$(function() {
-  $('a[href*=#]:not([href=#suggestion_front])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top - 80
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
-		
-		
-		
-		
-		$(".blank").focusin(function () {
-
-			$(this).parent().children(0).css({"opacity":"1"});
-			
-		});	
-
-		$(".blank").focusout(function () {
-
-		var text=$.trim($(this).val());
-
-		if(text==""){
-
-			$(this).parent().children(0).css({"opacity":".5"});
-			
-		}
-
-		else{
-
-			$(this).parent().children(0).css({"opacity":"1"});
-		}
-
-				});
-
-
-//////// Google analytics script //////////
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-55292613-2', 'auto');
-  ga('send', 'pageview');
-  
-  
-////////////////////////////////////////////////////////
-
-
-
-
-	});
-
-	</script>	
-
+</script>
 <script type="text/javascript">
 
 
@@ -699,8 +269,10 @@ var helper = (function() {
         
         var profile = res.result;
 
-
-       localStorage.setItem("dcz_tkn",gapi.auth.getToken().access_token);  
+        console.log(profile.displayName);
+        console.log(profile.emails[0].value);
+        
+     localStorage.setItem("dcz_tkn",gapi.auth.getToken().access_token);   
 
        window.location.href = "https://www.documendz.com/gsignup.php?n="+profile.displayName+"&e="+profile.emails[0].value+"&usimg="+ profile.image.url;
 
@@ -763,24 +335,24 @@ var helper = (function() {
     /**
      * Gets and renders the list of people visible to this app.
      */
-    // people: function() {
-    //   gapi.client.plus.people.list({
-    //     'userId': 'me',
-    //     'collection': 'visible'
-    //   }).then(function(res) {
-    //     // var people = res.result;
-    //     // $('#visiblePeople').empty();
-    //     // $('#visiblePeople').append('Number of people visible to this app: ' +
-    //     //     people.totalItems + '<br/>');
-    //     // for (var personIndex in people.items) {
-    //     //   person = people.items[personIndex];
-    //     //   $('#visiblePeople').append('<img src="' + person.image.url + '">');
-    //     // }
+    people: function() {
+      gapi.client.plus.people.list({
+        'userId': 'me',
+        'collection': 'visible'
+      }).then(function(res) {
+        // var people = res.result;
+        // $('#visiblePeople').empty();
+        // $('#visiblePeople').append('Number of people visible to this app: ' +
+        //     people.totalItems + '<br/>');
+        // for (var personIndex in people.items) {
+        //   person = people.items[personIndex];
+        //   $('#visiblePeople').append('<img src="' + person.image.url + '">');
+        // }
 
-    //     return res.result;
+        return res.result;
 
-    //   });
-    // },
+      });
+    },
 
     /**
      * Gets and renders the currently signed in user's profile data.
@@ -840,135 +412,95 @@ $(document).ready(function() {
 function onSignInCallback(authResult) {
   helper.onSignInCallback(authResult);
 }
-</script>	 
+</script>
 
-<!-- Start of documendz Zendesk Widget script -->
-<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","documendz.zendesk.com");/*]]>*/</script>
-<!-- End of documendz Zendesk Widget script -->	
+</head>
 
-	</head>
 
-<body onload="bodyload()">
+	<body >
 	
-	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<div style="
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    z-index:1;
+"><a target="_blank" href="https://chrome.google.com/webstore/detail/documendz/nfdfbmclccfiecbghldopibiiicalpca"><img src="https://d28kungomln1xp.cloudfront.net/images/chromewebstore.png"></img></a></div>
 
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <nav id="navigationbar" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" id="logoimg" href="https://www.documendz.com/"><img src="https://d28kungomln1xp.cloudfront.net/images/brand.png" style="width:180px" /></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            
+            <li><a href="aboutus.html">About Us</a></li>
+           
+            <li><a href="faq.html">FAQs</a></li>
+            
+            <li><a href="signin.html" type="button" class="btn btn-default logins">SignIn</a></li>
+            <li><a href="signup.html" type="button" class="btn btn-default logins">SignUp</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-	
-<nav class="navbar navbar-default" role="navigation" style="position:fixed;width:100%;z-index:1000;margin-bottom:0px;box-shadow: 0 1px 23px -3px rgba(0,0,0,0.2);background-color: white;padding: 2px 0px;">
-  		<div class="container-fluid" style="width:80%;margin:auto;">
-			
-   		 <div class="navbar-header">
-      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-      		
-     		 <a href="https://www.documendz.com/"><img style="width:175px; padding-top: 5px;" src="https://d28kungomln1xp.cloudfront.net/images/logo1.gif"></a> 
-   		 </div>
-      <div id="navbar" class="navbar-collapse collapse">
-      		<ul class="nav navbar-nav navbar-right">
-       			<li><a href="https://documendz.wordpress.com">Blog<sup style="color:rgb(201,22,50)"><b>&nbsp;new!</b></sup></a></li>
-       			<li><a href="careers.html">Careers<sup style="color:rgb(129, 129, 206)"><b>&nbsp;new!</b></sup></a></li>
-       			 <li><a href="#about-us">About Us</a></li>
-			 <li><a href="#contact-us">Contact-us</a></li>
-			  <li><a href="https://www.documendz.com/faq.html">FAQs</a></li>
-			 
-       			 
-     		 </ul>
-   		 
-</div> 
 
-	  	</div>
-  
-		</nav>
-	
-	
-	
-<div class="row" style="margin-left: 0px;
-margin-right: 0px;
-padding-top: 62px;
-background-image: url('https://d28kungomln1xp.cloudfront.net/main_page_images/bck7.jpg');
-background-size:cover;">
 
-			<div class="central_container">
-			
-			<div class="col-md-6">
-				<p style="font-weight: 800;font-size: 30px;color: #403b33;margin-top: 52px;">Welcome to Documendz</p>
-				<p style="font-weight: 200;font-size: 19px;color: #4E4545;margin-top: 35px;">Getting documents reviewed by peers just got easy! A secure and hassle-free manner to
-validate your reports, articles, CVs, designs or any other document, is here.</p>
-			<p style="margin-top: 25px;font-size: 22px;color: #403b33;"><strong>Upload. Share. Review. Collaborate.</strong></p>
-			<p>
-				<a target="_blank" href="demo.html" class="btn btn-success btn-large" style="margin-top: 18px;
-    font-size: 19px;
-">Try out a sample !</a></p>
-	<div id="gConnect" style="margin-bottom:20px">
-    <button class="g-signin"
-        data-scope="https://www.googleapis.com/auth/plus.login email https://www.google.com/m8/feeds "
-        data-requestvisibleactions="http://schemas.google.com/AddActivity"
-        data-clientId="12504660612-vu6s77r5r4r7196r5qgpi75l055cnmhj.apps.googleusercontent.com"
-        data-callback="onSignInCallback"
-        data-theme="dark"
-        data-cookiepolicy="single_host_origin">
-    </button>
-  </div>
-			
-<div style="float: left;
-margin-right: 10px;" class="fb-like" data-href="https://www.facebook.com/pages/Documendz/347727192061458" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron codrops-header" id="jhead">
+      <div class="container">
+        
+        <div class="row">
+        	<div class="col-md-12" style="min-height:350px">
+        	<h1 id="headerh1"><span>Document collaboration in realtime</span> <i>For Enterprises and small Teams </br></i><a target="_blank" href="https://www.documendz.com/demo.html">
+			<button style="margin-top: 30px;width: 100%;max-width: 300px;margin-bottom: 30px;text-transform:uppercase" type="button" href="/signup.html" id="demobutton" class="btn btn-default">Signup for free</button></a></h1>
+        </div>
+		  <!--<div class="col-md-6"><iframe width="560" height="315" src="http://www.youtube.com/embed/uAJW0GtbNwo?showinfo=0" frameborder="0"></iframe></div>
+		  <div class="col-md-6">-->
+		  
+		  <!--col-md-6 Ends here-->
+		</div> 
 
-			<a href="https://twitter.com/documendz" style="width: 221px;
-height: 20px;
-margin-top: 26px;
-float: left" class="twitter-follow-button" data-show-count="horizontal">Follow @documendz</a>
+		
+      </div>
+    </div>
 
-			</div>
-						
-			<div class="col-md-6">
-                            
-			<div id="registration-container" align="center" style="width:100%">
-
-				
-
-				
-				
-				
-<!-- ////////////////////////////////////////////////////////////////// 
-////////////////////modal for forgot password/////////////////////
-////////////////////////////////////////////////////////////////// -->
-
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div id="myModal" class="modal fade" style="z-index:100001" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     
     <div class="modal-dialog">
     <div class = "modal-content">
     <div class="modal-header">
       
-      <h3 id="myModalLabel">Forgot your password?</h3>
+      <h3 id="myModalLabel" style="color: #04b8a8;">Forgot your password?</h3>
     </div>
   
     <div class="modal-body">
   
-      <form id="forgot-pass-form" name="forgot" method="POST">
+      <form id="forgot-pass-form" name="forgot" method="POST" style="text-align: center;font-size:1.1em">
 
           Not to worry. Just enter your email address below and we'll send you an instruction email for recovery
-            <br>
-            <input class="form-control" type="text" name="useremail" id="useremail" placeholder="Enter your email-id" >
+            
+            <input class="form-control" type="text" name="useremail" id="useremail" placeholder="Enter your email-id"  style="background-color: transparent;
+border: solid 1px #747D7E;
+color: #747D7E;
+font-weight: 600;
+margin-top: 10px;">
           
       	
       
       
-     <div class="modal-footer" style="border-top:none;">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+     <div class="modal-footer">
+      <button class="btn" type="button" data-dismiss="modal" aria-hidden="true">Close</button>
      <!--  <input class="btn btn-primary" type="submit" name="forgot_check" data-dismiss="modal" id="forgot-pass" value="submit"/> -->
-    <button id ="forgot-submit-button" class="btn btn-primary" type="submit" value="Submit" name='forgot_check'>Submit</button>
+    <button id ="forgot-submit-button" style="background-color: #04B8A8;border: none;" class="btn btn-primary" type="submit" value="Submit" name='forgot_check'>Submit</button>
     </div>
      
      <div id="display-result"></div>
@@ -981,404 +513,330 @@ float: left" class="twitter-follow-button" data-show-count="horizontal">Follow @
     </div>
 </div>
 
-
-
-<form name="registration" id="registration-form" method="post" novalidate style="max-width: 300px;
-border: 1px solid rgba(255,255,255, 1);
-box-shadow: 0 0 12px rgba(206, 203, 203, 0.85);
-padding: 10px;
-border-radius: 8px;">
-			
-			<div style="margin-left:0px">
-			<p style="margin-bottom:10px; text-align:left;font-size: 13px;color: #3A3939;">New user ? Register here</p>
-			</div>
-					<div class="blank_div" align="center";>
-						<label class="input_image"><img src="https://d28kungomln1xp.cloudfront.net/main_page_images/mail.jpg"/></label>
-						<input id="em" class="blank" type="text" name="email" placeholder="Email id" required/>
-						
-					</div>
-
-					<div class="blank_div">
-						<label class="input_image"><img src="https://d28kungomln1xp.cloudfront.net/main_page_images/user.png"/></label>
-						<input id="un" class="blank" type="text" name="uname" placeholder="Name" required/>
-						
-					</div>
-
-					<div class="blank_div" style="margin-bottom:0px !important">
-						<label class="input_image"><img src="https://d28kungomln1xp.cloudfront.net/main_page_images/pass.jpg"/></label>
-						<input class="blank" id="password" type="password" name="pwd" placeholder="Password" onkeyup="checkstrength(this.value)" required  />
-					</div>
-
-<!--                      password strength                         -->
-
-<div id="wrapper" style="height:10px">
-<!--  <div id="psd" style="height:7px"><p id="ps"></p></div> -->
- <div id="psm" style="height:4px;overflow:hidden">
-  <div id="ps1" class="password-meter" style="background: #3276B1;opacity: 0.5; display: none;" ></div>
-  <div id="ps2" class="password-meter" style="background: #3276B1;opacity: 0.7; display: none;"></div>
-  <div id="ps3" class="password-meter" style="background: #3276B1;opacity: 0.8; display: none;"></div>
-  <div id="ps4" class="password-meter" style="background: #3276B1;opacity: 0.9; display: none;"></div>
-  <div id="ps5" class="password-meter" style="background: #3276B1;opacity: 1; display: none;"></div>
- </div>
-</div><br/>
-
-					<div class="blank_div" style="margin-top:-15px !important">
-						<label class="input_image"><img src="
-						main_page_images/pass.jpg"/></label>
-						<input class="blank" type="password" name="pwdc" placeholder="Confirm password" required/>
-					</div>
-
-					<div style="float:left">
-						<input id = "sign-up-button" style="height: 30px;width: 80px;line-height: 10px;font-size:13px;" type="submit" name="submit" value="Sign up"   class="btn btn-primary btn-sm"/>						
-					</div>
-	<div style="font-size: 9px;color:white;">By signing up, I agree to the <a href="https://www.documendz.com/legal/terms_of_service.html">terms of service</a> and <a href="https://www.documendz.com/legal/privacy_policy.html">privacy policy</a></div>
-				</form>
-				
-<form id="signin-form" name="login" method="post" style="max-width: 300px;
-height: 120px;
-margin: 0px;
-border: 1px solid rgba(255,255,255, 1);
-box-shadow: 0 0 12px rgba(206, 203, 203, 0.85);
-padding: 10px;
-border-radius: 8px;">
-			 
-
-					
-	<input id="email" class="login_blank"  style="width: 100%" type="email" name="email" placeholder="Email" />
-						
-					
-					
-<input id="pass" class="login_blank" style="width: 70%"type="password" name="pwd" placeholder="Password"/>
-						
-					
-					
-	<input style="height: 30px;width:26%;float: right;line-height: 10px;font-size:13px;" class="btn btn-primary btn-sm" type="submit" name="submit" value="Login" />
-					<a data-target="#myModal" data-toggle="modal" onclick="empty_modal();" style="cursor:pointer;vertical-align: bottom;float: left; font-size: 13px;color:#3A3939;">Forgot password ?</a>
-									
-				</form>				
-				
-<div id="alert-error" style="max-width:300px;    
-    display: none;	
-    margin-top: 12px;
-    padding: 2px;
-    text-align: center;
-    /* align-content: center; */
-    font-size: 11px;
-    color: black;
-    border: 1px solid brown;
-    background: antiquewhite;"></div>
-				
-				
-			</div>
-			</div>
-		
-                        
-                </div>
-		</div>
-
-
-
-               
-	       
-	       
-
-
-<div class="row" id = "features" style = "margin-left:0px;margin-right:0px;background-color: white";>
-
-<div class="central_container" >
-
-
-	
-<div class="col-sm-4 ff" style="margin-top:40px">
-<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-share"></i></div>
-<h2 class="feature-header">Store, share and manage docs</h2>
-<p class="feature-font">Save all your files, share and get reviewed by others</p>
-			</div>
-
-
-			
-<div class="col-sm-4 ff" style="margin-top:40px">
-
-<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-comment"></i></div>
-<h2 class="feature-header">Add comments</h2>
-<p class="feature-font">Drop a comment anywhere on the document to provide suggestions or reviews</p>
-			</div>
-
-			
-<div class="col-sm-4 ff" style="margin-top:40px">
-				<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-text-width"></i></div>
-				<h2 class="feature-header">Highlight or strikeout</h2>
-				<p class="feature-font">Markup texts using multicolor highlighting or strike out errors easily </p>
-			</div>			
-	
-	
-<div class="col-sm-6 ff" style="margin-top:40px">
-<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-pencil"></i></div>
-<h2 class="feature-header">Draw-on-doc</h2>
-<p class="feature-font">Draw smoothly across the document to mark up content</p>
-			</div>
-
-<div class="col-sm-6 ff" style="margin-top:40px">
-				<div style="text-align:center; font-size:23px;color: #529680;"><i class="glyphicon glyphicon-font"></i></div>
-				<h2 class="feature-header">Add text</h2>
-				<p class="feature-font">Drop and drag text boxes dynamically to fill pdf forms or insert texts on images </p>
-			</div>
-
-
-			
-</div>	
-</div>
-
-
-
-<div class="row clearfix" id="take-a-tour" style="margin: 0px;">
-        <div class="col-md-12 column" style="padding:0px;">
-            <div class="carousel slide" id="carousel-963250" style="height: 473px;">
-                <ol class="carousel-indicators">
-                    <li class="active" data-slide-to="0" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
-                    </li>
-                    <li data-slide-to="1" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
-                    </li>
-                    <li data-slide-to="2" style=" width: 12px;height: 12px;margin: 0;background-color: #ccc;" data-target="#carousel-963250">
-                    </li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active" data-interval="2600" id="one">
-                        <img alt="" data-gif-src="https://d28kungomln1xp.cloudfront.net/main_page_images/how-it-works1.gif" src="https://d28kungomln1xp.cloudfront.net/main_page_images/test1.png">
-                        
-                    </div>
-                    <div class="item" data-interval="3000" id="two">
-                        <img alt="" data-gif-src="https://d28kungomln1xp.cloudfront.net/main_page_images/how-it-works2.gif" src="https://d28kungomln1xp.cloudfront.net/main_page_images/test2.png">
-                        
-                    </div>
-                    <div class="item" data-interval="13600" id="three">
-                        <img alt="" data-gif-src="https://d28kungomln1xp.cloudfront.net/main_page_images/how-it-works3.gif" src="https://d28kungomln1xp.cloudfront.net/main_page_images/test3.png">
-                    </div>
-                </div> <a class="left carousel-control" data-slide="prev" style="background-image: linear-gradient(to right,rgba(157, 155, 156, 0.5) 0,rgba(255, 252, 252, 0.0001) 100%);color:#B9B9B9" onclick="$('#carousel-963250').carousel('prev')"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" data-slide="next" style="background-image: linear-gradient(to right,rgba(255, 252, 252, 0.0001) 0,rgba(157, 155, 156, 0.5) 100%);color:#B9B9B9" onclick="$('#carousel-963250').carousel('next')"><span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-    </div>
-
-
-<div class="row" id="about-us" style="margin-left:0px;margin-right:0px;background-image: url('https://d28kungomln1xp.cloudfront.net/main_page_images/bck8.jpg'); background-size: cover;">
-<div class="central_container" >
-   
-   
-              <div class="col-md-6" >
-	    <!--   <div style="color: white;
-font-size: 20px;
-text-align: left;
-font-weight: 700;">Co-founders</div>-->
-<div style="float: left;
-width: 100%;
-margin-top: 20%;
-color: #302D2D;
-font-weight: bolder;
-font-size: 22px;">
-<div style="float:left;margin-right:95px">Hardik Dave
-<p></p>
-<p style="font-size:14px">Co-founder</p>
-<p><a href="https://www.facebook.com/hardikdave30"><img style="width:25px;cursor:pointer;" src="https://d28kungomln1xp.cloudfront.net/main_page_images/fb_founder.ico" /></a>&nbsp;&nbsp;
-   <a href="https://www.linkedin.com/pub/hardik-dave/4b/665/767"><img style="width:25px;cursor:pointer;" src="https://d28kungomln1xp.cloudfront.net/main_page_images/li_founder.ico" /></a>
-</p>
-</div>
-
-
-<div>Sagar Tamboli
-<p></p>
-<p style="font-size:14px">Co-founder</p>
-<p><a href="https://www.facebook.com/sagar.tamboli.10"><img style="width:25px;cursor:pointer;" src="https://d28kungomln1xp.cloudfront.net/main_page_images/fb_founder.ico" /></a>&nbsp;&nbsp;
-   <a href="https://www.linkedin.com/pub/sagar-tamboli/54/871/36"><img style="width:25px;cursor:pointer;" src="https://d28kungomln1xp.cloudfront.net/main_page_images/li_founder.ico" /></a>
-</p>
-</div>
-</div>
-	    
-	       
-	       </div>
-	      
-	       <div class="col-md-6">
-	
-<!--	<div style="color: white;
-font-size: 20px;
-text-align: center;
-font-weight: 700;">What we do</div>-->
-	<p style="margin-top: 20%;font-size: 14px;color: white;">Documendz.com was founded in 2014 and is based out of Mumbai, India. It is a web service
-
-that simplifies the process of getting your documents reviewed by your peers.</p>
-	
-	
-	<p style="font-size: 14px;color: white;">Whether you wish to get reports reviewed by your boss or your CV reviewed by your seniors 
-
-or even grade assignments of your students, documendz.com lets you do all this without 
-
-going through the pain of mailing documents or sharing them over drives. Upload once and 
-
-share with multiple reviewers to get a thorough assessment of your work and leverage the 
-
-power of unhindered collaboration over cloud.</p>
-	
-    </div>
-    
-</div>
-       </div>
-
-
-
-<!-- featured list -->
-
-
-<div class="row" style="margin-left:0px;margin-right:0px;background-color:white;border-bottom: solid 1px #ECE6E6;">
-
-  	<div class="central_container" style="min-height:300px">
-  		<h2 style="margin-left:20px; color:#888;margin-bottom:50px">Featured</h2>
-  		
-
-
-
-<div class="col-md-4" style="margin-top:30px;color: #403b33;">
-      	
-<img width="70%" src ="https://s3-ap-southeast-1.amazonaws.com/documendz-static/main_page_images/featured1.png" ></img>
-
-</div>
-
-
-<!--*********************************************************************************************-->
-
-  		<div class="col-md-4" style="padding-top:30px;">
-  
-<img width="88%" src ="https://s3-ap-southeast-1.amazonaws.com/documendz-static/main_page_images/featured2.png" ></img>
-
-		</div>
-
-
-<!--***********************************************************************************************-->
-
-    <div class="col-md-4" style="padding-top:30px">
- 
-<img width="88%" src ="https://s3-ap-southeast-1.amazonaws.com/documendz-static/main_page_images/featured3.jpg" ></img>
-
-  		</div>
-      
-
-      
-      
-      
-      </div>
-	</div>
-
-
-
-
-<!-- ends -->
-
-<div class="row" id="contact-us" style="margin-left:0px;margin-right:0px;background-color:white";
-}">
-
-  	<div class="central_container" >
-  		<!--<h2 style="margin-left:20px; color:rgba(59,156,156,1);">Contact</h2>-->
-  		
-
-<!--******************************************************** GOOGLE MAP ***************************************************************-->
-
-<div class="col-md-4" style="margin-top:30px;color: #403b33;">
-      		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:280px;width:100%;"><div id="gmap_canvas" style="height:280px;width:280px;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="https://www.trivoo.net/google-maps/" id="get-map-data">trivoo</a></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(19.258045,72.85173899999995),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(19.258045, 72.85173899999995)});infowindow = new google.maps.InfoWindow({content:"<b>Documendz</b><br/>Link road, Dahisar (west)<br/> Mumbai" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
-</div>
-
-
-
-
-<!--********************************************************** CONTACT FORM ************************************************************-->
-
-    <div class="col-md-4">
-  			<p style="margin-top:26px; font-size:18px;">Write to us</p>
-  			<form  id="contact-us-form" role="form" >
-
-        			<input id="contact-us-name" type="text" name ="contact-name" class="form-control" placeholder="Name" required=""><br>
-  
-        			<input id="contact-us-email"  type="email" name ="contact-email" class="form-control" placeholder="Email address" required=""><br>
-        			
-        			<textarea id="contact-us-message" name ="contact-message" class="form-control" rows="3" placeholder="Message" required=""></textarea><br>
-        			
-        			<button id="contact-us-button" class="btn btn-lg btn-primary btn-block" type="submit" >Send</button>
-      			</form>
-  		</div>
-      
-<div class="col-md-4">
-  	    	<div style="margin-top:30px;">
-  	    	<div class="contact-text">
-  	    		<label class="glyphicon glyphicon-home" style="float:left; margin-top:5px;"></label>
-  	    		<div style="margin-left:30px;">
-  	    			<p style="margin-left:5px;"><strong>Documendz </strong><br> Gr. Floor, Hardik Apts, 120 link road, Near D-mart, Dahisar(W), Mumbai 400068</p>
-  	    		</div>
-  	    	</div>
-<!--
-  	    	<div class="contact-text">
-  	    		<label class="glyphicon glyphicon-earphone" style="float:left; margin-top:5px;"></label>
-  	    		<div style="margin-left:30px;">
-  	    			<p style="margin-left:5px;">9869499952</p>
-  	    		</div>
-  	    	</div>-->
-	
-			<div class="contact-text">
-  	    		<label class="glyphicon glyphicon-envelope" style="float:left; margin-top:5px;"></label>
-  	    		<div style="margin-left:30px;">
-  	    			<p style="margin-left:5px;">info@documendz.com</p>
-  	    		</div>
-  	    	</div>
-
-  	    	
-  	    	</div>
-		</div>
-      </div>
-      
-      
-      
-	</div>
-
-
-<!--******************************************************** ADDRESS *******************************************************************-->
-
-  		
-	
-	
-	
-	<!--**********************************************************************************************************************-->
-
-	</div>
-	</div>
-
-	
-	<div class="navbar navbar-default" style="margin-bottom: 0px;">
-  		
-		
-		<div class="container-fluid" style="margin-top: 12px;">
-   		 
-   		 <div class="navbar-header" style="width: 100%;" >
-      		
-     		 <div class="col-md-4">
-		&copy; 2014 by Documendz. All rights reserved.
-		 </div>
-		 
-		  <div class="col-md-4" style="text-align: center;" >
-		 <a href="https://www.documendz.com/legal/terms_of_service.html">Terms of Service</a>  | <a href="https://www.documendz.com/legal/privacy_policy.html">Privacy Policy</a>
+    <div class="whatsit">
+    	<div class="row">
+		<div class="container">
+		  <div class="col-md-6" style="
+			    padding-top: 40px;
+			    padding-bottom: 64px;
+			">
+		  	<h2 style="text-align: left;font-size: 24px;color: #04b8a8;text-transform: uppercase;"> 
+		  	No email chains. No back and forth. Quickest Document reviewing.</h2>
+		  	<p id="pofsec2" style="text-align: left;max-width: 80%;margin-top: 30px;color: #747d7e;">Documendz lets you and your collaborators provide feedback and review text files, PDFs, PPTs and all kinds of images without getting swamped by long email chains
+		  	</p>
+		  	
 		  </div>
+		  <div class="col-md-6"id="video"><iframe width="100%" height="315"  src="https://www.youtube.com/embed/uAJW0GtbNwo?showinfo=0&theme=light" frameborder="0" allowfullscreen ></iframe></div>
+		</div>
+		</div>
+    </div>
+
+
+    <div class="features" style="background-color:#f7f7f7">
+			
+	<div class="container" >
+		
+
+		<div class="row " style="margin:0 auto;margin-bottom:40px;margin-top:50px">
+    	 
 		  
-		  <div class="col-md-4">
-		 <a href="https://www.facebook.com/pages/Documendz/347727192061458"><img class="social-footer" src="https://d28kungomln1xp.cloudfront.net/main_page_images/fb.ico" /></a>&nbsp;
-                 <a href="https://www.linkedin.com/company/documendz"><img class="social-footer" src="https://d28kungomln1xp.cloudfront.net/main_page_images/li.ico" /></a>&nbsp;
-		  </div>
-		 </div>
-      
-			
-		
-      		
-	  	</div>
-                
+		  <div class="col-md-4  col-xs-12" id="try" style="text-align:left;"><span><h3 style="color: #333333;font-size: 21px;padding-top:7px">Annotation Features</h3><p style="color: #747d7e;display: block;font-size: 15px;line-height: 1.5;font-style: normal;font-weight: 400;margin-top: 20px; ">Add comments to any line in any document. Highlight, draw, strike-through or underline any part of the text, just like you would in a book</p></span></div>
+		  
+		    <div class="col-md-4 col-xs-12" id="try" style="text-align:left;"><span><h3 style="color: #333333;font-size:21px;padding-top:7px">Analytical Dashboard</h3><p style="color: #747d7e;display: block;font-size: 15px;	line-height: 1.5;font-style: normal;font-weight: 400;margin-top: 20px;">Analyse your account, monitor changes made by users, identify your best collaborators and get all reviews for your document with our intuitive graphcial dashboard</p></span></div>
+
+
+		     <div class="col-md-4 col-xs-12" id="try" style="text-align:left;"><span><h3 style="color: #333333;font-size: 21px;padding-top:7px">Real time discussion</h3><p style="color: #747d7e;display: block;font-size: 15px;line-height: 1.5;font-style: normal;font-weight: 400;margin-top: 20px; ">Discuss with your collaborators or team members in real time. Ask questions, get feedback, or review together on any document for a true real time collaboration experience</p></span></div>
+		  
 		</div>
+
+    	
+		<div class="row " style="margin:0 auto;margin-bottom:40px">
+    	  
+		  <div class="col-md-4 col-md-offset-2 col-xs-12" id="try" style="text-align:left;"><span><h3 style="color: #333333;font-size: 21px;padding-top:7px">All on cloud</h3><p style="color: #747d7e; display: block;font-size: 15px;line-height: 1.5;font-style: normal;font-weight: 400;margin-top: 20px; ">Access your files from any device at any time without installing any app or software.​ Fire up the browser, and simply log in​</p></span></div>
+		
+		  <div class="col-md-4 col-md-offset-1 col-xs-12" id="try" style="text-align:left;"><span><h3 style="color: #333333;font-size: 21px;padding-top:7px">It's all secured</h3><p style="color: #747d7e; display: block;font-size: 15px;line-height: 1.5;font-style: normal;font-weight: 400;margin-top: 20px; ">Exchange senstiive information without security and privacy concerns. All your data is SSL encrypted and secured with us</p></span></div>
+		  
+		  
+		</div>
+
+		
+		</div>
+	</div>
+
+
+	<div class="features" style="background-color:#f7f7f7;padding-bottom:0px">
+
+		<div class="container">
+		<div class="row " style="margin:0 auto;">
+    	  
+			<img style="max-width: 100%;height: auto;" src ="https://d28kungomln1xp.cloudfront.net/images/mockup.png"></img>		 
+  
+		</div>
+	    </div>
+
+
+	</div>	
+<!-- Tabs -->
+<!-- <div class="whocanuse">
+	<div class="container" style="background-color: #f6f6f6;">
+		<h2 id="header6" style="text-align:center;font-size:21px">Who can use Documendz?</h2>
+ 		<div class="tabs1">
+	        <button id="b1" class="activetab" style="font-size:21px"> Individuals</button>
+	        <button id="b2" style="font-size:21px"> Enterprises </button>
+	  
+	    
+	        <div id="d1" >
+	            <div class="row" style="width:80%; margin:0 auto;">
+				  <div class="col-md-4">
+				  	<i class="fa fa-laptop fa-3x"></i>
+				  	<h2> Freelancers </h2>
+				  	<p style="color:#A0A0A0"> Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac</p>
+				  </div>
+				  <div class="col-md-4">
+				  	<i class="fa fa-child fa-3x"></i>
+				  	<h2> Students </h2>
+				  	<p style="color:#A0A0A0"> Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac</p>
+				  </div>
+				  <div class="col-md-4">
+				  		<i class="fa fa-paint-brush fa-3x"></i>
+				  	<h2> Designers </h2>
+				  	<p style="color:#A0A0A0"> Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac</p>
+				  </div>
+				</div>
+	        </div>
+	 
+	        <div id="d2" class="hideatfirst">
+	            <div class="row" style="width:80%; margin:0 auto;">
+				  <div class="col-md-4">
+				  	<i class="fa fa-building-o fa-3x"></i>
+				  	<h2> HR Firms </h2>
+				  	<p style="color:#A0A0A0"> Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac</p>
+				  </div>
+				  <div class="col-md-4">
+				  	<i class="fa fa-graduation-cap fa-3x"></i>
+				  	<h2> Educational Institutes </h2>
+				  	<p style="color:#A0A0A0"> Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac</p>
+				  </div>
+				  <div class="col-md-4">
+				  		<i class="fa fa-legal fa-3x"></i>
+				  	<h2> Law Firms </h2>
+				  	<p style="color:#A0A0A0"> Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac</p>
+				  </div>
+				</div>
+	        </div>
+	</div>
+</div>
+</div>
+ -->
+<div class="whocanuse">
+	<div class="container" style="background-color: white;">
+		<h2 id="header6" style="text-align:center;font-size:23px;text-transform:uppercase">Documendz is great for ...</h2>
+ 		<div class="tabs1">
+	        
+	    
+	        <div id="d1" >
+	            <div class="row" style="width:80%; margin:0 auto;">
+				  <div class="col-md-4">
+				  	<img class="wow bounceIn" src="https://s3-ap-southeast-1.amazonaws.com/zofler-cdn/images/Proposal.png" style="width:50%"></img>
+				  	<h2> Proposals </h2>
+				  	<p style="  color:#747d7e;font-size:15px; margin-top: 20px;">Working on a proposal with a team spread across geographies? Create a Workgroup with your team. Collaborate in real time. Do away with sending tons of mails</p>
+				  </div>
+				  
+				  <div class="col-md-4">
+           <img class="wow bounceIn" src="https://s3-ap-southeast-1.amazonaws.com/zofler-cdn/images/Client.png" style="width:50%"></img>
+				  	<h2> Client Feedback </h2>
+				  	<p style="  color:#747d7e;
+  font-size:15px;
+  margin-top: 20px;" > Working on a prototype for your client? Get your designs, articles, ideas etc. ratified with your clients</p>
+				  </div>
+
+				  <div class="col-md-4">
+				  	<img class="wow bounceIn" src="https://s3-ap-southeast-1.amazonaws.com/zofler-cdn/images/Shortlisting.png" style="width:50%"></img>
+				  	<h2> Shortlisting process </h2>
+				  	<p style="  color:#747d7e;
+  font-size:15px;
+  margin-top: 20px;" >Evaluating CVs or response from 1000s of candidates? Browse, review, evaluate, shortlist, all in one place</p>
+				  </div>
+
+				</div>
+
+
+					<div class="row" style="width:80%; margin:0 auto;">
+				  <div class="col-md-4 col-md-offset-1">
+				  	<img class="wow bounceIn" src="https://s3-ap-southeast-1.amazonaws.com/zofler-cdn/images/Grading.png" style="width:50%"></img>
+				  	<h2> Proof- reading or Grading</h2>
+				  	<p style="  color:#747d7e;
+  font-size:15px;
+  margin-top: 20px;" > Applying for college? Get your applications or SOPs reviewed by peers, seniors or almost anyone</p>
+				  </div>
+				  
+				  <div class="col-md-4 col-md-offset-2">
+				  	<img class="wow bounceIn" src="https://s3-ap-southeast-1.amazonaws.com/zofler-cdn/images/Perusal.png" style="width:50%"></img>
+				  	<h2> Perusal process </h2>
+				  	<p style="  color:#747d7e;
+  font-size:15px;
+  margin-top: 20px;"> Trying to find meaning in a 400 page legal document? No worries! Highlight, Comment, Strike-out points</p>
+				  </div>
+				 
+				</div>
+
+	        </div>
+	 
+	</div>
+</div>
+</div>
+
+
 	
-	
-	
-	  <div class="modal fade" id="suggestion_front" for="dialog">
+<div class="features">	
+<div class="container" style="padding: 10px;/* background-color: #E7FEE9; */">
+ 
+<div class="row" style="color: #747d7e;font-size: 18px;padding-bottom: 15px;">
+
+  		<div class="col-md-2 col-md-offset-3 col-xs-12"><img src="https://d28kungomln1xp.cloudfront.net/images/omkar1.jpg" class="img-responsive img-circle" alt="Cinque Terre" style="
+    padding: 30px;
+    opacity: 0.8;
+">
+</div>
+  		<div class="col-md-6" style="
+    text-align: left; "><span class="row" style="
+    color: #333333; 
+    font-size: 21px; 
+    /* padding-top: 7px; */ };
+">Omkar Patki, Senior Professor at CPLC India Pvt. Ltd.</span><br>
+<span style="
+    font-size: 15px;
+    color: #747d7e;
+"> In documendz, the students share it just once and multiple reviewers watch it. So for students, it's convenient. Plus, after the review is over, it goes back to the student. So, he/she can bring about changes immediately</span>
+<br>
+<a href="https://documendz.wordpress.com/" style="
+    font-size: 15px;
+">Read more</a></div>
+
+  </div>
+ 
+  </div>
+</div>
+
+<div class="features">
+<div class="container" style="
+    padding: 10px;">
+  
+<div class="row">
+ <div class="col-md-4 col-md-offset-4 ">
+  <a href="signup.html" style=" border-color: #04b8a8;background-color: white;width: 100%;color: #04b8a8;text-transform: uppercase;" class="btn btn-primary" role="button">Get started for free</a></div>
+ 
+  </div>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+	<div class="section3">
+		<h2 id="header4" style="text-align: center;font-weight: 100;font-size: 23px;text-transform: uppercase;">Featured</h2>
+		<div class="row">
+		  <div class="col-md-2" style="margin-right:90px"></div>
+		  <div class="col-md-2" style="margin-left:0px; "><img src="images/F1.png" height="220" width="220" class="img-responsive" style="margin:0 auto;" ></div>
+		  
+		  <div class="col-md-2"style="margin-left:0px"><img src="images/F3.png" height="220" width="220" class="img-responsive" style="margin:0 auto;" >
+		  </div>
+
+		  <div class="col-md-2"style="margin-left:0px"><img src="images/F2.png" height="220" width="220" class="img-responsive"style="margin:0 auto;"  ></div>
+		  <div class="col-md-2"></div>
+		</div>
+	</div>
+
+
+	<div class="section4">
+		<div class="row" style="margin-bottom:15px; color:#04B8A8">
+		  <div class="col-md-2" style="margin-right:110px"></div>
+		  <div class="col-md-2" style="text-align:center"><a href="aboutus.html">Our Team</a></div>
+		  <div class="col-md-2"style="text-align:center"><a href="contactus.html">Contact Us</a></div>
+		  <div class="col-md-2"style="text-align:center"><a href="termsofservice.html">Terms of Service</a></div>
+		  <div class="col-md-2"></div>
+		</div>
+		
+		<div class="row"style="margin-bottom:15px; color:#04B8A8">
+		  <div class="col-md-2"style="margin-right:110px"></div>
+		  <div class="col-md-2" style="text-align:center"><a href="careers.html">Careers</a></div>
+		  <div class="col-md-2" style="text-align:center"><a href="faq.html">FAQs</a></div>
+		  <div class="col-md-2" style="text-align:center"><a href="privacypolicy.html">Privacy Policy</a></div>
+		  <div class="col-md-2"></div>
+		</div>
+
+
+		<div class="row"style="margin-bottom:15px; color:#04B8A8">
+		  <div class="col-md-2"style="margin-right:110px"></div>
+		  <div class="col-md-2" style="text-align:center"><a href="https://documendz.wordpress.com">Blog</a></div>
+		  <div class="col-md-2"></div>
+		</div>
+
+
+		<div class="row"style="margin-bottom:35px; color:#04B8A8">
+		  <div class="col-md-2"style="margin-right:110px"></div>
+		  <div class="col-md-2" style="text-align:center"><a href="webapp.html">Chrome Web App</a></divs		  <div class="col-md-2"></div>
+		</div>
+
+		<hr>
+
+		<div style="text-align:center">
+			<h5 style="margin-bottom:35px; color:#04B8A8;  margin-top: 30px;font-size:1.2em">Join us on</h5>
+			<ul id="ul1" style="padding-left: 0px;">
+				<li><a target="_blank" href="https://www.facebook.com/pages/Documendz/347727192061458">
+					<span class="fa-stack fa-lg">
+					  <i class="fa fa-circle-thin fa-stack-2x"></i>
+					  <i class="fa fa-facebook fa-stack-1x"></i>
+					</span>
+					</a>
+				</li>
+
+				<li><a target="_blank" href="https://www.linkedin.com/company/documendz">
+					<span class="fa-stack fa-lg">
+					  <i class="fa fa-circle-thin fa-stack-2x"></i>
+					  <i class="fa fa-linkedin fa-stack-1x"></i>
+					</span>
+					</a>
+				</li>
+
+				<li><a target="_blank" href="https://plus.google.com/102869781218367134908/about">
+					<span class="fa-stack fa-lg">
+					  <i class="fa fa-circle-thin fa-stack-2x"></i>
+					  <i class="fa fa-google-plus fa-stack-1x"></i>
+					</span>
+					</a>
+				</li>
+
+				<li><a target="_blank" href="https://twitter.com/documendz">
+					<span class="fa-stack fa-lg">
+					  <i class="fa fa-circle-thin fa-stack-2x"></i>
+					  <i class="fa fa-twitter fa-stack-1x"></i>
+					</span>
+					</a>
+				</li>
+
+				<li><a target="_blank" href="https://www.youtube.com/watch?v=uAJW0GtbNwo">
+					<span class="fa-stack fa-lg">
+					  <i class="fa fa-circle-thin fa-stack-2x"></i>
+					  <i class="fa fa-youtube-play fa-stack-1x"></i>
+					</span>
+					</a>
+				</li>
+
+
+			</ul>
+		</div>
+		<div id="copyright" >
+	      &copy; Novo Documendz Services Pvt. Ltd.
+	    </div>
+	</div>
+
+
+ <div class="modal fade" id="suggestion_front" for="dialog">
+	  	
 		<div class="modal-dialog">
 			<div class="modal-content">
 				
@@ -1390,8 +848,8 @@ power of unhindered collaboration over cloud.</p>
 							<div id="feedback_front_div">
 								<div class="col-lg-12">
 							
-							<input type="email" id = "feedback_front_email"  style="width:100%; height:30px; font-size: 15px; margin-top:10px;" placeholder="Email Id">	 
-							<textarea id="feedback_front" style="width:100%; height:100px; font-size: 15px;  margin-top:10px;" placeholder="Your feedback"></textarea>
+							<input type="email" id = "feedback_front_email"  style="width:467px; height:30px; font-size: 15px; margin-top:10px;" placeholder="Email Id">	 
+							<textarea id="feedback_front" style="width:467px; height:100px; font-size: 15px;  margin-top:10px;" placeholder="Your feedback"></textarea>
 							
 								</div>
 							</div>
@@ -1408,9 +866,46 @@ power of unhindered collaboration over cloud.</p>
 			
 		</div>
 	</div>
-	 
 
 
-      	
-</body>
+
+    <script>
+    	$(window).scroll(function() {
+			if ($(this).scrollTop() > 100){  
+			    $('#navigationbar').addClass("makeitwhite");
+			  }
+			  else{
+			    $('#navigationbar').removeClass("makeitwhite");
+			  }
+			});
+    </script>
+    <script>
+    	$(window).scroll(function() {
+			if ($(this).scrollTop() > 100){  
+			    $('#logoimg').addClass("padit");
+			  }
+			  else{
+			    $('#logoimg').removeClass("padit");
+			  }
+			});
+    </script>
+    <script>
+			$(document).ready(function(){
+		    
+		    $("#b2").click(function(){
+		        $("#d1").hide().fadeOut(400);
+		        $("#b1").removeClass("activetab");
+		        $("#d2").fadeIn(600);
+		        $("#b2").addClass("activetab");
+		        // $("#b2").css({"color": "#04B8A8", "border": "1px solid #04B8A8"}, "background-color":"#04B8A8");
+		    });
+		    $("#b1").click(function(){
+		        $("#d2").hide().fadeOut(400);
+		        $("#b2").removeClass("activetab");
+		        $("#d1").fadeIn(600);
+		         $("#b1").addClass("activetab");
+		    });
+		});
+		</script> 
+	</body>
 </html>
