@@ -649,6 +649,7 @@ margin-bottom: 50px;
 .QuestionHyperlinks li {
 font-size: 20px;
 margin-top: 10px;
+font-weight: 300;
 margin-bottom: 10px;
 
 }
@@ -666,14 +667,15 @@ margin-bottom: 40px;
 }
 
 .FullAnswers h2 {
-
-font-size: 25px;
+font-size: 20px;
 color: #04B8A8;
-margin-bottom:15px;
+margin-bottom: 15px;
+font-weight: 300;
 }
 
 .FullAnswers p {
-font-size: 20px;
+font-size: 18px;
+font-weight: 300;
 }
 
 .navbar-default .navbar-nav>li>.logins {
