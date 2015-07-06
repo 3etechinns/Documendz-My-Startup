@@ -13,7 +13,7 @@ $wn = mysqli_fetch_assoc(mysqli_query($dbhandle, "SELECT wname FROM workgroups W
 $url = 'http://54.210.52.149/documendz-api.php';
 
 $fields = array(
-						"Api_ID" => "apiauthkey",
+						"Api_ID" => "EH-adolxsaldadikdszbdswssaewxvblo",
 						"Job_ID" => $wn['wname'],
 						"Filename_TEXT" => $_POST['fileName'],
 						"Extracted_TEXT" => $_POST['highlights'],
