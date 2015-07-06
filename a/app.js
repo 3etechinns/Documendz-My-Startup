@@ -1639,33 +1639,36 @@ $scope.send_update = function(){
 	    };
 
 	     function sendHighlightEmail(d) {
-	    	  var dataObj = {
-	                fname: $scope.templateFilename,
-	                highlights:  JSON.stringify(d),
-	               };
-	               console.log(dataObj);
+	        var dataObj = {
+	            jobId:$routeParams.wgId,
+	            fileName: $scope.templateFilename,
+	            highlights: JSON.stringify(d),
 
-	            $http({
-	                method: 'POST',
-	                url: 'backend/sendHighlightEmail.php',
-	                headers: {
-	                    'Content-Type': 'application/x-www-form-urlencoded'
-	                },
-	                transformRequest: function(obj) {
-	                    var str = [];
-	                    for (var p in obj)
-	                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-	                    return str.join("&");
-	                },
-	                data: dataObj
-	            }).success(function(res) {
+	        };
+	
 
-	                console.log(res);
-	                $scope.loadingnow= false;
-	                if(res == 1){
+	        $http({
+	            method: 'POST',
+	            url: 'backend/passExtractedText.php',
+	            headers: {
+	                'Content-Type': 'application/x-www-form-urlencoded'
+	            },
+	            transformRequest: function(obj) {
+	                var str = [];
+	                for (var p in obj)
+	                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	                return str.join("&");
+	            },
+	            data: dataObj
+	        }).success(function(res) {
 
-	                	 $scope.filetype_msg = {
-	                    content: 'A highlight summary has been sent to your email Id',
+	        	console.log(res);
+	           
+	            $scope.loadingnow = false;
+	            if (res == 1) {
+
+	                $scope.filetype_msg = {
+	                    content: 'The highlight summary has been saved',
 	                    options: {
 	                        ttl: 6000,
 	                        type: 'success',
@@ -1673,10 +1676,22 @@ $scope.send_update = function(){
 	                    }
 	                }
 	                inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
-	                }
-	            });
-	    }
+	            }
+	            else{
 
+	            		 $scope.filetype_msg = {
+	                    content: 'Something seems to be wrong. Please contact us',
+	                    options: {
+	                        ttl: 6000,
+	                        type: 'danger',
+	                        html: true
+	                    }
+	                }
+	                inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+
+	            }
+	        });
+	    }
 	    //send highlights via email
 
 
