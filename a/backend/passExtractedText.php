@@ -49,6 +49,8 @@ $r = json_decode($result,true);
 
 //echo $r['code'];
 
+
+
 if($r['code'] == 200) {
 
  $e = $_SESSION['email'];
@@ -56,6 +58,8 @@ if($r['code'] == 200) {
  $j = $wn['wname'];
 
  $res = mysqli_query($dbhandle, 'INSERT INTO ezhire_api_data (username,filename,wkname,time,month) VALUES ("'.$e.'","'.$f.'","'.$j.'",now(),month(now()))');
+
+echo $r;
 
  echo "1";
 
