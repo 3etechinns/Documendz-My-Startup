@@ -1638,60 +1638,60 @@ $scope.send_update = function(){
 	                })
 	    };
 
-	     function sendHighlightEmail(d) {
-	        var dataObj = {
-	            jobId:$routeParams.wgId,
-	            fileName: $scope.templateFilename,
-	            highlights: JSON.stringify(d),
+	    //  function sendHighlightEmail(d) {
+	    //     var dataObj = {
+	    //         jobId:$routeParams.wgId,
+	    //         fileName: $scope.templateFilename,
+	    //         highlights: JSON.stringify(d),
 
-	        };
+	    //     };
 	
 
-	        $http({
-	            method: 'POST',
-	            url: 'backend/passExtractedText.php',
-	            headers: {
-	                'Content-Type': 'application/x-www-form-urlencoded'
-	            },
-	            transformRequest: function(obj) {
-	                var str = [];
-	                for (var p in obj)
-	                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-	                return str.join("&");
-	            },
-	            data: dataObj
-	        }).success(function(res) {
+	    //     $http({
+	    //         method: 'POST',
+	    //         url: 'backend/passExtractedText.php',
+	    //         headers: {
+	    //             'Content-Type': 'application/x-www-form-urlencoded'
+	    //         },
+	    //         transformRequest: function(obj) {
+	    //             var str = [];
+	    //             for (var p in obj)
+	    //                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+	    //             return str.join("&");
+	    //         },
+	    //         data: dataObj
+	    //     }).success(function(res) {
 
-	        	console.log(res);
+	    //     	console.log(res);
 	           
-	            $scope.loadingnow = false;
-	            if (res == 1) {
+	    //         $scope.loadingnow = false;
+	    //         if (res == 1) {
 
-	                $scope.filetype_msg = {
-	                    content: 'The highlight summary has been saved',
-	                    options: {
-	                        ttl: 6000,
-	                        type: 'success',
-	                        html: true
-	                    }
-	                }
-	                inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
-	            }
-	            else{
+	    //             $scope.filetype_msg = {
+	    //                 content: 'The highlight summary has been saved',
+	    //                 options: {
+	    //                     ttl: 6000,
+	    //                     type: 'success',
+	    //                     html: true
+	    //                 }
+	    //             }
+	    //             inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+	    //         }
+	    //         else{
 
-	            		 $scope.filetype_msg = {
-	                    content: 'Something seems to be wrong. Please contact us',
-	                    options: {
-	                        ttl: 6000,
-	                        type: 'danger',
-	                        html: true
-	                    }
-	                }
-	                inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
+	    //         		 $scope.filetype_msg = {
+	    //                 content: 'Something seems to be wrong. Please contact us',
+	    //                 options: {
+	    //                     ttl: 6000,
+	    //                     type: 'danger',
+	    //                     html: true
+	    //                 }
+	    //             }
+	    //             inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
 
-	            }
-	        });
-	    }
+	    //         }
+	    //     });
+	    // }
 	    //send highlights via email
 
 
