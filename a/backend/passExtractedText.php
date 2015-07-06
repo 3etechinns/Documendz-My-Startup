@@ -14,10 +14,10 @@ $url = 'http://54.210.52.149/documendz-api.php';
 
 $fields = array(
 						"Api_ID" => "EH-adolxsaldadikdszbdswssaewxvblo",
-						"Job_ID" => $wn['wname'],
-						"Filename_TEXT" => $_POST['fileName'],
-						"Extracted_TEXT" => $_POST['highlights'],
 						"Email_ID" => $_SESSION['email'],
+						"Job_ID" => $wn['wname'],
+						"Extracted_TEXT" => $_POST['highlights'],
+						"Filename_TEXT" => $_POST['fileName'],
 						"Timestamp_TEXT" => time(),	
 				);
 
