@@ -67,7 +67,7 @@ echo $r;
 
  else{
 
- 	echo "0";
+ 	echo $r;
 
  	//there seems to be an error
  	 }
