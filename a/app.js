@@ -1414,6 +1414,10 @@ $timeout(function(){
 
         if (extCheck[file[0].type] != undefined)
         {
+
+        var gfile = file;
+$rootScope.gfiles = file;
+
             $scope.fileName = file[0].name;
 
  angular.element(document.querySelector('.progress-holder'))[0].style.display = "block";
