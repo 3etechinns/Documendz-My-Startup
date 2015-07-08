@@ -1174,7 +1174,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 
 	                    }).success(function(data, status, headers, config) {
 	                        // file is uploaded successfully
-	                        console.log('file is uploaded successfully. Response: ' + data);
+	                       // console.log('File has been uploaded successfully. Response: ' + data);
 	                        $scope.stopSpin = 1;
 
 	                        try{
@@ -1416,8 +1416,7 @@ $timeout(function(){
         {
             $scope.fileName = file[0].name;
 
-angular.element( document.querySelector('.uploader-file-name').innerHTML = $scope.fileName);
-angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "block";
+ angular.element(document.querySelector('.progress-holder'))[0].style.display = "block";
 
          var prm =  $upload.upload({
                 url: "../revision_upload.php",
@@ -1430,24 +1429,36 @@ angular.element( document.querySelector( '.progress-holder' ))[0].style.display 
             });
          prm.progress(function(evt) {
                 $scope.showProgress = 1;
-                $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
+	                      	
 
-angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.progressValue+ "100px";
-if($scope.progressValue > 80){
- angular.element( document.querySelector('.prog-event').innerHTML = "Processing");
+	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
-}                
+	                        try{
+	                        angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
+	                        angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
+
+
+	                        if ($scope.progressValue == 100) {
+	                           angular.element(document.querySelector('.pe'+i).innerHTML = "Processing");
+	                        }
+
+	                        }
+	                        catch(e){}
+
 
             }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
                 
-                $scope.stopSpin = 1;
-                $scope.fileName = "";
+              $scope.stopSpin = 1;
 
-angular.element( document.querySelector('.prog-event').innerHTML = "Done");
-$timeout(function(){
-	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
-},4000);
+	                        try{
+	                        angular.element(document.querySelector('.pe'+i).innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;margin-top:-5px'></i>");
+	                        angular.element(document.querySelector('.progress-holder'))[0].style.display = "none";
+
+	                       }
+	                       catch(e){
+
+	                       }
                 
                 if (data == 999) {
                     $scope.filetype_msg = {
