@@ -1117,7 +1117,8 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                    "image/jpeg": "jpg",
 	                    "image/bmp": "bmp",
 	                    "application/pdf": "pdf",
-	                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx"
+	                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
+	                    "application/msword":"doc"
 
 	                };
 	                console.log(gfile);
@@ -1318,11 +1319,11 @@ angular.element( document.querySelector('.prog-event').innerHTML = "Uploading");
 	                }).progress(function(evt) {
 
 	                    $scope.showProgress = 1;
-	                    $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
+	                    $scope.pv = parseInt(100.0 * evt.loaded / evt.total);
 
-angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.progressValue+ "%";
+angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.pv+ "%";
 
-if($scope.progressValue == 100){
+if($scope.pv == 100){
  angular.element( document.querySelector('.prog-event').innerHTML = "Processing");
 }
 
@@ -1334,11 +1335,6 @@ if($scope.progressValue == 100){
 	                     $scope.wa = 0;
 
 
-angular.element( document.querySelector('.prog-event').innerHTML = "Done");
-
-$timeout(function(){
-	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
-},4000);
 
 
 
@@ -1354,6 +1350,13 @@ $timeout(function(){
 	                        inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
 	                    } else {
 
+	                    	
+angular.element( document.querySelector('.prog-event').innerHTML = "Done");
+
+$timeout(function(){
+	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+},4000);
+	                    	
 	                        $scope.allFiles.push({
 	                            authid: userData.getData().userid,
 	                            fid: "0",
@@ -1409,7 +1412,8 @@ $timeout(function(){
             "image/jpeg": "jpg",
             "image/bmp": "bmp",
             "application/pdf": "pdf",
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx"
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
+            "application/msword":"doc"
         };
 
         if (extCheck[file[0].type] != undefined)
