@@ -1438,16 +1438,19 @@ $rootScope.gfiles = file;
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
 	                        try{
-	                        angular.element(document.querySelector('.pe'+i).innerHTML = "Uploading");
-	                        angular.element(document.querySelector('.pb'+i))[0].style.width = $scope.progressValue + "%";
+	                        angular.element(document.querySelector('.pe0').innerHTML = "Uploading");
+	                        angular.element(document.querySelector('.pb0'))[0].style.width = $scope.progressValue + "%";
 
 
 	                        if ($scope.progressValue == 100) {
-	                           angular.element(document.querySelector('.pe'+i).innerHTML = "Processing");
+	                           angular.element(document.querySelector('.pe0').innerHTML = "Processing");
 	                        }
 
 	                        }
-	                        catch(e){}
+	                        catch(e){
+
+	                        	console.log("Not ready");
+	                        }
 
 
             }).success(function(data, status, headers, config) {
@@ -1456,7 +1459,7 @@ $rootScope.gfiles = file;
               $scope.stopSpin = 1;
 
 	                        try{
-	                        angular.element(document.querySelector('.pe'+i).innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;margin-top:-5px'></i>");
+	                        angular.element(document.querySelector('.pe0').innerHTML = "<i class='fa fa-check-circle-o' style='font-size: 17px;margin-top:-5px'></i>");
 	                        angular.element(document.querySelector('.progress-holder'))[0].style.display = "none";
 
 	                       }
