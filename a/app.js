@@ -1422,7 +1422,7 @@ $rootScope.gfiles = file;
 
  angular.element(document.querySelector('.progress-holder'))[0].style.display = "block";
 
-         var prm =  $upload.upload({
+        $upload.upload({
                 url: "../revision_upload.php",
                 method: 'POST',
                 file: file[0],
