@@ -1319,11 +1319,11 @@ angular.element( document.querySelector('.prog-event').innerHTML = "Uploading");
 	                }).progress(function(evt) {
 
 	                    $scope.showProgress = 1;
-	                    $scope.pv = parseInt(100.0 * evt.loaded / evt.total);
+	                    $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
-angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.pv+ "%";
+angular.element( document.querySelector( '.progress-bar' ))[0].style.width= $scope.progressValue+ "%";
 
-if($scope.pv == 100){
+if($scope.progressValue == 100){
  angular.element( document.querySelector('.prog-event').innerHTML = "Processing");
 }
 
@@ -1335,6 +1335,11 @@ if($scope.pv == 100){
 	                     $scope.wa = 0;
 
 
+angular.element( document.querySelector('.prog-event').innerHTML = "Done");
+
+$timeout(function(){
+	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
+},4000);
 
 
 
@@ -1350,13 +1355,6 @@ if($scope.pv == 100){
 	                        inform.add($scope.filetype_msg.content, $scope.filetype_msg.options);
 	                    } else {
 
-	                    	
-angular.element( document.querySelector('.prog-event').innerHTML = "Done");
-
-$timeout(function(){
-	angular.element( document.querySelector( '.progress-holder' ))[0].style.display = "none";
-},4000);
-	                    	
 	                        $scope.allFiles.push({
 	                            authid: userData.getData().userid,
 	                            fid: "0",
@@ -1423,7 +1421,7 @@ $timeout(function(){
 $rootScope.gfiles = file;
 
             $scope.fileName = file[0].name;
-
+console.log($scope.fileName);
  angular.element(document.querySelector('.progress-holder'))[0].style.display = "block";
 
         $upload.upload({
