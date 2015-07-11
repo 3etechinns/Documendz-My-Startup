@@ -1438,11 +1438,13 @@ $rootScope.gfiles = file;
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
 	                        try{
+	                        	console.log("here1");
 	                        angular.element(document.querySelector('.pe0').innerHTML = "Uploading");
 	                        angular.element(document.querySelector('.pb0'))[0].style.width = $scope.progressValue + "%";
 
 
 	                        if ($scope.progressValue == 100) {
+	                        	console.log("here2");
 	                           angular.element(document.querySelector('.pe0').innerHTML = "Processing");
 	                        }
 
@@ -1455,7 +1457,7 @@ $rootScope.gfiles = file;
 
             }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
-                
+                console.log("here3");
               $scope.stopSpin = 1;
 
 	                        try{
