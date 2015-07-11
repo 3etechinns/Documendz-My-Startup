@@ -1435,7 +1435,7 @@ console.log($scope.fileName);
             }).progress(function(evt) {
                 $scope.showProgress = 1;
 	                      	
-console.log("in here");
+
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
 	                        try{
