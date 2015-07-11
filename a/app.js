@@ -1430,8 +1430,7 @@ $rootScope.gfiles = file;
                     wgId: $routeParams.wgId,
                     ogFile: fid.trim()
                 },
-            });
-         prm.progress(function(evt) {
+            }).progress(function(evt) {
                 $scope.showProgress = 1;
 	                      	
 console.log("in here");
