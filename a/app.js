@@ -1421,7 +1421,7 @@ $timeout(function(){
 $rootScope.gfiles = file;
 
             $scope.fileName = file[0].name;
-console.log($scope.fileName);
+
  angular.element(document.querySelector('.progress-holder'))[0].style.display = "block";
 
         $upload.upload({
@@ -1439,26 +1439,26 @@ console.log($scope.fileName);
 	                        $scope.progressValue = parseInt(100.0 * evt.loaded / evt.total);
 
 	                        try{
-	                        	console.log("here1");
+	                        	
 	                        angular.element(document.querySelector('.pe0').innerHTML = "Uploading");
 	                        angular.element(document.querySelector('.pb0'))[0].style.width = $scope.progressValue + "%";
 
 
 	                        if ($scope.progressValue == 100) {
-	                        	console.log("here2");
+	                        	
 	                           angular.element(document.querySelector('.pe0').innerHTML = "Processing");
 	                        }
 
 	                        }
 	                        catch(e){
 
-	                        	console.log("Not ready");
+	                        	
 	                        }
 
 
             }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
-                console.log("here3");
+                
               $scope.stopSpin = 1;
 
 	                        try{
