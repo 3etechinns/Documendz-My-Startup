@@ -199,7 +199,7 @@ socket = "";
   return {
     set:function(){
 
-        socket = io.connect("https://documendz.com", {'forceNew': true });
+        socket = io.connect("https://documendz.com", {'forceNew': true, 'connect timeout': 1000 });
     },
 
     on: function (eventName, callback) {
