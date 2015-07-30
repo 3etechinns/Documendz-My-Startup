@@ -1294,8 +1294,8 @@ else {
 	                "application/pdf": "pdf",
 	                "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
 	                "application/msword": "doc",
-	                "application/vnd.openxmlformats-officedocument.presentationml.presentation":"pptx",
-	                "application/vnd.ms-powerpointtd": "ppt"
+	                "application/vnd.openxmlformats-officedocument.presentationml.presentation": "pptx",
+	                "application/vnd.ms-powerpoint": "ppt"
 
 	            };
 

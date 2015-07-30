@@ -82,7 +82,7 @@ use Aws\S3\Model\MultipartUpload\UploadBuilder;
             $unique_filename =getToken(15);
             $file_name_html = $unique_filename . ".html"; //appending html extension to the uploaded file
           
-	  $allowed_files = array("image/png"  ,  "image/svg+xml" , "application/x-shockwave-flash" , "image/jpeg" , "image/bmp" , "application/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/msword","application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.ms-powerpointtd");
+	  $allowed_files = array("image/png"  ,  "image/svg+xml" , "application/x-shockwave-flash" , "image/jpeg" , "image/bmp" , "application/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/msword","application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.ms-powerpoint");
             
 	    
 	    
@@ -717,7 +717,7 @@ mysql_query("INSERT INTO files VALUES('','$unique_filename','$name','$wgId','$_S
     break;
 
 
-case "application/vnd.ms-powerpointtd":
+case "application/vnd.ms-powerpoint":
     
     
     move_uploaded_file($file_tmp, 'uploaded/uploaded_files_' . $_SESSION['userid'] . '_original/' . $unique_filename.'.ppt');
