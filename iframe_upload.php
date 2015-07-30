@@ -181,7 +181,61 @@ function CallToApi($fileToConvert, $pathToSaveOutputFile, $apiKey, &$message,$un
 		}
 }
  
+function CallToApi2($fileToConvert, $pathToSaveOutputFile, $apiKey, &$message,$unique_filename)
+{
+		try
+		{
+			
+		
+			$fileName = $unique_filename.".pdf";
+			 
+			$postdata =  array('OutputFileName' => $fileName, 'ApiKey' => $apiKey, 'file'=>"@".$fileToConvert);
+			$ch = curl_init("http://do.convertapi.com/PowerPoint2Pdf");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_HEADER, 1);
+			curl_setopt($ch, CURLOPT_POST, 1);
+  			curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+			$result = curl_exec($ch); 
+			$headers = curl_getinfo($ch);
+			
+			$header=ParseHeader(substr($result,0,$headers["header_size"]));
+			$body=substr($result, $headers["header_size"]);
+			
+			curl_close($ch);
+			if ( 0 < $headers['http_code'] && $headers['http_code'] < 400 ) 
+			{
+				// Check for Result = true
+				
+				if (in_array('Result',array_keys($header)) ?  !$header['Result']=="True" : true)
+				{
+					$message = "Something went wrong with request, did not reach ConvertApi service.<br />";
+			 		return false;
+				}
+				// Check content type 
+				if ($headers['content_type']<>"application/pdf")
+				{
+			 		$message = "Exception Message : returned content is not PDF file.<br />";
+			 		return false;
+				}
+				$fp = fopen($pathToSaveOutputFile.$fileName, "wbx");
+				
+				fwrite($fp, $body);
 
+				$message = "The conversion was successful! The ppt file $fileToConvert converted to PDF and saved at $pathToSaveOutputFile$fileName";
+				return true;
+			}
+			else 
+			{
+			 $message = "Exception Message : ".$result .".<br />Status Code :".$headers['http_code'].".<br />";
+			 return false; 
+			}
+		}
+		catch (Exception $e) 
+		{	
+			$message = "Exception Message :".$e.Message."</br>";
+			return false; 
+		}
+}
 
 function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
       
@@ -732,7 +786,7 @@ $physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['useri
 	$apiKey = 182458582;
 	
 	chmod($uploadedFile,0755);
-	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
+	$result = CallToApi2($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
 
 	$name = mysql_real_escape_string($file);
 
@@ -759,7 +813,7 @@ $physicalPath = dirname(__FILE__).'/uploaded/uploaded_files_' . $_SESSION['useri
 	$apiKey = 182458582;
 	
 	chmod($uploadedFile,0755);
-	$result = CallToApi($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
+	$result = CallToApi2($uploadedFile, $physicalPath, $apiKey, $message,$unique_filename);
 
 	$name = mysql_real_escape_string($file);
 
