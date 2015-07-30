@@ -1237,7 +1237,7 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                        }
 
 	                    $scope.filetype_msg = {
-	                        content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+	                        content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx, .ppt, .pptx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
 	                        options: {
 	                            ttl: 8000,
 	                            type: 'danger',
@@ -1293,7 +1293,9 @@ else {
 	                "image/bmp": "bmp",
 	                "application/pdf": "pdf",
 	                "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
-	                "application/msword": "doc"
+	                "application/msword": "doc",
+	                "application/vnd.openxmlformats-officedocument.presentationml.presentation":"pptx",
+	                "application/vnd.ms-powerpointtd": "ppt"
 
 	            };
 
@@ -1382,7 +1384,7 @@ $timeout(function(){
 
 	            	$scope.wa = 0;
 	                $scope.filetype_msg = {
-	                    content: 'We currently support .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types all upto 4MB.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+	                    content: 'We currently support .png, .bmp, .jpg, .svg, .swf, .doc, .docx, .ppt, .pptx and .pdf file types all upto 4MB.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
 	                    options: {
 	                        ttl: 8000,
 	                        type: 'danger',
@@ -1500,7 +1502,7 @@ $rootScope.gfiles = file;
 
         } else {
             $scope.filetype_msg = {
-                content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
+                content: 'Currently supports only .png, .bmp, .jpg, .svg, .swf, .doc, .docx, .ppt, .pptx and .pdf file types.<br><br> We are working on adding more file types <i class="fa fa-smile-o"></i>',
                 options: {
                     ttl: 8000,
                     type: 'danger',
