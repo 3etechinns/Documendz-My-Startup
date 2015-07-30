@@ -1118,7 +1118,10 @@ $scope.errSrc = "https://s3-ap-southeast-1.amazonaws.com/docs-test/loading.gif";
 	                    "image/bmp": "bmp",
 	                    "application/pdf": "pdf",
 	                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
-	                    "application/msword":"doc"
+	                    "application/msword":"doc",
+	                    "application/vnd.openxmlformats-officedocument.presentationml.presentation": "pptx",
+	                    "application/vnd.ms-powerpoint": "ppt"
+
 
 	                };
 	                console.log(gfile);
