@@ -1413,7 +1413,10 @@ $timeout(function(){
             "image/bmp": "bmp",
             "application/pdf": "pdf",
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
-            "application/msword":"doc"
+            "application/msword":"doc",
+            "application/vnd.openxmlformats-officedocument.presentationml.presentation": "pptx",
+	        "application/vnd.ms-powerpoint": "ppt"
+
         };
 
         if (extCheck[file[0].type] != undefined)
