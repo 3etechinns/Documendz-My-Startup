@@ -247,7 +247,7 @@ function pdf2html($html_file_dest,$unique_filename,$file,$width,$ext) {
         
         	// $cmd = "pdf2htmlEX --process-outline 0 --fit-width 800 --fit-height 1200 --dest-dir " . $html_file_dest . " uploaded/uploaded_files_".$_SESSION['userid'] . "_original/".$unique_filename.".pdf 2>&1 &"; 
         	
-   	        $cmd = "pdf2htmlEX --process-outline 0 --tounicode 1 --decompose-ligature 1 --fit-width ".$width." --dest-dir " . $html_file_dest . " uploaded/uploaded_files_".$_SESSION['userid'] . "_original/".$unique_filename.".pdf 2>&1 &"; //>>dta.log helps run the cmd even when a large amnt of data is printed on cmd page
+   	        $cmd = "pdf2htmlEX --process-outline 0 --hdpi 100 --width 100 --tounicode 1 --decompose-ligature 1 --fit-width ".$width." --dest-dir " . $html_file_dest . " uploaded/uploaded_files_".$_SESSION['userid'] . "_original/".$unique_filename.".pdf 2>&1 &"; //>>dta.log helps run the cmd even when a large amnt of data is printed on cmd page
 	        // This may be affecting stdout memory
 
 
